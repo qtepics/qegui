@@ -1,0 +1,24 @@
+<RCC>
+    <qresource prefix="/qe/gui/forms">
+        <file>General_PV_Edit.ui</file>
+        <file>PVProperties.ui</file>
+        <file>StripChart.ui</file>
+        <file>MessageLog.ui</file>
+        <file>Plotter.ui</file>
+        <file>ScratchPad.ui</file>
+        <file>PVLoadSave.ui</file>
+        <file>WaveformHistogram.ui</file>
+        <file>ArchiveStatus.ui</file>
+        <file>ArchiveNameSearch.ui</file>
+    </qresource>
+    <qresource prefix="/qe/gui/icons">
+        <file>QEGuiIcon.png</file>
+    </qresource>
+    <qresource prefix="/qe/gui/configuration">
+        <file>QEGuiCustomisationDefault.xml</file>
+    </qresource>
+    <qresource prefix="/qe/gui/help">
+        <file>help_usage.txt</file>
+        <file>help_general.txt</file>
+    </qresource>
+</RCC>

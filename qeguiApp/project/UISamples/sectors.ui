@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>257</width>
+    <height>165</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QEShape" name="qcashapeplugin_2">
+   <property name="geometry">
+    <rect>
+     <x>48</x>
+     <y>15</y>
+     <width>50</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="shape" stdset="0">
+    <enum>QEShape::Ellipse</enum>
+   </property>
+   <property name="point2" stdset="0">
+    <point>
+     <x>8</x>
+     <y>8</y>
+    </point>
+   </property>
+  </widget>
+  <widget class="QEShape" name="qcashapeplugin">
+   <property name="geometry">
+    <rect>
+     <x>52</x>
+     <y>23</y>
+     <width>50</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="shape" stdset="0">
+    <enum>QEShape::Ellipse</enum>
+   </property>
+   <property name="point2" stdset="0">
+    <point>
+     <x>8</x>
+     <y>8</y>
+    </point>
+   </property>
+  </widget>
+  <widget class="QEShape" name="qcashapeplugin_3">
+   <property name="geometry">
+    <rect>
+     <x>53</x>
+     <y>32</y>
+     <width>50</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="shape" stdset="0">
+    <enum>QEShape::Ellipse</enum>
+   </property>
+   <property name="point2" stdset="0">
+    <point>
+     <x>8</x>
+     <y>8</y>
+    </point>
+   </property>
+  </widget>
+  <widget class="QEShape" name="qcashapeplugin_5">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>41</y>
+     <width>50</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="shape" stdset="0">
+    <enum>QEShape::Ellipse</enum>
+   </property>
+   <property name="point2" stdset="0">
+    <point>
+     <x>8</x>
+     <y>8</y>
+    </point>
+   </property>
+  </widget>
+  <widget class="QEShape" name="qcashapeplugin_6">
+   <property name="geometry">
+    <rect>
+     <x>44</x>
+     <y>46</y>
+     <width>50</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="shape" stdset="0">
+    <enum>QEShape::Ellipse</enum>
+   </property>
+   <property name="point2" stdset="0">
+    <point>
+     <x>8</x>
+     <y>8</y>
+    </point>
+   </property>
+  </widget>
+  <widget class="QEShape" name="qcashapeplugin_7">
+   <property name="geometry">
+    <rect>
+     <x>36</x>
+     <y>49</y>
+     <width>50</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="shape" stdset="0">
+    <enum>QEShape::Ellipse</enum>
+   </property>
+   <property name="point2" stdset="0">
+    <point>
+     <x>8</x>
+     <y>8</y>
+    </point>
+   </property>
+  </widget>
+  <widget class="QEShape" name="qcashapeplugin_8">
+   <property name="geometry">
+    <rect>
+     <x>27</x>
+     <y>48</y>
+     <width>50</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="shape" stdset="0">
+    <enum>QEShape::Ellipse</enum>
+   </property>
+   <property name="point2" stdset="0">
+    <point>
+     <x>8</x>
+     <y>8</y>
+    </point>
+   </property>
+  </widget>
+  <widget class="QEShape" name="qcashapeplugin_9">
+   <property name="geometry">
+    <rect>
+     <x>19</x>
+     <y>44</y>
+     <width>50</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="shape" stdset="0">
+    <enum>QEShape::Ellipse</enum>
+   </property>
+   <property name="point2" stdset="0">
+    <point>
+     <x>8</x>
+     <y>8</y>
+    </point>
+   </property>
+  </widget>
+  <widget class="QEShape" name="qcashapeplugin_10">
+   <property name="geometry">
+    <rect>
+     <x>14</x>
+     <y>37</y>
+     <width>50</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="shape" stdset="0">
+    <enum>QEShape::Ellipse</enum>
+   </property>
+   <property name="point2" stdset="0">
+    <point>
+     <x>8</x>
+     <y>8</y>
+    </point>
+   </property>
+  </widget>
+  <widget class="QEShape" name="qcashapeplugin_11">
+   <property name="geometry">
+    <rect>
+     <x>13</x>
+     <y>28</y>
+     <width>50</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="shape" stdset="0">
+    <enum>QEShape::Ellipse</enum>
+   </property>
+   <property name="point2" stdset="0">
+    <point>
+     <x>8</x>
+     <y>8</y>
+    </point>
+   </property>
+  </widget>
+  <widget class="QEShape" name="qcashapeplugin_12">
+   <property name="geometry">
+    <rect>
+     <x>16</x>
+     <y>19</y>
+     <width>50</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="shape" stdset="0">
+    <enum>QEShape::Ellipse</enum>
+   </property>
+   <property name="point2" stdset="0">
+    <point>
+     <x>8</x>
+     <y>8</y>
+    </point>
+   </property>
+  </widget>
+  <widget class="QEShape" name="qcashapeplugin_13">
+   <property name="geometry">
+    <rect>
+     <x>22</x>
+     <y>12</y>
+     <width>50</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="shape" stdset="0">
+    <enum>QEShape::Ellipse</enum>
+   </property>
+   <property name="point2" stdset="0">
+    <point>
+     <x>8</x>
+     <y>8</y>
+    </point>
+   </property>
+  </widget>
+  <widget class="QEShape" name="qcashapeplugin_14">
+   <property name="geometry">
+    <rect>
+     <x>31</x>
+     <y>9</y>
+     <width>50</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="shape" stdset="0">
+    <enum>QEShape::Ellipse</enum>
+   </property>
+   <property name="point2" stdset="0">
+    <point>
+     <x>8</x>
+     <y>8</y>
+    </point>
+   </property>
+  </widget>
+  <widget class="QEShape" name="qcashapeplugin_15">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>10</y>
+     <width>50</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="shape" stdset="0">
+    <enum>QEShape::Ellipse</enum>
+   </property>
+   <property name="point2" stdset="0">
+    <point>
+     <x>8</x>
+     <y>8</y>
+    </point>
+   </property>
+   <property name="color1" stdset="0">
+    <color>
+     <red>0</red>
+     <green>0</green>
+     <blue>0</blue>
+    </color>
+   </property>
+  </widget>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QEShape</class>
+   <extends>QWidget</extends>
+   <header>QEShape.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

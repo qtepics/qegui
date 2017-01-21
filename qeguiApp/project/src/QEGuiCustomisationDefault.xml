@@ -1,0 +1,114 @@
+    <QEWindowCustomisation>
+
+        <Customisation Name="QEGui_Default_File">
+            <Menu Name="File">
+                <Item Name="New Window...">
+                    <BuiltIn Name="New Window..." />
+                </Item>
+                <Item Name="New Tab...">
+                    <BuiltIn Name="New Tab..." />
+                </Item>
+                <Item Name="New Dock...">
+                    <BuiltIn Name="New Dock..." />
+                </Item>
+                <Item Name="Open...">
+                    <BuiltIn Name="Open..." />
+                </Item>
+                <Item Name="Close">
+                    <BuiltIn Name="Close" />
+                </Item>
+                <PlaceHolder Name="Recent" >
+                    <Separator/>
+                </PlaceHolder>
+                <Item Name="Exit">
+                    <BuiltIn Name="Exit" />
+                </Item>
+            </Menu>
+        </Customisation>
+
+        <Customisation Name="QEGui_Default_Edit">
+            <PlaceHolder Name="Edit" />
+            <Menu Name="Edit">
+                <Item Name="Open Designer...">
+                    <BuiltIn Name="Open Designer..." />
+                </Item>
+                <Item Name="Open Current Form In Designer...">
+                    <BuiltIn Name="Open Current Form In Designer..." />
+                </Item>
+                <Item Name="Refresh Current Form">
+                    <BuiltIn Name="Refresh Current Form" />
+                </Item>
+            </Menu>
+        </Customisation>
+
+        <Customisation Name="QEGui_Default_Tools">
+            <Menu Name="Tools">
+                <Item Name="PV Properties...">
+                    <BuiltIn Name="PV Properties..." />
+                </Item>
+                <Item Name="Strip Chart...">
+                    <BuiltIn Name="Strip Chart..." />
+                </Item>
+                <Item Name="Scratch Pad...">
+                    <BuiltIn Name="Scratch Pad..." />
+                </Item>
+                <Item Name="Message Log...">
+                    <BuiltIn Name="Message Log..." />
+                </Item>
+                <Item Name="Plotter...">
+                    <BuiltIn Name="Plotter..." />
+                </Item>
+                <Item Name="PV Load/Save...">
+                    <BuiltIn Name="PV Load/Save..." />
+                </Item>
+                <Item Name="Archive Status...">
+                    <BuiltIn Name="Archive Status..." />
+                </Item>
+                <Item Name="Archive Name Search...">
+                    <BuiltIn Name="Archive Name Search..." />
+                </Item>
+            </Menu>
+        </Customisation>
+
+        <Customisation Name="QEGui_Default_Options">
+            <Menu Name="Options">
+                <Item Name="Save Configuration...">
+                    <BuiltIn Name="Save Configuration..." />
+                </Item>
+                <Item Name="Restore Configuration...">
+                    <BuiltIn Name="Restore Configuration..." />
+                </Item>
+                <Item Name="Manage Configuration...">
+                    <BuiltIn Name="Manage Configuration..." />
+                </Item>
+                <Item Name="User Level...">
+                    <BuiltIn Name="User Level..." />
+                </Item>
+                <Item Name="Set Passwords..." UserLevelEnabled="Scientist">
+                    <BuiltIn Name="Set Passwords..." />
+                </Item>
+            </Menu>
+        </Customisation>
+
+        <Customisation Name="QEGui_Default_Help">
+            <Menu Name="Help">
+                <Item Name="About...">
+                    <BuiltIn Name="About..." />
+                </Item>
+            </Menu>
+        </Customisation>
+
+        <Customisation Name="QEGui_Default_Windows">
+            <PlaceHolder Name="Windows" />
+        </Customisation>
+
+        <Customisation Name="QEGui_Default">
+            <IncludeCustomisation Name="QEGui_Default_File"/>
+            <IncludeCustomisation Name="QEGui_Default_Edit"/>
+            <IncludeCustomisation Name="QEGui_Default_Tools"/>
+            <IncludeCustomisation Name="QEGui_Default_Options"/>
+            <IncludeCustomisation Name="QEGui_Default_Help"/>
+            <IncludeCustomisation Name="QEGui_Default_Windows"/>
+        </Customisation>
+
+    </QEWindowCustomisation>

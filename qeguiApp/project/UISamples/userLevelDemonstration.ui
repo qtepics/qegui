@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>308</width>
+    <height>373</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>User level demonstration</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QELogin" name="qelogin">
+     <property name="statusOnly">
+      <bool>true</bool>
+     </property>
+     <property name="compactStyle">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QEGroupBox" name="qegroupbox_2">
+     <property name="title">
+      <string>Operations</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="0" column="1">
+       <widget class="QESubstitutedLabel" name="qesubstitutedlabel_3">
+        <property name="text">
+         <string>Beam current:</string>
+        </property>
+        <property name="scaledContents">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2">
+       <widget class="QELabel" name="qelabel_2">
+        <property name="variable" stdset="0">
+         <string>OOE:ai</string>
+        </property>
+        <property name="userLevelUserStyle" stdset="0">
+         <string>font-size: 36px</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="3">
+       <widget class="QESubstitutedLabel" name="qesubstitutedlabel_4">
+        <property name="text">
+         <string>mA</string>
+        </property>
+        <property name="scaledContents">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="4">
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QEGroupBox" name="qegroupbox">
+     <property name="title">
+      <string>Maintenance</string>
+     </property>
+     <property name="userLevelVisibility" stdset="0">
+      <enum>QEGroupBox::Scientist</enum>
+     </property>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="0" column="0">
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>Temperature</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QEAnalogProgressBar" name="qeanalogprogressbar">
+        <property name="showText">
+         <bool>false</bool>
+        </property>
+        <property name="variable" stdset="0">
+         <string>OOE:ai</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QEPushButton" name="qepushbutton">
+        <property name="text">
+         <string>Reset</string>
+        </property>
+        <property name="userLevelEnabled" stdset="0">
+         <enum>QEPushButton::Engineer</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_2">
+        <property name="text">
+         <string>Controller</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QEAnalogProgressBar</class>
+   <extends>QEAnalogIndicator</extends>
+   <header>QEAnalogProgressBar.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QELabel</class>
+   <extends>QLabel</extends>
+   <header>QELabel.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QELogin</class>
+   <extends>QFrame</extends>
+   <header>QELoginManager.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QEPushButton</class>
+   <extends>QPushButton</extends>
+   <header>QEPushButton.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QESubstitutedLabel</class>
+   <extends>QLabel</extends>
+   <header>QESubstitutedLabel.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QEAnalogIndicator</class>
+   <extends>QWidget</extends>
+   <header>QEAnalogIndicator.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QEGroupBox</class>
+   <extends>QGroupBox</extends>
+   <header>QEGroupBox.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

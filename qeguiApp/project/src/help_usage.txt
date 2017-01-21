@@ -1,0 +1,6 @@
+usage: qegui [-v] [-h] [-a scale] [-s] [-e] [-b] [-u] [-p pathname] [-m macros]
+             [-r [configuration_name]] [-c configuration_file] 
+             [-w window_customisation_file] [-n startup_window_customisation_name] [-d default_window_customisation_name]
+             [-t application_title] 
+             [file_name] [file_name] [file_name...]
+

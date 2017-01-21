@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>279</width>
+    <height>228</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>QEShape Rotation Example</string>
+  </property>
+  <layout class="QHBoxLayout" name="horizontalLayout">
+   <item>
+    <widget class="QESlider" name="qeslider">
+     <property name="variable" stdset="0">
+      <string>MY:ao</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QFrame" name="frame">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>240</width>
+       <height>210</height>
+      </size>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <widget class="QEShape" name="qeshape">
+      <property name="geometry">
+       <rect>
+        <x>1</x>
+        <y>0</y>
+        <width>240</width>
+        <height>210</height>
+       </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>240</width>
+        <height>210</height>
+       </size>
+      </property>
+      <property name="variable1" stdset="0">
+       <string>MY:ao</string>
+      </property>
+      <property name="animation1" stdset="0">
+       <enum>QEShape::Rotation</enum>
+      </property>
+      <property name="scale1" stdset="0">
+       <double>2.630000000000000</double>
+      </property>
+      <property name="offset1" stdset="0">
+       <double>-130.000000000000000</double>
+      </property>
+      <property name="shape" stdset="0">
+       <enum>QEShape::Line</enum>
+      </property>
+      <property name="originTranslation">
+       <point>
+        <x>-118</x>
+        <y>-124</y>
+       </point>
+      </property>
+      <property name="point1" stdset="0">
+       <point>
+        <x>0</x>
+        <y>20</y>
+       </point>
+      </property>
+      <property name="point2" stdset="0">
+       <point>
+        <x>0</x>
+        <y>-100</y>
+       </point>
+      </property>
+      <property name="lineWidth">
+       <UInt>3</UInt>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label">
+      <property name="geometry">
+       <rect>
+        <x>1</x>
+        <y>0</y>
+        <width>240</width>
+        <height>210</height>
+       </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>240</width>
+        <height>210</height>
+       </size>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../../../../../dial.jpg</pixmap>
+      </property>
+     </widget>
+     <zorder>label</zorder>
+     <zorder>qeshape</zorder>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QEShape</class>
+   <extends>QWidget</extends>
+   <header>QEShape.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QESlider</class>
+   <extends>QSlider</extends>
+   <header>QESlider.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

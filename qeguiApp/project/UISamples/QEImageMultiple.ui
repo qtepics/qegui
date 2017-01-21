@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>863</width>
+    <height>347</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Menu bar menuse for each image</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>qegui -w QEImageMultiple.xml -n MultipeImageDemo QEImageMultiple.ui</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QEImage" name="Image1">
+       <property name="imageVariable" stdset="0">
+        <string>IMG:image1:ArrayData</string>
+       </property>
+       <property name="widthVariable" stdset="0">
+        <string>IMG:cam1:ArraySizeX_RBV</string>
+       </property>
+       <property name="heightVariable" stdset="0">
+        <string>IMG:cam1:ArraySizeY_RBV</string>
+       </property>
+       <property name="profileHozVariable" stdset="0">
+        <string/>
+       </property>
+       <property name="profileVertVariable" stdset="0">
+        <string/>
+       </property>
+       <property name="enableVertSliceSelection" stdset="0">
+        <bool>false</bool>
+       </property>
+       <property name="enableVertSlice1Selection">
+        <bool>false</bool>
+       </property>
+       <property name="enableHozSliceSelection" stdset="0">
+        <bool>false</bool>
+       </property>
+       <property name="enableHozSlice1Selection">
+        <bool>false</bool>
+       </property>
+       <property name="enableHozSlicePresentation">
+        <bool>false</bool>
+       </property>
+       <property name="enableVertSlicePresentation">
+        <bool>false</bool>
+       </property>
+       <property name="enableProfilePresentation">
+        <bool>false</bool>
+       </property>
+       <property name="enableArea1Selection">
+        <bool>false</bool>
+       </property>
+       <property name="enableArea2Selection">
+        <bool>false</bool>
+       </property>
+       <property name="enableArea3Selection">
+        <bool>false</bool>
+       </property>
+       <property name="enableArea4Selection">
+        <bool>false</bool>
+       </property>
+       <property name="displayHozSlice1Selection">
+        <bool>false</bool>
+       </property>
+       <property name="displayArea1Selection">
+        <bool>false</bool>
+       </property>
+       <property name="displayArea2Selection">
+        <bool>false</bool>
+       </property>
+       <property name="displayArea3Selection">
+        <bool>false</bool>
+       </property>
+       <property name="displayArea4Selection">
+        <bool>false</bool>
+       </property>
+       <property name="ellipseVariableDefinition" stdset="0">
+        <enum>QEImage::BoundingRectangle</enum>
+       </property>
+       <property name="showTime">
+        <bool>true</bool>
+       </property>
+       <property name="resizeOption" stdset="0">
+        <enum>QEImage::Fit</enum>
+       </property>
+       <property name="name">
+        <string>Left</string>
+       </property>
+       <property name="externalControls">
+        <bool>true</bool>
+       </property>
+       <property name="enableBrightnessContrast" stdset="0">
+        <bool>true</bool>
+       </property>
+       <property name="profileHVariable" stdset="0">
+        <string>HOZLINE:Y</string>
+       </property>
+       <property name="profileVVariable" stdset="0">
+        <string>VERTLINE:X</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QEImage" name="Image2">
+       <property name="imageVariable" stdset="0">
+        <string>IMG:image1:ArrayData</string>
+       </property>
+       <property name="widthVariable" stdset="0">
+        <string>IMG:cam1:ArraySizeX_RBV</string>
+       </property>
+       <property name="heightVariable" stdset="0">
+        <string>IMG:cam1:ArraySizeY_RBV</string>
+       </property>
+       <property name="profileHozVariable" stdset="0">
+        <string/>
+       </property>
+       <property name="profileVertVariable" stdset="0">
+        <string/>
+       </property>
+       <property name="enableVertSliceSelection" stdset="0">
+        <bool>false</bool>
+       </property>
+       <property name="enableVertSlice1Selection">
+        <bool>false</bool>
+       </property>
+       <property name="enableHozSliceSelection" stdset="0">
+        <bool>false</bool>
+       </property>
+       <property name="enableHozSlice1Selection">
+        <bool>false</bool>
+       </property>
+       <property name="enableHozSlicePresentation">
+        <bool>false</bool>
+       </property>
+       <property name="enableVertSlicePresentation">
+        <bool>false</bool>
+       </property>
+       <property name="enableProfilePresentation">
+        <bool>false</bool>
+       </property>
+       <property name="enableArea1Selection">
+        <bool>false</bool>
+       </property>
+       <property name="enableArea2Selection">
+        <bool>false</bool>
+       </property>
+       <property name="enableArea3Selection">
+        <bool>false</bool>
+       </property>
+       <property name="enableArea4Selection">
+        <bool>false</bool>
+       </property>
+       <property name="displayHozSlice1Selection">
+        <bool>false</bool>
+       </property>
+       <property name="displayArea1Selection">
+        <bool>false</bool>
+       </property>
+       <property name="displayArea2Selection">
+        <bool>false</bool>
+       </property>
+       <property name="displayArea3Selection">
+        <bool>false</bool>
+       </property>
+       <property name="displayArea4Selection">
+        <bool>false</bool>
+       </property>
+       <property name="ellipseVariableDefinition" stdset="0">
+        <enum>QEImage::BoundingRectangle</enum>
+       </property>
+       <property name="showTime">
+        <bool>true</bool>
+       </property>
+       <property name="resizeOption" stdset="0">
+        <enum>QEImage::Fit</enum>
+       </property>
+       <property name="name">
+        <string>Right</string>
+       </property>
+       <property name="externalControls">
+        <bool>true</bool>
+       </property>
+       <property name="enableBrightnessContrast" stdset="0">
+        <bool>true</bool>
+       </property>
+       <property name="profileHVariable" stdset="0">
+        <string>HOZLINE:Y</string>
+       </property>
+       <property name="profileVVariable" stdset="0">
+        <string>VERTLINE:X</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QEImage</class>
+   <extends>QFrame</extends>
+   <header>QEImage.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

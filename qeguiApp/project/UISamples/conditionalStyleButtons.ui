@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>363</width>
+    <height>154</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Conditional styles</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout" columnstretch="2,3">
+   <item row="0" column="0">
+    <widget class="QEPushButton" name="qepushbutton">
+     <property name="text">
+      <string>PV</string>
+     </property>
+     <property name="variable" stdset="0">
+      <string>pv</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>Has 'variable' property defined</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QEPushButton" name="qepushbutton_2">
+     <property name="text">
+      <string>UI</string>
+     </property>
+     <property name="guiFile" stdset="0">
+      <string>ui</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0">
+    <widget class="QEPushButton" name="qepushbutton_3">
+     <property name="text">
+      <string>Program</string>
+     </property>
+     <property name="program">
+      <string>program</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0">
+    <widget class="QEPushButton" name="qepushbutton_4">
+     <property name="text">
+      <string>None</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <widget class="QLabel" name="label_2">
+     <property name="text">
+      <string>Has 'guiFile' property defined</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1">
+    <widget class="QLabel" name="label_3">
+     <property name="text">
+      <string>Has 'program' property defined</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="1">
+    <widget class="QLabel" name="label_4">
+     <property name="text">
+      <string>Has none of the above
+properties defined</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QEPushButton</class>
+   <extends>QPushButton</extends>
+   <header>QEPushButton.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

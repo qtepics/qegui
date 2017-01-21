@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>239</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>QESpinBox examples</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>I'm displaying a value that ranges
+from 0 to 100. Ideal for a spin box.</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QLabel" name="label_2">
+     <property name="text">
+      <string>I'm displaying units.</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0">
+    <widget class="QLabel" name="label_3">
+     <property name="text">
+      <string>I'm displaying a value that ranges
+from 0 to 1000000. My step size is
+10000, but still...</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <widget class="QESpinBox" name="qespinbox_4">
+     <property name="suffix">
+      <string> m/s</string>
+     </property>
+     <property name="variable" stdset="0">
+      <string>OOE:ai</string>
+     </property>
+     <property name="addUnits" stdset="0">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <widget class="QESpinBox" name="qespinbox_2">
+     <property name="variable" stdset="0">
+      <string>OOE:ai</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1">
+    <widget class="QESpinBox" name="qespinbox_3">
+     <property name="maximum">
+      <double>1000000.000000000000000</double>
+     </property>
+     <property name="singleStep">
+      <double>10000.000000000000000</double>
+     </property>
+     <property name="variable" stdset="0">
+      <string>OOE:ao</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="1">
+    <widget class="QENumericEdit" name="qenumericedit">
+     <property name="variable" stdset="0">
+      <string>OOE:ao</string>
+     </property>
+     <property name="minimum" stdset="0">
+      <double>0.000000000000000</double>
+     </property>
+     <property name="maximum" stdset="0">
+      <double>1000000.000000000000000</double>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0">
+    <widget class="QLabel" name="label_4">
+     <property name="text">
+      <string>A QENumericEdit is much better
+for this range</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QENumericEdit</class>
+   <extends>QLineEdit</extends>
+   <header>QENumericEdit.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QESpinBox</class>
+   <extends>QDoubleSpinBox</extends>
+   <header>QESpinBox.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

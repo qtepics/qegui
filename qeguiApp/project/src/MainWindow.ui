@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindowClass</class>
+ <widget class="QMainWindow" name="MainWindowClass">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>487</width>
+    <height>106</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralWidget"/>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>487</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionOpen">
+   <property name="text">
+    <string>&amp;Open</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="text">
+    <string>About</string>
+   </property>
+  </action>
+  <action name="actionNew_Window">
+   <property name="text">
+    <string>New Window</string>
+   </property>
+  </action>
+  <action name="actionNew_Tab">
+   <property name="text">
+    <string>New Tab</string>
+   </property>
+  </action>
+  <action name="actionClose">
+   <property name="text">
+    <string>Close</string>
+   </property>
+  </action>
+  <action name="actionDesigner">
+   <property name="text">
+    <string>Designer...</string>
+   </property>
+  </action>
+  <action name="actionOpen_Current_Form_In_Designer">
+   <property name="text">
+    <string>Open CurrentForm In Designer...</string>
+   </property>
+   <property name="toolTip">
+    <string>Open Current Form In Designer</string>
+   </property>
+  </action>
+  <action name="actionRefresh_Current_Form">
+   <property name="text">
+    <string>Refresh Current Form</string>
+   </property>
+  </action>
+  <action name="actionPVProperties">
+   <property name="text">
+    <string>PV Properties</string>
+   </property>
+  </action>
+  <action name="actionStrip_Chart">
+   <property name="text">
+    <string>Strip Chart</string>
+   </property>
+  </action>
+  <action name="actionUser_Level">
+   <property name="text">
+    <string>User Level...</string>
+   </property>
+  </action>
+  <action name="actionMessage_Log">
+   <property name="text">
+    <string>Message Log</string>
+   </property>
+  </action>
+  <action name="actionSave_Configuration">
+   <property name="text">
+    <string>Save Configuration...</string>
+   </property>
+  </action>
+  <action name="actionRestore_Configuration">
+   <property name="text">
+    <string>Restore Configuration</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="text">
+    <string>Exit</string>
+   </property>
+  </action>
+  <action name="actionSet_Passwords">
+   <property name="text">
+    <string>Set Passwords...</string>
+   </property>
+  </action>
+  <action name="actionManage_Configurations">
+   <property name="text">
+    <string>Manage Configurations</string>
+   </property>
+  </action>
+  <action name="actionList">
+   <property name="text">
+    <string>List</string>
+   </property>
+  </action>
+  <action name="actionPlotter">
+   <property name="text">
+    <string>Plotter</string>
+   </property>
+  </action>
+  <action name="actionScratch_Pad">
+   <property name="text">
+    <string>Scratch Pad</string>
+   </property>
+  </action>
+  <action name="actionArchive_Status">
+   <property name="text">
+    <string>Archive Status</string>
+   </property>
+  </action>
+  <action name="actionNew_Dock">
+   <property name="text">
+    <string>New Dock</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+ <slots>
+  <slot>Open()</slot>
+  <slot>About()</slot>
+ </slots>
+</ui>

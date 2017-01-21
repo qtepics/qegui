@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>548</width>
+    <height>208</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>QEComboBoxExample</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QGroupBox" name="groupBox">
+     <property name="title">
+      <string>QEComboBox examples</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="0" column="1">
+       <widget class="QEComboBox" name="qecombobox">
+        <property name="variable" stdset="0">
+         <string>OOE:mbbi</string>
+        </property>
+        <property name="subscribe">
+         <bool>true</bool>
+        </property>
+        <property name="useDbEnumerations">
+         <bool>true</bool>
+        </property>
+        <item>
+         <property name="text">
+          <string>The speed is 'Low'</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>The speed is 'Medium'</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>The speed is 'High'</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>This combo box defines it's own strings</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_2">
+        <property name="text">
+         <string>This combo box takes it's enumeration
+strings from the database</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QEComboBox" name="qecombobox_2">
+        <property name="variable" stdset="0">
+         <string>OOE:mbbi</string>
+        </property>
+        <property name="subscribe">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="groupBox_2">
+     <property name="title">
+      <string>Database fields</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_3">
+        <property name="text">
+         <string>Database enumeration string for '0'</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QELabel" name="qelabel">
+        <property name="variable" stdset="0">
+         <string>OOE:mbbi.ZRST</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QELabel" name="qelabel_2">
+        <property name="variable" stdset="0">
+         <string>OOE:mbbi.ONST</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QELabel" name="qelabel_3">
+        <property name="variable" stdset="0">
+         <string>OOE:mbbi.TWST</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_4">
+        <property name="text">
+         <string>Database enumeration string for '1'</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_5">
+        <property name="text">
+         <string>Database enumeration string for '2'</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QEComboBox</class>
+   <extends>QComboBox</extends>
+   <header>QEComboBox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QELabel</class>
+   <extends>QLabel</extends>
+   <header>QELabel.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

@@ -1,0 +1,8 @@
+QELineEdit { color: blue }
+QEComboBox { color: blue }
+QESpinBox { color: blue }
+QEPushButton[StyleOption="PV"] { color: purple }
+QEPushButton[StyleOption="UI"] { color: red }
+QEPushButton[StyleOption="Program"] { color: green }
+QEPushButton { color: blue }
+

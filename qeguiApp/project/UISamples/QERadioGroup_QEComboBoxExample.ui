@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>660</width>
+    <height>417</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QERadioGroup" name="qeradiogroup">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>90</y>
+     <width>280</width>
+     <height>201</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string> DB enuerations </string>
+   </property>
+   <property name="variable" stdset="0">
+    <string>TS02FPC01:FILL_CMD</string>
+   </property>
+   <property name="columns">
+    <number>2</number>
+   </property>
+  </widget>
+  <widget class="QELabel" name="qelabel">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>10</y>
+     <width>280</width>
+     <height>18</height>
+    </rect>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::Box</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Plain</enum>
+   </property>
+   <property name="lineWidth">
+    <number>1</number>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="variable" stdset="0">
+    <string>TS02FPC01:FILL_CMD</string>
+   </property>
+  </widget>
+  <widget class="QELabel" name="qelabel_2">
+   <property name="geometry">
+    <rect>
+     <x>350</x>
+     <y>10</y>
+     <width>280</width>
+     <height>18</height>
+    </rect>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::Box</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Plain</enum>
+   </property>
+   <property name="lineWidth">
+    <number>1</number>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="variable" stdset="0">
+    <string>TS02FPC01:FILL_CMD</string>
+   </property>
+   <property name="localEnumeration">
+    <string>): None, 1: Halt, 2: Always, 3: One-off, 4: Filling, 5: &quot;More filling&quot;, 6:&quot;Next Hit&quot;, 7: &quot;Steady current&quot;, 8: Help, 9: Regular, 10:&quot;Unexpected&quot;</string>
+   </property>
+   <property name="format" stdset="0">
+    <enum>QELabel::LocalEnumeration</enum>
+   </property>
+  </widget>
+  <widget class="QEComboBox" name="qecombobox">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>40</y>
+     <width>280</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="currentIndex">
+    <number>6</number>
+   </property>
+   <property name="variable" stdset="0">
+    <string>TS02FPC01:FILL_CMD</string>
+   </property>
+   <property name="subscribe">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QEComboBox" name="qecombobox_2">
+   <property name="geometry">
+    <rect>
+     <x>350</x>
+     <y>40</y>
+     <width>280</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="currentIndex">
+    <number>6</number>
+   </property>
+   <property name="variable" stdset="0">
+    <string>TS02FPC01:FILL_CMD</string>
+   </property>
+   <property name="subscribe">
+    <bool>true</bool>
+   </property>
+   <property name="useDbEnumerations">
+    <bool>false</bool>
+   </property>
+   <property name="localEnumeration" stdset="0">
+    <string>): None, 1: Halt, 2: Always, 3: One-off, 4: Filling, 5: &quot;More filling&quot;, 6:&quot;Next Hit&quot;, 7: &quot;Steady current&quot;, 8: Help, 9: Regular, 10:&quot;Unexpected&quot;</string>
+   </property>
+  </widget>
+  <widget class="QERadioGroup" name="qeradiogroup_2">
+   <property name="geometry">
+    <rect>
+     <x>350</x>
+     <y>90</y>
+     <width>280</width>
+     <height>241</height>
+    </rect>
+   </property>
+   <property name="variable" stdset="0">
+    <string>TS02FPC01:FILL_CMD</string>
+   </property>
+   <property name="useDbEnumerations">
+    <bool>false</bool>
+   </property>
+   <property name="localEnumeration" stdset="0">
+    <string>): None, 1: Halt, 2: Always, 3: One-off, 4: Filling, 5: &quot;More filling&quot;, 6:&quot;Next Hit&quot;, 7: &quot;Steady current&quot;, 8: Help, 9: Regular, 10:&quot;Unexpected&quot;</string>
+   </property>
+  </widget>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QEComboBox</class>
+   <extends>QComboBox</extends>
+   <header>QEComboBox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QELabel</class>
+   <extends>QLabel</extends>
+   <header>QELabel.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QERadioGroup</class>
+   <extends>QGroupBox</extends>
+   <header>QERadioGroup.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

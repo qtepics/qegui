@@ -1,0 +1,436 @@
+<QEWindowCustomisation>
+
+<!--
+
+    <Customisation Name="QEGui_Default">
+    </Customisation>
+-->
+
+
+    <Customisation Name="EXIT_ONLY">
+        <Menu Name="File">
+            <Item Name="Exit" >
+                <BuiltIn Name="Exit" />
+            </Item>
+        </Menu>
+    </Customisation>
+
+
+    <Customisation Name="IMAGING">
+
+        <Menu Name="Detector">
+
+            <Item Name="Procilica Far">
+                <Window>
+                    <Title>Procilica Far</Title>
+                    <UiFile>detectorOverview.ui</UiFile>
+                    <MacroSubstitutions>DET=DET01</MacroSubstitutions>
+                    <CustomisationName>IMAGING</CustomisationName>
+                </Window>
+            </Item>
+
+            <Item Name="Procilica Near">
+                <Window>
+                    <Title>Procilica Near</Title>
+                    <UiFile>detectorOverview.ui</UiFile>
+                    <MacroSubstitutions>DET=DET02</MacroSubstitutions>
+                    <CustomisationName>IMAGING</CustomisationName>
+                </Window>
+            </Item>
+
+            <Item Name="Sco">
+                <Window>
+                    <Title>Sco</Title>
+                    <UiFile>detectorOverview.ui</UiFile>
+                    <MacroSubstitutions>DET=DET03</MacroSubstitutions>
+                    <CustomisationName>IMAGING</CustomisationName>
+                </Window>
+            </Item>
+
+        </Menu>
+
+        <Menu Name="Experiment">
+
+            <Item Name="Slits">
+                <Window>
+                    <UiFile>slits.ui</UiFile>
+                    <CustomisationName>EXIT_ONLY</CustomisationName>
+                </Window>
+            </Item>
+
+            <Item Name="Filters">
+                <Window>
+                    <UiFile>filters.ui</UiFile>
+                    <CustomisationName>EXIT_ONLY</CustomisationName>
+                </Window>
+            </Item>
+
+        </Menu>
+
+        <Menu Name="Beamline">
+
+            <Item Name="Beamline Status">
+                <Window>
+                    <UiFile>beamlineStatus.ui</UiFile>
+                    <CustomisationName>BEAMLINE</CustomisationName>
+                </Window>
+            </Item>
+
+            <Item Name="Facility Status">
+                <Window>
+                    <UiFile>facilityStatus.ui</UiFile>
+                    <CustomisationName>BEAMLINE</CustomisationName>
+                </Window>
+            </Item>
+
+        </Menu>
+
+        <Menu Name="Tools">
+            <Item Name="PV Properties..." >
+                <BuiltIn Name="PV Properties..." />
+            </Item>
+            <Item Name="Strip Chart..." >
+                <BuiltIn Name="Strip Chart..." />
+            </Item>
+            <Item Name="Scratch Pad..." >
+                <BuiltIn Name="Scratch Pad..." />
+            </Item>
+            <Item Name="Message Log..." >
+                <BuiltIn Name="Message Log..." />
+            </Item>
+            <Item Name="Plotter..." >
+                <BuiltIn Name="Plotter..." />
+            </Item>
+            <Item Name="Archive Status..." >
+                <BuiltIn Name="Archive Status..." />
+            </Item>
+        </Menu>
+
+        <Menu Name="Options">
+            <Item Name="Save Configuration..." >
+                <BuiltIn Name="Save Configuration..." />
+            </Item>
+            <Item Name="Restore Configuration..." >
+                <BuiltIn Name="Restore Configuration..." />
+            </Item>
+            <Item Name="Manage Configuration..." >
+                <BuiltIn Name="Manage Configuration..." />
+            </Item>
+            <Item Name="User Level..." >
+                <BuiltIn Name="User Level..." />
+            </Item>
+        </Menu>
+
+        <Menu Name="Help">
+            <Item Name="About..." >
+                <BuiltIn Name="About..." />
+            </Item>
+        </Menu>
+
+    </Customisation>
+
+    <Customisation Name="MAIN">
+
+        <IncludeCustomisation Name="QEGui_Default"/>
+
+        <Menu Name="Test menu">
+
+            <IncludeCustomisation Name="QEImageDefault"/>
+
+            <Item Name="Open a.ui in a new window and customisation EXIT_ONLY with macro TITLE=aaa">
+                <Window>
+                    <Title>Oh what a title!</Title>
+                    <UiFile>a.ui</UiFile>
+                    <MacroSubstitutions>TITLE=aaa</MacroSubstitutions>
+                    <CustomisationName>EXIT_ONLY</CustomisationName>
+                </Window>
+            </Item>
+
+            <Item Name="Open b.ui as a new floating dock (hidden) with macro TITLE=bbb">
+                <Dock>
+                    <UiFile>b.ui</UiFile>
+                    <MacroSubstitutions>TITLE=bbb</MacroSubstitutions>
+                    <Hidden/>
+                </Dock>
+            </Item>
+
+            <Item Name="Open e.ui as a new right dock with macro TITLE=ccc">
+                <Dock>
+                    <UiFile>e.ui</UiFile>
+                    <MacroSubstitutions>TITLE=bbb</MacroSubstitutions>
+                    <CreationOption>RightDock</CreationOption>
+                </Dock>
+            </Item>
+
+            <Item Name="Open c.ui in a new window and customisation EXIT_ONLY with d.ui as left and right docks with macros TITLE=ccc, TITLE=LeftDock and TITLE=RightDock respectively">
+                <Window>
+                    <UiFile>c.ui</UiFile>
+                    <MacroSubstitutions>TITLE=ccc</MacroSubstitutions>
+                    <CustomisationName>EXIT_ONLY</CustomisationName>
+                    <Dock>
+                        <UiFile>d.ui</UiFile>
+                        <MacroSubstitutions>TITLE=LeftDock</MacroSubstitutions>
+                        <CreationOption>LeftDock</CreationOption>
+                        <Hidden/>
+                    </Dock>
+                    <Dock>
+                        <UiFile>b.ui</UiFile>
+                        <MacroSubstitutions>TITLE=RightDock</MacroSubstitutions>
+                        <CreationOption>RightDock</CreationOption>
+                    </Dock>
+                </Window>
+            </Item>
+
+            <Item Name="PV Properties">
+                <BuiltIn Name="PV Properties..." />
+                <Separator/>
+            </Item>
+
+            <Item Name="Firefox">
+                <Program Name="Firefox">
+                    <Arguments>"www.google.com"</Arguments>
+                </Program>
+            </Item>
+
+        </Menu>
+
+<!--
+
+        <Menu Name="Tools">
+            <Item Name="PV Properties..." >
+                <BuiltIn Name="PV Properties..." >
+                    <PV>"SR$(SECTOR)BCM01:CURRENT_MONITOR"</PV>
+                    <MacroSubstitutions>SECTOR=11</MacroSubstitutions>
+                </BuiltIn>
+            </Item>
+            <Item Name="Strip Chart..." >
+                <BuiltIn Name="Strip Chart..." />
+            </Item>
+            <Item Name="Scratch Pad..." >
+                <BuiltIn Name="Scratch Pad..." />
+            </Item>
+            <Item Name="Message Log..." >
+                <BuiltIn Name="Message Log..." />
+            </Item>
+            <Item Name="Plotter..." >
+                <BuiltIn Name="Plotter..." />
+            </Item>
+            <Item Name="Archive Status..." >
+                <BuiltIn Name="Archive Status..." />
+            </Item>
+        </Menu>
+
+        <Menu Name="Options">
+            <Item Name="Save Configuration..." >
+                <BuiltIn Name="Save Configuration..." />
+            </Item>
+            <Item Name="Restore Configuration..." >
+                <BuiltIn Name="Restore Configuration..." />
+            </Item>
+            <Item Name="Manage Configuration..." >
+                <BuiltIn Name="Manage Configuration..." />
+            </Item>
+            <Item Name="User Level..." >
+                <BuiltIn Name="User Level..." />
+            </Item>
+            <Item Name="Set Passwords..." >
+                <BuiltIn Name="Set Passwords..." />
+            </Item>
+        </Menu>
+
+        <Menu Name="Help">
+            <Item Name="About..." >
+                <BuiltIn Name="About..." />
+            </Item>
+        </Menu>
+
+-->
+
+    </Customisation>
+
+
+<!--
+    <Customisation Name="Testing">
+        <Menu Name="Appllications">
+                <Item Name="Detector Control">
+                    <UiFile>Empty.ui</UiFile>
+                    <CustomisationName>Detector Control System</CustomisationName>
+                </Item>
+
+                <Item Name="X-ray Beamline Control">
+                    <UiFile>xasMain.ui</UiFile>
+                    <CustomisationName>X-Ray Beamline Control System</CustomisationName>
+                </Item>
+        </Menu>
+    </Customisation>
+
+    <Customisation Name="X-Ray Beamline Control System">
+        <Menu Name="View">
+                <Item Name="Overview">
+                    <UiFile>overview.ui</UiFile>
+                                      <CreationOption>NewDock</CreationOption>
+                    <CustomisationName>Overview</CustomisationName>
+                </Item>
+                 <Separator></Separator>
+                <Item Name="BL Modes">
+                    <UiFile>beamlineModes.ui</UiFile>
+                                      <CreationOption>NewDock</CreationOption>
+                    <CustomisationName>BL Modes</CustomisationName>
+                </Item>
+                 <Separator></Separator>
+                <Item Name="WBeam Slits">
+                    <UiFile>whiteBeamSlits.ui</UiFile>
+                                      <CreationOption>NewDock</CreationOption>
+                    <CustomisationName>WBeam Slits</CustomisationName>
+                </Item>
+                <Item Name="Mono Slits">
+                    <UiFile>monoSlits.ui</UiFile>
+                                      <CreationOption>NewDock</CreationOption>
+                    <CustomisationName>Mono Slits</CustomisationName>
+                </Item>
+                 <Separator></Separator>
+                <Item Name="Filter Rack">
+                    <UiFile>filterRack.ui</UiFile>
+                                      <CreationOption>NewDock</CreationOption>
+                    <CustomisationName>Filter Rack</CustomisationName>
+                </Item>
+                 <Separator></Separator>
+                <Item Name="Mirror 1">
+                    <UiFile>mirror1.ui</UiFile>
+                                      <CreationOption>NewDock</CreationOption>
+                    <CustomisationName>Mirror 1</CustomisationName>
+                </Item>
+                <Item Name="Mirror 2">
+                    <UiFile>mirror2.ui</UiFile>
+                                      <CreationOption>NewDock</CreationOption>
+                    <CustomisationName>Mirror 2</CustomisationName>
+                </Item>
+                <Item Name="Mirror 3">
+                    <UiFile>mirror3.ui</UiFile>
+                                      <CreationOption>NewDock</CreationOption>
+                    <CustomisationName>Mirror 3</CustomisationName>
+                </Item>
+                 <Separator></Separator>
+                <Item Name="Steering Mask">
+                    <UiFile>steeringMask.ui</UiFile>
+                                      <CreationOption>NewDock</CreationOption>
+                    <CustomisationName>Steering Mask</CustomisationName>
+                </Item>
+                 <Separator></Separator>
+                <Item Name="Monochromator">
+                    <UiFile>monochromator.ui</UiFile>
+                                      <CreationOption>NewDock</CreationOption>
+                    <CustomisationName>Monochromator</CustomisationName>
+                </Item>
+                 <Separator></Separator>
+                <Item Name="BPM">
+                    <UiFile>bpm.ui</UiFile>
+                                      <CreationOption>NewDock</CreationOption>
+                    <CustomisationName>BPM</CustomisationName>
+                </Item>
+                 <Separator></Separator>
+                <Item Name="HW Status">
+                    <UiFile>hardwareStatus.ui</UiFile>
+                                      <CreationOption>NewDock</CreationOption>
+                    <CustomisationName>HW Status</CustomisationName>
+                </Item>
+        </Menu>
+    </Customisation>
+
+    <Customisation Name="Detector Control System">
+        <Menu Name="Controls">
+                <Item Name="Acquisition">
+                    <UiFile>imageConfigure2.ui</UiFile>
+                                      <CreationOption>NewChildWindow</CreationOption>
+                    <CustomisationName>Camera Control</CustomisationName>
+                </Item>
+                <Item Name="Proccessing">
+                    <UiFile>imageProcessPlugin2.ui</UiFile>
+                                      <CreationOption>NewChildWindow</CreationOption>
+                    <CustomisationName>Image Proccess</CustomisationName>
+                </Item>
+                <Item Name="Positioning">
+                    <UiFile>imagePositioning2test.ui</UiFile>
+                                      <CreationOption>NewChildWindow</CreationOption>
+                    <CustomisationName>Position Control</CustomisationName>
+                </Item>
+        </Menu>
+        <Menu Name="Image">
+                <Item Name="Raw">
+                    <UiFile>imageViewer.ui</UiFile>
+                                      <CreationOption>NewChildWindow</CreationOption>
+                    <CustomisationName>Raw Image</CustomisationName>
+                </Item>
+                 <Separator></Separator>
+                <Item Name="Main">
+                    <UiFile>imageViewer.ui</UiFile>
+                                      <CreationOption>NewChildWindow</CreationOption>
+                    <CustomisationName>Main Image</CustomisationName>
+                </Item>
+                 <Separator></Separator>
+                <Item Name="ROI 1">
+                    <UiFile>imageRoi2.ui</UiFile>
+                                      <CreationOption>NewChildWindow</CreationOption>
+                    <CustomisationName>Region of Interest 1</CustomisationName>
+                </Item>
+                <Item Name="ROI 2">
+                    <UiFile>imageRoi2.ui</UiFile>
+                                      <CreationOption>NewChildWindow</CreationOption>
+                    <CustomisationName>Region of Interest 2</CustomisationName>
+                </Item>
+                <Item Name="ROI 3">
+                    <UiFile>imageRoi2.ui</UiFile>
+                                      <CreationOption>NewChildWindow</CreationOption>
+                    <CustomisationName>Region of Interest 3</CustomisationName>
+                </Item>
+                <Item Name="ROI 4">
+                    <UiFile>imageRoi2.ui</UiFile>
+                                      <CreationOption>NewChildWindow</CreationOption>
+                    <CustomisationName>Region of Interest 4</CustomisationName>
+                </Item>
+        </Menu>
+        <Menu Name="Setup">
+                <Item Name="Read Out">
+                    <UiFile>pcoSetup2.ui</UiFile>
+                                      <CreationOption>NewChildWindow</CreationOption>
+                    <CustomisationName>Camera Setup</CustomisationName>
+                </Item>
+                 <Separator></Separator>
+                <Item Name="TIFF">
+                    <UiFile>imageFilePlugin2.ui</UiFile>
+                                      <CreationOption>NewChildWindow</CreationOption>
+                    <CustomisationName>File Setup</CustomisationName>
+                </Item>
+        </Menu>
+        <Menu Name="Detector">
+                <Item Name="PCO 1">
+                    <UiFile>overview.ui</UiFile>
+                    <CustomisationName>Overview</CustomisationName>
+                </Item>
+                <Item Name="PCO 2">
+                    <UiFile>beamlineModes.ui</UiFile>
+                    <CustomisationName>BL Modes</CustomisationName>
+                </Item>
+                <Item Name="PCO 3">
+                    <UiFile>whiteBeamSlits.ui</UiFile>
+                    <CustomisationName>WBeam Slits</CustomisationName>
+                </Item>
+                <Item Name="PCO 4">
+                    <UiFile>monoSlits.ui</UiFile>
+                    <CustomisationName>Mono Slits</CustomisationName>
+                </Item>
+                 <Separator></Separator>
+                <Item Name="Argus 1">
+                    <UiFile>filterRack.ui</UiFile>
+                    <CustomisationName>Filter Rack</CustomisationName>
+                </Item>
+                <Item Name="Argus 2">
+                    <UiFile>mirror1.ui</UiFile>
+                    <CustomisationName>Mirror 1</CustomisationName>
+                </Item>
+        </Menu>
+    </Customisation>
+-->
+
+
+</QEWindowCustomisation>

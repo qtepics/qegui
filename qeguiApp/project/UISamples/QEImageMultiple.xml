@@ -1,0 +1,26 @@
+<QEWindowCustomisation>
+  <Customisation Name="MultipeImageDemo">
+    <Menu Name="Image">
+      <Item Name="Left Zoom">
+        <BuiltIn Name="Zoom">
+          <WidgetName>Image1</WidgetName>
+        </BuiltIn>
+      </Item>
+      <Item Name="Right Zoom">
+        <BuiltIn Name="Zoom">
+          <WidgetName>Image2</WidgetName>
+        </BuiltIn>
+      </Item>
+      <Item Name="Left - Image Display Properties">
+        <Dock>
+          <Title>Left - Image Display Properties</Title>
+        </Dock>
+      </Item>
+      <Item Name="Right - Image Display Properties">
+        <Dock>
+          <Title>Right - Image Display Properties</Title>
+        </Dock>
+      </Item>
+    </Menu>
+  </Customisation>
+</QEWindowCustomisation>

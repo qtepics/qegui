@@ -1,0 +1,90 @@
+<!--
+This QEGui customisation file adds a menu before the default menus containing an
+example of all possiblel interactions with a QEImage widget.
+
+This example can be used as follows:
+qegui -w QEGuiCustomisationQEImageOptions.xml -n QEImageTest QEImageCustomisationTest.ui
+where QEImageCustomisationTest.ui includes a QEImage widget called BeamImage.
+For all options to work, some docks are expected and will only be available if the
+following properties are set:
+    - externalControls
+    - enablerecording
+    - enableImageDisplayProperties
+-->
+<QEWindowCustomisation>
+  <Customisation Name="QEImageTest">
+    <Menu Name="QEImage options">
+      <Item Name="Save...">
+	<BuiltIn Name="Save..." >
+	  <WidgetName>BeamImage</WidgetName>
+	</BuiltIn>
+      </Item>
+      <Item Name="Pause">
+	<BuiltIn Name="Pause" >
+	  <WidgetName>BeamImage</WidgetName>
+	</BuiltIn>
+      </Item>
+      <Item Name="Zoom" >
+	<BuiltIn Name="Zoom" >
+	  <WidgetName>BeamImage</WidgetName>
+	</BuiltIn>
+      </Item>
+      <Item Name="Flip/Rotate" >
+	  <BuiltIn Name="Flip/Rotate" >
+	  <WidgetName>BeamImage</WidgetName>
+	</BuiltIn>
+      </Item>
+      <Item Name="Mode" >
+	<BuiltIn Name="Mode" >
+	  <WidgetName>BeamImage</WidgetName>
+	</BuiltIn>
+      </Item>
+      <Item Name="Markup Display" >
+	<BuiltIn Name="Markup Display" >
+	  <WidgetName>BeamImage</WidgetName>
+	</BuiltIn>
+      </Item>
+      <Item Name="Options..." >
+	<BuiltIn Name="Options..." >
+	  <WidgetName>BeamImage</WidgetName>
+	</BuiltIn>
+      </Item>
+      <Item Name="Open image in 'Gimp'">
+	<BuiltIn Name="LaunchApplication1" >
+	  <WidgetName>BeamImage</WidgetName>
+	</BuiltIn>
+      </Item>
+      <Item Name="Image Display Properties">
+	<Dock>
+	  <Title>Image Display Properties</Title>
+	</Dock>
+      </Item>
+      <Item Name="Recorder">
+	<Dock>
+                   <Title>Recorder</Title>
+	</Dock>
+      </Item>
+      <Item Name="Arbitrary Line Profile Plot">
+	<Dock>
+	  <Title>Arbitrary Profile</Title>
+	</Dock>
+      </Item>
+      <Item Name="Horizontal Profile Plot">
+	<Dock>
+	  <Title>Horizontal Slice Profile</Title>
+	</Dock>
+      </Item>
+      <Item Name="Vertical Profile Plot">
+	<Dock>
+	  <Title>Vertical Slice Profile</Title>
+	</Dock>
+      </Item>
+      <Item Name="Full Screen">
+	<BuiltIn Name="Full Screen" >
+	  <WidgetName>BeamImage</WidgetName>
+	</BuiltIn>
+      </Item>
+    </Menu>
+    <IncludeCustomisation Name="QEGui_Default"/>
+  </Customisation>
+</QEWindowCustomisation>

@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>595</width>
+    <height>535</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="Line" name="line">
+   <property name="geometry">
+    <rect>
+     <x>170</x>
+     <y>250</y>
+     <width>400</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+  </widget>
+  <widget class="Line" name="line_2">
+   <property name="geometry">
+    <rect>
+     <x>370</x>
+     <y>60</y>
+     <width>20</width>
+     <height>400</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Vertical</enum>
+   </property>
+  </widget>
+  <widget class="QFrame" name="frame">
+   <property name="geometry">
+    <rect>
+     <x>169</x>
+     <y>59</y>
+     <width>400</width>
+     <height>400</height>
+    </rect>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QEShape" name="qcashapeplugin">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>400</width>
+      <height>400</height>
+     </rect>
+    </property>
+    <property name="variable1" stdset="0">
+     <string>SR10BM02IMG01:X_SIZE_MONITOR</string>
+    </property>
+    <property name="variable2" stdset="0">
+     <string>SR10BM02IMG01:Y_SIZE_MONITOR</string>
+    </property>
+    <property name="variable3" stdset="0">
+     <string>SR10BM02IMG01:X_OFFSET_MONITOR</string>
+    </property>
+    <property name="variable4" stdset="0">
+     <string>SR10BM02IMG01:Y_OFFSET_MONITOR</string>
+    </property>
+    <property name="variable5" stdset="0">
+     <string>SR11BCM01:CURRENT_MONITOR</string>
+    </property>
+    <property name="allowDrop">
+     <bool>true</bool>
+    </property>
+    <property name="scale1" stdset="0">
+     <double>0.002000000000000</double>
+    </property>
+    <property name="scale2" stdset="0">
+     <double>0.002000000000000</double>
+    </property>
+    <property name="scale3" stdset="0">
+     <double>1.000000000000000</double>
+    </property>
+    <property name="scale4" stdset="0">
+     <double>-1.000000000000000</double>
+    </property>
+    <property name="scale5" stdset="0">
+     <double>1.000000000000000</double>
+    </property>
+    <property name="offset3" stdset="0">
+     <double>0.000000000000000</double>
+    </property>
+    <property name="offset4" stdset="0">
+     <double>0.000000000000000</double>
+    </property>
+    <property name="shape" stdset="0">
+     <enum>QEShape::Ellipse</enum>
+    </property>
+    <property name="originTranslation">
+     <point>
+      <x>-200</x>
+      <y>-200</y>
+     </point>
+    </property>
+    <property name="point1" stdset="0">
+     <point>
+      <x>-200</x>
+      <y>-200</y>
+     </point>
+    </property>
+    <property name="point2" stdset="0">
+     <point>
+      <x>400</x>
+      <y>400</y>
+     </point>
+    </property>
+    <property name="color1" stdset="0">
+     <color>
+      <red>255</red>
+      <green>114</green>
+      <blue>135</blue>
+     </color>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QLabel" name="label_5">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>480</y>
+     <width>111</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Beam Current</string>
+   </property>
+  </widget>
+  <widget class="QELabel" name="qelabel_5">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>500</y>
+     <width>81</width>
+     <height>18</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>159.547 mA</string>
+   </property>
+   <property name="variable" stdset="0">
+    <string>SR11BCM01:CURRENT_MONITOR</string>
+   </property>
+  </widget>
+  <widget class="QWidget" name="verticalLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>310</x>
+     <y>470</y>
+     <width>140</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <widget class="QLabel" name="label_3">
+        <property name="text">
+         <string>Offset</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QELabel" name="qelabel_3">
+        <property name="text">
+         <string>0.0 µm</string>
+        </property>
+        <property name="variable" stdset="0">
+         <string>SR10BM02IMG01:X_OFFSET_MONITOR</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>Size</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QELabel" name="qelabel">
+        <property name="text">
+         <string>0.0 µm</string>
+        </property>
+        <property name="variable" stdset="0">
+         <string>SR10BM02IMG01:X_SIZE_MONITOR</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="verticalLayoutWidget_2">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>230</y>
+     <width>140</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout_2">
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_3">
+      <item>
+       <widget class="QLabel" name="label_11">
+        <property name="text">
+         <string>Offset</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QELabel" name="qelabel_6">
+        <property name="text">
+         <string>0.0 µm</string>
+        </property>
+        <property name="variable" stdset="0">
+         <string>SR10BM02IMG01:Y_OFFSET_MONITOR</string>
+        </property>
+        <property name="allowDrop">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_4">
+      <item>
+       <widget class="QLabel" name="label_13">
+        <property name="text">
+         <string>Size</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QELabel" name="qelabel_7">
+        <property name="text">
+         <string>0.0 µm</string>
+        </property>
+        <property name="variable" stdset="0">
+         <string>SR10BM02IMG01:Y_SIZE_MONITOR</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>20</y>
+     <width>441</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>24</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Beam position and current</string>
+   </property>
+  </widget>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QELabel</class>
+   <extends>QLabel</extends>
+   <header>QELabel.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QEShape</class>
+   <extends>QWidget</extends>
+   <header>QEShape.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

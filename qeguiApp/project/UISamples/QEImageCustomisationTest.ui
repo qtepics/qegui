@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>705</width>
+    <height>658</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>QEImage Customisation Test</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QEImage" name="BeamImage">
+     <property name="imageVariable" stdset="0">
+      <string>IMG:image1:ArrayData</string>
+     </property>
+     <property name="widthVariable" stdset="0">
+      <string>IMG:cam1:ArraySizeX_RBV</string>
+     </property>
+     <property name="heightVariable" stdset="0">
+      <string>IMG:cam1:ArraySizeY_RBV</string>
+     </property>
+     <property name="regionOfInterest1XVariable" stdset="0">
+      <string>ROI1:X</string>
+     </property>
+     <property name="regionOfInterest1YVariable" stdset="0">
+      <string>ROI1:Y</string>
+     </property>
+     <property name="regionOfInterest1WVariable" stdset="0">
+      <string>ROI1:W</string>
+     </property>
+     <property name="regionOfInterest1HVariable" stdset="0">
+      <string>ROI1:H</string>
+     </property>
+     <property name="regionOfInterest2XVariable" stdset="0">
+      <string>ROI2:X</string>
+     </property>
+     <property name="regionOfInterest2YVariable" stdset="0">
+      <string>ROI2:Y</string>
+     </property>
+     <property name="regionOfInterest2WVariable" stdset="0">
+      <string>ROI2:W</string>
+     </property>
+     <property name="regionOfInterest2HVariable" stdset="0">
+      <string>ROI2:H</string>
+     </property>
+     <property name="regionOfInterest3XVariable" stdset="0">
+      <string>ROI3:X</string>
+     </property>
+     <property name="regionOfInterest3YVariable" stdset="0">
+      <string>ROI3:Y</string>
+     </property>
+     <property name="regionOfInterest3WVariable" stdset="0">
+      <string>ROI3:W</string>
+     </property>
+     <property name="regionOfInterest3HVariable" stdset="0">
+      <string>ROI3:H</string>
+     </property>
+     <property name="regionOfInterest4XVariable" stdset="0">
+      <string>ROI4:X</string>
+     </property>
+     <property name="regionOfInterest4YVariable" stdset="0">
+      <string>ROI4:Y</string>
+     </property>
+     <property name="regionOfInterest4WVariable" stdset="0">
+      <string>ROI4:W</string>
+     </property>
+     <property name="regionOfInterest4HVariable" stdset="0">
+      <string>ROI4:H</string>
+     </property>
+     <property name="targetXVariable" stdset="0">
+      <string>POS:TARGET_X</string>
+     </property>
+     <property name="targetYVariable" stdset="0">
+      <string>POS:TARGET_Y</string>
+     </property>
+     <property name="beamXVariable" stdset="0">
+      <string>POS:BEAM_X</string>
+     </property>
+     <property name="beamYVariable" stdset="0">
+      <string>POS:BEAM_Y</string>
+     </property>
+     <property name="profileHozVariable" stdset="0">
+      <string>HOZLINE:Y</string>
+     </property>
+     <property name="profileVertVariable" stdset="0">
+      <string>VERTLINE:X</string>
+     </property>
+     <property name="lineProfileX1Variable" stdset="0">
+      <string>LINE:X1</string>
+     </property>
+     <property name="lineProfileY1Variable" stdset="0">
+      <string>LINE:Y1</string>
+     </property>
+     <property name="lineProfileX2Variable" stdset="0">
+      <string>LINE:X2</string>
+     </property>
+     <property name="lineProfileY2Variable" stdset="0">
+      <string>LINE:Y2</string>
+     </property>
+     <property name="profileHozArrayVariable" stdset="0">
+      <string>PROFILE:HOZ_DATA</string>
+     </property>
+     <property name="profileVertArrayVariable" stdset="0">
+      <string>PROFILE:VERT_DATA</string>
+     </property>
+     <property name="lineProfileArrayVariable" stdset="0">
+      <string>PROFILE:LINE_DATA</string>
+     </property>
+     <property name="ellipseXVariable" stdset="0">
+      <string>ROI1:X</string>
+     </property>
+     <property name="ellipseYVariable" stdset="0">
+      <string>ROI1:Y</string>
+     </property>
+     <property name="ellipseWVariable" stdset="0">
+      <string>ROI1:W</string>
+     </property>
+     <property name="ellipseHVariable" stdset="0">
+      <string>ROI1:H</string>
+     </property>
+     <property name="enableVertSliceSelection">
+      <bool>true</bool>
+     </property>
+     <property name="enableHozSliceSelection">
+      <bool>true</bool>
+     </property>
+     <property name="enableProfileSelection">
+      <bool>true</bool>
+     </property>
+     <property name="enableHozSlicePresentation">
+      <bool>true</bool>
+     </property>
+     <property name="enableVertSlicePresentation">
+      <bool>true</bool>
+     </property>
+     <property name="enableProfilePresentation">
+      <bool>true</bool>
+     </property>
+     <property name="enableTargetSelection">
+      <bool>true</bool>
+     </property>
+     <property name="displayTargetSelection">
+      <bool>false</bool>
+     </property>
+     <property name="displayBeamSelection">
+      <bool>true</bool>
+     </property>
+     <property name="displayEllipse">
+      <bool>true</bool>
+     </property>
+     <property name="displayCursorPixelInfo">
+      <bool>true</bool>
+     </property>
+     <property name="showTime">
+      <bool>true</bool>
+     </property>
+     <property name="enableImageDisplayProperties">
+      <bool>true</bool>
+     </property>
+     <property name="enableRecording">
+      <bool>true</bool>
+     </property>
+     <property name="externalControls">
+      <bool>true</bool>
+     </property>
+     <property name="briefInfoArea">
+      <bool>true</bool>
+     </property>
+     <property name="enableBrightnessContrast" stdset="0">
+      <bool>true</bool>
+     </property>
+     <property name="profileHVariable" stdset="0">
+      <string>HOZLINE:Y</string>
+     </property>
+     <property name="profileVVariable" stdset="0">
+      <string>VERTLINE:X</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QEImage</class>
+   <extends>QFrame</extends>
+   <header>QEImage.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

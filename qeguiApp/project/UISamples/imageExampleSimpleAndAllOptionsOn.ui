@@ -1,0 +1,1009 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1352</width>
+    <height>844</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <widget class="QEImage" name="BeamImage">
+     <property name="imageVariable" stdset="0">
+      <string>IMG:image1:ArrayData</string>
+     </property>
+     <property name="widthVariable" stdset="0">
+      <string>IMG:cam1:ArraySizeX_RBV</string>
+     </property>
+     <property name="heightVariable" stdset="0">
+      <string>IMG:cam1:ArraySizeY_RBV</string>
+     </property>
+     <property name="regionOfInterest1XVariable" stdset="0">
+      <string>ROI1:X</string>
+     </property>
+     <property name="regionOfInterest1YVariable" stdset="0">
+      <string>ROI1:Y</string>
+     </property>
+     <property name="regionOfInterest1WVariable" stdset="0">
+      <string>ROI1:W</string>
+     </property>
+     <property name="regionOfInterest1HVariable" stdset="0">
+      <string>ROI1:H</string>
+     </property>
+     <property name="regionOfInterest2XVariable" stdset="0">
+      <string>ROI2:X</string>
+     </property>
+     <property name="regionOfInterest2YVariable" stdset="0">
+      <string>ROI2:Y</string>
+     </property>
+     <property name="regionOfInterest2WVariable" stdset="0">
+      <string>ROI2:W</string>
+     </property>
+     <property name="regionOfInterest2HVariable" stdset="0">
+      <string>ROI2:H</string>
+     </property>
+     <property name="regionOfInterest3XVariable" stdset="0">
+      <string>ROI3:X</string>
+     </property>
+     <property name="regionOfInterest3YVariable" stdset="0">
+      <string>ROI3:Y</string>
+     </property>
+     <property name="regionOfInterest3WVariable" stdset="0">
+      <string>ROI3:W</string>
+     </property>
+     <property name="regionOfInterest3HVariable" stdset="0">
+      <string>ROI3:H</string>
+     </property>
+     <property name="regionOfInterest4XVariable" stdset="0">
+      <string>ROI4:X</string>
+     </property>
+     <property name="regionOfInterest4YVariable" stdset="0">
+      <string>ROI4:Y</string>
+     </property>
+     <property name="regionOfInterest4WVariable" stdset="0">
+      <string>ROI4:W</string>
+     </property>
+     <property name="regionOfInterest4HVariable" stdset="0">
+      <string>ROI4:H</string>
+     </property>
+     <property name="targetXVariable" stdset="0">
+      <string>POS:TARGET_X</string>
+     </property>
+     <property name="targetYVariable" stdset="0">
+      <string>POS:TARGET_Y</string>
+     </property>
+     <property name="beamXVariable" stdset="0">
+      <string>POS:BEAM_X</string>
+     </property>
+     <property name="beamYVariable" stdset="0">
+      <string>POS:BEAM_Y</string>
+     </property>
+     <property name="profileHozVariable" stdset="0">
+      <string>HOZLINE:Y</string>
+     </property>
+     <property name="profileVertVariable" stdset="0">
+      <string>VERTLINE:X</string>
+     </property>
+     <property name="lineProfileX1Variable" stdset="0">
+      <string>LINE:X1</string>
+     </property>
+     <property name="lineProfileY1Variable" stdset="0">
+      <string>LINE:Y1</string>
+     </property>
+     <property name="lineProfileX2Variable" stdset="0">
+      <string>LINE:X2</string>
+     </property>
+     <property name="lineProfileY2Variable" stdset="0">
+      <string>LINE:Y2</string>
+     </property>
+     <property name="profileHozArrayVariable" stdset="0">
+      <string>PROFILE:HOZ_DATA</string>
+     </property>
+     <property name="profileVertArrayVariable" stdset="0">
+      <string>PROFILE:VERT_DATA</string>
+     </property>
+     <property name="lineProfileArrayVariable" stdset="0">
+      <string>PROFILE:LINE_DATA</string>
+     </property>
+     <property name="ellipseXVariable" stdset="0">
+      <string>ROI1:X</string>
+     </property>
+     <property name="ellipseYVariable" stdset="0">
+      <string>ROI1:Y</string>
+     </property>
+     <property name="ellipseWVariable" stdset="0">
+      <string>ROI1:W</string>
+     </property>
+     <property name="ellipseHVariable" stdset="0">
+      <string>ROI1:H</string>
+     </property>
+     <property name="enableVertSliceSelection">
+      <bool>true</bool>
+     </property>
+     <property name="enableHozSliceSelection">
+      <bool>true</bool>
+     </property>
+     <property name="enableProfileSelection">
+      <bool>true</bool>
+     </property>
+     <property name="enableHozSlicePresentation">
+      <bool>false</bool>
+     </property>
+     <property name="enableVertSlicePresentation">
+      <bool>false</bool>
+     </property>
+     <property name="enableProfilePresentation">
+      <bool>false</bool>
+     </property>
+     <property name="enableTargetSelection">
+      <bool>true</bool>
+     </property>
+     <property name="ellipseVariableDefinition" stdset="0">
+      <enum>QEImage::BoundingRectangle</enum>
+     </property>
+     <property name="displayCursorPixelInfo">
+      <bool>true</bool>
+     </property>
+     <property name="contrastReversal">
+      <bool>false</bool>
+     </property>
+     <property name="showTime">
+      <bool>true</bool>
+     </property>
+     <property name="enableImageDisplayProperties">
+      <bool>true</bool>
+     </property>
+     <property name="enableRecording">
+      <bool>true</bool>
+     </property>
+     <property name="briefInfoArea">
+      <bool>true</bool>
+     </property>
+     <property name="enableBrightnessContrast" stdset="0">
+      <bool>true</bool>
+     </property>
+     <property name="profileHVariable" stdset="0">
+      <string>HOZLINE:Y</string>
+     </property>
+     <property name="profileVVariable" stdset="0">
+      <string>VERTLINE:X</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QGroupBox" name="groupBox">
+         <property name="title">
+          <string>Region 1</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_2">
+          <item row="0" column="0">
+           <widget class="QLabel" name="label">
+            <property name="text">
+             <string>X:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="label_2">
+            <property name="text">
+             <string>Y:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="label_3">
+            <property name="text">
+             <string>Width:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0">
+           <widget class="QLabel" name="label_4">
+            <property name="text">
+             <string>Height</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QELineEdit" name="qelineedit">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="variable" stdset="0">
+             <string>ROI1:X</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QELineEdit" name="qelineedit_2">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="variable" stdset="0">
+             <string>ROI1:Y</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QELineEdit" name="qelineedit_3">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="variable" stdset="0">
+             <string>ROI1:W</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QELineEdit" name="qelineedit_4">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="variable" stdset="0">
+             <string>ROI1:H</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="groupBox_2">
+         <property name="title">
+          <string>Region 2</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_3">
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_5">
+            <property name="text">
+             <string>X:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="label_6">
+            <property name="text">
+             <string>Y:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="label_7">
+            <property name="text">
+             <string>Width:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0">
+           <widget class="QLabel" name="label_8">
+            <property name="text">
+             <string>Height</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QELineEdit" name="qelineedit_5">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="variable" stdset="0">
+             <string>ROI2:X</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QELineEdit" name="qelineedit_9">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="variable" stdset="0">
+             <string>ROI2:Y</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QELineEdit" name="qelineedit_13">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="variable" stdset="0">
+             <string>ROI2:W</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QELineEdit" name="qelineedit_16">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="variable" stdset="0">
+             <string>ROI2:H</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="groupBox_3">
+         <property name="title">
+          <string>Region 3</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_4">
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_9">
+            <property name="text">
+             <string>X:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="label_10">
+            <property name="text">
+             <string>Y:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="label_11">
+            <property name="text">
+             <string>Width:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0">
+           <widget class="QLabel" name="label_12">
+            <property name="text">
+             <string>Height</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QELineEdit" name="qelineedit_6">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="variable" stdset="0">
+             <string>ROI3:X</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QELineEdit" name="qelineedit_10">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="variable" stdset="0">
+             <string>ROI3:Y</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QELineEdit" name="qelineedit_14">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="variable" stdset="0">
+             <string>ROI3:W</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QELineEdit" name="qelineedit_17">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="variable" stdset="0">
+             <string>ROI3:H</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="groupBox_4">
+         <property name="title">
+          <string>Region 4</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_5">
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_13">
+            <property name="text">
+             <string>X:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="label_14">
+            <property name="text">
+             <string>Y:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="label_15">
+            <property name="text">
+             <string>Width:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0">
+           <widget class="QLabel" name="label_16">
+            <property name="text">
+             <string>Height</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QELineEdit" name="qelineedit_7">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="variable" stdset="0">
+             <string>ROI4:X</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QELineEdit" name="qelineedit_11">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="variable" stdset="0">
+             <string>ROI4:Y</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QELineEdit" name="qelineedit_21">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="variable" stdset="0">
+             <string>ROI4:W</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QELineEdit" name="qelineedit_22">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="variable" stdset="0">
+             <string>ROI4:H</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <widget class="QGroupBox" name="groupBox_7">
+         <property name="title">
+          <string>Arbitrary line profile</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_8">
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_17">
+            <property name="text">
+             <string>X1:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="label_20">
+            <property name="text">
+             <string>Y1:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="label_21">
+            <property name="text">
+             <string>X2</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0">
+           <widget class="QLabel" name="label_22">
+            <property name="text">
+             <string>Y2</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QELineEdit" name="qelineedit_8">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="variable" stdset="0">
+             <string>LINE:X1</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QELineEdit" name="qelineedit_12">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="variable" stdset="0">
+             <string>LINE:Y1</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QELineEdit" name="qelineedit_15">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="variable" stdset="0">
+             <string>LINE:X2</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QELineEdit" name="qelineedit_18">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="variable" stdset="0">
+             <string>LINE:Y2</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="groupBox_8">
+         <property name="title">
+          <string>Targeting</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_9">
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_23">
+            <property name="text">
+             <string>Beam X:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="label_24">
+            <property name="text">
+             <string>Beam Y:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="label_25">
+            <property name="text">
+             <string>Target X:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0">
+           <widget class="QLabel" name="label_26">
+            <property name="text">
+             <string>TargetY:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QELineEdit" name="qelineedit_23">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="variable" stdset="0">
+             <string>POS:BEAM_X</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QELineEdit" name="qelineedit_24">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="variable" stdset="0">
+             <string>POS:BEAM_Y</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QELineEdit" name="qelineedit_25">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="variable" stdset="0">
+             <string>POS:TARGET_X</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QELineEdit" name="qelineedit_26">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="variable" stdset="0">
+             <string>POS:TARGET_Y</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="groupBox_5">
+         <property name="title">
+          <string>Horizontal line profile</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_6">
+          <item row="0" column="1">
+           <widget class="QLabel" name="label_18">
+            <property name="text">
+             <string>Y:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="2">
+           <widget class="QELineEdit" name="qelineedit_19">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="variable" stdset="0">
+             <string>HOZLINE:Y</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="groupBox_6">
+         <property name="title">
+          <string>Vertical line profile</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_7">
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_19">
+            <property name="text">
+             <string>X:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QELineEdit" name="qelineedit_20">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="variable" stdset="0">
+             <string>VERTLINE:X</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <widget class="QEPlot" name="qeplot">
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>150</height>
+          </size>
+         </property>
+         <property name="variable1" stdset="0">
+          <string>PROFILE:HOZ_DATA</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QEPlot" name="qeplot_2">
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>150</height>
+          </size>
+         </property>
+         <property name="variable1" stdset="0">
+          <string>PROFILE:VERT_DATA</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QEPlot" name="qeplot_3">
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>150</height>
+          </size>
+         </property>
+         <property name="variable1" stdset="0">
+          <string>PROFILE:LINE_DATA</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QEImage</class>
+   <extends>QFrame</extends>
+   <header>QEImage.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QELineEdit</class>
+   <extends>QLineEdit</extends>
+   <header>QELineEdit.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QEPlot</class>
+   <extends>QwtPlot</extends>
+   <header>QEPlot.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QwtPlot</class>
+   <extends>QFrame</extends>
+   <header>qwt_plot.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

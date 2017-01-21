@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>951</width>
+    <height>433</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QHBoxLayout" name="horizontalLayout">
+   <item>
+    <widget class="QEForm" name="qeform">
+     <property name="uiFile" stdset="0">
+      <string>subFormExamples-subform.ui</string>
+     </property>
+     <property name="variableSubstitutions" stdset="0">
+      <string>ID=1</string>
+     </property>
+     <property name="resizeContents">
+      <bool>false</bool>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QEForm" name="qeform_2">
+     <property name="uiFile" stdset="0">
+      <string>subFormExamples-subform.ui</string>
+     </property>
+     <property name="variableSubstitutions" stdset="0">
+      <string>ID=2</string>
+     </property>
+     <property name="resizeContents">
+      <bool>false</bool>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QEForm" name="qeform_3">
+     <property name="uiFile" stdset="0">
+      <string>subFormExamples-subform.ui</string>
+     </property>
+     <property name="variableSubstitutions" stdset="0">
+      <string>ID=3</string>
+     </property>
+     <property name="resizeContents">
+      <bool>false</bool>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QEForm</class>
+   <extends>QWidget</extends>
+   <header>QEForm.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

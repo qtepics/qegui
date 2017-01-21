@@ -1,0 +1,705 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1064</width>
+    <height>433</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>QEAnalogProgressBar examples</string>
+  </property>
+  <layout class="QHBoxLayout" name="horizontalLayout_3">
+   <item>
+    <layout class="QVBoxLayout" name="verticalLayout_3">
+     <item>
+      <widget class="QGroupBox" name="groupBox">
+       <property name="title">
+        <string>QEAnalogProgressBar as Bars and Scales</string>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_2">
+          <item>
+           <widget class="QEAnalogProgressBar" name="qeanalogprogressbar_11">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>250</width>
+              <height>20</height>
+             </size>
+            </property>
+            <property name="showText">
+             <bool>false</bool>
+            </property>
+            <property name="backgroundColour">
+             <color>
+              <red>255</red>
+              <green>255</green>
+              <blue>255</blue>
+             </color>
+            </property>
+            <property name="foregroundColour">
+             <color>
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+             </color>
+            </property>
+            <property name="variable" stdset="0">
+             <string>TEST:ai1</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QEAnalogProgressBar" name="qeanalogprogressbar_2">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>250</width>
+              <height>20</height>
+             </size>
+            </property>
+            <property name="showText">
+             <bool>false</bool>
+            </property>
+            <property name="variable" stdset="0">
+             <string>TEST:ai1</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QEAnalogProgressBar" name="qeanalogprogressbar">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>250</width>
+              <height>20</height>
+             </size>
+            </property>
+            <property name="variable" stdset="0">
+             <string>TEST:ai1</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QEAnalogProgressBar" name="qeanalogprogressbar_3">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>250</width>
+              <height>20</height>
+             </size>
+            </property>
+            <property name="showText">
+             <bool>false</bool>
+            </property>
+            <property name="orientation">
+             <enum>QEAnalogIndicator::Right_To_Left</enum>
+            </property>
+            <property name="variable" stdset="0">
+             <string>TEST:ai1</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QEAnalogProgressBar" name="qeanalogprogressbar_8">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>250</width>
+              <height>20</height>
+             </size>
+            </property>
+            <property name="showText">
+             <bool>true</bool>
+            </property>
+            <property name="showScale">
+             <bool>false</bool>
+            </property>
+            <property name="logScale">
+             <bool>false</bool>
+            </property>
+            <property name="mode">
+             <enum>QEAnalogIndicator::Scale</enum>
+            </property>
+            <property name="variable" stdset="0">
+             <string>TEST:ai1</string>
+            </property>
+            <property name="addUnits">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QEAnalogProgressBar" name="qeanalogprogressbar_4">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>250</width>
+              <height>45</height>
+             </size>
+            </property>
+            <property name="minimum">
+             <double>0.001000000000000</double>
+            </property>
+            <property name="maximum">
+             <double>1000.000000000000000</double>
+            </property>
+            <property name="minorInterval">
+             <double>1.000000000000000</double>
+            </property>
+            <property name="majorInterval">
+             <double>10.000000000000000</double>
+            </property>
+            <property name="logScaleInterval">
+             <number>1</number>
+            </property>
+            <property name="showText">
+             <bool>true</bool>
+            </property>
+            <property name="showScale">
+             <bool>true</bool>
+            </property>
+            <property name="logScale">
+             <bool>true</bool>
+            </property>
+            <property name="variable" stdset="0">
+             <string>TEST:ai1</string>
+            </property>
+            <property name="addUnits">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QEAnalogProgressBar" name="qeanalogprogressbar_5">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>250</width>
+              <height>45</height>
+             </size>
+            </property>
+            <property name="showText">
+             <bool>true</bool>
+            </property>
+            <property name="showScale">
+             <bool>true</bool>
+            </property>
+            <property name="logScale">
+             <bool>false</bool>
+            </property>
+            <property name="variable" stdset="0">
+             <string>TEST:ai1</string>
+            </property>
+            <property name="addUnits">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QEAnalogProgressBar" name="qeanalogprogressbar_6">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>20</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>20</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="orientation">
+           <enum>QEAnalogIndicator::Bottom_To_Top</enum>
+          </property>
+          <property name="variable" stdset="0">
+           <string>TEST:ai1</string>
+          </property>
+          <property name="addUnits">
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QEAnalogProgressBar" name="qeanalogprogressbar_7">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>20</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>20</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="orientation">
+           <enum>QEAnalogIndicator::Top_To_Bottom</enum>
+          </property>
+          <property name="variable" stdset="0">
+           <string>TEST:ai1</string>
+          </property>
+          <property name="addUnits">
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <spacer name="verticalSpacer">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>40</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QVBoxLayout" name="verticalLayout_4">
+     <item>
+      <widget class="QGroupBox" name="groupBox_2">
+       <property name="title">
+        <string>QEAnalogProgressBar as Meters</string>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+         <widget class="QEAnalogProgressBar" name="qeanalogprogressbar_9">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>230</width>
+            <height>120</height>
+           </size>
+          </property>
+          <property name="showText">
+           <bool>true</bool>
+          </property>
+          <property name="mode">
+           <enum>QEAnalogIndicator::Meter</enum>
+          </property>
+          <property name="variable" stdset="0">
+           <string>TEST:ai1</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <item>
+           <widget class="QEAnalogProgressBar" name="qeanalogprogressbar_10">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>120</width>
+              <height>120</height>
+             </size>
+            </property>
+            <property name="showText">
+             <bool>true</bool>
+            </property>
+            <property name="mode">
+             <enum>QEAnalogIndicator::Meter</enum>
+            </property>
+            <property name="spanAngle">
+             <number>270</number>
+            </property>
+            <property name="foregroundColour">
+             <color>
+              <red>0</red>
+              <green>0</green>
+              <blue>255</blue>
+             </color>
+            </property>
+            <property name="variable" stdset="0">
+             <string>TEST:ai1</string>
+            </property>
+            <property name="addUnits">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QEAnalogProgressBar" name="qeanalogprogressbar_12">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>70</width>
+              <height>120</height>
+             </size>
+            </property>
+            <property name="showText">
+             <bool>false</bool>
+            </property>
+            <property name="mode">
+             <enum>QEAnalogIndicator::Meter</enum>
+            </property>
+            <property name="centreAngle">
+             <number>90</number>
+            </property>
+            <property name="variable" stdset="0">
+             <string>TEST:ai1</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <spacer name="verticalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>40</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="groupBox_3">
+     <property name="title">
+      <string>Status visualization</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="0" column="1">
+       <widget class="QEAnalogProgressBar" name="qeanalogprogressbar_13">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>250</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="variable" stdset="0">
+         <string>NOTAPV</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QEAnalogProgressBar" name="qeanalogprogressbar_14">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>250</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="variable" stdset="0">
+         <string>TEST:ai2</string>
+        </property>
+        <property name="alarmSeverityDisplayMode">
+         <enum>QEAnalogProgressBar::foreground</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QEAnalogProgressBar" name="qeanalogprogressbar_15">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>250</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="variable" stdset="0">
+         <string>TEST:ai3</string>
+        </property>
+        <property name="alarmSeverityDisplayMode">
+         <enum>QEAnalogProgressBar::foreground</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>Disconnected</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_2">
+        <property name="text">
+         <string>Low alarm (foreground)</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="label_3">
+        <property name="text">
+         <string>High alarm (foreground)</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QEAnalogProgressBar" name="qeanalogprogressbar_17">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>250</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="variable" stdset="0">
+         <string>TEST:ai2</string>
+        </property>
+        <property name="alarmSeverityDisplayMode">
+         <enum>QEAnalogProgressBar::background</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QEAnalogProgressBar" name="qeanalogprogressbar_18">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>250</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="variable" stdset="0">
+         <string>TEST:ai3</string>
+        </property>
+        <property name="alarmSeverityDisplayMode">
+         <enum>QEAnalogProgressBar::background</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="1">
+       <widget class="QEAnalogProgressBar" name="qeanalogprogressbar_16">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>230</width>
+          <height>120</height>
+         </size>
+        </property>
+        <property name="showText">
+         <bool>true</bool>
+        </property>
+        <property name="showScale">
+         <bool>false</bool>
+        </property>
+        <property name="logScale">
+         <bool>false</bool>
+        </property>
+        <property name="mode">
+         <enum>QEAnalogIndicator::Meter</enum>
+        </property>
+        <property name="variable" stdset="0">
+         <string>TEST:ai2</string>
+        </property>
+        <property name="alarmSeverityDisplayMode">
+         <enum>QEAnalogProgressBar::foreground</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_4">
+        <property name="text">
+         <string>Low alarm (background)</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="label_5">
+        <property name="text">
+         <string>High alarm (background)</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QLabel" name="label_6">
+        <property name="text">
+         <string>Low alarm (foreground)</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="1">
+       <widget class="QEAnalogProgressBar" name="qeanalogprogressbar_19">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>230</width>
+          <height>120</height>
+         </size>
+        </property>
+        <property name="showText">
+         <bool>true</bool>
+        </property>
+        <property name="showScale">
+         <bool>false</bool>
+        </property>
+        <property name="logScale">
+         <bool>false</bool>
+        </property>
+        <property name="mode">
+         <enum>QEAnalogIndicator::Meter</enum>
+        </property>
+        <property name="variable" stdset="0">
+         <string>TEST:ai2</string>
+        </property>
+        <property name="alarmSeverityDisplayMode">
+         <enum>QEAnalogProgressBar::background</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="0">
+       <widget class="QLabel" name="label_7">
+        <property name="text">
+         <string>Low alarm (background)</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QEAnalogProgressBar</class>
+   <extends>QEAnalogIndicator</extends>
+   <header>QEAnalogProgressBar.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QEAnalogIndicator</class>
+   <extends>QWidget</extends>
+   <header>QEAnalogIndicator.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

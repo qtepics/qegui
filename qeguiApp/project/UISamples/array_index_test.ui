@@ -1,0 +1,1778 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1320</width>
+    <height>807</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QFrame" name="frame">
+   <property name="geometry">
+    <rect>
+     <x>9</x>
+     <y>100</y>
+     <width>427</width>
+     <height>700</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>370</width>
+     <height>400</height>
+    </size>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::Box</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Plain</enum>
+   </property>
+   <widget class="QELabel" name="qelabel">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>141</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="variable" stdset="0">
+     <string>TEST3:A</string>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QELabel { background-color: rgb(240, 240, 240); }
+QWidget { background-color: #e0eee0; }</string>
+    </property>
+    <property name="defaultStyle" stdset="0">
+     <string>QELabel { background-color: rgb(240, 240, 240); }</string>
+    </property>
+    <property name="arrayAction" stdset="0">
+     <enum>QELabel::Index</enum>
+    </property>
+   </widget>
+   <widget class="QERadioGroup" name="qeradiogroup">
+    <property name="geometry">
+     <rect>
+      <x>12</x>
+      <y>46</y>
+      <width>348</width>
+      <height>144</height>
+     </rect>
+    </property>
+    <property name="variable" stdset="0">
+     <string>TEST3:A</string>
+    </property>
+    <property name="variableSubstitutions" stdset="0">
+     <string>PV=TEST3:A, SLOT=0</string>
+    </property>
+    <property name="title" stdset="0">
+     <string> $(PV) [$(SLOT)] </string>
+    </property>
+    <property name="columns">
+     <number>2</number>
+    </property>
+    <property name="spacing">
+     <number>4</number>
+    </property>
+    <property name="useDbEnumerations">
+     <bool>false</bool>
+    </property>
+    <property name="localEnumeration" stdset="0">
+     <string>0 : Zero, 1 : One, 2: Two, 3: Three, 4 : Four, 5 : Five, 6: Six, 7 : Seven</string>
+    </property>
+    <property name="buttonStyle">
+     <enum>QRadioGroup::Push</enum>
+    </property>
+   </widget>
+   <widget class="QENumericEdit" name="qenumericedit">
+    <property name="geometry">
+     <rect>
+      <x>208</x>
+      <y>10</y>
+      <width>144</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="variable" stdset="0">
+     <string>TEST3:A</string>
+    </property>
+    <property name="writeOnChange">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QESlider" name="qeslider">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>200</y>
+      <width>340</width>
+      <height>29</height>
+     </rect>
+    </property>
+    <property name="maximum">
+     <number>16</number>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+    <property name="tickPosition">
+     <enum>QSlider::TicksBelow</enum>
+    </property>
+    <property name="variable" stdset="0">
+     <string>TEST3:A</string>
+    </property>
+   </widget>
+   <widget class="QEAnalogSlider" name="qeanalogslider">
+    <property name="geometry">
+     <rect>
+      <x>12</x>
+      <y>232</y>
+      <width>376</width>
+      <height>72</height>
+     </rect>
+    </property>
+    <property name="maximum" stdset="0">
+     <double>16.000000000000000</double>
+    </property>
+    <property name="minorInterval">
+     <double>0.500000000000000</double>
+    </property>
+    <property name="majorInterval">
+     <double>2.000000000000000</double>
+    </property>
+    <property name="showApply">
+     <bool>false</bool>
+    </property>
+    <property name="variable" stdset="0">
+     <string>TEST3:A</string>
+    </property>
+    <property name="arrayIndex">
+     <number>0</number>
+    </property>
+    <property name="continuousWrite">
+     <bool>true</bool>
+    </property>
+    <property name="axisAlarmColours" stdset="0">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QESpinBox" name="qespinbox">
+    <property name="geometry">
+     <rect>
+      <x>12</x>
+      <y>320</y>
+      <width>100</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="maximum">
+     <double>16.000000000000000</double>
+    </property>
+    <property name="singleStep">
+     <double>0.020000000000000</double>
+    </property>
+    <property name="variable" stdset="0">
+     <string>TEST3:A</string>
+    </property>
+    <property name="arrayIndex">
+     <number>0</number>
+    </property>
+   </widget>
+   <widget class="QEBitStatus" name="qebitstatus">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>320</y>
+      <width>160</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="numberOfBits">
+     <number>6</number>
+    </property>
+    <property name="variable" stdset="0">
+     <string>TEST3:A</string>
+    </property>
+   </widget>
+   <widget class="QESimpleShape" name="qesimpleshape">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>350</y>
+      <width>288</width>
+      <height>26</height>
+     </rect>
+    </property>
+    <property name="shape">
+     <enum>QSimpleShape::roundRectangle</enum>
+    </property>
+    <property name="format" stdset="0">
+     <enum>QSimpleShape::PvText</enum>
+    </property>
+    <property name="colour0" stdset="0">
+     <color>
+      <red>200</red>
+      <green>0</green>
+      <blue>0</blue>
+     </color>
+    </property>
+    <property name="colour1" stdset="0">
+     <color>
+      <red>200</red>
+      <green>66</green>
+      <blue>0</blue>
+     </color>
+    </property>
+    <property name="colour2" stdset="0">
+     <color>
+      <red>200</red>
+      <green>133</green>
+      <blue>0</blue>
+     </color>
+    </property>
+    <property name="colour3" stdset="0">
+     <color>
+      <red>200</red>
+      <green>200</green>
+      <blue>0</blue>
+     </color>
+    </property>
+    <property name="colour4" stdset="0">
+     <color>
+      <red>134</red>
+      <green>200</green>
+      <blue>0</blue>
+     </color>
+    </property>
+    <property name="colour5" stdset="0">
+     <color>
+      <red>66</red>
+      <green>200</green>
+      <blue>0</blue>
+     </color>
+    </property>
+    <property name="colour6" stdset="0">
+     <color>
+      <red>1</red>
+      <green>200</green>
+      <blue>1</blue>
+     </color>
+    </property>
+    <property name="colour7" stdset="0">
+     <color>
+      <red>0</red>
+      <green>200</green>
+      <blue>66</blue>
+     </color>
+    </property>
+    <property name="colour8" stdset="0">
+     <color>
+      <red>0</red>
+      <green>200</green>
+      <blue>133</blue>
+     </color>
+    </property>
+    <property name="colour9" stdset="0">
+     <color>
+      <red>0</red>
+      <green>200</green>
+      <blue>200</blue>
+     </color>
+    </property>
+    <property name="colour10" stdset="0">
+     <color>
+      <red>0</red>
+      <green>133</green>
+      <blue>200</blue>
+     </color>
+    </property>
+    <property name="colour11" stdset="0">
+     <color>
+      <red>0</red>
+      <green>66</green>
+      <blue>200</blue>
+     </color>
+    </property>
+    <property name="colour12" stdset="0">
+     <color>
+      <red>0</red>
+      <green>0</green>
+      <blue>200</blue>
+     </color>
+    </property>
+    <property name="colour13" stdset="0">
+     <color>
+      <red>66</red>
+      <green>0</green>
+      <blue>200</blue>
+     </color>
+    </property>
+    <property name="colour14" stdset="0">
+     <color>
+      <red>133</red>
+      <green>0</green>
+      <blue>200</blue>
+     </color>
+    </property>
+    <property name="colour15" stdset="0">
+     <color>
+      <red>200</red>
+      <green>1</green>
+      <blue>200</blue>
+     </color>
+    </property>
+    <property name="variable" stdset="0">
+     <string>TEST3:A</string>
+    </property>
+    <property name="arrayIndex">
+     <number>0</number>
+    </property>
+    <property name="edgeArrayIndex">
+     <number>0</number>
+    </property>
+    <property name="displayAlarmStateOption" stdset="0">
+     <enum>QESimpleShape::Never</enum>
+    </property>
+   </widget>
+   <widget class="QEAnalogProgressBar" name="qeanalogprogressbar">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>400</y>
+      <width>331</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="maximum">
+     <double>16.000000000000000</double>
+    </property>
+    <property name="minorInterval">
+     <double>0.500000000000000</double>
+    </property>
+    <property name="majorInterval">
+     <double>5.000000000000000</double>
+    </property>
+    <property name="showScale">
+     <bool>true</bool>
+    </property>
+    <property name="variable" stdset="0">
+     <string>TEST3:A</string>
+    </property>
+    <property name="arrayIndex">
+     <number>0</number>
+    </property>
+   </widget>
+   <widget class="QECheckBox" name="qecheckbox">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>450</y>
+      <width>100</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Check/4</string>
+    </property>
+    <property name="variable" stdset="0">
+     <string>TEST3:A</string>
+    </property>
+    <property name="arrayIndex">
+     <number>0</number>
+    </property>
+    <property name="subscribe">
+     <bool>true</bool>
+    </property>
+    <property name="addUnits">
+     <bool>false</bool>
+    </property>
+    <property name="format" stdset="0">
+     <enum>QECheckBox::Integer</enum>
+    </property>
+    <property name="arrayAction" stdset="0">
+     <enum>QECheckBox::Index</enum>
+    </property>
+    <property name="clickText">
+     <string>4</string>
+    </property>
+    <property name="clickCheckedText">
+     <string>4</string>
+    </property>
+   </widget>
+   <widget class="QERadioButton" name="qeradiobutton">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>450</y>
+      <width>100</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Radio/8</string>
+    </property>
+    <property name="variable" stdset="0">
+     <string>TEST3:A</string>
+    </property>
+    <property name="arrayIndex">
+     <number>0</number>
+    </property>
+    <property name="addUnits">
+     <bool>false</bool>
+    </property>
+    <property name="format" stdset="0">
+     <enum>QERadioButton::Integer</enum>
+    </property>
+    <property name="notation" stdset="0">
+     <enum>QERadioButton::Fixed</enum>
+    </property>
+    <property name="arrayAction" stdset="0">
+     <enum>QERadioButton::Index</enum>
+    </property>
+    <property name="clickText">
+     <string>8</string>
+    </property>
+    <property name="clickCheckedText">
+     <string>8</string>
+    </property>
+   </widget>
+   <widget class="QEPushButton" name="qepushbutton">
+    <property name="geometry">
+     <rect>
+      <x>235</x>
+      <y>450</y>
+      <width>100</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="variable" stdset="0">
+     <string>TEST3:A</string>
+    </property>
+    <property name="arrayIndex">
+     <number>0</number>
+    </property>
+    <property name="altReadbackArrayIndex">
+     <number>0</number>
+    </property>
+    <property name="subscribe">
+     <bool>true</bool>
+    </property>
+    <property name="format" stdset="0">
+     <enum>QEPushButton::Floating</enum>
+    </property>
+    <property name="arrayAction" stdset="0">
+     <enum>QEPushButton::Index</enum>
+    </property>
+    <property name="clickText">
+     <string>2</string>
+    </property>
+   </widget>
+   <widget class="QEComboBox" name="qecombobox">
+    <property name="geometry">
+     <rect>
+      <x>19</x>
+      <y>491</y>
+      <width>180</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="variable" stdset="0">
+     <string>TEST3:A</string>
+    </property>
+    <property name="arrayIndex">
+     <number>0</number>
+    </property>
+    <property name="useDbEnumerations">
+     <bool>false</bool>
+    </property>
+    <property name="localEnumeration" stdset="0">
+     <string>0 : Zero, 1 : One, 2: Two, 3: Three, 4 : Four, 5 : Five, 6: Six, 7 : Seven</string>
+    </property>
+   </widget>
+   <widget class="QEGeneralEdit" name="qegeneraledit">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>540</y>
+      <width>400</width>
+      <height>99</height>
+     </rect>
+    </property>
+    <property name="variable" stdset="0">
+     <string>TEST3:A</string>
+    </property>
+    <property name="arrayIndex">
+     <number>0</number>
+    </property>
+   </widget>
+   <widget class="QELineEdit" name="qelineedit">
+    <property name="geometry">
+     <rect>
+      <x>15</x>
+      <y>652</y>
+      <width>144</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="variable" stdset="0">
+     <string>TEST3:A</string>
+    </property>
+    <property name="variableSubstitutions" stdset="0">
+     <string/>
+    </property>
+    <property name="arrayIndex">
+     <number>0</number>
+    </property>
+    <property name="allowFocusUpdate">
+     <bool>true</bool>
+    </property>
+    <property name="format" stdset="0">
+     <enum>QELineEdit::Floating</enum>
+    </property>
+    <property name="arrayAction" stdset="0">
+     <enum>QELineEdit::Index</enum>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QFrame" name="frame_3">
+   <property name="geometry">
+    <rect>
+     <x>447</x>
+     <y>100</y>
+     <width>426</width>
+     <height>700</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>370</width>
+     <height>400</height>
+    </size>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::Box</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Plain</enum>
+   </property>
+   <widget class="QELabel" name="qelabel_3">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>141</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="variable" stdset="0">
+     <string>TEST3:A</string>
+    </property>
+    <property name="arrayIndex">
+     <number>2</number>
+    </property>
+    <property name="defaultStyle" stdset="0">
+     <string>QELabel { background-color: rgb(240, 240, 240); }</string>
+    </property>
+    <property name="arrayAction" stdset="0">
+     <enum>QELabel::Index</enum>
+    </property>
+   </widget>
+   <widget class="QERadioGroup" name="qeradiogroup_3">
+    <property name="geometry">
+     <rect>
+      <x>12</x>
+      <y>46</y>
+      <width>348</width>
+      <height>144</height>
+     </rect>
+    </property>
+    <property name="variable" stdset="0">
+     <string>TEST3:A</string>
+    </property>
+    <property name="variableSubstitutions" stdset="0">
+     <string>PV=TEST3:A, SLOT=2</string>
+    </property>
+    <property name="arrayIndex">
+     <number>2</number>
+    </property>
+    <property name="title" stdset="0">
+     <string> $(PV) [$(SLOT)] </string>
+    </property>
+    <property name="columns">
+     <number>2</number>
+    </property>
+    <property name="spacing">
+     <number>4</number>
+    </property>
+    <property name="useDbEnumerations">
+     <bool>false</bool>
+    </property>
+    <property name="localEnumeration" stdset="0">
+     <string>0 : Zero, 1 : One, 2: Two, 3: Three, 4 : Four, 5 : Five, 6: Six, 7 : Seven</string>
+    </property>
+    <property name="buttonStyle">
+     <enum>QRadioGroup::Push</enum>
+    </property>
+   </widget>
+   <widget class="QENumericEdit" name="qenumericedit_3">
+    <property name="geometry">
+     <rect>
+      <x>208</x>
+      <y>10</y>
+      <width>144</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="variable" stdset="0">
+     <string>TEST3:A</string>
+    </property>
+    <property name="arrayIndex">
+     <number>2</number>
+    </property>
+    <property name="writeOnChange">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QESlider" name="qeslider_4">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>200</y>
+      <width>340</width>
+      <height>29</height>
+     </rect>
+    </property>
+    <property name="maximum">
+     <number>16</number>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+    <property name="tickPosition">
+     <enum>QSlider::TicksBelow</enum>
+    </property>
+    <property name="variable" stdset="0">
+     <string>TEST3:A</string>
+    </property>
+    <property name="arrayIndex">
+     <number>2</number>
+    </property>
+   </widget>
+   <widget class="QEAnalogSlider" name="qeanalogslider_4">
+    <property name="geometry">
+     <rect>
+      <x>12</x>
+      <y>232</y>
+      <width>376</width>
+      <height>72</height>
+     </rect>
+    </property>
+    <property name="maximum" stdset="0">
+     <double>16.000000000000000</double>
+    </property>
+    <property name="minorInterval">
+     <double>0.500000000000000</double>
+    </property>
+    <property name="majorInterval">
+     <double>2.000000000000000</double>
+    </property>
+    <property name="showApply">
+     <bool>false</bool>
+    </property>
+    <property name="variable" stdset="0">
+     <string>TEST3:A</string>
+    </property>
+    <property name="arrayIndex">
+     <number>2</number>
+    </property>
+    <property name="continuousWrite">
+     <bool>true</bool>
+    </property>
+    <property name="axisAlarmColours" stdset="0">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QESpinBox" name="qespinbox_4">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>310</y>
+      <width>100</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="maximum">
+     <double>16.000000000000000</double>
+    </property>
+    <property name="singleStep">
+     <double>0.020000000000000</double>
+    </property>
+    <property name="variable" stdset="0">
+     <string>TEST3:A</string>
+    </property>
+    <property name="arrayIndex">
+     <number>2</number>
+    </property>
+   </widget>
+   <widget class="QEBitStatus" name="qebitstatus_3">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>310</y>
+      <width>160</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="numberOfBits">
+     <number>6</number>
+    </property>
+    <property name="variable" stdset="0">
+     <string>TEST3:A</string>
+    </property>
+    <property name="arrayIndex">
+     <number>2</number>
+    </property>
+   </widget>
+   <widget class="QESimpleShape" name="qesimpleshape_2">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>350</y>
+      <width>288</width>
+      <height>26</height>
+     </rect>
+    </property>
+    <property name="shape">
+     <enum>QSimpleShape::roundRectangle</enum>
+    </property>
+    <property name="format" stdset="0">
+     <enum>QSimpleShape::PvText</enum>
+    </property>
+    <property name="colour0" stdset="0">
+     <color>
+      <red>200</red>
+      <green>0</green>
+      <blue>0</blue>
+     </color>
+    </property>
+    <property name="colour1" stdset="0">
+     <color>
+      <red>200</red>
+      <green>66</green>
+      <blue>0</blue>
+     </color>
+    </property>
+    <property name="colour2" stdset="0">
+     <color>
+      <red>200</red>
+      <green>133</green>
+      <blue>0</blue>
+     </color>
+    </property>
+    <property name="colour3" stdset="0">
+     <color>
+      <red>200</red>
+      <green>200</green>
+      <blue>0</blue>
+     </color>
+    </property>
+    <property name="colour4" stdset="0">
+     <color>
+      <red>134</red>
+      <green>200</green>
+      <blue>0</blue>
+     </color>
+    </property>
+    <property name="colour5" stdset="0">
+     <color>
+      <red>66</red>
+      <green>200</green>
+      <blue>0</blue>
+     </color>
+    </property>
+    <property name="colour6" stdset="0">
+     <color>
+      <red>1</red>
+      <green>200</green>
+      <blue>1</blue>
+     </color>
+    </property>
+    <property name="colour7" stdset="0">
+     <color>
+      <red>0</red>
+      <green>200</green>
+      <blue>66</blue>
+     </color>
+    </property>
+    <property name="colour8" stdset="0">
+     <color>
+      <red>0</red>
+      <green>200</green>
+      <blue>133</blue>
+     </color>
+    </property>
+    <property name="colour9" stdset="0">
+     <color>
+      <red>0</red>
+      <green>200</green>
+      <blue>200</blue>
+     </color>
+    </property>
+    <property name="colour10" stdset="0">
+     <color>
+      <red>0</red>
+      <green>133</green>
+      <blue>200</blue>
+     </color>
+    </property>
+    <property name="colour11" stdset="0">
+     <color>
+      <red>0</red>
+      <green>66</green>
+      <blue>200</blue>
+     </color>
+    </property>
+    <property name="colour12" stdset="0">
+     <color>
+      <red>0</red>
+      <green>0</green>
+      <blue>200</blue>
+     </color>
+    </property>
+    <property name="colour13" stdset="0">
+     <color>
+      <red>66</red>
+      <green>0</green>
+      <blue>200</blue>
+     </color>
+    </property>
+    <property name="colour14" stdset="0">
+     <color>
+      <red>133</red>
+      <green>0</green>
+      <blue>200</blue>
+     </color>
+    </property>
+    <property name="colour15" stdset="0">
+     <color>
+      <red>200</red>
+      <green>1</green>
+      <blue>200</blue>
+     </color>
+    </property>
+    <property name="variable" stdset="0">
+     <string>TEST3:A</string>
+    </property>
+    <property name="arrayIndex">
+     <number>2</number>
+    </property>
+    <property name="edgeArrayIndex">
+     <number>2</number>
+    </property>
+    <property name="displayAlarmStateOption" stdset="0">
+     <enum>QESimpleShape::Never</enum>
+    </property>
+   </widget>
+   <widget class="QEAnalogProgressBar" name="qeanalogprogressbar_2">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>400</y>
+      <width>331</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="maximum">
+     <double>16.000000000000000</double>
+    </property>
+    <property name="minorInterval">
+     <double>0.500000000000000</double>
+    </property>
+    <property name="majorInterval">
+     <double>5.000000000000000</double>
+    </property>
+    <property name="showScale">
+     <bool>true</bool>
+    </property>
+    <property name="variable" stdset="0">
+     <string>TEST3:A</string>
+    </property>
+    <property name="arrayIndex">
+     <number>2</number>
+    </property>
+   </widget>
+   <widget class="QECheckBox" name="qecheckbox_2">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>450</y>
+      <width>100</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Check</string>
+    </property>
+    <property name="variable" stdset="0">
+     <string>TEST3:A</string>
+    </property>
+    <property name="arrayIndex">
+     <number>2</number>
+    </property>
+    <property name="subscribe">
+     <bool>true</bool>
+    </property>
+    <property name="addUnits">
+     <bool>false</bool>
+    </property>
+    <property name="format" stdset="0">
+     <enum>QECheckBox::Integer</enum>
+    </property>
+    <property name="arrayAction" stdset="0">
+     <enum>QECheckBox::Index</enum>
+    </property>
+    <property name="clickCheckedText">
+     <string>3</string>
+    </property>
+   </widget>
+   <widget class="QEPushButton" name="qepushbutton_2">
+    <property name="geometry">
+     <rect>
+      <x>235</x>
+      <y>450</y>
+      <width>100</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="variable" stdset="0">
+     <string>TEST3:A</string>
+    </property>
+    <property name="arrayIndex">
+     <number>2</number>
+    </property>
+    <property name="altReadbackArrayIndex">
+     <number>2</number>
+    </property>
+    <property name="subscribe">
+     <bool>true</bool>
+    </property>
+    <property name="format" stdset="0">
+     <enum>QEPushButton::Floating</enum>
+    </property>
+    <property name="arrayAction" stdset="0">
+     <enum>QEPushButton::Index</enum>
+    </property>
+    <property name="clickText">
+     <string>5</string>
+    </property>
+   </widget>
+   <widget class="QERadioButton" name="qeradiobutton_2">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>450</y>
+      <width>100</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Radio</string>
+    </property>
+    <property name="variable" stdset="0">
+     <string>TEST3:A</string>
+    </property>
+    <property name="arrayIndex">
+     <number>2</number>
+    </property>
+    <property name="addUnits">
+     <bool>false</bool>
+    </property>
+    <property name="format" stdset="0">
+     <enum>QERadioButton::Integer</enum>
+    </property>
+    <property name="notation" stdset="0">
+     <enum>QERadioButton::Fixed</enum>
+    </property>
+    <property name="arrayAction" stdset="0">
+     <enum>QERadioButton::Index</enum>
+    </property>
+    <property name="pressText">
+     <string>4</string>
+    </property>
+    <property name="releaseText">
+     <string>4</string>
+    </property>
+    <property name="clickText">
+     <string>4</string>
+    </property>
+    <property name="clickCheckedText">
+     <string>4</string>
+    </property>
+   </widget>
+   <widget class="QEComboBox" name="qecombobox_2">
+    <property name="geometry">
+     <rect>
+      <x>19</x>
+      <y>491</y>
+      <width>180</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="variable" stdset="0">
+     <string>TEST3:A</string>
+    </property>
+    <property name="arrayIndex">
+     <number>2</number>
+    </property>
+    <property name="useDbEnumerations">
+     <bool>false</bool>
+    </property>
+    <property name="localEnumeration" stdset="0">
+     <string>0 : Zero, 1 : One, 2: Two, 3: Three, 4 : Four, 5 : Five, 6: Six, 7 : Seven</string>
+    </property>
+   </widget>
+   <widget class="QEGeneralEdit" name="qegeneraledit_2">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>540</y>
+      <width>400</width>
+      <height>99</height>
+     </rect>
+    </property>
+    <property name="variable" stdset="0">
+     <string>TEST3:A</string>
+    </property>
+    <property name="arrayIndex">
+     <number>2</number>
+    </property>
+   </widget>
+   <widget class="QELineEdit" name="qelineedit_2">
+    <property name="geometry">
+     <rect>
+      <x>15</x>
+      <y>652</y>
+      <width>144</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="variable" stdset="0">
+     <string>TEST3:A</string>
+    </property>
+    <property name="variableSubstitutions" stdset="0">
+     <string/>
+    </property>
+    <property name="arrayIndex">
+     <number>2</number>
+    </property>
+    <property name="allowFocusUpdate">
+     <bool>true</bool>
+    </property>
+    <property name="format" stdset="0">
+     <enum>QELineEdit::Floating</enum>
+    </property>
+    <property name="arrayAction" stdset="0">
+     <enum>QELineEdit::Index</enum>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QFrame" name="frame_4">
+   <property name="geometry">
+    <rect>
+     <x>884</x>
+     <y>100</y>
+     <width>427</width>
+     <height>700</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>370</width>
+     <height>400</height>
+    </size>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::Box</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Plain</enum>
+   </property>
+   <widget class="QELabel" name="qelabel_4">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>10</y>
+      <width>141</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="variable" stdset="0">
+     <string>TEST3:A</string>
+    </property>
+    <property name="arrayIndex">
+     <number>3</number>
+    </property>
+    <property name="defaultStyle" stdset="0">
+     <string>QELabel { background-color: rgb(240, 240, 240); }</string>
+    </property>
+    <property name="arrayAction" stdset="0">
+     <enum>QELabel::Index</enum>
+    </property>
+   </widget>
+   <widget class="QERadioGroup" name="qeradiogroup_4">
+    <property name="geometry">
+     <rect>
+      <x>12</x>
+      <y>46</y>
+      <width>348</width>
+      <height>144</height>
+     </rect>
+    </property>
+    <property name="variable" stdset="0">
+     <string>TEST3:A</string>
+    </property>
+    <property name="variableSubstitutions" stdset="0">
+     <string>PV=TEST3:A, SLOT=3</string>
+    </property>
+    <property name="arrayIndex">
+     <number>3</number>
+    </property>
+    <property name="title" stdset="0">
+     <string> $(PV) [$(SLOT)] </string>
+    </property>
+    <property name="columns">
+     <number>2</number>
+    </property>
+    <property name="spacing">
+     <number>4</number>
+    </property>
+    <property name="useDbEnumerations">
+     <bool>false</bool>
+    </property>
+    <property name="localEnumeration" stdset="0">
+     <string>0 : Zero, 1 : One, 2: Two, 3: Three, 4 : Four, 5 : Five, 6: Six, 7 : Seven</string>
+    </property>
+    <property name="buttonStyle">
+     <enum>QRadioGroup::Push</enum>
+    </property>
+   </widget>
+   <widget class="QENumericEdit" name="qenumericedit_4">
+    <property name="geometry">
+     <rect>
+      <x>208</x>
+      <y>10</y>
+      <width>144</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="variable" stdset="0">
+     <string>TEST3:A</string>
+    </property>
+    <property name="arrayIndex">
+     <number>3</number>
+    </property>
+    <property name="writeOnChange">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QESlider" name="qeslider_3">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>200</y>
+      <width>340</width>
+      <height>29</height>
+     </rect>
+    </property>
+    <property name="maximum">
+     <number>16</number>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+    <property name="tickPosition">
+     <enum>QSlider::TicksBelow</enum>
+    </property>
+    <property name="variable" stdset="0">
+     <string>TEST3:A</string>
+    </property>
+    <property name="arrayIndex">
+     <number>3</number>
+    </property>
+   </widget>
+   <widget class="QEAnalogSlider" name="qeanalogslider_3">
+    <property name="geometry">
+     <rect>
+      <x>12</x>
+      <y>232</y>
+      <width>376</width>
+      <height>72</height>
+     </rect>
+    </property>
+    <property name="maximum" stdset="0">
+     <double>16.000000000000000</double>
+    </property>
+    <property name="minorInterval">
+     <double>0.500000000000000</double>
+    </property>
+    <property name="majorInterval">
+     <double>2.000000000000000</double>
+    </property>
+    <property name="showApply">
+     <bool>false</bool>
+    </property>
+    <property name="variable" stdset="0">
+     <string>TEST3:A</string>
+    </property>
+    <property name="arrayIndex">
+     <number>3</number>
+    </property>
+    <property name="continuousWrite">
+     <bool>true</bool>
+    </property>
+    <property name="axisAlarmColours" stdset="0">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QESpinBox" name="qespinbox_3">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>310</y>
+      <width>100</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="maximum">
+     <double>16.000000000000000</double>
+    </property>
+    <property name="singleStep">
+     <double>0.200000000000000</double>
+    </property>
+    <property name="variable" stdset="0">
+     <string>TEST3:A</string>
+    </property>
+    <property name="arrayIndex">
+     <number>3</number>
+    </property>
+   </widget>
+   <widget class="QEBitStatus" name="qebitstatus_4">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>310</y>
+      <width>160</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="numberOfBits">
+     <number>6</number>
+    </property>
+    <property name="variable" stdset="0">
+     <string>TEST3:A</string>
+    </property>
+    <property name="arrayIndex">
+     <number>3</number>
+    </property>
+   </widget>
+   <widget class="QESimpleShape" name="qesimpleshape_3">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>350</y>
+      <width>288</width>
+      <height>26</height>
+     </rect>
+    </property>
+    <property name="shape">
+     <enum>QSimpleShape::roundRectangle</enum>
+    </property>
+    <property name="format" stdset="0">
+     <enum>QSimpleShape::PvText</enum>
+    </property>
+    <property name="colour0" stdset="0">
+     <color>
+      <red>200</red>
+      <green>0</green>
+      <blue>0</blue>
+     </color>
+    </property>
+    <property name="colour1" stdset="0">
+     <color>
+      <red>200</red>
+      <green>66</green>
+      <blue>0</blue>
+     </color>
+    </property>
+    <property name="colour2" stdset="0">
+     <color>
+      <red>200</red>
+      <green>133</green>
+      <blue>0</blue>
+     </color>
+    </property>
+    <property name="colour3" stdset="0">
+     <color>
+      <red>200</red>
+      <green>200</green>
+      <blue>0</blue>
+     </color>
+    </property>
+    <property name="colour4" stdset="0">
+     <color>
+      <red>134</red>
+      <green>200</green>
+      <blue>0</blue>
+     </color>
+    </property>
+    <property name="colour5" stdset="0">
+     <color>
+      <red>66</red>
+      <green>200</green>
+      <blue>0</blue>
+     </color>
+    </property>
+    <property name="colour6" stdset="0">
+     <color>
+      <red>1</red>
+      <green>200</green>
+      <blue>1</blue>
+     </color>
+    </property>
+    <property name="colour7" stdset="0">
+     <color>
+      <red>0</red>
+      <green>200</green>
+      <blue>66</blue>
+     </color>
+    </property>
+    <property name="colour8" stdset="0">
+     <color>
+      <red>0</red>
+      <green>200</green>
+      <blue>133</blue>
+     </color>
+    </property>
+    <property name="colour9" stdset="0">
+     <color>
+      <red>0</red>
+      <green>200</green>
+      <blue>200</blue>
+     </color>
+    </property>
+    <property name="colour10" stdset="0">
+     <color>
+      <red>0</red>
+      <green>133</green>
+      <blue>200</blue>
+     </color>
+    </property>
+    <property name="colour11" stdset="0">
+     <color>
+      <red>0</red>
+      <green>66</green>
+      <blue>200</blue>
+     </color>
+    </property>
+    <property name="colour12" stdset="0">
+     <color>
+      <red>0</red>
+      <green>0</green>
+      <blue>200</blue>
+     </color>
+    </property>
+    <property name="colour13" stdset="0">
+     <color>
+      <red>66</red>
+      <green>0</green>
+      <blue>200</blue>
+     </color>
+    </property>
+    <property name="colour14" stdset="0">
+     <color>
+      <red>133</red>
+      <green>0</green>
+      <blue>200</blue>
+     </color>
+    </property>
+    <property name="colour15" stdset="0">
+     <color>
+      <red>200</red>
+      <green>1</green>
+      <blue>200</blue>
+     </color>
+    </property>
+    <property name="variable" stdset="0">
+     <string>TEST3:A</string>
+    </property>
+    <property name="arrayIndex">
+     <number>3</number>
+    </property>
+    <property name="edgeArrayIndex">
+     <number>3</number>
+    </property>
+    <property name="displayAlarmStateOption" stdset="0">
+     <enum>QESimpleShape::Never</enum>
+    </property>
+   </widget>
+   <widget class="QEAnalogProgressBar" name="qeanalogprogressbar_3">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>400</y>
+      <width>331</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="maximum">
+     <double>16.000000000000000</double>
+    </property>
+    <property name="minorInterval">
+     <double>0.500000000000000</double>
+    </property>
+    <property name="majorInterval">
+     <double>5.000000000000000</double>
+    </property>
+    <property name="showScale">
+     <bool>true</bool>
+    </property>
+    <property name="variable" stdset="0">
+     <string>TEST3:A</string>
+    </property>
+    <property name="arrayIndex">
+     <number>3</number>
+    </property>
+   </widget>
+   <widget class="QECheckBox" name="qecheckbox_3">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>450</y>
+      <width>100</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Check</string>
+    </property>
+    <property name="variable" stdset="0">
+     <string>TEST3:A</string>
+    </property>
+    <property name="arrayIndex">
+     <number>3</number>
+    </property>
+    <property name="subscribe">
+     <bool>true</bool>
+    </property>
+    <property name="addUnits">
+     <bool>false</bool>
+    </property>
+    <property name="format" stdset="0">
+     <enum>QECheckBox::Integer</enum>
+    </property>
+    <property name="arrayAction" stdset="0">
+     <enum>QECheckBox::Index</enum>
+    </property>
+    <property name="clickCheckedText">
+     <string>6</string>
+    </property>
+   </widget>
+   <widget class="QEPushButton" name="qepushbutton_3">
+    <property name="geometry">
+     <rect>
+      <x>225</x>
+      <y>450</y>
+      <width>100</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="variable" stdset="0">
+     <string>TEST3:A</string>
+    </property>
+    <property name="arrayIndex">
+     <number>3</number>
+    </property>
+    <property name="altReadbackArrayIndex">
+     <number>3</number>
+    </property>
+    <property name="subscribe">
+     <bool>true</bool>
+    </property>
+    <property name="format" stdset="0">
+     <enum>QEPushButton::Floating</enum>
+    </property>
+    <property name="arrayAction" stdset="0">
+     <enum>QEPushButton::Index</enum>
+    </property>
+    <property name="clickText">
+     <string>8</string>
+    </property>
+   </widget>
+   <widget class="QERadioButton" name="qeradiobutton_3">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>450</y>
+      <width>100</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Radio</string>
+    </property>
+    <property name="variable" stdset="0">
+     <string>TEST3:A</string>
+    </property>
+    <property name="arrayIndex">
+     <number>3</number>
+    </property>
+    <property name="addUnits">
+     <bool>false</bool>
+    </property>
+    <property name="format" stdset="0">
+     <enum>QERadioButton::Integer</enum>
+    </property>
+    <property name="notation" stdset="0">
+     <enum>QERadioButton::Fixed</enum>
+    </property>
+    <property name="arrayAction" stdset="0">
+     <enum>QERadioButton::Index</enum>
+    </property>
+    <property name="pressText">
+     <string>7</string>
+    </property>
+    <property name="releaseText">
+     <string>8</string>
+    </property>
+    <property name="clickText">
+     <string>9</string>
+    </property>
+    <property name="clickCheckedText">
+     <string>10</string>
+    </property>
+   </widget>
+   <widget class="QEComboBox" name="qecombobox_3">
+    <property name="geometry">
+     <rect>
+      <x>19</x>
+      <y>491</y>
+      <width>180</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="variable" stdset="0">
+     <string>TEST3:A</string>
+    </property>
+    <property name="arrayIndex">
+     <number>3</number>
+    </property>
+    <property name="useDbEnumerations">
+     <bool>false</bool>
+    </property>
+    <property name="localEnumeration" stdset="0">
+     <string>0 : Zero, 1 : One, 2: Two, 3: Three, 4 : Four, 5 : Five, 6: Six, 7 : Seven</string>
+    </property>
+   </widget>
+   <widget class="QEGeneralEdit" name="qegeneraledit_3">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>540</y>
+      <width>400</width>
+      <height>99</height>
+     </rect>
+    </property>
+    <property name="variable" stdset="0">
+     <string>TEST3:A</string>
+    </property>
+    <property name="arrayIndex">
+     <number>3</number>
+    </property>
+   </widget>
+   <widget class="QELineEdit" name="qelineedit_3">
+    <property name="geometry">
+     <rect>
+      <x>15</x>
+      <y>652</y>
+      <width>144</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="variable" stdset="0">
+     <string>TEST3:A</string>
+    </property>
+    <property name="variableSubstitutions" stdset="0">
+     <string/>
+    </property>
+    <property name="arrayIndex">
+     <number>3</number>
+    </property>
+    <property name="allowFocusUpdate">
+     <bool>true</bool>
+    </property>
+    <property name="format" stdset="0">
+     <enum>QELineEdit::Floating</enum>
+    </property>
+    <property name="arrayAction" stdset="0">
+     <enum>QELineEdit::Index</enum>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QEWaveformHistogram" name="qewaveformhistogram">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>1301</width>
+     <height>80</height>
+    </rect>
+   </property>
+   <property name="variable" stdset="0">
+    <string>TEST3:A</string>
+   </property>
+   <property name="autoBarGapWidths">
+    <bool>true</bool>
+   </property>
+   <property name="maximum">
+    <double>20.000000000000000</double>
+   </property>
+  </widget>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QEAnalogProgressBar</class>
+   <extends>QEAnalogIndicator</extends>
+   <header>QEAnalogProgressBar.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QEAnalogSlider</class>
+   <extends>QAnalogSlider</extends>
+   <header>QEAnalogSlider.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QEBitStatus</class>
+   <extends>QBitStatus</extends>
+   <header>QEBitStatus.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QECheckBox</class>
+   <extends>QCheckBox</extends>
+   <header>QECheckBox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QEComboBox</class>
+   <extends>QComboBox</extends>
+   <header>QEComboBox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QEGeneralEdit</class>
+   <extends>QEFrame</extends>
+   <header>QEGeneralEdit.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QELabel</class>
+   <extends>QLabel</extends>
+   <header>QELabel.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QELineEdit</class>
+   <extends>QLineEdit</extends>
+   <header>QELineEdit.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QENumericEdit</class>
+   <extends>QWidget</extends>
+   <header>QENumericEdit.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QEPushButton</class>
+   <extends>QPushButton</extends>
+   <header>QEPushButton.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QERadioButton</class>
+   <extends>QRadioButton</extends>
+   <header>QERadioButton.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QERadioGroup</class>
+   <extends>QWidget</extends>
+   <header>QERadioGroup.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QESimpleShape</class>
+   <extends>QSimpleShape</extends>
+   <header>QESimpleShape.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QESlider</class>
+   <extends>QSlider</extends>
+   <header>QESlider.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QESpinBox</class>
+   <extends>QDoubleSpinBox</extends>
+   <header>QESpinBox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QEWaveformHistogram</class>
+   <extends>QEFrame</extends>
+   <header>QEWaveformHistogram.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QEAnalogIndicator</class>
+   <extends>QWidget</extends>
+   <header>QEAnalogIndicator.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QAnalogSlider</class>
+   <extends>QFrame</extends>
+   <header>QAnalogSlider.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QBitStatus</class>
+   <extends>QWidget</extends>
+   <header>QBitStatus.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QEFrame</class>
+   <extends>QFrame</extends>
+   <header>QEFrame.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>QSimpleShape</class>
+   <extends>QWidget</extends>
+   <header>QSimpleShape.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="../../../../home/andrew/qe/framework/widgets/QEStripChart/QEStripChart.qrc"/>
+ </resources>
+ <connections/>
+</ui>

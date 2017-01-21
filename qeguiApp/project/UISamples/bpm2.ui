@@ -1,0 +1,513 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1080</width>
+    <height>914</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Stored Beam</string>
+  </property>
+  <layout class="QHBoxLayout" name="horizontalLayout">
+   <item>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QFrame" name="frame_2">
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+       <layout class="QGridLayout" name="gridLayout_6">
+        <item row="0" column="0">
+         <widget class="QLabel" name="label_2">
+          <property name="font">
+           <font>
+            <pointsize>24</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>Stored Beam</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="QGroupBox" name="groupBox_3">
+       <property name="title">
+        <string>Size and position</string>
+       </property>
+       <layout class="QGridLayout" name="gridLayout_5">
+        <item row="0" column="0">
+         <layout class="QGridLayout" name="gridLayout">
+          <item row="1" column="0">
+           <widget class="QLabel" name="label_11">
+            <property name="text">
+             <string>Offset</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QELabel" name="qelabel_6">
+            <property name="text">
+             <string>-9.5 um</string>
+            </property>
+            <property name="variable" stdset="0">
+             <string>SR10BM02IMG01:Y_OFFSET_MONITOR</string>
+            </property>
+            <property name="allowDrop">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="label_13">
+            <property name="text">
+             <string>Size</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QELabel" name="qelabel_7">
+            <property name="text">
+             <string>240.9 um</string>
+            </property>
+            <property name="variable" stdset="0">
+             <string>SR10BM02IMG01:Y_SIZE_MONITOR</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <spacer name="verticalSpacer">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="0" column="1">
+           <spacer name="verticalSpacer_2">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item row="1" column="0">
+         <layout class="QVBoxLayout" name="verticalLayout_3">
+          <item>
+           <widget class="QLabel" name="label_5">
+            <property name="font">
+             <font>
+              <pointsize>16</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>Beam Current</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QELabel" name="qelabel_5">
+            <property name="font">
+             <font>
+              <pointsize>16</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>200.438 mA</string>
+            </property>
+            <property name="variable" stdset="0">
+             <string>SR11BCM01:CURRENT_MONITOR</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item row="1" column="1">
+         <layout class="QGridLayout" name="gridLayout_2">
+          <item row="0" column="1">
+           <widget class="QLabel" name="label_3">
+            <property name="text">
+             <string>Offset</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="2">
+           <widget class="QELabel" name="qelabel_3">
+            <property name="text">
+             <string>-55.6 um</string>
+            </property>
+            <property name="variable" stdset="0">
+             <string>SR10BM02IMG01:X_OFFSET_MONITOR</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QLabel" name="label">
+            <property name="text">
+             <string>Size</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="2">
+           <widget class="QELabel" name="qelabel">
+            <property name="text">
+             <string>337.3 um</string>
+            </property>
+            <property name="variable" stdset="0">
+             <string>SR10BM02IMG01:X_SIZE_MONITOR</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="3">
+           <spacer name="horizontalSpacer">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="0" column="0">
+           <spacer name="horizontalSpacer_2">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item row="0" column="1">
+         <widget class="QFrame" name="frame">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>400</width>
+            <height>400</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>400</width>
+            <height>400</height>
+           </size>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::NoFrame</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Plain</enum>
+          </property>
+          <property name="lineWidth">
+           <number>0</number>
+          </property>
+          <widget class="Line" name="line">
+           <property name="geometry">
+            <rect>
+             <x>0</x>
+             <y>190</y>
+             <width>400</width>
+             <height>20</height>
+            </rect>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>400</width>
+             <height>20</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>400</width>
+             <height>20</height>
+            </size>
+           </property>
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+          <widget class="Line" name="line_2">
+           <property name="geometry">
+            <rect>
+             <x>190</x>
+             <y>0</y>
+             <width>20</width>
+             <height>400</height>
+            </rect>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>20</width>
+             <height>400</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>20</width>
+             <height>400</height>
+            </size>
+           </property>
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+          </widget>
+          <widget class="QEShape" name="qcashapeplugin">
+           <property name="geometry">
+            <rect>
+             <x>0</x>
+             <y>0</y>
+             <width>400</width>
+             <height>400</height>
+            </rect>
+           </property>
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>400</width>
+             <height>400</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>400</width>
+             <height>400</height>
+            </size>
+           </property>
+           <property name="variable1" stdset="0">
+            <string>SR10BM02IMG01:X_SIZE_MONITOR</string>
+           </property>
+           <property name="variable2" stdset="0">
+            <string>SR10BM02IMG01:Y_SIZE_MONITOR</string>
+           </property>
+           <property name="variable3" stdset="0">
+            <string>SR10BM02IMG01:X_OFFSET_MONITOR</string>
+           </property>
+           <property name="variable4" stdset="0">
+            <string>SR10BM02IMG01:Y_OFFSET_MONITOR</string>
+           </property>
+           <property name="variable5" stdset="0">
+            <string>SR11BCM01:CURRENT_MONITOR</string>
+           </property>
+           <property name="allowDrop">
+            <bool>true</bool>
+           </property>
+           <property name="scale1" stdset="0">
+            <double>0.002000000000000</double>
+           </property>
+           <property name="scale2" stdset="0">
+            <double>0.002000000000000</double>
+           </property>
+           <property name="scale3" stdset="0">
+            <double>1.000000000000000</double>
+           </property>
+           <property name="scale4" stdset="0">
+            <double>-1.000000000000000</double>
+           </property>
+           <property name="scale5" stdset="0">
+            <double>1.000000000000000</double>
+           </property>
+           <property name="offset3" stdset="0">
+            <double>0.000000000000000</double>
+           </property>
+           <property name="offset4" stdset="0">
+            <double>0.000000000000000</double>
+           </property>
+           <property name="shape" stdset="0">
+            <enum>QEShape::Ellipse</enum>
+           </property>
+           <property name="originTranslation">
+            <point>
+             <x>-200</x>
+             <y>-200</y>
+            </point>
+           </property>
+           <property name="point1" stdset="0">
+            <point>
+             <x>-200</x>
+             <y>-200</y>
+            </point>
+           </property>
+           <property name="point2" stdset="0">
+            <point>
+             <x>400</x>
+             <y>400</y>
+            </point>
+           </property>
+           <property name="color1" stdset="0">
+            <color>
+             <red>255</red>
+             <green>114</green>
+             <blue>135</blue>
+            </color>
+           </property>
+          </widget>
+          <zorder>qcashapeplugin</zorder>
+          <zorder>line_2</zorder>
+          <zorder>line</zorder>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QVBoxLayout" name="verticalLayout_2">
+     <item>
+      <widget class="QGroupBox" name="groupBox_2">
+       <property name="title">
+        <string>Image</string>
+       </property>
+       <layout class="QGridLayout" name="gridLayout_4"/>
+      </widget>
+     </item>
+     <item>
+      <widget class="QGroupBox" name="groupBox">
+       <property name="title">
+        <string>Distribution</string>
+       </property>
+       <layout class="QGridLayout" name="gridLayout_3">
+        <item row="0" column="0">
+         <widget class="QEPlot" name="qeplot">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>150</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>150</height>
+           </size>
+          </property>
+          <property name="variable1" stdset="0">
+           <string>SR10BM02IMG01:XDIST_MONITOR</string>
+          </property>
+          <property name="variable2" stdset="0">
+           <string>SR10BM02IMG01:YDIST_MONITOR</string>
+          </property>
+          <property name="traceColor1">
+           <color>
+            <red>0</red>
+            <green>128</green>
+            <blue>0</blue>
+           </color>
+          </property>
+          <property name="traceLegend1">
+           <string>X</string>
+          </property>
+          <property name="traceLegend2">
+           <string>Y</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QEImage" name="qeimage">
+          <property name="imageVariable" stdset="0">
+           <string>SR10BM02IMG01:DATA_MONITOR</string>
+          </property>
+          <property name="widthVariable" stdset="0">
+           <string>SR10BM02IMG01:WIDTH_MONITOR</string>
+          </property>
+          <property name="heightVariable" stdset="0">
+           <string>SR10BM02IMG01:HEIGHT_MONITOR</string>
+          </property>
+          <property name="formatOption" stdset="0">
+           <enum>QEImage::Mono</enum>
+          </property>
+          <property name="enableProfileSelection">
+           <bool>true</bool>
+          </property>
+          <property name="resizeOption" stdset="0">
+           <enum>QEImage::Zoom</enum>
+          </property>
+          <property name="zoom">
+           <number>400</number>
+          </property>
+          <property name="enableImageDisplayProperties">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QwtPlot</class>
+   <extends>QFrame</extends>
+   <header>qwt_plot.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QEImage</class>
+   <extends>QFrame</extends>
+   <header>QEImage.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QELabel</class>
+   <extends>QLabel</extends>
+   <header>QELabel.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QEPlot</class>
+   <extends>QwtPlot</extends>
+   <header>QEPlot.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QEShape</class>
+   <extends>QWidget</extends>
+   <header>QEShape.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

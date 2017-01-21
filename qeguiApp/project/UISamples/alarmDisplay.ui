@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>413</width>
+    <height>163</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Display Alarm State test</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="1" column="1">
+    <widget class="QELabel" name="qelabel_5">
+     <property name="variable" stdset="0">
+      <string>OOE:ai</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1">
+    <widget class="QELabel" name="qelabel_6">
+     <property name="variable" stdset="0">
+      <string>OOE:ai</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <widget class="QELabel" name="qelabel_2">
+     <property name="variable" stdset="0">
+      <string>OOE:ai</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0">
+    <widget class="QLabel" name="label_3">
+     <property name="text">
+      <string>When in alarm</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="0">
+    <widget class="QLabel" name="label_4">
+     <property name="text">
+      <string>Alarm state</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0">
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>Always</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QLabel" name="label_2">
+     <property name="text">
+      <string>Never</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="2">
+    <widget class="QESlider" name="qeslider_2">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="variable" stdset="0">
+      <string>OOE:ai</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="3">
+    <widget class="QELineEdit" name="qelineedit_2">
+     <property name="variable" stdset="0">
+      <string>OOE:ai</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="2">
+    <widget class="QESlider" name="qeslider_3">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="variable" stdset="0">
+      <string>OOE:ai</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="2">
+    <widget class="QESlider" name="qeslider">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="variable" stdset="0">
+      <string>OOE:ai</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="3">
+    <widget class="QELineEdit" name="qelineedit_3">
+     <property name="variable" stdset="0">
+      <string>OOE:ai</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="3">
+    <widget class="QELineEdit" name="qelineedit">
+     <property name="variable" stdset="0">
+      <string>OOE:ai</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="4">
+    <widget class="QEComboBox" name="qecombobox">
+     <property name="variable" stdset="0">
+      <string>OOE:ai</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="4">
+    <widget class="QEComboBox" name="qecombobox_2">
+     <property name="variable" stdset="0">
+      <string>OOE:ai</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="4">
+    <widget class="QEComboBox" name="qecombobox_3">
+     <property name="variable" stdset="0">
+      <string>OOE:ai</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="1">
+    <widget class="QELabel" name="qelabel">
+     <property name="variable" stdset="0">
+      <string>OOE:ai.SEVR</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QEComboBox</class>
+   <extends>QComboBox</extends>
+   <header>QEComboBox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QELabel</class>
+   <extends>QLabel</extends>
+   <header>QELabel.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QELineEdit</class>
+   <extends>QLineEdit</extends>
+   <header>QELineEdit.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QESlider</class>
+   <extends>QSlider</extends>
+   <header>QESlider.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

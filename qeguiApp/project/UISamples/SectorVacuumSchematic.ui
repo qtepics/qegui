@@ -1,0 +1,1239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>623</width>
+    <height>230</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QELabel" name="qelabel_5">
+   <property name="geometry">
+    <rect>
+     <x>360</x>
+     <y>200</y>
+     <width>101</width>
+     <height>18</height>
+    </rect>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="variable" stdset="0">
+    <string>SR$(SR)CCG01:PRESSURE_MONITOR</string>
+   </property>
+   <property name="variableSubstitutions" stdset="0">
+    <string>SR=01</string>
+   </property>
+   <property name="format" stdset="0">
+    <enum>QELabel::Default</enum>
+   </property>
+   <property name="notation" stdset="0">
+    <enum>QELabel::Scientific</enum>
+   </property>
+  </widget>
+  <widget class="QEShape" name="qcashapeplugin_20">
+   <property name="geometry">
+    <rect>
+     <x>540</x>
+     <y>113</y>
+     <width>20</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="shape" stdset="0">
+    <enum>QEShape::Line</enum>
+   </property>
+   <property name="originTranslation" stdset="0">
+    <point>
+     <x>0</x>
+     <y>0</y>
+    </point>
+   </property>
+   <property name="point2" stdset="0">
+    <point>
+     <x>0</x>
+     <y>60</y>
+    </point>
+   </property>
+   <property name="drawBorder" stdset="0">
+    <bool>false</bool>
+   </property>
+   <property name="lineWidth" stdset="0">
+    <UInt>3</UInt>
+   </property>
+  </widget>
+  <widget class="QEShape" name="qcashapeplugin_15">
+   <property name="geometry">
+    <rect>
+     <x>361</x>
+     <y>114</y>
+     <width>20</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="shape" stdset="0">
+    <enum>QEShape::Line</enum>
+   </property>
+   <property name="originTranslation" stdset="0">
+    <point>
+     <x>0</x>
+     <y>0</y>
+    </point>
+   </property>
+   <property name="point2" stdset="0">
+    <point>
+     <x>0</x>
+     <y>20</y>
+    </point>
+   </property>
+   <property name="drawBorder" stdset="0">
+    <bool>false</bool>
+   </property>
+   <property name="lineWidth" stdset="0">
+    <UInt>3</UInt>
+   </property>
+  </widget>
+  <widget class="QELabel" name="qelabel">
+   <property name="geometry">
+    <rect>
+     <x>19</x>
+     <y>159</y>
+     <width>101</width>
+     <height>18</height>
+    </rect>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="variable" stdset="0">
+    <string>SR$(SR)IPC03:CHAN01_PRESSURE_MONITOR</string>
+   </property>
+   <property name="variableSubstitutions" stdset="0">
+    <string>SR=01</string>
+   </property>
+   <property name="format" stdset="0">
+    <enum>QELabel::Default</enum>
+   </property>
+   <property name="notation" stdset="0">
+    <enum>QELabel::Scientific</enum>
+   </property>
+  </widget>
+  <widget class="QEShape" name="qcashapeplugin_3">
+   <property name="geometry">
+    <rect>
+     <x>310</x>
+     <y>102</y>
+     <width>21</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="variable1" stdset="0">
+    <string>SR$(SR)SGV01:OPEN_CLOSE_STATUS</string>
+   </property>
+   <property name="variable2" stdset="0">
+    <string/>
+   </property>
+   <property name="animation1" stdset="0">
+    <enum>QEShape::ColourIndex</enum>
+   </property>
+   <property name="animation2" stdset="0">
+    <enum>QEShape::ColourValue</enum>
+   </property>
+   <property name="scale1" stdset="0">
+    <double>1.000000000000000</double>
+   </property>
+   <property name="variableSubstitutions" stdset="0">
+    <string>SR=01 SRPREV=14</string>
+   </property>
+   <property name="shape" stdset="0">
+    <enum>QEShape::Polygon</enum>
+   </property>
+   <property name="numPoints" stdset="0">
+    <UInt>6</UInt>
+   </property>
+   <property name="point2" stdset="0">
+    <point>
+     <x>0</x>
+     <y>20</y>
+    </point>
+   </property>
+   <property name="point3" stdset="0">
+    <point>
+     <x>20</x>
+     <y>0</y>
+    </point>
+   </property>
+   <property name="point4" stdset="0">
+    <point>
+     <x>20</x>
+     <y>20</y>
+    </point>
+   </property>
+   <property name="color1" stdset="0">
+    <color>
+     <red>0</red>
+     <green>0</green>
+     <blue>0</blue>
+    </color>
+   </property>
+   <property name="color2" stdset="0">
+    <color>
+     <red>255</red>
+     <green>0</green>
+     <blue>127</blue>
+    </color>
+   </property>
+   <property name="color3" stdset="0">
+    <color>
+     <red>255</red>
+     <green>0</green>
+     <blue>0</blue>
+    </color>
+   </property>
+   <property name="color4" stdset="0">
+    <color>
+     <red>0</red>
+     <green>255</green>
+     <blue>0</blue>
+    </color>
+   </property>
+   <property name="color5" stdset="0">
+    <color>
+     <red>255</red>
+     <green>255</green>
+     <blue>0</blue>
+    </color>
+   </property>
+  </widget>
+  <widget class="QEShape" name="qcashapeplugin_11">
+   <property name="geometry">
+    <rect>
+     <x>440</x>
+     <y>30</y>
+     <width>21</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="variable1" stdset="0">
+    <string>SR$(SR)PRG01:PRESSURE_MONITOR.STAT</string>
+   </property>
+   <property name="animation1" stdset="0">
+    <enum>QEShape::ColourIndex</enum>
+   </property>
+   <property name="variableSubstitutions" stdset="0">
+    <string>SR=01</string>
+   </property>
+   <property name="shape" stdset="0">
+    <enum>QEShape::Ellipse</enum>
+   </property>
+   <property name="point2" stdset="0">
+    <point>
+     <x>20</x>
+     <y>20</y>
+    </point>
+   </property>
+   <property name="color1" stdset="0">
+    <color>
+     <red>0</red>
+     <green>255</green>
+     <blue>0</blue>
+    </color>
+   </property>
+   <property name="color2" stdset="0">
+    <color>
+     <red>255</red>
+     <green>85</green>
+     <blue>0</blue>
+    </color>
+   </property>
+   <property name="color3" stdset="0">
+    <color>
+     <red>255</red>
+     <green>0</green>
+     <blue>0</blue>
+    </color>
+   </property>
+   <property name="color4" stdset="0">
+    <color>
+     <red>0</red>
+     <green>0</green>
+     <blue>0</blue>
+    </color>
+   </property>
+  </widget>
+  <widget class="QELabel" name="qelabel_7">
+   <property name="geometry">
+    <rect>
+     <x>430</x>
+     <y>160</y>
+     <width>101</width>
+     <height>18</height>
+    </rect>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="variable" stdset="0">
+    <string>SR$(SR)IPC01:CHAN01_PRESSURE_MONITOR</string>
+   </property>
+   <property name="variableSubstitutions" stdset="0">
+    <string>SR=01</string>
+   </property>
+   <property name="format" stdset="0">
+    <enum>QELabel::Default</enum>
+   </property>
+   <property name="notation" stdset="0">
+    <enum>QELabel::Scientific</enum>
+   </property>
+  </widget>
+  <widget class="QEShape" name="qcashapeplugin_2">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>102</y>
+     <width>21</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="variable1" stdset="0">
+    <string>SR$(SRPREV)SGV01:OPEN_CLOSE_STATUS</string>
+   </property>
+   <property name="variable2" stdset="0">
+    <string/>
+   </property>
+   <property name="animation1" stdset="0">
+    <enum>QEShape::ColourIndex</enum>
+   </property>
+   <property name="animation2" stdset="0">
+    <enum>QEShape::ColourValue</enum>
+   </property>
+   <property name="scale1" stdset="0">
+    <double>1.000000000000000</double>
+   </property>
+   <property name="variableSubstitutions" stdset="0">
+    <string>SRPREV=14</string>
+   </property>
+   <property name="shape" stdset="0">
+    <enum>QEShape::Polygon</enum>
+   </property>
+   <property name="numPoints" stdset="0">
+    <UInt>6</UInt>
+   </property>
+   <property name="point2" stdset="0">
+    <point>
+     <x>0</x>
+     <y>20</y>
+    </point>
+   </property>
+   <property name="point3" stdset="0">
+    <point>
+     <x>20</x>
+     <y>0</y>
+    </point>
+   </property>
+   <property name="point4" stdset="0">
+    <point>
+     <x>20</x>
+     <y>20</y>
+    </point>
+   </property>
+   <property name="color1" stdset="0">
+    <color>
+     <red>0</red>
+     <green>0</green>
+     <blue>0</blue>
+    </color>
+   </property>
+   <property name="color2" stdset="0">
+    <color>
+     <red>255</red>
+     <green>0</green>
+     <blue>127</blue>
+    </color>
+   </property>
+   <property name="color3" stdset="0">
+    <color>
+     <red>255</red>
+     <green>0</green>
+     <blue>0</blue>
+    </color>
+   </property>
+   <property name="color4" stdset="0">
+    <color>
+     <red>0</red>
+     <green>255</green>
+     <blue>0</blue>
+    </color>
+   </property>
+   <property name="color5" stdset="0">
+    <color>
+     <red>255</red>
+     <green>255</green>
+     <blue>0</blue>
+    </color>
+   </property>
+  </widget>
+  <widget class="QELabel" name="qelabel_3">
+   <property name="geometry">
+    <rect>
+     <x>152</x>
+     <y>10</y>
+     <width>101</width>
+     <height>18</height>
+    </rect>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="variable" stdset="0">
+    <string>SR$(SR)PRG02:PRESSURE_MONITOR</string>
+   </property>
+   <property name="variableSubstitutions" stdset="0">
+    <string>SR=01</string>
+   </property>
+   <property name="format" stdset="0">
+    <enum>QELabel::Default</enum>
+   </property>
+   <property name="notation" stdset="0">
+    <enum>QELabel::Scientific</enum>
+   </property>
+  </widget>
+  <widget class="QELabel" name="qelabel_4">
+   <property name="geometry">
+    <rect>
+     <x>401</x>
+     <y>10</y>
+     <width>101</width>
+     <height>18</height>
+    </rect>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="variable" stdset="0">
+    <string>SR$(SR)PRG01:PRESSURE_MONITOR</string>
+   </property>
+   <property name="variableSubstitutions" stdset="0">
+    <string>SR=01</string>
+   </property>
+   <property name="format" stdset="0">
+    <enum>QELabel::Default</enum>
+   </property>
+   <property name="notation" stdset="0">
+    <enum>QELabel::Scientific</enum>
+   </property>
+  </widget>
+  <widget class="QELabel" name="qelabel_6">
+   <property name="geometry">
+    <rect>
+     <x>310</x>
+     <y>160</y>
+     <width>101</width>
+     <height>18</height>
+    </rect>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="variable" stdset="0">
+    <string>SR$(SR)IPC01:CHAN01_PRESSURE_MONITOR</string>
+   </property>
+   <property name="variableSubstitutions" stdset="0">
+    <string>SR=01</string>
+   </property>
+   <property name="format" stdset="0">
+    <enum>QELabel::Default</enum>
+   </property>
+   <property name="notation" stdset="0">
+    <enum>QELabel::Scientific</enum>
+   </property>
+  </widget>
+  <widget class="QEShape" name="qcashapeplugin_16">
+   <property name="geometry">
+    <rect>
+     <x>352</x>
+     <y>133</y>
+     <width>21</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="variable1" stdset="0">
+    <string>SR$(SR)IPC01:CHAN01_PRESSURE_MONITOR.STAT</string>
+   </property>
+   <property name="animation1" stdset="0">
+    <enum>QEShape::ColourIndex</enum>
+   </property>
+   <property name="variableSubstitutions" stdset="0">
+    <string>SR=01</string>
+   </property>
+   <property name="shape" stdset="0">
+    <enum>QEShape::Rect</enum>
+   </property>
+   <property name="point2" stdset="0">
+    <point>
+     <x>20</x>
+     <y>20</y>
+    </point>
+   </property>
+   <property name="color1" stdset="0">
+    <color>
+     <red>0</red>
+     <green>255</green>
+     <blue>0</blue>
+    </color>
+   </property>
+   <property name="color2" stdset="0">
+    <color>
+     <red>255</red>
+     <green>85</green>
+     <blue>0</blue>
+    </color>
+   </property>
+   <property name="color3" stdset="0">
+    <color>
+     <red>255</red>
+     <green>0</green>
+     <blue>0</blue>
+    </color>
+   </property>
+   <property name="color4" stdset="0">
+    <color>
+     <red>0</red>
+     <green>0</green>
+     <blue>0</blue>
+    </color>
+   </property>
+  </widget>
+  <widget class="QELabel" name="qelabel_2">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>200</y>
+     <width>101</width>
+     <height>18</height>
+    </rect>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="variable" stdset="0">
+    <string>SR$(SR)CCG03:PRESSURE_MONITOR</string>
+   </property>
+   <property name="variableSubstitutions" stdset="0">
+    <string>SR=01</string>
+   </property>
+   <property name="format" stdset="0">
+    <enum>QELabel::Default</enum>
+   </property>
+   <property name="notation" stdset="0">
+    <enum>QELabel::Scientific</enum>
+   </property>
+  </widget>
+  <widget class="QEShape" name="qcashapeplugin">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>109</y>
+     <width>611</width>
+     <height>5</height>
+    </rect>
+   </property>
+   <property name="point2" stdset="0">
+    <point>
+     <x>600</x>
+     <y>10</y>
+    </point>
+   </property>
+   <property name="color1" stdset="0">
+    <color>
+     <red>0</red>
+     <green>0</green>
+     <blue>255</blue>
+    </color>
+   </property>
+  </widget>
+  <widget class="QEShape" name="qcashapeplugin_13">
+   <property name="geometry">
+    <rect>
+     <x>410</x>
+     <y>114</y>
+     <width>20</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="shape" stdset="0">
+    <enum>QEShape::Line</enum>
+   </property>
+   <property name="originTranslation" stdset="0">
+    <point>
+     <x>0</x>
+     <y>0</y>
+    </point>
+   </property>
+   <property name="point2" stdset="0">
+    <point>
+     <x>0</x>
+     <y>60</y>
+    </point>
+   </property>
+   <property name="drawBorder" stdset="0">
+    <bool>false</bool>
+   </property>
+   <property name="lineWidth" stdset="0">
+    <UInt>3</UInt>
+   </property>
+  </widget>
+  <widget class="QEShape" name="qcashapeplugin_10">
+   <property name="geometry">
+    <rect>
+     <x>191</x>
+     <y>30</y>
+     <width>21</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="variable1" stdset="0">
+    <string>SR$(SR)PRG02:PRESSURE_MONITOR.STAT</string>
+   </property>
+   <property name="animation1" stdset="0">
+    <enum>QEShape::ColourIndex</enum>
+   </property>
+   <property name="variableSubstitutions" stdset="0">
+    <string>SR=01</string>
+   </property>
+   <property name="shape" stdset="0">
+    <enum>QEShape::Ellipse</enum>
+   </property>
+   <property name="point2" stdset="0">
+    <point>
+     <x>20</x>
+     <y>20</y>
+    </point>
+   </property>
+   <property name="color1" stdset="0">
+    <color>
+     <red>0</red>
+     <green>255</green>
+     <blue>0</blue>
+    </color>
+   </property>
+   <property name="color2" stdset="0">
+    <color>
+     <red>255</red>
+     <green>85</green>
+     <blue>0</blue>
+    </color>
+   </property>
+   <property name="color3" stdset="0">
+    <color>
+     <red>255</red>
+     <green>0</green>
+     <blue>0</blue>
+    </color>
+   </property>
+   <property name="color4" stdset="0">
+    <color>
+     <red>0</red>
+     <green>0</green>
+     <blue>0</blue>
+    </color>
+   </property>
+  </widget>
+  <widget class="QEShape" name="qcashapeplugin_4">
+   <property name="geometry">
+    <rect>
+     <x>566</x>
+     <y>101</y>
+     <width>21</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="variable1" stdset="0">
+    <string>SR$(SR)SGV01:OPEN_CLOSE_STATUS</string>
+   </property>
+   <property name="variable2" stdset="0">
+    <string/>
+   </property>
+   <property name="animation1" stdset="0">
+    <enum>QEShape::ColourIndex</enum>
+   </property>
+   <property name="animation2" stdset="0">
+    <enum>QEShape::ColourValue</enum>
+   </property>
+   <property name="scale1" stdset="0">
+    <double>1.000000000000000</double>
+   </property>
+   <property name="variableSubstitutions" stdset="0">
+    <string>SR=01 SRPREV=14</string>
+   </property>
+   <property name="shape" stdset="0">
+    <enum>QEShape::Polygon</enum>
+   </property>
+   <property name="numPoints" stdset="0">
+    <UInt>6</UInt>
+   </property>
+   <property name="point2" stdset="0">
+    <point>
+     <x>0</x>
+     <y>20</y>
+    </point>
+   </property>
+   <property name="point3" stdset="0">
+    <point>
+     <x>20</x>
+     <y>0</y>
+    </point>
+   </property>
+   <property name="point4" stdset="0">
+    <point>
+     <x>20</x>
+     <y>20</y>
+    </point>
+   </property>
+   <property name="color1" stdset="0">
+    <color>
+     <red>0</red>
+     <green>0</green>
+     <blue>0</blue>
+    </color>
+   </property>
+   <property name="color2" stdset="0">
+    <color>
+     <red>255</red>
+     <green>0</green>
+     <blue>127</blue>
+    </color>
+   </property>
+   <property name="color3" stdset="0">
+    <color>
+     <red>255</red>
+     <green>0</green>
+     <blue>0</blue>
+    </color>
+   </property>
+   <property name="color4" stdset="0">
+    <color>
+     <red>0</red>
+     <green>255</green>
+     <blue>0</blue>
+    </color>
+   </property>
+   <property name="color5" stdset="0">
+    <color>
+     <red>255</red>
+     <green>255</green>
+     <blue>0</blue>
+    </color>
+   </property>
+  </widget>
+  <widget class="QEShape" name="qcashapeplugin_14">
+   <property name="geometry">
+    <rect>
+     <x>400</x>
+     <y>175</y>
+     <width>21</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="variable1" stdset="0">
+    <string>SR$(SR)CCG01:PRESSURE_MONITOR.STAT</string>
+   </property>
+   <property name="animation1" stdset="0">
+    <enum>QEShape::ColourIndex</enum>
+   </property>
+   <property name="variableSubstitutions" stdset="0">
+    <string>SR=01</string>
+   </property>
+   <property name="shape" stdset="0">
+    <enum>QEShape::Ellipse</enum>
+   </property>
+   <property name="point2" stdset="0">
+    <point>
+     <x>20</x>
+     <y>20</y>
+    </point>
+   </property>
+   <property name="color1" stdset="0">
+    <color>
+     <red>0</red>
+     <green>255</green>
+     <blue>0</blue>
+    </color>
+   </property>
+   <property name="color2" stdset="0">
+    <color>
+     <red>255</red>
+     <green>85</green>
+     <blue>0</blue>
+    </color>
+   </property>
+   <property name="color3" stdset="0">
+    <color>
+     <red>255</red>
+     <green>0</green>
+     <blue>0</blue>
+    </color>
+   </property>
+   <property name="color4" stdset="0">
+    <color>
+     <red>0</red>
+     <green>0</green>
+     <blue>0</blue>
+    </color>
+   </property>
+  </widget>
+  <widget class="QEShape" name="qcashapeplugin_19">
+   <property name="geometry">
+    <rect>
+     <x>531</x>
+     <y>174</y>
+     <width>21</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="variable1" stdset="0">
+    <string>SR$(SR)CCG02:PRESSURE_MONITOR.STAT</string>
+   </property>
+   <property name="animation1" stdset="0">
+    <enum>QEShape::ColourIndex</enum>
+   </property>
+   <property name="variableSubstitutions" stdset="0">
+    <string>SR=01</string>
+   </property>
+   <property name="shape" stdset="0">
+    <enum>QEShape::Ellipse</enum>
+   </property>
+   <property name="point2" stdset="0">
+    <point>
+     <x>20</x>
+     <y>20</y>
+    </point>
+   </property>
+   <property name="color1" stdset="0">
+    <color>
+     <red>0</red>
+     <green>255</green>
+     <blue>0</blue>
+    </color>
+   </property>
+   <property name="color2" stdset="0">
+    <color>
+     <red>255</red>
+     <green>85</green>
+     <blue>0</blue>
+    </color>
+   </property>
+   <property name="color3" stdset="0">
+    <color>
+     <red>255</red>
+     <green>0</green>
+     <blue>0</blue>
+    </color>
+   </property>
+   <property name="color4" stdset="0">
+    <color>
+     <red>0</red>
+     <green>0</green>
+     <blue>0</blue>
+    </color>
+   </property>
+  </widget>
+  <widget class="QEShape" name="qcashapeplugin_6">
+   <property name="geometry">
+    <rect>
+     <x>140</x>
+     <y>114</y>
+     <width>20</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="shape" stdset="0">
+    <enum>QEShape::Line</enum>
+   </property>
+   <property name="originTranslation" stdset="0">
+    <point>
+     <x>0</x>
+     <y>0</y>
+    </point>
+   </property>
+   <property name="point2" stdset="0">
+    <point>
+     <x>0</x>
+     <y>60</y>
+    </point>
+   </property>
+   <property name="drawBorder" stdset="0">
+    <bool>false</bool>
+   </property>
+   <property name="lineWidth" stdset="0">
+    <UInt>3</UInt>
+   </property>
+  </widget>
+  <widget class="QEShape" name="qcashapeplugin_12">
+   <property name="geometry">
+    <rect>
+     <x>449</x>
+     <y>50</y>
+     <width>20</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="shape" stdset="0">
+    <enum>QEShape::Line</enum>
+   </property>
+   <property name="originTranslation" stdset="0">
+    <point>
+     <x>0</x>
+     <y>0</y>
+    </point>
+   </property>
+   <property name="point2" stdset="0">
+    <point>
+     <x>0</x>
+     <y>60</y>
+    </point>
+   </property>
+   <property name="drawBorder" stdset="0">
+    <bool>false</bool>
+   </property>
+   <property name="lineWidth" stdset="0">
+    <UInt>3</UInt>
+   </property>
+  </widget>
+  <widget class="QEShape" name="qcashapeplugin_8">
+   <property name="geometry">
+    <rect>
+     <x>61</x>
+     <y>132</y>
+     <width>21</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="variable1" stdset="0">
+    <string>SR$(SR)IPC03:CHAN01_PRESSURE_MONITOR.STAT</string>
+   </property>
+   <property name="animation1" stdset="0">
+    <enum>QEShape::ColourIndex</enum>
+   </property>
+   <property name="variableSubstitutions" stdset="0">
+    <string>SR=01</string>
+   </property>
+   <property name="shape" stdset="0">
+    <enum>QEShape::Rect</enum>
+   </property>
+   <property name="point2" stdset="0">
+    <point>
+     <x>20</x>
+     <y>20</y>
+    </point>
+   </property>
+   <property name="color1" stdset="0">
+    <color>
+     <red>0</red>
+     <green>255</green>
+     <blue>0</blue>
+    </color>
+   </property>
+   <property name="color2" stdset="0">
+    <color>
+     <red>255</red>
+     <green>85</green>
+     <blue>0</blue>
+    </color>
+   </property>
+   <property name="color3" stdset="0">
+    <color>
+     <red>255</red>
+     <green>0</green>
+     <blue>0</blue>
+    </color>
+   </property>
+   <property name="color4" stdset="0">
+    <color>
+     <red>0</red>
+     <green>0</green>
+     <blue>0</blue>
+    </color>
+   </property>
+  </widget>
+  <widget class="QEShape" name="qcashapeplugin_7">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>175</y>
+     <width>21</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="variable1" stdset="0">
+    <string>SR$(SR)CCG03:PRESSURE_MONITOR.STAT</string>
+   </property>
+   <property name="animation1" stdset="0">
+    <enum>QEShape::ColourIndex</enum>
+   </property>
+   <property name="variableSubstitutions" stdset="0">
+    <string>SR=01</string>
+   </property>
+   <property name="shape" stdset="0">
+    <enum>QEShape::Ellipse</enum>
+   </property>
+   <property name="point2" stdset="0">
+    <point>
+     <x>20</x>
+     <y>20</y>
+    </point>
+   </property>
+   <property name="color1" stdset="0">
+    <color>
+     <red>0</red>
+     <green>255</green>
+     <blue>0</blue>
+    </color>
+   </property>
+   <property name="color2" stdset="0">
+    <color>
+     <red>255</red>
+     <green>85</green>
+     <blue>0</blue>
+    </color>
+   </property>
+   <property name="color3" stdset="0">
+    <color>
+     <red>255</red>
+     <green>0</green>
+     <blue>0</blue>
+    </color>
+   </property>
+   <property name="color4" stdset="0">
+    <color>
+     <red>0</red>
+     <green>0</green>
+     <blue>0</blue>
+    </color>
+   </property>
+  </widget>
+  <widget class="QEShape" name="qcashapeplugin_5">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>114</y>
+     <width>20</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="shape" stdset="0">
+    <enum>QEShape::Line</enum>
+   </property>
+   <property name="originTranslation" stdset="0">
+    <point>
+     <x>0</x>
+     <y>0</y>
+    </point>
+   </property>
+   <property name="point2" stdset="0">
+    <point>
+     <x>0</x>
+     <y>20</y>
+    </point>
+   </property>
+   <property name="drawBorder" stdset="0">
+    <bool>false</bool>
+   </property>
+   <property name="lineWidth" stdset="0">
+    <UInt>3</UInt>
+   </property>
+  </widget>
+  <widget class="QELabel" name="qelabel_8">
+   <property name="geometry">
+    <rect>
+     <x>491</x>
+     <y>199</y>
+     <width>101</width>
+     <height>18</height>
+    </rect>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="variable" stdset="0">
+    <string>SR$(SR)CCG02:PRESSURE_MONITOR</string>
+   </property>
+   <property name="variableSubstitutions" stdset="0">
+    <string>SR=01</string>
+   </property>
+   <property name="format" stdset="0">
+    <enum>QELabel::Default</enum>
+   </property>
+   <property name="notation" stdset="0">
+    <enum>QELabel::Scientific</enum>
+   </property>
+  </widget>
+  <widget class="QEShape" name="qcashapeplugin_18">
+   <property name="geometry">
+    <rect>
+     <x>481</x>
+     <y>113</y>
+     <width>20</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="shape" stdset="0">
+    <enum>QEShape::Line</enum>
+   </property>
+   <property name="originTranslation" stdset="0">
+    <point>
+     <x>0</x>
+     <y>0</y>
+    </point>
+   </property>
+   <property name="point2" stdset="0">
+    <point>
+     <x>0</x>
+     <y>20</y>
+    </point>
+   </property>
+   <property name="drawBorder" stdset="0">
+    <bool>false</bool>
+   </property>
+   <property name="lineWidth" stdset="0">
+    <UInt>3</UInt>
+   </property>
+  </widget>
+  <widget class="QEShape" name="qcashapeplugin_17">
+   <property name="geometry">
+    <rect>
+     <x>472</x>
+     <y>133</y>
+     <width>21</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="variable1" stdset="0">
+    <string>SR$(SR)IPC01:CHAN01_PRESSURE_MONITOR.STAT</string>
+   </property>
+   <property name="animation1" stdset="0">
+    <enum>QEShape::ColourIndex</enum>
+   </property>
+   <property name="variableSubstitutions" stdset="0">
+    <string>SR=01</string>
+   </property>
+   <property name="shape" stdset="0">
+    <enum>QEShape::Rect</enum>
+   </property>
+   <property name="point2" stdset="0">
+    <point>
+     <x>20</x>
+     <y>20</y>
+    </point>
+   </property>
+   <property name="color1" stdset="0">
+    <color>
+     <red>0</red>
+     <green>255</green>
+     <blue>0</blue>
+    </color>
+   </property>
+   <property name="color2" stdset="0">
+    <color>
+     <red>255</red>
+     <green>85</green>
+     <blue>0</blue>
+    </color>
+   </property>
+   <property name="color3" stdset="0">
+    <color>
+     <red>255</red>
+     <green>0</green>
+     <blue>0</blue>
+    </color>
+   </property>
+   <property name="color4" stdset="0">
+    <color>
+     <red>0</red>
+     <green>0</green>
+     <blue>0</blue>
+    </color>
+   </property>
+  </widget>
+  <widget class="QEShape" name="qcashapeplugin_9">
+   <property name="geometry">
+    <rect>
+     <x>200</x>
+     <y>50</y>
+     <width>20</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="shape" stdset="0">
+    <enum>QEShape::Line</enum>
+   </property>
+   <property name="originTranslation" stdset="0">
+    <point>
+     <x>0</x>
+     <y>0</y>
+    </point>
+   </property>
+   <property name="point2" stdset="0">
+    <point>
+     <x>0</x>
+     <y>60</y>
+    </point>
+   </property>
+   <property name="drawBorder" stdset="0">
+    <bool>false</bool>
+   </property>
+   <property name="lineWidth" stdset="0">
+    <UInt>3</UInt>
+   </property>
+  </widget>
+  <zorder>qcashapeplugin_5</zorder>
+  <zorder>qcashapeplugin</zorder>
+  <zorder>qelabel_5</zorder>
+  <zorder>qcashapeplugin_20</zorder>
+  <zorder>qcashapeplugin_15</zorder>
+  <zorder>qelabel</zorder>
+  <zorder>qcashapeplugin_3</zorder>
+  <zorder>qcashapeplugin_11</zorder>
+  <zorder>qelabel_7</zorder>
+  <zorder>qcashapeplugin_2</zorder>
+  <zorder>qelabel_3</zorder>
+  <zorder>qelabel_4</zorder>
+  <zorder>qelabel_6</zorder>
+  <zorder>qcashapeplugin_16</zorder>
+  <zorder>qelabel_2</zorder>
+  <zorder>qcashapeplugin_13</zorder>
+  <zorder>qcashapeplugin_10</zorder>
+  <zorder>qcashapeplugin_4</zorder>
+  <zorder>qcashapeplugin_14</zorder>
+  <zorder>qcashapeplugin_19</zorder>
+  <zorder>qcashapeplugin_6</zorder>
+  <zorder>qcashapeplugin_12</zorder>
+  <zorder>qcashapeplugin_8</zorder>
+  <zorder>qcashapeplugin_7</zorder>
+  <zorder>qelabel_8</zorder>
+  <zorder>qcashapeplugin_18</zorder>
+  <zorder>qcashapeplugin_17</zorder>
+  <zorder>qcashapeplugin_9</zorder>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QELabel</class>
+   <extends>QLabel</extends>
+   <header>QELabel.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QEShape</class>
+   <extends>QWidget</extends>
+   <header>QEShape.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

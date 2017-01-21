@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>651</width>
+    <height>317</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>220</x>
+     <y>20</y>
+     <width>131</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>20</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Sector 05</string>
+   </property>
+  </widget>
+  <widget class="QEFormPlugin" name="asguiformplugin">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>60</y>
+     <width>631</width>
+     <height>251</height>
+    </rect>
+   </property>
+   <property name="uiFile" stdset="0">
+    <string>SectorVacuumSchematic.ui</string>
+   </property>
+   <property name="variableSubstitutions" stdset="0">
+    <string>SR=05 SRPREV=04</string>
+   </property>
+  </widget>
+  <widget class="QEPushButton" name="guipushbuttonplugin">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>20</y>
+     <width>90</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Sector 04</string>
+   </property>
+   <property name="guiFile">
+    <string>SVS04.ui</string>
+   </property>
+   <property name="creationOption" stdset="0">
+    <enum>QEPushButton::Open</enum>
+   </property>
+  </widget>
+  <widget class="QEPushButton" name="guipushbuttonplugin_2">
+   <property name="geometry">
+    <rect>
+     <x>550</x>
+     <y>20</y>
+     <width>90</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Sector 06</string>
+   </property>
+   <property name="guiFile">
+    <string>SVS06.ui</string>
+   </property>
+   <property name="creationOption" stdset="0">
+    <enum>QEPushButton::Open</enum>
+   </property>
+  </widget>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QEPushButton</class>
+   <extends>QPushButton</extends>
+   <header>QEPushButton.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QEFormPlugin</class>
+   <extends>QScrollArea</extends>
+   <header>QEFormPlugin.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

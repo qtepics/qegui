@@ -1,0 +1,918 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1324</width>
+    <height>764</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>QEImage test</string>
+  </property>
+  <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,1">
+   <item>
+    <layout class="QGridLayout" name="gridLayout">
+     <item row="1" column="1">
+      <widget class="QGroupBox" name="groupBox_2">
+       <property name="title">
+        <string>ROI</string>
+       </property>
+       <layout class="QGridLayout" name="gridLayout_3">
+        <item row="1" column="1">
+         <widget class="QESpinBox" name="qespinbox_4">
+          <property name="maximum">
+           <double>1000.000000000000000</double>
+          </property>
+          <property name="variable" stdset="0">
+           <string>ROI1:X</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="2">
+         <widget class="QESpinBox" name="qespinbox_2">
+          <property name="maximum">
+           <double>1000.000000000000000</double>
+          </property>
+          <property name="variable" stdset="0">
+           <string>ROI1:Y</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="3">
+         <widget class="QESpinBox" name="qespinbox_3">
+          <property name="maximum">
+           <double>1000.000000000000000</double>
+          </property>
+          <property name="variable" stdset="0">
+           <string>ROI1:W</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="4">
+         <widget class="QESpinBox" name="qespinbox_5">
+          <property name="maximum">
+           <double>1000.000000000000000</double>
+          </property>
+          <property name="variable" stdset="0">
+           <string>ROI1:H</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QESpinBox" name="qespinbox_6">
+          <property name="maximum">
+           <double>1000.000000000000000</double>
+          </property>
+          <property name="variable" stdset="0">
+           <string>ROI2:X</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="2">
+         <widget class="QESpinBox" name="qespinbox_7">
+          <property name="maximum">
+           <double>1000.000000000000000</double>
+          </property>
+          <property name="variable" stdset="0">
+           <string>ROI2:Y</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="3">
+         <widget class="QESpinBox" name="qespinbox_9">
+          <property name="maximum">
+           <double>1000.000000000000000</double>
+          </property>
+          <property name="variable" stdset="0">
+           <string>ROI2:W</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="4">
+         <widget class="QESpinBox" name="qespinbox_13">
+          <property name="maximum">
+           <double>1000.000000000000000</double>
+          </property>
+          <property name="variable" stdset="0">
+           <string>ROI2:H</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="1">
+         <widget class="QESpinBox" name="qespinbox_11">
+          <property name="maximum">
+           <double>1000.000000000000000</double>
+          </property>
+          <property name="variable" stdset="0">
+           <string>ROI3:X</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="2">
+         <widget class="QESpinBox" name="qespinbox_12">
+          <property name="maximum">
+           <double>1000.000000000000000</double>
+          </property>
+          <property name="variable" stdset="0">
+           <string>ROI3:Y</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="3">
+         <widget class="QESpinBox" name="qespinbox_8">
+          <property name="maximum">
+           <double>1000.000000000000000</double>
+          </property>
+          <property name="variable" stdset="0">
+           <string>ROI3:W</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="4">
+         <widget class="QESpinBox" name="qespinbox_10">
+          <property name="maximum">
+           <double>1000.000000000000000</double>
+          </property>
+          <property name="variable" stdset="0">
+           <string>ROI3:H</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="1">
+         <widget class="QESpinBox" name="qespinbox_14">
+          <property name="maximum">
+           <double>1000.000000000000000</double>
+          </property>
+          <property name="variable" stdset="0">
+           <string>ROI4:X</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="2">
+         <widget class="QESpinBox" name="qespinbox_16">
+          <property name="maximum">
+           <double>1000.000000000000000</double>
+          </property>
+          <property name="variable" stdset="0">
+           <string>ROI4:Y</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="3">
+         <widget class="QESpinBox" name="qespinbox_15">
+          <property name="maximum">
+           <double>1000.000000000000000</double>
+          </property>
+          <property name="variable" stdset="0">
+           <string>ROI4:W</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="4">
+         <widget class="QESpinBox" name="qespinbox_17">
+          <property name="maximum">
+           <double>1000.000000000000000</double>
+          </property>
+          <property name="variable" stdset="0">
+           <string>ROI4:H</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QLabel" name="label_3">
+          <property name="text">
+           <string>X</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="2">
+         <widget class="QLabel" name="label_4">
+          <property name="text">
+           <string>Y</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="3">
+         <widget class="QLabel" name="label_5">
+          <property name="text">
+           <string>W</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="4">
+         <widget class="QLabel" name="label_6">
+          <property name="text">
+           <string>H</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="label_7">
+          <property name="text">
+           <string>1</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="label_8">
+          <property name="text">
+           <string>2</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="0">
+         <widget class="QLabel" name="label_9">
+          <property name="text">
+           <string>3</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="0">
+         <widget class="QLabel" name="label_10">
+          <property name="text">
+           <string>4</string>
+          </property>
+         </widget>
+        </item>
+        <item row="5" column="2">
+         <spacer name="verticalSpacer">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QGroupBox" name="groupBox_3">
+       <property name="title">
+        <string>Targeting</string>
+       </property>
+       <layout class="QGridLayout" name="gridLayout_4">
+        <item row="1" column="1">
+         <widget class="QESpinBox" name="qespinbox_18">
+          <property name="maximum">
+           <double>2000.000000000000000</double>
+          </property>
+          <property name="variable" stdset="0">
+           <string>POS:TARGET_X</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="2">
+         <widget class="QESpinBox" name="qespinbox_19">
+          <property name="maximum">
+           <double>2000.000000000000000</double>
+          </property>
+          <property name="variable" stdset="0">
+           <string>POS:TARGET_Y</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QESpinBox" name="qespinbox_22">
+          <property name="maximum">
+           <double>2000.000000000000000</double>
+          </property>
+          <property name="variable" stdset="0">
+           <string>POS:BEAM_X</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="2">
+         <widget class="QESpinBox" name="qespinbox_23">
+          <property name="maximum">
+           <double>2000.000000000000000</double>
+          </property>
+          <property name="variable" stdset="0">
+           <string>POS:BEAM_Y</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QLabel" name="label_11">
+          <property name="text">
+           <string>X</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="2">
+         <widget class="QLabel" name="label_12">
+          <property name="text">
+           <string>Y</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="label_15">
+          <property name="text">
+           <string>Target</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="label_16">
+          <property name="text">
+           <string>Beam</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="0">
+         <widget class="QLabel" name="label_18">
+          <property name="text">
+           <string>Calibration</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="0">
+         <widget class="QLabel" name="label_19">
+          <property name="text">
+           <string>Motor</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="1">
+         <widget class="QESpinBox" name="qespinbox_24">
+          <property name="minimum">
+           <double>-1000.000000000000000</double>
+          </property>
+          <property name="maximum">
+           <double>1000.000000000000000</double>
+          </property>
+          <property name="variable" stdset="0">
+           <string>POS:CALIB_X</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="2">
+         <widget class="QESpinBox" name="qespinbox_25">
+          <property name="minimum">
+           <double>-1000.000000000000000</double>
+          </property>
+          <property name="maximum">
+           <double>1000.000000000000000</double>
+          </property>
+          <property name="variable" stdset="0">
+           <string>POS:CALIB_Y</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="1">
+         <widget class="QESpinBox" name="qespinbox_26">
+          <property name="minimum">
+           <double>-1000.000000000000000</double>
+          </property>
+          <property name="maximum">
+           <double>1000.000000000000000</double>
+          </property>
+          <property name="variable" stdset="0">
+           <string>POS:MOTOR_X</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="2">
+         <widget class="QESpinBox" name="qespinbox_27">
+          <property name="minimum">
+           <double>-1000.000000000000000</double>
+          </property>
+          <property name="maximum">
+           <double>1000.000000000000000</double>
+          </property>
+          <property name="variable" stdset="0">
+           <string>POS:MOTOR_Y</string>
+          </property>
+         </widget>
+        </item>
+        <item row="5" column="0">
+         <widget class="QLabel" name="label_20">
+          <property name="text">
+           <string>Trigger</string>
+          </property>
+         </widget>
+        </item>
+        <item row="5" column="1" colspan="2">
+         <widget class="QELabel" name="qelabel_3">
+          <property name="variable" stdset="0">
+           <string>POS:TRIGGER</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="QGroupBox" name="groupBox">
+       <property name="title">
+        <string>Clipping</string>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item>
+         <widget class="QERadioGroup" name="qeradiogroup">
+          <property name="title">
+           <string/>
+          </property>
+          <property name="variable" stdset="0">
+           <string>CLIP:ON_OFF</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QGridLayout" name="gridLayout_2">
+          <item row="1" column="1">
+           <widget class="QESlider" name="qeslider_2">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="maximum">
+             <number>256</number>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="variable" stdset="0">
+             <string>CLIP:HIGH</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="2">
+           <widget class="QELabel" name="qelabel">
+            <property name="variable" stdset="0">
+             <string>CLIP:LOW</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="label">
+            <property name="text">
+             <string>High</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_2">
+            <property name="text">
+             <string>Low</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QESlider" name="qeslider">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="maximum">
+             <number>256</number>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="variable" stdset="0">
+             <string>CLIP:LOW</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="2">
+           <widget class="QELabel" name="qelabel_2">
+            <property name="variable" stdset="0">
+             <string>CLIP:HIGH</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item row="4" column="1">
+      <spacer name="verticalSpacer_3">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>40</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item row="1" column="0">
+      <widget class="QGroupBox" name="groupBox_4">
+       <property name="title">
+        <string>Mode</string>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_3">
+        <item>
+         <widget class="QPushButton" name="pushButton">
+          <property name="text">
+           <string>Pan</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton_2">
+          <property name="text">
+           <string>Select Area 1</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton_8">
+          <property name="text">
+           <string>Select Area 2</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton_9">
+          <property name="text">
+           <string>Select Area 3</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton_10">
+          <property name="text">
+           <string>Select Area 4</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton_3">
+          <property name="text">
+           <string>Select V Slice</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton_4">
+          <property name="text">
+           <string>Select H Slice</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton_5">
+          <property name="text">
+           <string>Select Profile</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton_6">
+          <property name="text">
+           <string>Select Target</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton_7">
+          <property name="text">
+           <string>Select Beam</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QEImage" name="qeimage">
+     <property name="imageVariable" stdset="0">
+      <string>VIDEO:WF:DATA</string>
+     </property>
+     <property name="widthVariable" stdset="0">
+      <string>VIDEO:LI:NX</string>
+     </property>
+     <property name="heightVariable" stdset="0">
+      <string>VIDEO:LI:NY</string>
+     </property>
+     <property name="regionOfInterest1XVariable" stdset="0">
+      <string>ROI1:X</string>
+     </property>
+     <property name="regionOfInterest1YVariable" stdset="0">
+      <string>ROI1:Y</string>
+     </property>
+     <property name="regionOfInterest1WVariable" stdset="0">
+      <string>ROI1:W</string>
+     </property>
+     <property name="regionOfInterest1HVariable" stdset="0">
+      <string>ROI1:H</string>
+     </property>
+     <property name="regionOfInterest2XVariable" stdset="0">
+      <string>ROI2:X</string>
+     </property>
+     <property name="regionOfInterest2YVariable" stdset="0">
+      <string>ROI2:Y</string>
+     </property>
+     <property name="regionOfInterest2WVariable" stdset="0">
+      <string>ROI2:W</string>
+     </property>
+     <property name="regionOfInterest2HVariable" stdset="0">
+      <string>ROI2:H</string>
+     </property>
+     <property name="regionOfInterest3XVariable" stdset="0">
+      <string>ROI3:X</string>
+     </property>
+     <property name="regionOfInterest3YVariable" stdset="0">
+      <string>ROI3:Y</string>
+     </property>
+     <property name="regionOfInterest3WVariable" stdset="0">
+      <string>ROI3:W</string>
+     </property>
+     <property name="regionOfInterest3HVariable" stdset="0">
+      <string>ROI3:H</string>
+     </property>
+     <property name="regionOfInterest4XVariable" stdset="0">
+      <string>ROI4:X</string>
+     </property>
+     <property name="regionOfInterest4YVariable" stdset="0">
+      <string>ROI4:Y</string>
+     </property>
+     <property name="regionOfInterest4WVariable" stdset="0">
+      <string>ROI4:W</string>
+     </property>
+     <property name="regionOfInterest4HVariable" stdset="0">
+      <string>ROI4:H</string>
+     </property>
+     <property name="targetXVariable" stdset="0">
+      <string>POS:TARGET_X</string>
+     </property>
+     <property name="targetYVariable" stdset="0">
+      <string>POS:TARGET_Y</string>
+     </property>
+     <property name="beamXVariable" stdset="0">
+      <string>POS:BEAM_X</string>
+     </property>
+     <property name="beamYVariable" stdset="0">
+      <string>POS:BEAM_Y</string>
+     </property>
+     <property name="targetTriggerVariable" stdset="0">
+      <string>POS:TRIGGER</string>
+     </property>
+     <property name="clippingOnOffVariable" stdset="0">
+      <string>CLIP:ON_OFF</string>
+     </property>
+     <property name="clippingLowVariable" stdset="0">
+      <string>CLIP:LOW</string>
+     </property>
+     <property name="clippingHighVariable" stdset="0">
+      <string>CLIP:HIGH</string>
+     </property>
+     <property name="variableSubstitutions" stdset="0">
+      <string>PT=SR08ID01DET01:PT, ROI=SR08ID01DET:ROI1</string>
+     </property>
+     <property name="logBrightness" stdset="0">
+      <bool>false</bool>
+     </property>
+     <property name="useFalseColour">
+      <bool>false</bool>
+     </property>
+     <property name="resizeOption" stdset="0">
+      <enum>QEImage::Fit</enum>
+     </property>
+     <property name="enableImageDisplayProperties">
+      <bool>true</bool>
+     </property>
+     <property name="enableRecording">
+      <bool>true</bool>
+     </property>
+     <property name="briefInfoArea">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QEImage</class>
+   <extends>QFrame</extends>
+   <header>QEImage.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>QELabel</class>
+   <extends>QLabel</extends>
+   <header>QELabel.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QERadioGroup</class>
+   <extends>QEGroupBox</extends>
+   <header>QERadioGroup.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QESlider</class>
+   <extends>QSlider</extends>
+   <header>QESlider.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QESpinBox</class>
+   <extends>QDoubleSpinBox</extends>
+   <header>QESpinBox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QEGroupBox</class>
+   <extends>QGroupBox</extends>
+   <header>QEGroupBox.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>qeimage</receiver>
+   <slot>setSelectPanMode()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>169</x>
+     <y>58</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1045</x>
+     <y>700</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_2</sender>
+   <signal>clicked()</signal>
+   <receiver>qeimage</receiver>
+   <slot>setSelectArea1Mode()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>157</x>
+     <y>92</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>967</x>
+     <y>482</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_3</sender>
+   <signal>clicked()</signal>
+   <receiver>qeimage</receiver>
+   <slot>setSelectArea2Mode()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>251</x>
+     <y>212</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>860</x>
+     <y>707</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_10</sender>
+   <signal>clicked()</signal>
+   <receiver>qeimage</receiver>
+   <slot>setSelectArea4Mode()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>268</x>
+     <y>182</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>930</x>
+     <y>557</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_4</sender>
+   <signal>clicked()</signal>
+   <receiver>qeimage</receiver>
+   <slot>setSelectHSliceMode()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>268</x>
+     <y>242</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>876</x>
+     <y>629</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_8</sender>
+   <signal>clicked()</signal>
+   <receiver>qeimage</receiver>
+   <slot>setSelectArea2Mode()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>240</x>
+     <y>122</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>985</x>
+     <y>492</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_9</sender>
+   <signal>clicked()</signal>
+   <receiver>qeimage</receiver>
+   <slot>setSelectArea3Mode()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>259</x>
+     <y>152</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>907</x>
+     <y>528</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_3</sender>
+   <signal>clicked()</signal>
+   <receiver>qeimage</receiver>
+   <slot>setSelectVSliceMode()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>226</x>
+     <y>212</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1096</x>
+     <y>487</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_5</sender>
+   <signal>clicked()</signal>
+   <receiver>qeimage</receiver>
+   <slot>setSelectProfileMode()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>234</x>
+     <y>272</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1082</x>
+     <y>486</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_6</sender>
+   <signal>clicked()</signal>
+   <receiver>qeimage</receiver>
+   <slot>setSelectTargetMode()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>191</x>
+     <y>302</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1006</x>
+     <y>490</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_7</sender>
+   <signal>clicked()</signal>
+   <receiver>qeimage</receiver>
+   <slot>setSelectBeamMode()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>231</x>
+     <y>332</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1065</x>
+     <y>472</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
