@@ -3,9 +3,10 @@ application.
 
 Options
 
--a      Adjust the GUIs scaling. This option takes a single value with is the percentage
-        scaling to be applies to each GUI. The value may be either an integer or a floating
-        point number. If specified its value will be constrained to the range 40 to 400.
+-a      Adjust the GUIs scaling. This option takes a single value which is the percentage
+        scaling to be applies to each GUI window. The value may be either an integer or a
+        floating point number. If specified its value will be constrained to the range 40
+        to 400.
 
 -s      Single application.
         QEGui will attempt to pass all parameters to an existing instance of QEGui. When
@@ -66,9 +67,9 @@ Options
         created when no customisation name has otherwise been provided. This name should
         be the name of one of the sets of window customisations read from the window
         customisation file. Typically, this is required when windows created through the
-        ‘Open’ file dialog, or windows created through a QE push button require a different
+        Open file dialog, or windows created through a QE push button require a different
         set of customisations to the system defaults. Note the customisation set specified
-        in the –n switch only applies to windows created at startup and specified on the
+        in the switch only applies to windows created at startup and specified on the
         command line.
 
 
@@ -89,14 +90,18 @@ Environment variables
 
 As well as the standard Channel Access (client) environment variables, the QE framework
 and hence the QEGui program's behaviour may be modified by setting a number of QE
-environment variables.
+environment variables. These are:
+
+
+QE_UI_PATH - this variable may be used as an alternative to, or in addition to, the -p option.
+This list of space seperated paths used when searching for a ui file.
 
 
 QE_ARCHIVE_LIST - specifies a list of channel archive servers. The format of this
 variable is a space separated set of one or more archive severs. Each server is specified
 as a hostname:port/endpoint triplet, e.g.:
 
-  CR01ARC01:80/cgi-bin/ArchiveDataServer.cgi CR01ARC02:80/cgi-bin/ArchiveDataServer.cgi
+   export QE_ARCHIVE_LIST="CR01ARC01:80/cgi-bin/ArchiveDataServer.cgi CR01ARC02:80/cgi-bin/ArchiveDataServer.cgi"
 
 A leading http:// for each triplet is neither required nor permitted.
 
@@ -122,18 +127,36 @@ All field names are associated with the preceeding record type.
 The internal resource file defines fields for all the records from base-3-14-11, most of
 the records from the synApps distribution, together with the AS developed concat record,
 i.e. the following record types:
-   ai          ao          aSub        asyn        bi          
-   bo          busy        calc        calcout     camac       
-   compress    concat      dfanout     dxp         epid        
-   er          erevent     event       fanout      genSub      
-   histogram   longin      longout     mbbi        mbbiDirect  
-   mbbo        mbboDirect  mca         motor       permissive  
-   sCalcout    scaler      scanparm    sel         seq         
-   sscan       sseq        state       status      stringin    
-   stringout   subArray    sub         swait       table       
-   timestamp   transform   vme         waveform    
+   ai          ao          aSub        asyn        bi
+   bo          busy        calc        calcout     camac
+   compress    concat      dfanout     dxp         epid
+   er          erevent     event       fanout      genSub
+   histogram   longin      longout     mbbi        mbbiDirect
+   mbbo        mbboDirect  mca         motor       permissive
+   sCalcout    scaler      scanparm    sel         seq
+   sscan       sseq        state       status      stringin
+   stringout   subArray    sub         swait       table
+   timestamp   transform   vme         waveform
 
 The file specified by the QE_RECORD_FIELD_LIST variable can be used to define additional
-record types and/or completely replace the specification of a specified record type. It 
+record types and/or completely replace the specification of a specified record type. It
 cannot be used to define extra fields for an existing record type.
+
+
+QE_STRIPCHART_PREDEFINED_PVS - This environment variable defines upto 10 space separated
+PV names that are available on the strip chart as pre defined PV names. Example:
+
+   export QE_STRIPCHART_PREDEFINED_PVS="SR11BCM01:CURRENT_MONITOR  SR11BCM01:LIFETIME_MONITOR"
+
+
+QE_GLOBAL_STYLE_SHEET - Defines a global style that is applied to the QApplication. This occurs
+the first time a QEWidget is contructed, so applies qeally to both designer and qegui. The variable
+may be the style string itself or if it starts with "file://" then it is intrpretted as a file
+reference which is read to get the global style. Examples:
+
+   export QE_GLOBAL_STYLE_SHEET="QGroupBox { border-radius:2px; border-width:1px; border-style:groove; border-color:rgb(128,128,128); margin-top: 6px; } QGroupBox::title { left:8px; top:-6px; }"
+
+or
+
+   export QE_GLOBAL_STYLE_SHEET="file:///etc/qegui.conf"
 
