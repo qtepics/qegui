@@ -15,7 +15,7 @@
  *  You should have received a copy of the GNU Lesser General Public License
  *  along with the EPICS QT Framework.  If not, see <http://www.gnu.org/licenses/>.
  *
- *  Copyright (c) 2009, 2010 Australian Synchrotron
+ *  Copyright (c) 2009,2010,2017 Australian Synchrotron
  *
  *  Author:
  *    Andrew Rhyder
@@ -196,7 +196,7 @@ MainWindow::MainWindow( QEGui* appIn, QString fileName, QString title, QString c
         // psi data acquisition
         mutexKnobData = new MutexKnobData();
         MutexKnobDataWrapperInit(mutexKnobData);
-    
+
     #endif // QE_USE_CAQTDM
 
     // A published profile should always be available, but the various signal consumers will always be either NULL (if the
@@ -1266,14 +1266,14 @@ void MainWindow::loadGuiIntoCurrentWindow( QEForm* gui, bool resize )
 
     // Initialise customisation items.
     app->getMainWindowCustomisations()->initialise( &customisationInfo );
-    
+
     // Only include PSI caQtDM integration if required.
     // To include PSI caQtDM stuff, don't define QE_USE_CAQTDM directly, define environment variable
     // QE_CAQTDM to be processed by QEGuiApp.pro
     #ifdef QE_USE_CAQTDM
 
         caQtDMLib= new CaQtDM_Lib(this, "", profile.getMacroSubstitutions(), mutexKnobData, 0, false, gui);
-    
+
     #endif // QE_USE_CAQTDM
 }
 
@@ -1547,9 +1547,11 @@ void MainWindow::createActionMaps()
     inbuiltFormMap.insert( QEActionRequests::actionStripChart(),     ":/qe/gui/forms/StripChart.ui" );
     inbuiltFormMap.insert( QEActionRequests::actionScratchPad(),     ":/qe/gui/forms/ScratchPad.ui" );
     inbuiltFormMap.insert( QEActionRequests::actionPlotter(),        ":/qe/gui/forms/Plotter.ui"),
+    inbuiltFormMap.insert( QEActionRequests::actionTable(),          ":/qe/gui/forms/Table.ui"),
     inbuiltFormMap.insert( QEActionRequests::actionShowInHisogram(), ":/qe/gui/forms/WaveformHistogram.ui"),
     inbuiltFormMap.insert( "Message Log...",                         ":/qe/gui/forms/MessageLog.ui" );
     inbuiltFormMap.insert( "Plotter...",                             ":/qe/gui/forms/Plotter.ui" );
+    inbuiltFormMap.insert( "Table...",                               ":/qe/gui/forms/Table.ui" );
     inbuiltFormMap.insert( "PV Load/Save...",                        ":/qe/gui/forms/PVLoadSave.ui" );
     inbuiltFormMap.insert( "Archive Status...",                      ":/qe/gui/forms/ArchiveStatus.ui" );
     inbuiltFormMap.insert( "Archive Name Search...",                 ":/qe/gui/forms/ArchiveNameSearch.ui" );
@@ -1561,9 +1563,11 @@ void MainWindow::createActionMaps()
     classNameMap.insert( QEActionRequests::actionStripChart(),       "QEStripChart" );
     classNameMap.insert( QEActionRequests::actionScratchPad(),       "QEScratchPad" );
     classNameMap.insert( QEActionRequests::actionPlotter(),          "QEPlotter"),
+    classNameMap.insert( QEActionRequests::actionTable(),            "QETable"),
     classNameMap.insert( QEActionRequests::actionShowInHisogram(),   "QEWaveformHistogram" );
     classNameMap.insert( "Message Log...",                           "QEMessageLog" );
     classNameMap.insert( "Plotter...",                               "QEPlotter" );
+    classNameMap.insert( "Table...",                                 "QETable" );
     classNameMap.insert( "PV Load/Save...",                          "QEPvLoadSave" );
     classNameMap.insert( "Archive Status...",                        "QEArchiveStatus" );
     classNameMap.insert( "Archive Name Search...",                   "QEArchiveNameSearch" );

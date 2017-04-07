@@ -5,6 +5,7 @@
         <file>StripChart.ui</file>
         <file>MessageLog.ui</file>
         <file>Plotter.ui</file>
+        <file>Table.ui</file>
         <file>ScratchPad.ui</file>
         <file>PVLoadSave.ui</file>
         <file>WaveformHistogram.ui</file>
