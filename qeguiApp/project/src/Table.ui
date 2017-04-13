@@ -33,7 +33,32 @@
     <number>2</number>
    </property>
    <item>
-    <widget class="QETable" name="qetable"/>
+    <widget class="QETable" name="qetable">
+     <property name="titles">
+      <stringlist>
+       <string>&lt;&gt;</string>
+       <string>&lt;&gt;</string>
+       <string>&lt;&gt;</string>
+       <string>&lt;&gt;</string>
+       <string>&lt;&gt;</string>
+       <string>&lt;&gt;</string>
+       <string>&lt;&gt;</string>
+       <string>&lt;&gt;</string>
+       <string>&lt;&gt;</string>
+       <string>&lt;&gt;</string>
+       <string>&lt;&gt;</string>
+       <string>&lt;&gt;</string>
+       <string>&lt;&gt;</string>
+       <string>&lt;&gt;</string>
+       <string>&lt;&gt;</string>
+       <string>&lt;&gt;</string>
+       <string>&lt;&gt;</string>
+       <string>&lt;&gt;</string>
+       <string>&lt;&gt;</string>
+       <string>&lt;&gt;</string>
+      </stringlist>
+     </property>
+    </widget>
    </item>
   </layout>
  </widget>
