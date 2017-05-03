@@ -1,6 +1,6 @@
 # $File: //ASP/tec/gui/qegui/trunk/qeguiApp/Makefile $
-# $Revision: #6 $
-# $DateTime: 2017/05/03 13:23:09 $
+# $Revision: #7 $
+# $DateTime: 2017/05/03 18:48:46 $
 # Last checked in by: $Author: starritt $
 #
 # This make file is the bridge beween the EPICS build system and the Qt project qmake/make paradigm.
@@ -75,7 +75,7 @@ install: $(TARGET)
 $(TARGET) : $(SOURCE_DIR)/$(MAKEFILE)  always
 	@echo "=== Building $(BINFILE) application"                 && \
 	cd  $(SOURCE_DIR)                                           && \
-	$(MAKE) -j3  -f $(MAKEFILE)                                 && \
+	$(MAKE) -f $(MAKEFILE)  -j 3                                && \
 	echo "=== Complete"
 
 
