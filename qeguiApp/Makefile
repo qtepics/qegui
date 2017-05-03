@@ -1,6 +1,6 @@
 # $File: //ASP/tec/gui/qegui/trunk/qeguiApp/Makefile $
-# $Revision: #5 $
-# $DateTime: 2017/05/01 17:24:01 $
+# $Revision: #6 $
+# $DateTime: 2017/05/03 13:23:09 $
 # Last checked in by: $Author: starritt $
 #
 # This make file is the bridge beween the EPICS build system and the Qt project qmake/make paradigm.
@@ -28,8 +28,22 @@ export EPICS_BASE := $(EPICS_BASE)
 export QE_FRAMEWORK := $(QE_FRAMEWORK)
 
 # Commands
+# EPICS make system defines many OS independent commands, but not all
 #
-NOOP = :
+ifeq ($(OS),Windows_NT)
+
+    define NOOP
+       echo ""
+    endef
+
+else
+    # Linux and the like.
+    #
+    define NOOP
+       :
+    endef
+
+endif
 
 # Directories of interest.
 #
@@ -72,14 +86,14 @@ $(SOURCE_DIR)/$(MAKEFILE) : $(SOURCE_DIR)/$(PROJECT)
 
 
 # Do a qt clean, then delete all qmake generated Makefiles.
-# Note the : "command" is a null command in bash.
 #
 clean:
-	cd  $(SOURCE_DIR) && test -f $(MAKEFILE) && $(MAKE) -f $(MAKEFILE) clean && $(RM) $(MAKEFILE) || $(NOOP)
+	cd $(SOURCE_DIR) && $(MAKE) -f $(MAKEFILE) clean || $(NOOP)
+	cd $(SOURCE_DIR) && $(RM) $(MAKEFILE)
 
 
 uninstall:
-	rm -f $(TARGET)
+	$(RM) $(TARGET)
 
 always:
 
