@@ -31,7 +31,7 @@
     <string>Sector 06</string>
    </property>
   </widget>
-  <widget class="QEFormPlugin" name="asguiformplugin">
+  <widget class="QEForm" name="asguiformplugin">
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -93,9 +93,9 @@
    <header>QEPushButton.h</header>
   </customwidget>
   <customwidget>
-   <class>QEFormPlugin</class>
+   <class>QEForm</class>
    <extends>QScrollArea</extends>
-   <header>QEFormPlugin.h</header>
+   <header>QEForm.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

@@ -49,6 +49,9 @@
       </item>
       <item row="1" column="1">
        <widget class="QELabel" name="qcalabel">
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
         <property name="variable" stdset="0">
          <string>SR$(SR)SGV01:OPEN_CLOSE_STATUS</string>
         </property>
@@ -59,6 +62,9 @@
       </item>
       <item row="1" column="2">
        <widget class="QELabel" name="qelabel_2">
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
         <property name="variable" stdset="0">
          <string>SR$(SR)SGV02:OPEN_CLOSE_STATUS</string>
         </property>
@@ -76,6 +82,9 @@
       </item>
       <item row="2" column="1">
        <widget class="QELabel" name="qelabel_3">
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
         <property name="variable" stdset="0">
          <string>SR$(SR)SGV01:EPS_OOS_STATUS</string>
         </property>
@@ -86,6 +95,9 @@
       </item>
       <item row="2" column="2">
        <widget class="QELabel" name="qelabel_10">
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
         <property name="variable" stdset="0">
          <string>SR$(SR)SGV02:EPS_OOS_STATUS</string>
         </property>
@@ -103,6 +115,9 @@
       </item>
       <item row="3" column="1">
        <widget class="QELabel" name="qelabel_4">
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
         <property name="variable" stdset="0">
          <string>SR$(SR)SGV01:INHIBIT_OPEN_STATUS</string>
         </property>
@@ -113,6 +128,9 @@
       </item>
       <item row="3" column="2">
        <widget class="QELabel" name="qelabel_8">
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
         <property name="variable" stdset="0">
          <string>SR$(SR)SGV02:INHIBIT_OPEN_STATUS</string>
         </property>
@@ -130,8 +148,8 @@
       </item>
       <item row="4" column="1">
        <widget class="QELabel" name="qelabel_5">
-        <property name="text">
-         <string>No Action</string>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
         </property>
         <property name="variable" stdset="0">
          <string>SR$(SR)SGV01:OPEN_CLOSE_CMD</string>
@@ -139,18 +157,24 @@
         <property name="variableSubstitutions" stdset="0">
          <string>SR=01</string>
         </property>
+        <property name="text">
+         <string>No Action</string>
+        </property>
        </widget>
       </item>
       <item row="4" column="2">
        <widget class="QELabel" name="qelabel_9">
-        <property name="text">
-         <string>No Action</string>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
         </property>
         <property name="variable" stdset="0">
          <string>SR$(SR)SGV02:OPEN_CLOSE_CMD</string>
         </property>
         <property name="variableSubstitutions" stdset="0">
          <string>SR=01</string>
+        </property>
+        <property name="text">
+         <string>No Action</string>
         </property>
        </widget>
       </item>
@@ -171,9 +195,9 @@
              <colorrole role="WindowText">
               <brush brushstyle="SolidPattern">
                <color alpha="255">
-                <red>0</red>
-                <green>0</green>
-                <blue>0</blue>
+                <red>128</red>
+                <green>128</green>
+                <blue>128</blue>
                </color>
               </brush>
              </colorrole>
@@ -225,9 +249,9 @@
              <colorrole role="Text">
               <brush brushstyle="SolidPattern">
                <color alpha="255">
-                <red>0</red>
-                <green>0</green>
-                <blue>0</blue>
+                <red>128</red>
+                <green>128</green>
+                <blue>128</blue>
                </color>
               </brush>
              </colorrole>
@@ -243,9 +267,9 @@
              <colorrole role="ButtonText">
               <brush brushstyle="SolidPattern">
                <color alpha="255">
-                <red>0</red>
-                <green>0</green>
-                <blue>0</blue>
+                <red>128</red>
+                <green>128</green>
+                <blue>128</blue>
                </color>
               </brush>
              </colorrole>
@@ -308,9 +332,9 @@
              <colorrole role="WindowText">
               <brush brushstyle="SolidPattern">
                <color alpha="255">
-                <red>0</red>
-                <green>0</green>
-                <blue>0</blue>
+                <red>128</red>
+                <green>128</green>
+                <blue>128</blue>
                </color>
               </brush>
              </colorrole>
@@ -362,9 +386,9 @@
              <colorrole role="Text">
               <brush brushstyle="SolidPattern">
                <color alpha="255">
-                <red>0</red>
-                <green>0</green>
-                <blue>0</blue>
+                <red>128</red>
+                <green>128</green>
+                <blue>128</blue>
                </color>
               </brush>
              </colorrole>
@@ -380,9 +404,9 @@
              <colorrole role="ButtonText">
               <brush brushstyle="SolidPattern">
                <color alpha="255">
-                <red>0</red>
-                <green>0</green>
-                <blue>0</blue>
+                <red>128</red>
+                <green>128</green>
+                <blue>128</blue>
                </color>
               </brush>
              </colorrole>
@@ -445,9 +469,9 @@
              <colorrole role="WindowText">
               <brush brushstyle="SolidPattern">
                <color alpha="255">
-                <red>63</red>
-                <green>127</green>
-                <blue>63</blue>
+                <red>128</red>
+                <green>128</green>
+                <blue>128</blue>
                </color>
               </brush>
              </colorrole>
@@ -499,9 +523,9 @@
              <colorrole role="Text">
               <brush brushstyle="SolidPattern">
                <color alpha="255">
-                <red>63</red>
-                <green>127</green>
-                <blue>63</blue>
+                <red>128</red>
+                <green>128</green>
+                <blue>128</blue>
                </color>
               </brush>
              </colorrole>
@@ -517,9 +541,9 @@
              <colorrole role="ButtonText">
               <brush brushstyle="SolidPattern">
                <color alpha="255">
-                <red>63</red>
-                <green>127</green>
-                <blue>63</blue>
+                <red>128</red>
+                <green>128</green>
+                <blue>128</blue>
                </color>
               </brush>
              </colorrole>
@@ -605,9 +629,9 @@
              <colorrole role="WindowText">
               <brush brushstyle="SolidPattern">
                <color alpha="255">
-                <red>0</red>
-                <green>0</green>
-                <blue>0</blue>
+                <red>128</red>
+                <green>128</green>
+                <blue>128</blue>
                </color>
               </brush>
              </colorrole>
@@ -659,9 +683,9 @@
              <colorrole role="Text">
               <brush brushstyle="SolidPattern">
                <color alpha="255">
-                <red>0</red>
-                <green>0</green>
-                <blue>0</blue>
+                <red>128</red>
+                <green>128</green>
+                <blue>128</blue>
                </color>
               </brush>
              </colorrole>
@@ -677,9 +701,9 @@
              <colorrole role="ButtonText">
               <brush brushstyle="SolidPattern">
                <color alpha="255">
-                <red>0</red>
-                <green>0</green>
-                <blue>0</blue>
+                <red>128</red>
+                <green>128</green>
+                <blue>128</blue>
                </color>
               </brush>
              </colorrole>
@@ -742,9 +766,9 @@
              <colorrole role="WindowText">
               <brush brushstyle="SolidPattern">
                <color alpha="255">
-                <red>0</red>
-                <green>0</green>
-                <blue>0</blue>
+                <red>128</red>
+                <green>128</green>
+                <blue>128</blue>
                </color>
               </brush>
              </colorrole>
@@ -796,9 +820,9 @@
              <colorrole role="Text">
               <brush brushstyle="SolidPattern">
                <color alpha="255">
-                <red>0</red>
-                <green>0</green>
-                <blue>0</blue>
+                <red>128</red>
+                <green>128</green>
+                <blue>128</blue>
                </color>
               </brush>
              </colorrole>
@@ -814,9 +838,9 @@
              <colorrole role="ButtonText">
               <brush brushstyle="SolidPattern">
                <color alpha="255">
-                <red>0</red>
-                <green>0</green>
-                <blue>0</blue>
+                <red>128</red>
+                <green>128</green>
+                <blue>128</blue>
                </color>
               </brush>
              </colorrole>
@@ -879,9 +903,9 @@
              <colorrole role="WindowText">
               <brush brushstyle="SolidPattern">
                <color alpha="255">
-                <red>127</red>
-                <green>63</green>
-                <blue>63</blue>
+                <red>128</red>
+                <green>128</green>
+                <blue>128</blue>
                </color>
               </brush>
              </colorrole>
@@ -933,9 +957,9 @@
              <colorrole role="Text">
               <brush brushstyle="SolidPattern">
                <color alpha="255">
-                <red>127</red>
-                <green>63</green>
-                <blue>63</blue>
+                <red>128</red>
+                <green>128</green>
+                <blue>128</blue>
                </color>
               </brush>
              </colorrole>
@@ -951,9 +975,9 @@
              <colorrole role="ButtonText">
               <brush brushstyle="SolidPattern">
                <color alpha="255">
-                <red>127</red>
-                <green>63</green>
-                <blue>63</blue>
+                <red>128</red>
+                <green>128</green>
+                <blue>128</blue>
                </color>
               </brush>
              </colorrole>
@@ -1046,9 +1070,9 @@
              <colorrole role="WindowText">
               <brush brushstyle="SolidPattern">
                <color alpha="255">
-                <red>0</red>
-                <green>0</green>
-                <blue>0</blue>
+                <red>128</red>
+                <green>128</green>
+                <blue>128</blue>
                </color>
               </brush>
              </colorrole>
@@ -1100,9 +1124,9 @@
              <colorrole role="Text">
               <brush brushstyle="SolidPattern">
                <color alpha="255">
-                <red>0</red>
-                <green>0</green>
-                <blue>0</blue>
+                <red>128</red>
+                <green>128</green>
+                <blue>128</blue>
                </color>
               </brush>
              </colorrole>
@@ -1118,9 +1142,9 @@
              <colorrole role="ButtonText">
               <brush brushstyle="SolidPattern">
                <color alpha="255">
-                <red>0</red>
-                <green>0</green>
-                <blue>0</blue>
+                <red>128</red>
+                <green>128</green>
+                <blue>128</blue>
                </color>
               </brush>
              </colorrole>
@@ -1183,9 +1207,9 @@
              <colorrole role="WindowText">
               <brush brushstyle="SolidPattern">
                <color alpha="255">
-                <red>0</red>
-                <green>0</green>
-                <blue>0</blue>
+                <red>128</red>
+                <green>128</green>
+                <blue>128</blue>
                </color>
               </brush>
              </colorrole>
@@ -1237,9 +1261,9 @@
              <colorrole role="Text">
               <brush brushstyle="SolidPattern">
                <color alpha="255">
-                <red>0</red>
-                <green>0</green>
-                <blue>0</blue>
+                <red>128</red>
+                <green>128</green>
+                <blue>128</blue>
                </color>
               </brush>
              </colorrole>
@@ -1255,9 +1279,9 @@
              <colorrole role="ButtonText">
               <brush brushstyle="SolidPattern">
                <color alpha="255">
-                <red>0</red>
-                <green>0</green>
-                <blue>0</blue>
+                <red>128</red>
+                <green>128</green>
+                <blue>128</blue>
                </color>
               </brush>
              </colorrole>
@@ -1320,9 +1344,9 @@
              <colorrole role="WindowText">
               <brush brushstyle="SolidPattern">
                <color alpha="255">
-                <red>63</red>
-                <green>127</green>
-                <blue>63</blue>
+                <red>128</red>
+                <green>128</green>
+                <blue>128</blue>
                </color>
               </brush>
              </colorrole>
@@ -1374,9 +1398,9 @@
              <colorrole role="Text">
               <brush brushstyle="SolidPattern">
                <color alpha="255">
-                <red>63</red>
-                <green>127</green>
-                <blue>63</blue>
+                <red>128</red>
+                <green>128</green>
+                <blue>128</blue>
                </color>
               </brush>
              </colorrole>
@@ -1392,9 +1416,9 @@
              <colorrole role="ButtonText">
               <brush brushstyle="SolidPattern">
                <color alpha="255">
-                <red>63</red>
-                <green>127</green>
-                <blue>63</blue>
+                <red>128</red>
+                <green>128</green>
+                <blue>128</blue>
                </color>
               </brush>
              </colorrole>
@@ -1483,9 +1507,9 @@
              <colorrole role="WindowText">
               <brush brushstyle="SolidPattern">
                <color alpha="255">
-                <red>0</red>
-                <green>0</green>
-                <blue>0</blue>
+                <red>128</red>
+                <green>128</green>
+                <blue>128</blue>
                </color>
               </brush>
              </colorrole>
@@ -1537,9 +1561,9 @@
              <colorrole role="Text">
               <brush brushstyle="SolidPattern">
                <color alpha="255">
-                <red>0</red>
-                <green>0</green>
-                <blue>0</blue>
+                <red>128</red>
+                <green>128</green>
+                <blue>128</blue>
                </color>
               </brush>
              </colorrole>
@@ -1555,9 +1579,9 @@
              <colorrole role="ButtonText">
               <brush brushstyle="SolidPattern">
                <color alpha="255">
-                <red>0</red>
-                <green>0</green>
-                <blue>0</blue>
+                <red>128</red>
+                <green>128</green>
+                <blue>128</blue>
                </color>
               </brush>
              </colorrole>
@@ -1620,9 +1644,9 @@
              <colorrole role="WindowText">
               <brush brushstyle="SolidPattern">
                <color alpha="255">
-                <red>0</red>
-                <green>0</green>
-                <blue>0</blue>
+                <red>128</red>
+                <green>128</green>
+                <blue>128</blue>
                </color>
               </brush>
              </colorrole>
@@ -1674,9 +1698,9 @@
              <colorrole role="Text">
               <brush brushstyle="SolidPattern">
                <color alpha="255">
-                <red>0</red>
-                <green>0</green>
-                <blue>0</blue>
+                <red>128</red>
+                <green>128</green>
+                <blue>128</blue>
                </color>
               </brush>
              </colorrole>
@@ -1692,9 +1716,9 @@
              <colorrole role="ButtonText">
               <brush brushstyle="SolidPattern">
                <color alpha="255">
-                <red>0</red>
-                <green>0</green>
-                <blue>0</blue>
+                <red>128</red>
+                <green>128</green>
+                <blue>128</blue>
                </color>
               </brush>
              </colorrole>
@@ -1757,9 +1781,9 @@
              <colorrole role="WindowText">
               <brush brushstyle="SolidPattern">
                <color alpha="255">
-                <red>127</red>
-                <green>63</green>
-                <blue>63</blue>
+                <red>128</red>
+                <green>128</green>
+                <blue>128</blue>
                </color>
               </brush>
              </colorrole>
@@ -1811,9 +1835,9 @@
              <colorrole role="Text">
               <brush brushstyle="SolidPattern">
                <color alpha="255">
-                <red>127</red>
-                <green>63</green>
-                <blue>63</blue>
+                <red>128</red>
+                <green>128</green>
+                <blue>128</blue>
                </color>
               </brush>
              </colorrole>
@@ -1829,9 +1853,9 @@
              <colorrole role="ButtonText">
               <brush brushstyle="SolidPattern">
                <color alpha="255">
-                <red>127</red>
-                <green>63</green>
-                <blue>63</blue>
+                <red>128</red>
+                <green>128</green>
+                <blue>128</blue>
                </color>
               </brush>
              </colorrole>
@@ -1920,8 +1944,8 @@
       </item>
       <item row="6" column="1">
        <widget class="QELabel" name="qelabel_6">
-        <property name="text">
-         <string>Ok</string>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
         </property>
         <property name="variable" stdset="0">
          <string>SR$(SR)SGV01:MOVEMENT_FAILURE</string>
@@ -1929,18 +1953,24 @@
         <property name="variableSubstitutions" stdset="0">
          <string>SR=01</string>
         </property>
+        <property name="text">
+         <string>Ok</string>
+        </property>
        </widget>
       </item>
       <item row="6" column="2">
        <widget class="QELabel" name="qelabel_7">
-        <property name="text">
-         <string>Ok</string>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
         </property>
         <property name="variable" stdset="0">
          <string>SR$(SR)SGV02:MOVEMENT_FAILURE</string>
         </property>
         <property name="variableSubstitutions" stdset="0">
          <string>SR=01</string>
+        </property>
+        <property name="text">
+         <string>Ok</string>
         </property>
        </widget>
       </item>
@@ -1996,9 +2026,12 @@
        </widget>
       </item>
       <item row="0" column="1">
-       <widget class="QSubstitutedLabelPlugin" name="qsubstitutedlabelplugin">
+       <widget class="QESubstitutedLabel" name="qsubstitutedlabelplugin">
         <property name="text">
          <string>Sector 01 Valve 1</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
         </property>
         <property name="labelText" stdset="0">
          <string>Sector $(SR) Valve 1</string>
@@ -2009,9 +2042,12 @@
        </widget>
       </item>
       <item row="0" column="2">
-       <widget class="QSubstitutedLabelPlugin" name="qsubstitutedlabelplugin_2">
+       <widget class="QESubstitutedLabel" name="qsubstitutedlabelplugin_2">
         <property name="text">
          <string>Sector 01 Valve 2</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
         </property>
         <property name="labelText" stdset="0">
          <string>Sector $(SR) Valve 2</string>
@@ -2033,14 +2069,14 @@
    <header>QELabel.h</header>
   </customwidget>
   <customwidget>
-   <class>QSubstitutedLabelPlugin</class>
-   <extends>QLabel</extends>
-   <header>QSubstitutedLabelPlugin.h</header>
-  </customwidget>
-  <customwidget>
    <class>QEPushButton</class>
    <extends>QPushButton</extends>
    <header>QEPushButton.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QESubstitutedLabel</class>
+   <extends>QLabel</extends>
+   <header>QESubstitutedLabel.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

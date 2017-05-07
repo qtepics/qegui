@@ -31,7 +31,7 @@
     <string>Sector 08</string>
    </property>
   </widget>
-  <widget class="QEFormPlugin" name="asguiformplugin">
+  <widget class="QEForm" name="asguiformplugin">
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -59,7 +59,7 @@
    <property name="text">
     <string>Sector 07</string>
    </property>
-   <property name="guiFile">
+   <property name="guiFile" stdset="0">
     <string>SVS07.ui</string>
    </property>
    <property name="creationOption" stdset="0">
@@ -78,7 +78,7 @@
    <property name="text">
     <string>Sector 09</string>
    </property>
-   <property name="guiFile">
+   <property name="guiFile" stdset="0">
     <string>SVS09.ui</string>
    </property>
    <property name="creationOption" stdset="0">
@@ -88,14 +88,14 @@
  </widget>
  <customwidgets>
   <customwidget>
+   <class>QEForm</class>
+   <extends>QWidget</extends>
+   <header>QEForm.h</header>
+  </customwidget>
+  <customwidget>
    <class>QEPushButton</class>
    <extends>QPushButton</extends>
    <header>QEPushButton.h</header>
-  </customwidget>
-  <customwidget>
-   <class>QEFormPlugin</class>
-   <extends>QScrollArea</extends>
-   <header>QEFormPlugin.h</header>
   </customwidget>
  </customwidgets>
  <resources/>
