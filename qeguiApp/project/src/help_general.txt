@@ -150,7 +150,7 @@ PV names that are available on the strip chart as pre defined PV names. Example:
 
 
 QE_GLOBAL_STYLE_SHEET - Defines a global style that is applied to the QApplication. This occurs
-the first time a QEWidget is contructed, so applies qeally to both designer and qegui. The variable
+the first time a QEWidget is constructed, so applies qeally to both designer and qegui. The variable
 may be the style string itself or if it starts with "file://" then it is intrpretted as a file
 reference which is read to get the global style. Examples:
 

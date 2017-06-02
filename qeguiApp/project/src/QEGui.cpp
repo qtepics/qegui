@@ -193,18 +193,18 @@ int QEGui::run()
 void QEGui::printVersion ()
 {
    std::cout  << "QEGui version:     " << QE_VERSION_STRING << "  "
-              << QE_VERSION_DATE_TIME <<  " (using QT " << QT_VERSION_STR << ")\n";
+              << QE_VERSION_DATE_TIME <<  " (using QT " << QT_VERSION_STR << ")" << std::endl;
 
    std::cout  << "Framework version: "
               << QEFrameworkVersion::getString().toLatin1().data()       << "  "
               << QEFrameworkVersion::getDateTime().toLatin1().data()     << " (using QT "
-              << QEFrameworkVersion::getQtVersionStr().toLatin1().data() << ")\n";
+              << QEFrameworkVersion::getQtVersionStr().toLatin1().data() << ")" << std::endl;
 
    // Note: the EPICS version string is prefixed by the text "EPICS" and
    // the QWT version string is prefixed by "QWT"
    //
    std::cout  << "Support packages:  " << QEFrameworkVersion::getEpicsVersionStr ().toLatin1().data()
-              << " and "    << QEFrameworkVersion::getQwtVersionStr().toLatin1().data() << "\n";
+              << " and "    << QEFrameworkVersion::getQwtVersionStr().toLatin1().data() << std::endl;
 }
 
 // Print file to stream
