@@ -1,4 +1,5 @@
-/*
+/*  aboutDialog.h
+ *
  *  This file is part of the EPICS QT Framework, initially developed at the Australian Synchrotron.
  *
  *  The EPICS QT Framework is free software: you can redistribute it and/or modify
@@ -14,7 +15,7 @@
  *  You should have received a copy of the GNU Lesser General Public License
  *  along with the EPICS QT Framework.  If not, see <http://www.gnu.org/licenses/>.
  *
- *  Copyright (c) 2013 Australian Synchrotron
+ *  Copyright (c) 2013,2017 Australian Synchrotron
  *
  *  Author:
  *    Andrew Rhyder
@@ -27,8 +28,8 @@
  * Presents a dialog containing information about the QEGui application such as version numbers and credits
  */
 
-#ifndef ABOUTDIALOG_H
-#define ABOUTDIALOG_H
+#ifndef QEGUI_ABOUT_DIALOG_H
+#define QEGUI_ABOUT_DIALOG_H
 
 #include <QDialog>
 
@@ -44,6 +45,8 @@ public:
     explicit aboutDialog( QString QEGuiVersion,                   // Version info and the build date/time at compile time of QEGui
                           QString QEFrameworkVersionQEGui,        // Version info and the build date/time at compile time of the copy of QEPlugin library loaded by QEGui
                           QString QEFrameworkVersionUILoader,     // Version info and the build date/time at compile time of the copy of QEPlugin library loaded by QUiLoader while creating QE widgets
+                          QString EPICSVersion,                   // Version of EPICS base
+                          QString QWTVersion,                     // Version of QWT
 
                           QString macroSubstitutions,             // Macro substitutions (-m parameter)
                           QStringList pathList,                   // Path list (-p parameter)
@@ -74,4 +77,4 @@ private:
     Ui::aboutDialog *ui;
 };
 
-#endif // ABOUTDIALOG_H
+#endif // QEGUI_ABOUT_DIALOG_H

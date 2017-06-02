@@ -139,6 +139,7 @@
  */
 
 #include <QtGui>
+#include <QDebug>
 #include <QString>
 #include <QUiLoader>
 
@@ -160,6 +161,8 @@
 #include <QEGui.h>
 #include <aboutDialog.h>
 #include <macroSubstitution.h>
+
+#define DEBUG qDebug () << "MainWindow" << __LINE__ << __FUNCTION__ << "  "
 
 // Before Qt 4.8, the command to start designer is 'designer'.
 // Qt 4.8 later uses the command 'designer-qt4'
@@ -806,7 +809,8 @@ void MainWindow::on_actionAbout_triggered()
     aboutDialog ad( QString( QE_VERSION_STRING " " QE_VERSION_DATE_TIME ), // Version info and the build date/time at compile time of QEGui
                     QEFrameworkVersionQEGui,                               // Version info and the build date/time at compile time of the copy of QEPlugin library loaded by QEGui
                     UILoaderFrameworkVersion,                              // Version info and the build date/time at compile time of the copy of QEPlugin library loaded by QUiLoader while creating QE widgets
-
+                    QEFrameworkVersion::getEpicsVersionStr(),              // Version of EPICS base
+                    QEFrameworkVersion::getQwtVersionStr(),                // Version of QWT
                     profile.getMacroSubstitutions(),                       // Macro substitutions (-m parameter)
                     profile.getPathList(),                                 // Path list (-p parameter)
                     profile.getEnvPathList(),                              // Path list (environment variable)

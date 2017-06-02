@@ -200,10 +200,11 @@ void QEGui::printVersion ()
               << QEFrameworkVersion::getDateTime().toLatin1().data()     << " (using QT "
               << QEFrameworkVersion::getQtVersionStr().toLatin1().data() << ")\n";
 
-   // Note: the EPICS version string is prefixed by the text "EPICS".
+   // Note: the EPICS version string is prefixed by the text "EPICS" and
+   // the QWT version string is prefixed by "QWT"
    //
    std::cout  << "Support packages:  " << QEFrameworkVersion::getEpicsVersionStr ().toLatin1().data()
-              << " and QWT "    << QEFrameworkVersion::getQwtVersionStr().toLatin1().data() << "\n";
+              << " and "    << QEFrameworkVersion::getQwtVersionStr().toLatin1().data() << "\n";
 }
 
 // Print file to stream
