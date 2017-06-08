@@ -284,10 +284,31 @@ MainWindow::MainWindow( QEGui* appIn, QString fileName, QString title, QString c
     // Ensure no widget in the loaded gui has focus (and therefore will not update)
     setFocus();
 
+#ifdef Q_OS_WIN
+    // WINDOWS 7, WINDOW 8 WORKAROUND
+    // On windows 7 and Windows 8, (at least) since Qt 5 the initial position of the main window is set to top left
+    // then window decoration is added around the widget leaving the left and top decorations off the display.
+    // Since this includes the title bar the user can't even drag the window to be fully in view.
+    // A workaround is to resize the window a little bit from the right or bottom borders which are
+    // visible at which point the window manager moves the window to make it all visible.
+    // This code just forces the window manager to re-evaluate its position and ensures the window decoration,
+    // including the title bar, is visible.
+
+    // Move to 0,0.
+    // New windows should be created at 0,0, but just in case only move to 0,0 if already there
+    {
+        QPoint p = pos();
+        if( p.x() == 0 && p.y() == 0 )
+        {
+            move(0,0);
+        }
+    }
+#endif
+
     // Restore (will only do anything if this main window is being created during a restore)
     saveRestore( SaveRestoreSignal::RESTORE_APPLICATION );
 
-    // Set up request action to form name and clss name maps.
+    // Set up request action to form name and class name maps.
     createActionMaps();
 }
 
