@@ -2341,8 +2341,8 @@ void MainWindow::saveRestore( SaveRestoreSignal::saveRestoreOptions option )
                 geo.addAttribute( "Width", r.width() );
                 geo.addAttribute( "Height", r.height() );
 
-                PMElement state =  mw.addElement( "State" );
-                state.addAttribute( "Flags", windowState() );
+                PMElement state = mw.addElement( "State" );
+                state.addAttribute( "Flags", int( windowState() ) );
 
                 // Note which GUI is the current GUI. This is relevent if main window is displaying
                 // more than one gui in a tab widget. Redundant but harmless if only one gui is present.
@@ -2423,9 +2423,9 @@ void MainWindow::saveRestore( SaveRestoreSignal::saveRestoreOptions option )
                                 if( dock )
                                 {
                                     PMElement docking =  form.addElement( "Docking" );
-                                    docking.addAttribute( "AllowedAreas", dock->allowedAreas() );
-                                    docking.addAttribute( "Area", dockWidgetArea( dock ) );
-                                    docking.addAttribute( "Features", dock->features() );
+                                    docking.addAttribute( "AllowedAreas", int( dock->allowedAreas() ) );
+                                    docking.addAttribute( "Area", int ( dockWidgetArea( dock ) ) );
+                                    docking.addAttribute( "Features", int ( dock->features() ) );
                                     docking.addAttribute( "Floating", dock->isFloating() );
                                     docking.addAttribute( "X", dock->x() );
                                     docking.addAttribute( "Y", dock->y() );
