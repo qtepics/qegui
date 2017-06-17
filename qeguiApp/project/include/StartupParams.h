@@ -1,4 +1,4 @@
-/*  StartupParams.h 
+/*  StartupParams.h
  *
  *  This file is part of the EPICS QT Framework, initially developed at the Australian Synchrotron.
  *
@@ -15,7 +15,7 @@
  *  You should have received a copy of the GNU Lesser General Public License
  *  along with the EPICS QT Framework.  If not, see <http://www.gnu.org/licenses/>.
  *
- *  Copyright (c) 2009, 2010 Australian Synchrotron
+ *  Copyright (c) 2009,2010,2017 Australian Synchrotron
  *
  *  Author:
  *    Andrew Rhyder
@@ -26,8 +26,8 @@
 // Manage startup parameters. Parse the startup parameters in a command line, serialize and unserialize parameters when passing them to another application instance.
 
 
-#ifndef STARTUPPARAMS_H
-#define STARTUPPARAMS_H
+#ifndef QEGUI_STARTUP_PARAMS_H
+#define QEGUI_STARTUP_PARAMS_H
 
 #include <QByteArray>
 #include <QSharedMemory>
@@ -47,6 +47,7 @@ class startupParams
 
     // Startup parameters
     double adjustScale;                             // GUI scaling parameter (-a)
+    double fontScale;                               // Additional font scaling (-f) above and beyond adjustScale.
     bool enableEdit;                                // Flag true if 'Edit' menu should be available
     bool disableMenu;                               // Flag true if menu bar should be disabled
     bool disableStatus;                             // Flag true if status bar should be disabled
@@ -67,4 +68,4 @@ class startupParams
 };
 
 
-#endif // STARTUPPARAMS_H
+#endif // QEGUI_STARTUP_PARAMS_H

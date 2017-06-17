@@ -8,6 +8,12 @@ Options
         floating point number. If specified its value will be constrained to the range 40
         to 400.
 
+-f      Additional font scaling above and beyond the general GUIs scaling specified by -a.
+        This option takes a single value which is the percentage addtional font scaling.
+        The value may be either an integer or a floating point number. If specified its
+        value will be constrained to the range 40 to 400, although typically would be
+        in the range 80 to 120.
+
 -s      Single application.
         QEGui will attempt to pass all parameters to an existing instance of QEGui. When
         one instance of QEGui managing all QEGui windows, all windows will appear in the
@@ -54,13 +60,11 @@ Options
         an attempt will be made to use QEGuiCustomisation.xml in the current working
         directory. A customisation file is optional.
 
-
 -n      Startup window customisation name.
         The name of the window and menu bar customisation set to apply to windows created
         when the application starts (the .ui files specified on the command line). This
         name should be the name of one of the sets of window customisations read from the
         window customisation file.
-
 
 -d      Default window customisation name.
         The name of the window and menubar customisation set to apply to all windows
@@ -71,7 +75,6 @@ Options
         set of customisations to the system defaults. Note the customisation set specified
         in the switch only applies to windows created at startup and specified on the
         command line.
-
 
 -t      Application title.
         This title will be used instead of the default application title of 'QEGui'
@@ -86,7 +89,7 @@ Parameters
 filenames  GUI filenames to open. Each filename is a separate parameter.
 
 
-Environment variables
+Environment Variables
 
 As well as the standard Channel Access (client) environment variables, the QE framework
 and hence the QEGui program's behaviour may be modified by setting a number of QE

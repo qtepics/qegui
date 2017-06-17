@@ -15,7 +15,7 @@
  *  You should have received a copy of the GNU Lesser General Public License
  *  along with the EPICS QT Framework.  If not, see <http://www.gnu.org/licenses/>.
  *
- *  Copyright (c) 2009, 2010 Australian Synchrotron
+ *  Copyright (c) 2009,2010,2017 Australian Synchrotron
  *
  *  Author:
  *    Andrew Rhyder
@@ -26,17 +26,15 @@
 // Manage startup parameters. Parse the startup parameters in a command line, serialize
 // and unserialize parameters when passing them to another application instance.
 
+#include "StartupParams.h"
+
 #include <QString>
 #include <QStringList>
 #include <QVariant>
 #include <QDir>
 #include <ContainerProfile.h>
 #include <QEFrameworkVersion.h>
-
 #include <QECommon.h>
-
-#include "StartupParams.h"
-
 
 #define LIMIT_SCALE(scale)  LIMIT( scale, 40.0, 400.0 )
 
@@ -45,6 +43,7 @@
 startupParams::startupParams()
 {
     adjustScale = 100.0;
+    fontScale = 100.0;
     enableEdit = false;
     disableMenu = false;
     disableStatus = false;
@@ -105,10 +104,16 @@ bool startupParams::getSharedParams( const QByteArray& in )
 
     // Unpackage parameters
     scale = (char *) &scaleValue;
+
     for (i = 0; i < (int) sizeof (adjustScale); i++) {
        scale [i] = d[len];    len += 1;
     }
     adjustScale = LIMIT_SCALE (scaleValue);
+
+    for (i = 0; i < (int) sizeof (fontScale); i++) {
+       scale [i] = d[len];    len += 1;
+    }
+    fontScale = LIMIT_SCALE (scaleValue);
 
     enableEdit                   = (bool)(d[len]);    len += 1;
     disableMenu                  = (bool)(d[len]);    len += 1;
@@ -150,6 +155,11 @@ void startupParams::setSharedParams( QByteArray& out )
 
     scale = (const char *) &adjustScale;
     for (i = 0; i < (int) sizeof (adjustScale); i++) {
+       out[len++] = scale [i];
+    }
+
+    scale = (const char *) &fontScale;
+    for (i = 0; i < (int) sizeof (fontScale); i++) {
        out[len++] = scale [i];
     }
 
@@ -216,6 +226,8 @@ bool startupParams::getStartupParams( QStringList args )
 
                    // 'Adjust Scale' flag
                    // Take next non switch parameter as macro substitutions
+                   //
+                   // General scaling
                    case 'a':
                        // Get the scaling (next parameter, if present, and as long as it isn't a switch)
                        if( args.count() >= 1 && args[0].left(1) != QString( "-" ) )
@@ -236,6 +248,27 @@ bool startupParams::getStartupParams( QStringList args )
                            return false;
                        }
                        break;
+
+                    // Additonal font scaling
+                    case 'f':
+                        // Get the scaling (next parameter, if present, and as long as it isn't a switch)
+                        if( args.count() >= 1 && args[0].left(1) != QString( "-" ) )
+                        {
+                           QVariant image( QVariant::String );
+                           double value;
+                           bool okay;
+
+                           image = args [0];
+                           args.removeFirst();
+                           value = image.toDouble( &okay );
+                           if( !okay ){
+                              return false;
+                           }
+                           fontScale = LIMIT_SCALE( value );
+                        } else {
+                            return false;
+                        }
+                        break;
 
                     // 'Editable' flag
                     case 'e':
@@ -403,3 +436,5 @@ bool startupParams::getStartupParams( QStringList args )
 
     return true;
 }
+
+// end

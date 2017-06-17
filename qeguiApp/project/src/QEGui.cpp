@@ -158,10 +158,11 @@ int QEGui::run()
     if( params.singleApp && instance.handball( &params ) )
         return 0;
 
-    // Define application scaling to be applied to all widgets.
-    // Recall adjustScale is expressed as a percentage.
+    // Define application scaling / font scaling to be applied to all widgets.
+    // Recall adjustScale and fontScale  is expressed as a percentage.
     //
     QEScaling::setScaling( int( params.adjustScale ), 100 );
+    QEScaling::setFontScaling( int( params.fontScale ), 100 );
 
     // Start automatic saving of current configuration
     startAutoSaveConfig( params.configurationFile, params.disableAutoSaveConfiguration );
