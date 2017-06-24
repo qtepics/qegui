@@ -15,7 +15,7 @@
  *  You should have received a copy of the GNU Lesser General Public License
  *  along with the EPICS QT Framework.  If not, see <http://www.gnu.org/licenses/>.
  *
- *  Copyright (c) 2013 Australian Synchrotron
+ *  Copyright (c) 2013,2017 Australian Synchrotron
  *
  *  Author:
  *    Andrew Rhyder
@@ -27,7 +27,9 @@
 #include <QEGui.h>
 #include <QDebug>
 
-recentFile::recentFile( QString nameIn, QString pathIn, QStringList pathListIn, QString macroSubstitutionsIn, QString customisationNameIn, QEGui* appIn ) : QAction( nameIn, appIn )
+recentFile::recentFile( const QString& nameIn, const QString& pathIn, const QStringList& pathListIn,
+                        const QString& macroSubstitutionsIn, const QString& customisationNameIn,
+                        QEGui* appIn ) : QAction( nameIn, appIn )
 {
     name = nameIn;
     path = pathIn;
@@ -43,3 +45,5 @@ void recentFile::recentSelected( bool )
     // Open the file
     app->launchRecentGui( path, pathList, macroSubstitutions, customisationName );
 }
+
+// end

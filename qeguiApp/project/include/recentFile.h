@@ -15,7 +15,7 @@
  *  You should have received a copy of the GNU Lesser General Public License
  *  along with the EPICS QT Framework.  If not, see <http://www.gnu.org/licenses/>.
  *
- *  Copyright (c) 2013 Australian Synchrotron
+ *  Copyright (c) 2013,2017 Australian Synchrotron
  *
  *  Author:
  *    Andrew Rhyder
@@ -32,8 +32,8 @@
  * added to each main window 'Recent...' menu.
  */
 
-#ifndef RECENTFILE_H
-#define RECENTFILE_H
+#ifndef QEGUI_RECENT_FILE_H
+#define QEGUI_RECENT_FILE_H
 
 #include <QObject>
 #include <QAction>
@@ -43,11 +43,9 @@
 #include <QEWidget.h>
 #include <QEString.h>
 #include <QEStringFormatting.h>
-#include <QEPluginLibrary_global.h>
 #include <managePixmaps.h>
 #include <QEStringFormattingMethods.h>
 #include <QCaVariableNamePropertyManager.h>
-
 
 class QEGui;
 
@@ -56,7 +54,9 @@ class recentFile : public QAction
 {
     Q_OBJECT
 public:
-    recentFile( QString nameIn, QString pathIn, QStringList pathListIn, QString macroSubstitutionsIn, QString customisationNameIn, QEGui* appIn );
+    explicit recentFile( const QString& nameIn, const QString& pathIn, const QStringList& pathListIn,
+                         const QString& macroSubstitutionsIn, const QString& customisationNameIn,
+                         QEGui* appIn );
     QString name;               // GUI title
     QString path;               // Full GUI file name
     QStringList pathList;       // Paths for locating other files
@@ -70,5 +70,4 @@ public slots:
 
 };
 
-
-#endif // RECENTFILE_H
+#endif // QEGUI_RECENT_FILE_H
