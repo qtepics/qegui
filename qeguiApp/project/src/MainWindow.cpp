@@ -138,12 +138,13 @@
 
  */
 
+#include <MainWindow.h>
+
 #include <QtGui>
 #include <QDebug>
 #include <QString>
 #include <QUiLoader>
 
-#include <MainWindow.h>
 #include <QEAbstractWidget.h>
 #include <QEForm.h>
 #include <QEFrameworkVersion.h>
@@ -180,8 +181,10 @@ Q_DECLARE_METATYPE( QEForm* )
 
 // Constructor
 // A profile should have been defined before calling this constructor
-MainWindow::MainWindow( QEGui* appIn, QString fileName, QString title, QString customisationName,
-                        const QEFormMapper::FormHandles& formHandle, bool openDialog, QWidget *parent )  : QMainWindow( parent )
+MainWindow::MainWindow( QEGui* appIn, QString fileName, QString title,
+                        QString customisationName,
+                        const QEFormMapper::FormHandles& formHandle,
+                        bool openDialog, QWidget *parent ) : QMainWindow( parent )
 {
     app = appIn;
 
@@ -190,6 +193,8 @@ MainWindow::MainWindow( QEGui* appIn, QString fileName, QString title, QString c
     windowMenu = NULL;
     recentMenu = NULL;
     editMenu = NULL;
+
+    windowScaling = 1.0;
 
     // Only include PSI caQtDM integration if required.
     // To include PSI caQtDM stuff, don't define QE_USE_CAQTDM directly, define environment variable
@@ -228,7 +233,8 @@ MainWindow::MainWindow( QEGui* appIn, QString fileName, QString title, QString c
 
     // Setup to respond to requests to save or restore persistant data
     PersistanceManager* persistanceManager = profile.getPersistanceManager();
-    QObject::connect( persistanceManager->getSaveRestoreObject(), SIGNAL( saveRestore( SaveRestoreSignal::saveRestoreOptions ) ), this, SLOT( saveRestore( SaveRestoreSignal::saveRestoreOptions ) ), Qt::DirectConnection );
+    QObject::connect( persistanceManager->getSaveRestoreObject(), SIGNAL( saveRestore( SaveRestoreSignal::saveRestoreOptions ) ),
+                      this, SLOT( saveRestore( SaveRestoreSignal::saveRestoreOptions ) ), Qt::DirectConnection );
 
     // Save this instance of a main window in the global list of main windows
     app->addMainWindow( this );
@@ -1697,8 +1703,10 @@ void  MainWindow::requestAction( const QEActionRequests & request )
                 else if (action == "Refresh Current Form"              ) { on_actionRefresh_Current_Form_triggered();           }
                 else if (action == "Set Passwords..."                  ) { on_actionSet_Passwords_triggered();                  }
                 else if (action == "About..."                          ) { on_actionAbout_triggered();                          }
-                else  sendMessage( "Unhandled gui action request, action = '" + action + "'",
-                                   message_types( MESSAGE_TYPE_ERROR, MESSAGE_KIND_EVENT ) );
+                else {
+                    sendMessage( "Unhandled gui action request, action = '" + action + "'",
+                                  message_types( MESSAGE_TYPE_ERROR, MESSAGE_KIND_EVENT ) );
+                }
             }
             break;
 
@@ -1969,7 +1977,8 @@ QEForm* MainWindow::createGui( QString fileName, QString title, QString customis
         // Load the .ui file into the GUI. The QEForm object applies any scaling.
         gui->readUiFile();
 
-        // Save the version of the QE framework used by the ui loader. (can be different to the one this application is linked against)
+        // Save the version of the QE framework used by the ui loader.
+        // (can be different to the one this application is linked against)
         UILoaderFrameworkVersion = gui->getContainedFrameworkVersion();
 
         // If a profile was defined in this method, release it now.
@@ -2291,6 +2300,60 @@ void MainWindow::on_actionRestore_Configuration_triggered()
     // they should collect and apply restore data.
     PersistanceManager* persistanceManager = profile.getPersistanceManager();
     persistanceManager->restore( params->configurationFile, QE_CONFIG_NAME, configName );
+}
+
+// Manage the form scaling configurations
+void MainWindow::keyPressEvent( QKeyEvent* event )
+{
+     const Qt::KeyboardModifiers m = event->modifiers();
+     if( (m & Qt::ControlModifier) == Qt::ControlModifier) {
+         // This is a control + key key press.
+         static const double factor = 1.04;
+         const int key = event->key();
+         double sizeModifier = 1.0;
+         bool doRescale = false;
+
+         // Check for specific keys.
+         //
+         if( ( key == Qt::Key_Plus ) || ( key == Qt::Key_Equal ) ){
+             sizeModifier = factor;
+             windowScaling *= sizeModifier;
+             doRescale = true;
+
+         } else if( key == Qt::Key_Minus ){
+             sizeModifier = 1.0 / factor;
+             windowScaling *= sizeModifier;
+             doRescale = true;
+
+         } else if( (key == Qt::Key_0 ) || ( key == Qt::Key_Insert ) ){
+             sizeModifier = 1.0 / windowScaling;
+             windowScaling = 1.0;
+             doRescale = true;
+         }
+
+         if( doRescale ) {
+             // Save the current window geometry and size.
+             //
+             QRect winGeo = geometry();
+             QSize winSize = winGeo.size();
+             QSize cwSize = centralWidget()->geometry().size ();
+
+             // Scale the central widget (as opposed to the window).
+             //
+             QEScaling::rescaleWidget( centralWidget(), windowScaling );
+
+             // Now resize the form itself. Calculate the change to the window
+             // size based on the central widget scaling.
+             // Notes: we do not scale the window, just the central widget, and
+             //        we cannot just read the rescaled central widget's size as
+             //        it hasn't resized itself yet.
+             //
+             QSize deltaSize( int( cwSize.width()  * (sizeModifier - 1.0) + 0.5 ),
+                              int( cwSize.height() * (sizeModifier - 1.0) + 0.5 ) );
+             winGeo.setSize( winSize + deltaSize );
+             setGeometry( winGeo );
+         }
+     }
 }
 
 // Manage the save/resore configurations

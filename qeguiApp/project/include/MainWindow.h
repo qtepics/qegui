@@ -15,7 +15,7 @@
  *  You should have received a copy of the GNU Lesser General Public License
  *  along with the EPICS QT Framework.  If not, see <http://www.gnu.org/licenses/>.
  *
- *  Copyright (c) 2009, 2010 Australian Synchrotron
+ *  Copyright (c) 2009,2010,2017 Australian Synchrotron
  *
  *  Author:
  *    Andrew Rhyder
@@ -23,8 +23,8 @@
  *    andrew.rhyder@synchrotron.org.au
  */
 
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
+#ifndef QEGUI_MAIN_WINDOW_H
+#define QEGUI_MAIN_WINDOW_H
 
 #include <QMainWindow>
 #include <ui_MainWindow.h>
@@ -140,6 +140,9 @@ public:
     bool showGui( QString guiFileName, QString macroSubstitutions );
     void identifyWindowAndForms( int mwIndex );
 
+protected:
+    void keyPressEvent( QKeyEvent* event );
+
 private:
     // Only include PSI caQtDM integration if required.
     // To include PSI caQtDM stuff, don't define QE_USE_CAQTDM directly, define environment variable
@@ -242,6 +245,9 @@ private:
     QMenu* recentMenu;
     QMenu* editMenu;
 
+    double windowScaling;                       // Window specific scaling above and beyond application scaling set using -a option.
+
+
     windowCustomisationInfo customisationInfo;  // Current customisation of this window
     void setDefaultCustomisation();             // Set up the initial default customisation
     void setupPlaceholderMenus();               // Get whatever placeholder menus are available from the current customisation and use them (for example, populate a 'Recent' menu if present)
@@ -273,8 +279,8 @@ private:
     QList<dockRef*>      unmanagedDocks;        // List of docks that need to have visibility managed late
 //++++++++++++++++++++++++++++++++++++++++++++++++
 
-private slots:
-    void on_actionManage_Configurations_triggered();
+// These were slots...
+    void on_actionManage_Configurations_triggered();            // Slot to perform
     void on_actionExit_triggered();                             // Slot to perform 'Exit' action
     void on_actionUser_Level_triggered();                       // Slot to perform 'Refresh Current Form' action
     void on_actionRefresh_Current_Form_triggered();             // Slot to perform 'Refresh Current Form' action
@@ -282,43 +288,46 @@ private slots:
     void on_actionDesigner_triggered();                         // Slot to perform 'Open Designer' action
     void on_actionNew_Window_triggered();                       // Slot to perform 'New Window' action
     void on_actionNew_Tab_triggered();                          // Slot to perform 'New Tab' action
-    void on_actionNew_Dock_triggered();                          // Slot to perform 'New Dock' action
+    void on_actionNew_Dock_triggered();                         // Slot to perform 'New Dock' action
     void on_actionOpen_triggered();                             // Slot to perform 'Open' action
     void on_actionClose_triggered();                            // Slot to perform 'Close' action
     void on_actionAbout_triggered();                            // Slot to perform 'About' action
-    void onWindowMenuSelection( QAction* action );              // Slot to receive requests to change focus to a specific gui
+    void on_actionSave_Configuration_triggered();               // Slot to perform 'Save Configuration' action
+    void on_actionRestore_Configuration_triggered();            // Slot to perform 'Save Configuration' action
+    void on_actionSet_Passwords_triggered();
 
-    void tabCurrentChanged( int index );               // Slot to act on user changing tabs
-    void tabCloseRequest( int index );                 // Slot to act on user closing a tab
+private slots:
+    void onWindowMenuSelection( QAction* action );      // Slot to receive requests to change focus to a specific gui
 
-    void tabContextMenuRequest( const QPoint & pos );  // Slot for custom tab menu requests
-    void tabContextMenuTrigger( QAction * action );    // Slot for custom tab menu actions
+    void tabCurrentChanged( int index );                // Slot to act on user changing tabs
+    void tabCloseRequest( int index );                  // Slot to act on user closing a tab
+
+    void tabContextMenuRequest( const QPoint & pos );   // Slot for custom tab menu requests
+    void tabContextMenuTrigger( QAction * action );     // Slot for custom tab menu actions
 
     void processError( QProcess::ProcessError error );  // An error occured starting designer process
     void startDesignerAlternate();                      // Timer signal used to attempt restarting designer from outside a QProcess error signal
 
-    void on_actionSave_Configuration_triggered();       // Slot to perform 'Save Configuration' action
-    void on_actionRestore_Configuration_triggered();    // Slot to perform 'Save Configuration' action
 
     void saveRestore( SaveRestoreSignal::saveRestoreOptions option );  // A save or restore has been requested (Probably by QEGui itself)
 
-    void setGeom();                                 // Timer slot to set the window geometry on a restore
-    void scrollTo();                                // Timer slot to set the gui scroll positions on a restore
-    void on_actionSet_Passwords_triggered();
+    void setGeom();                                     // Timer slot to set the window geometry on a restore
+    void scrollTo();                                    // Timer slot to set the gui scroll positions on a restore
 
     void deleteConfigs( manageConfigDialog* mcd, const QStringList names );        // Delete configurations
 
     void dockComponentDestroyed( QObject* component );  // A component hosted by the application has gone away, delete the dock that was holding it.
 
-    void delayedRaiseGui();                         // Timer event to ensure the main form is visible and the active form.
+    void delayedRaiseGui();                             // Timer event to ensure the main form is visible and the active form.
 
-    void guiDestroyed( QObject* );                  // A gui (in a dock) has been destroyed.
+    void guiDestroyed( QObject* );                      // A gui (in a dock) has been destroyed.
 
 signals:
-    void dockCreated( QDockWidget* );               // Signal to customisation system that a dock has been created. The customisation system may need to use 'dock toggle' action from the dock in a menu
+    void dockCreated( QDockWidget* );                   // Signal to customisation system that a dock has been created. The customisation
+                                                        // system may need to use 'dock toggle' action from the dock in a menu.
 
 public slots:
     void requestAction( const QEActionRequests & request );     // Slot to receive (new style) requests to launch a new GUI.
 };
 
-#endif // MAINWINDOW_H
+#endif // QEGUI_MAIN_WINDOW_H
