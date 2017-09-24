@@ -2308,30 +2308,35 @@ void MainWindow::keyPressEvent( QKeyEvent* event )
      const Qt::KeyboardModifiers m = event->modifiers();
      if( (m & Qt::ControlModifier) == Qt::ControlModifier) {
          // This is a control + key key press.
-         static const double factor = 1.04;
+         static const double factor = 1.02;
+
          const int key = event->key();
-         double sizeModifier = 1.0;
          bool doRescale = false;
+         double newScaling = 1.0;
 
          // Check for specific keys.
          //
          if( ( key == Qt::Key_Plus ) || ( key == Qt::Key_Equal ) ){
-             sizeModifier = factor;
-             windowScaling *= sizeModifier;
-             doRescale = true;
+            newScaling = windowScaling * factor;
+            doRescale = true;
 
          } else if( key == Qt::Key_Minus ){
-             sizeModifier = 1.0 / factor;
-             windowScaling *= sizeModifier;
-             doRescale = true;
+            newScaling = this->windowScaling / factor;
+            doRescale = true;
 
          } else if( (key == Qt::Key_0 ) || ( key == Qt::Key_Insert ) ){
-             sizeModifier = 1.0 / windowScaling;
-             windowScaling = 1.0;
-             doRescale = true;
+            newScaling = 1.0;
+            doRescale = true;
          }
 
          if( doRescale ) {
+             // Underlying scaling limits are 10% to 400%
+             // Be sure not exceed this range, we use 20% to 400%
+             //
+             const double limitedScaling = LIMIT (newScaling, 0.2, 4.0);
+             const double scaleModifier = limitedScaling / windowScaling;
+             windowScaling = limitedScaling;
+
              // Save the current window geometry and size.
              //
              QRect winGeo = geometry();
@@ -2348,8 +2353,7 @@ void MainWindow::keyPressEvent( QKeyEvent* event )
              //        we cannot just read the rescaled central widget's size as
              //        it hasn't resized itself yet.
              //
-             QSize deltaSize( int( cwSize.width()  * (sizeModifier - 1.0) + 0.5 ),
-                              int( cwSize.height() * (sizeModifier - 1.0) + 0.5 ) );
+             QSize deltaSize = cwSize * (scaleModifier - 1.0);
              winGeo.setSize( winSize + deltaSize );
              setGeometry( winGeo );
          }
