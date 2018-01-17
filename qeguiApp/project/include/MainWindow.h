@@ -15,7 +15,7 @@
  *  You should have received a copy of the GNU Lesser General Public License
  *  along with the EPICS QT Framework.  If not, see <http://www.gnu.org/licenses/>.
  *
- *  Copyright (c) 2009,2010,2017 Australian Synchrotron
+ *  Copyright (c) 2009,2010,2017,2018 Australian Synchrotron
  *
  *  Author:
  *    Andrew Rhyder
@@ -291,6 +291,8 @@ private:
     void on_actionNew_Dock_triggered();                         // Slot to perform 'New Dock' action
     void on_actionOpen_triggered();                             // Slot to perform 'Open' action
     void on_actionClose_triggered();                            // Slot to perform 'Close' action
+    void on_actionListPVNames_triggered();                      // Perform 'List PV Names'
+    void on_actionScreenCapture_triggered();                    // Perfrom 'Screen Capture'
     void on_actionAbout_triggered();                            // Slot to perform 'About' action
     void on_actionSave_Configuration_triggered();               // Slot to perform 'Save Configuration' action
     void on_actionRestore_Configuration_triggered();            // Slot to perform 'Save Configuration' action
@@ -328,6 +330,10 @@ signals:
 
 public slots:
     void requestAction( const QEActionRequests & request );     // Slot to receive (new style) requests to launch a new GUI.
+
+private:
+    static QString currentListPVNamesDir;               // Last directory used to save list of PV names
+    static QString currentScreenCaptureDir;             // Last directory used to save a screen capture 
 };
 
 #endif // QEGUI_MAIN_WINDOW_H

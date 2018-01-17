@@ -15,7 +15,7 @@
  *  You should have received a copy of the GNU Lesser General Public License
  *  along with the EPICS QT Framework.  If not, see <http://www.gnu.org/licenses/>.
  *
- *  Copyright (c) 2009,2010,2017 Australian Synchrotron
+ *  Copyright (c) 2009,2010,2017,2018 Australian Synchrotron
  *
  *  Author:
  *    Andrew Rhyder
@@ -174,6 +174,12 @@
 #define DEFAULT_QEGUI_CUSTOMISATION "QEGui_Default"
 
 Q_DECLARE_METATYPE( QEForm* )
+
+// static - the default values are the current directory
+//
+QString MainWindow::currentListPVNamesDir = ".";
+QString MainWindow::currentScreenCaptureDir = ".";
+
 
 //=================================================================================
 // Methods for construction, destruction, initialisation
@@ -506,6 +512,74 @@ void MainWindow::on_actionClose_triggered()
         setTitle( "" );
     }
  }
+
+// List PV Names
+void MainWindow::on_actionListPVNames_triggered()
+{
+    QString filename;
+
+    QDateTime timeNow = QDateTime::currentDateTime ();
+    QString timeNowImage = timeNow.toString ("yyyyMMdd_hhmmss");
+
+    QString defaultPath = QString ("%1/qegui_%2.txt")
+          .arg (MainWindow::currentListPVNamesDir)
+          .arg (timeNowImage);
+
+    filename = QFileDialog::getSaveFileName
+          (this, "PV name list file", defaultPath,
+           "txt(*.txt);;all files (*.*)", 0,
+           QFileDialog::DontResolveSymlinks);   // don't second guess user's environment
+
+    // If user enters cancel, then empty an filename is returned.
+    //
+    if (!filename.isEmpty()) {
+
+        // User has specified a file name - save directory (for next time)
+        //
+        MainWindow::currentListPVNamesDir = QEUtilities::dirName (filename);
+        QEUtilities::listPVNames (this->centralWidget(), filename, "saved by qegui");
+    }
+}
+
+// Screen Capture
+void MainWindow::on_actionScreenCapture_triggered()
+{
+    QString filename;
+
+    QDateTime timeNow = QDateTime::currentDateTime ();
+    QString timeNowImage = timeNow.toString ("yyyyMMdd_hhmmss");
+
+    QString defaultPath = QString ("%1/qegui_%2.png")
+          .arg (MainWindow::currentScreenCaptureDir)
+          .arg (timeNowImage);
+
+    filename = QFileDialog::getSaveFileName
+          (this, "Screen capture file", defaultPath,
+           "images(*.png);;images(*.jpg);;all files (*.*)", 0,
+           QFileDialog::DontResolveSymlinks);   // don't second guess user environment
+
+    // If user enters cancel, then empty  filename is returned.
+    //
+    if (!filename.isEmpty()) {
+
+        // User has specified a file name - save directory (for next time)
+        //
+        MainWindow::currentScreenCaptureDir = QEUtilities::dirName (filename);
+
+        QRect area = this->geometry ();
+        int aw = area.width ();
+        int ah = area.height ();
+
+        QImage imagePaintDevice (aw, ah , QImage::Format_RGB32);
+
+        this->render (&imagePaintDevice, QPoint (), QRegion ());
+
+        bool okay = imagePaintDevice.save (filename);
+        if (!okay) {
+            qDebug() << filename + "  save failed";
+        }
+    }
+}
 
 // User is changing the user level
 void MainWindow::on_actionUser_Level_triggered()
@@ -1693,6 +1767,8 @@ void  MainWindow::requestAction( const QEActionRequests & request )
                 else if (action == "New Dock..."                       ) { on_actionNew_Dock_triggered();                       }
                 else if (action == "Open..."                           ) { on_actionOpen_triggered();                           }
                 else if (action == "Close"                             ) { on_actionClose_triggered();                          }
+                else if (action == "List PV Names..."                  ) { on_actionListPVNames_triggered();                    }
+                else if (action == "Screen Capture..."                 ) { on_actionScreenCapture_triggered();                  }
                 else if (action == "Save Configuration..."             ) { on_actionSave_Configuration_triggered();             }
                 else if (action == "Restore Configuration..."          ) { on_actionRestore_Configuration_triggered();          }
                 else if (action == "Manage Configuration..."           ) { on_actionManage_Configurations_triggered();          }

@@ -17,10 +17,17 @@
                 <Item Name="Close">
                     <BuiltIn Name="Close" />
                 </Item>
+                <Item Name="List PV Names...">
+                    <BuiltIn Name="List PV Names..." />
+                </Item>
+                <Item Name="Screen Capture...">
+                    <BuiltIn Name="Screen Capture..." />
+                </Item>
                 <PlaceHolder Name="Recent" >
                     <Separator/>
                 </PlaceHolder>
                 <Item Name="Exit">
+                    <Separator/>
                     <BuiltIn Name="Exit" />
                 </Item>
             </Menu>
