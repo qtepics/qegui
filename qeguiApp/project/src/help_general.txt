@@ -92,21 +92,31 @@ filenames  GUI filenames to open. Each filename is a separate parameter.
 Environment Variables
 
 As well as the standard Channel Access (client) environment variables, the QE framework
-and hence the QEGui program's behaviour may be modified by setting a number of QE
-environment variables. These are:
+and hence the QEGui program's run time behaviour may be modified by setting a number of
+QE environment variables. These are:
 
 
 QE_UI_PATH - this variable may be used as an alternative to, or in addition to, the -p option.
 This list of space seperated paths used when searching for a ui file.
 
 
+QE_ARCHIVE_TYPE - Specifies the type of archiver in use. The allowed values are "CA" for
+the traditional Channel Access Archiver, and "ARCHAPPL" for the Archive Appliance.
+The latter only availble if Archive Appliance support was included when the QE framework
+was built. If this environment variable is not specified then "CA" is the default.
+
+
 QE_ARCHIVE_LIST - specifies a list of channel archive servers. The format of this
-variable is a space separated set of one or more archive severs. Each server is specified
-as a hostname:port/endpoint triplet, e.g.:
+variable is a space separated set of one or more archive severs. Each Channel Access server
+is specified as a hostname:port/endpoint triplet, e.g.:
 
    export QE_ARCHIVE_LIST="CR01ARC01:80/cgi-bin/ArchiveDataServer.cgi CR01ARC02:80/cgi-bin/ArchiveDataServer.cgi"
 
-A leading http:// for each triplet is neither required nor permitted.
+Each Archive Appliance server is defined by a hostname:port/endpoint  e.g.:
+
+   export QE_ARCHIVE_LIST=CR01ARC04:80/mgmt/bpl/
+
+A leading http:// for each triplet is not required but is permitted.
 
 
 QE_ARCHIVE_PATTERN - This variable specifies the pattern match applied when the framework
@@ -153,9 +163,10 @@ PV names that are available on the strip chart as pre defined PV names. Example:
 
 
 QE_GLOBAL_STYLE_SHEET - Defines a global style that is applied to the QApplication. This occurs
-the first time a QEWidget is constructed, so applies qeally to both designer and qegui. The variable
-may be the style string itself or if it starts with "file://" then it is intrpretted as a file
-reference which is read to get the global style. Examples:
+the first time a QEWidget is constructed, so applies qeally to both designer and qegui. The 
+variable may be the style string itself or if it starts with "file://" then it is intrpretted as
+a file reference which is read to get the global style. This examples shows how to make QGroupBox
+widgets in Qt5 look like a traditional group box:
 
    export QE_GLOBAL_STYLE_SHEET="QGroupBox { border-radius:2px; border-width:1px; border-style:groove; border-color:rgb(128,128,128); margin-top: 6px; } QGroupBox::title { left:8px; top:-6px; }"
 

@@ -39,11 +39,7 @@
        <number>0</number>
       </property>
       <item>
-       <widget class="QEArchiveStatus" name="qearchivestatus">
-        <property name="title">
-         <string/>
-        </property>
-       </widget>
+       <widget class="QEArchiveStatus" name="qearchivestatus"/>
       </item>
       <item>
        <widget class="QELog" name="qearchivelog">

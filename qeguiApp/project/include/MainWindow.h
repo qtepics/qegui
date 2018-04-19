@@ -289,7 +289,6 @@ private:
     void on_actionNew_Window_triggered();                       // Slot to perform 'New Window' action
     void on_actionNew_Tab_triggered();                          // Slot to perform 'New Tab' action
     void on_actionNew_Dock_triggered();                         // Slot to perform 'New Dock' action
-    void on_actionOpen_triggered();                             // Slot to perform 'Open' action
     void on_actionClose_triggered();                            // Slot to perform 'Close' action
     void on_actionListPVNames_triggered();                      // Perform 'List PV Names'
     void on_actionScreenCapture_triggered();                    // Perfrom 'Screen Capture'
@@ -299,7 +298,8 @@ private:
     void on_actionSet_Passwords_triggered();
 
 private slots:
-    void onWindowMenuSelection( QAction* action );      // Slot to receive requests to change focus to a specific gui
+    void onOpenRequested ();                                    // Slot to perform 'Open' action
+    void onWindowMenuSelection( QAction* action );              // Slot to receive requests to change focus to a specific gui
 
     void tabCurrentChanged( int index );                // Slot to act on user changing tabs
     void tabCloseRequest( int index );                  // Slot to act on user closing a tab

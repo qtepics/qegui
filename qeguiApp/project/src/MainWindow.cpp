@@ -72,7 +72,7 @@
 
         A new GUI may be created by calling the slot supporting the 'File...' -> 'Open' menu item
 
-          MainWindow::on_actionOpen_triggered()
+          MainWindow::onOpenRequested()
             call MainWindow::createGui()
             put gui in current window
 
@@ -261,7 +261,7 @@ MainWindow::MainWindow( QEGui* appIn, QString fileName, QString title,
     {
         setDefaultCustomisation();
 
-        QTimer::singleShot( 0, this, SLOT(on_actionOpen_triggered()));
+        QTimer::singleShot( 0, this, SLOT(onOpenRequested()));
     }
 
     // If a filename was supplied, load it
@@ -466,7 +466,7 @@ void MainWindow::on_actionNew_Dock_triggered()
 
 // User requested a new gui to be opened
 // Present a file open dialog box and after generate the gui based on the ui file the user selects
-void MainWindow::on_actionOpen_triggered()
+void MainWindow::onOpenRequested()
 {
     // Create the GUI
     QEForm* gui = NULL;
@@ -1765,7 +1765,7 @@ void  MainWindow::requestAction( const QEActionRequests & request )
                      if (action == "New Window..."                     ) { on_actionNew_Window_triggered();                     }
                 else if (action == "New Tab..."                        ) { on_actionNew_Tab_triggered();                        }
                 else if (action == "New Dock..."                       ) { on_actionNew_Dock_triggered();                       }
-                else if (action == "Open..."                           ) { on_actionOpen_triggered();                           }
+                else if (action == "Open..."                           ) { onOpenRequested();                           }
                 else if (action == "Close"                             ) { on_actionClose_triggered();                          }
                 else if (action == "List PV Names..."                  ) { on_actionListPVNames_triggered();                    }
                 else if (action == "Screen Capture..."                 ) { on_actionScreenCapture_triggered();                  }
