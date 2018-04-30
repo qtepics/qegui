@@ -4,7 +4,7 @@ own GitHub repository. This repository provides the qegui display manager.
 
 Please visit https://qtepics.github.io/index.html for more information.
 
-## Quick docuumentation links
+## Documentation links
 
 ### Release Notes
 https://qtepics.github.io/release_notes.html
