@@ -1,6 +1,9 @@
 /*  QEGui.cpp
  *
- *  This file is part of the EPICS QT Framework, initially developed at the Australian Synchrotron.
+ *  This file is part of the EPICS QT Framework, initially developed at the
+ *  Australian Synchrotron.
+ *
+ *  Copyright (c) 2009-2018 Australian Synchrotron
  *
  *  The EPICS QT Framework is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
@@ -14,8 +17,6 @@
  *
  *  You should have received a copy of the GNU Lesser General Public License
  *  along with the EPICS QT Framework.  If not, see <http://www.gnu.org/licenses/>.
- *
- *  Copyright (c) 2009, 2010 Australian Synchrotron
  *
  *  Author:
  *    Andrew Rhyder
@@ -200,6 +201,9 @@ void QEGui::printVersion ()
               << QEFrameworkVersion::getString().toLatin1().data()       << "  "
               << QEFrameworkVersion::getDateTime().toLatin1().data()     << " (using QT "
               << QEFrameworkVersion::getQtVersionStr().toLatin1().data() << ")" << std::endl;
+
+   std::cout  << "Framework attributes: "
+              << QEFrameworkVersion::getAttributes().toLatin1().data() << std::endl;
 
    // Note: the EPICS version string is prefixed by the text "EPICS" and
    // the QWT version string is prefixed by "QWT"
