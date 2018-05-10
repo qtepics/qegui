@@ -43,10 +43,11 @@ class aboutDialog : public QDialog
 
 public:
     explicit aboutDialog( QString QEGuiVersion,                   // Version info and the build date/time at compile time of QEGui
-                          QString QEFrameworkVersionQEGui,        // Version info and the build date/time at compile time of the copy of QEPlugin library loaded by QEGui
+                          QString QEFrameworkVersionQEGui,        // Version info and the build date/time at compile time of the copy of QEFramework library loaded by QEGui
                           QString QEFrameworkVersionUILoader,     // Version info and the build date/time at compile time of the copy of QEPlugin library loaded by QUiLoader while creating QE widgets
                           QString EPICSVersion,                   // Version of EPICS base
                           QString QWTVersion,                     // Version of QWT
+                          QString QEFrameworkAttributes,          // QEFramework compile time attributes
 
                           QString macroSubstitutions,             // Macro substitutions (-m parameter)
                           QStringList pathList,                   // Path list (-p parameter)

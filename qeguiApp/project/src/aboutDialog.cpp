@@ -37,10 +37,11 @@
 #include <QDir>
 
 aboutDialog::aboutDialog( QString QEGuiVersion,                // Version info and the build date/time at compile time of QEGui
-                          QString QEFrameworkVersionQEGui,     // Version info and the build date/time at compile time of the copy of QEPlugin library loaded by QEGui
+                          QString QEFrameworkVersionQEGui,     // Version info and the build date/time at compile time of the copy of QEFramework library loaded by QEGui
                           QString QEFrameworkVersionUILoader,  // Version info and the build date/time at compile time of the copy of QEPlugin library loaded by QUiLoader while creating QE widgets
                           QString EPICSVersion,                // Version of EPICS base
                           QString QWTVersion,                  // Version of QWT
+                          QString QEFrameworkAttributes,       // QEFramework compile time attributes
 
                           QString macroSubstitutions,          // Macro substitutions (-m parameter)
                           QStringList pathList,                // Path list (-p parameter)
@@ -76,6 +77,7 @@ aboutDialog::aboutDialog( QString QEGuiVersion,                // Version info a
     ui->QtInstalledPluginsLabel->setText( QLibraryInfo::location ( QLibraryInfo::PluginsPath ) );
     ui->QEFrameworkVersionQEGuiLabel->setText( QEFrameworkVersionQEGui );
     ui->QEFrameworkVersionUILoaderLabel->setText( QEFrameworkVersionUILoader );
+    ui->QEFrameworkAttributes->setText( QEFrameworkAttributes );
 
     // Note: the EPICS version string is prefixed by the text "EPICS".
     //

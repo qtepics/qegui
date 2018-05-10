@@ -908,10 +908,11 @@ void MainWindow::on_actionAbout_triggered()
 
     // Present the dialog
     aboutDialog ad( QString( QE_VERSION_STRING " " QE_VERSION_DATE_TIME ), // Version info and the build date/time at compile time of QEGui
-                    QEFrameworkVersionQEGui,                               // Version info and the build date/time at compile time of the copy of QEPlugin library loaded by QEGui
+                    QEFrameworkVersionQEGui,                               // Version info and the build date/time at compile time of the copy of QEFramework library loaded by QEGui
                     UILoaderFrameworkVersion,                              // Version info and the build date/time at compile time of the copy of QEPlugin library loaded by QUiLoader while creating QE widgets
                     QEFrameworkVersion::getEpicsVersionStr(),              // Version of EPICS base
                     QEFrameworkVersion::getQwtVersionStr(),                // Version of QWT
+                    QEFrameworkVersion::getAttributes(),                   // QEFramework compile time attributes
                     profile.getMacroSubstitutions(),                       // Macro substitutions (-m parameter)
                     profile.getPathList(),                                 // Path list (-p parameter)
                     profile.getEnvPathList(),                              // Path list (environment variable)

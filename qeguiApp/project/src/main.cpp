@@ -1,6 +1,9 @@
 /*  main.cpp
  *
- *  This file is part of the EPICS QT Framework, initially developed at the Australian Synchrotron.
+ *  This file is part of the EPICS QT Framework, initially developed at the
+ *  Australian Synchrotron.
+ *
+ *  Copyright (c) 2009-2018 Australian Synchrotron
  *
  *  The EPICS QT Framework is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
@@ -15,22 +18,26 @@
  *  You should have received a copy of the GNU Lesser General Public License
  *  along with the EPICS QT Framework.  If not, see <http://www.gnu.org/licenses/>.
  *
- *  Copyright (c) 2009, 2010 Australian Synchrotron
- *
  *  Author:
  *    Andrew Rhyder
  *  Contact details:
  *    andrew.rhyder@synchrotron.org.au
  */
 
+#include <QtGlobal>
 #include <QApplication>
 #include <QEGui.h>
-
   
 //------------------------------------------------------------------------------
 //
 int main(int argc, char *argv[])
 {
+
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 4, 0))
+    // Avoid Qt WebEngine seems to be initialized from a plugin warning.
+    QCoreApplication::setAttribute( Qt::AA_ShareOpenGLContexts );
+#endif
+
     QEGui* app = new QEGui( argc, argv );
     int ret = app->run();
     delete app;
