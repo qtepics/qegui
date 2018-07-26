@@ -1,7 +1,7 @@
 # $File: //ASP/tec/gui/qegui/trunk/qeguiApp/project/QEGuiApp.pro $
-# $Revision: #6 $
-# $DateTime: 2018/01/05 16:52:59 $
-# Last checked in by: $Author: starritt $
+# $Revision: #7 $
+# $DateTime: 2018/07/24 16:22:10 $
+# Last checked in by: $Author: pozara $
 #
 # Copyright (c) 2009,2010,2016 Australian Synchrotron
 #
@@ -195,6 +195,10 @@ OTHER_FILES += \
 
 
 RESOURCES += ./src/QEGui.qrc
+# Qt 5+ configuration
+greaterThan( QT_MAJOR_VERSION, 4 ) {
+    win32:RC_ICONS += ./src/QEGuiIcon.ico
+}
 
 #===========================================================
 # PSI's caQtDM integration

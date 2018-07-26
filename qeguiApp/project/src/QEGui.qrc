@@ -14,6 +14,7 @@
     </qresource>
     <qresource prefix="/qe/gui/icons">
         <file>QEGuiIcon.png</file>
+        <file>QEGuiIcon.ico</file>
     </qresource>
     <qresource prefix="/qe/gui/configuration">
         <file>QEGuiCustomisationDefault.xml</file>
