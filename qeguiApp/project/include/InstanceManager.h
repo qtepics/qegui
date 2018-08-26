@@ -1,5 +1,9 @@
-/*
- *  This file is part of the EPICS QT Framework, initially developed at the Australian Synchrotron.
+/*  instanceManager.h
+ *
+ *  This file is part of the EPICS QT Framework, initially developed at the
+ *  Australian Synchrotron.
+ *
+ *  Copyright (c) 2011-2018 Australian Synchrotron
  *
  *  The EPICS QT Framework is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
@@ -14,16 +18,14 @@
  *  You should have received a copy of the GNU Lesser General Public License
  *  along with the EPICS QT Framework.  If not, see <http://www.gnu.org/licenses/>.
  *
- *  Copyright (c) 2011 Australian Synchrotron
- *
  *  Author:
  *    Andrew Rhyder
  *  Contact details:
  *    andrew.rhyder@synchrotron.org.au
  */
 
-#ifndef INSTANCEMANAGER_H
-#define INSTANCEMANAGER_H
+#ifndef QEGUI_INSTANCE_MANAGER_H
+#define QEGUI_INSTANCE_MANAGER_H
 
 #include <QLocalSocket>
 #include <QLocalServer>
@@ -37,7 +39,7 @@ class instanceManager: public QObject
     Q_OBJECT
 
 public:
-    instanceManager( QEGui* app );
+    explicit instanceManager( QEGui* app );
     ~instanceManager();
     bool handball( startupParams* params );
     void newWindow( const startupParams& params );
@@ -45,7 +47,7 @@ public:
 private:
     QLocalSocket* socket;
     QLocalServer* server;
-    QLocalSocket *client;
+    QLocalSocket* client;
 
     QEGui* app;
 
@@ -54,4 +56,4 @@ public slots:
     void readParams();
 };
 
-#endif // INSTANCEMANAGER_H
+#endif // QEGUI_INSTANCE_MANAGER_H

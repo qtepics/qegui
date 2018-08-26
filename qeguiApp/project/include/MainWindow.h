@@ -1,6 +1,9 @@
 /*  MainWindow.h
  *
- *  This file is part of the EPICS QT Framework, initially developed at the Australian Synchrotron.
+ *  This file is part of the EPICS QT Framework, initially developed at the
+ *  Australian Synchrotron.
+ *
+ *  Copyright (c) 2009-2018 Australian Synchrotron
  *
  *  The EPICS QT Framework is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
@@ -14,8 +17,6 @@
  *
  *  You should have received a copy of the GNU Lesser General Public License
  *  along with the EPICS QT Framework.  If not, see <http://www.gnu.org/licenses/>.
- *
- *  Copyright (c) 2009,2010,2017,2018 Australian Synchrotron
  *
  *  Author:
  *    Andrew Rhyder
@@ -57,9 +58,11 @@
 class QEGui;
 class MainWindow;
 
-// Search for 'Centos6 visibility problem' to find other fragments of code and more doco on this problem.
+// Search for 'Centos6 visibility problem' to find other fragments of code
+// and more doco on this problem.
 //
-// Can't set initial state of visibility of docks correctly on Centos6. This is part of a workaround for this problem.
+// Can't set initial state of visibility of docks correctly on Centos6.
+// This is part of a workaround for this problem.
 //++++++++++++++++++++++++++++++++++++++++++++++++
 
 // Class to manage setting the visibility of a dock well after construction is complete
@@ -119,13 +122,22 @@ private:
 };
 
 
+// The QEGui main window class
+//
 class MainWindow : public QMainWindow, public UserMessage
 {
     Q_OBJECT
 
 public:
-    MainWindow( QEGui* appIn, QString fileName, QString title, QString customisationName,
-                const QEFormMapper::FormHandles& formHandle, bool openDialog, QWidget *parent = 0 );
+    // Constructor
+    // A profile should have been defined before calling this constructor.
+    // sourceWindow is the opening window and maybe NULL.
+    // Specificying a sourceWindow does *not* the same as specifying a parent.
+    MainWindow( QEGui* appIn, QString fileName, QString title,
+                QString customisationName,
+                const QEFormMapper::FormHandles& formHandle,
+                bool openDialog, MainWindow* sourceWindow,
+                QWidget* parent = 0 );
 
     ~MainWindow();
 

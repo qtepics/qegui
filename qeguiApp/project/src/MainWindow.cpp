@@ -1,6 +1,9 @@
 /*  MainWindow.cpp
  *
- *  This file is part of the EPICS QT Framework, initially developed at the Australian Synchrotron.
+ *  This file is part of the EPICS QT Framework, initially developed at the
+ *  Australian Synchrotron.
+ *
+ *  Copyright (c) 2009-2018 Australian Synchrotron
  *
  *  The EPICS QT Framework is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
@@ -14,8 +17,6 @@
  *
  *  You should have received a copy of the GNU Lesser General Public License
  *  along with the EPICS QT Framework.  If not, see <http://www.gnu.org/licenses/>.
- *
- *  Copyright (c) 2009,2010,2017,2018 Australian Synchrotron
  *
  *  Author:
  *    Andrew Rhyder
@@ -186,11 +187,12 @@ QString MainWindow::currentScreenCaptureDir = ".";
 //=================================================================================
 
 // Constructor
-// A profile should have been defined before calling this constructor
+// A profile should have been defined before calling this constructor.
 MainWindow::MainWindow( QEGui* appIn, QString fileName, QString title,
                         QString customisationName,
                         const QEFormMapper::FormHandles& formHandle,
-                        bool openDialog, QWidget *parent ) : QMainWindow( parent )
+                        bool openDialog, MainWindow* sourceWindow,
+                        QWidget *parent ) : QMainWindow( parent )
 {
     app = appIn;
 
@@ -322,6 +324,17 @@ MainWindow::MainWindow( QEGui* appIn, QString fileName, QString title,
 
     // Set up request action to form name and class name maps.
     createActionMaps();
+
+    // Co-locate new window near the old window. Qt has a habit of opening new
+    // windows far away, which was okay with a single "small" screen, but very
+    // annoying when running on two or four "large" screens.
+    //
+    if( sourceWindow ){
+       QRect sourceGeo = sourceWindow->geometry();
+       QRect targetGeo = this->geometry();
+       targetGeo.moveTopLeft( sourceGeo.topLeft () + QPoint( 80, 60 ) );
+       this->setGeometry( targetGeo );
+    }
 }
 
 // Destructor
@@ -410,7 +423,8 @@ void MainWindow::setupPlaceholderMenus()
 void MainWindow::on_actionNew_Window_triggered()
 {
     profile.publishOwnProfile();
-    MainWindow* w = new MainWindow( app, "", "", DEFAULT_QEGUI_CUSTOMISATION, QEFormMapper::nullHandle(), true );
+    MainWindow* w = new MainWindow( app, "", "", DEFAULT_QEGUI_CUSTOMISATION,
+                                    QEFormMapper::nullHandle(), true, this, NULL );
     profile.releaseProfile();
     w->show();
 }
@@ -717,7 +731,8 @@ void MainWindow::on_actionExit_triggered()
 MainWindow* MainWindow::launchLocalGui( const QString& filename, const QEFormMapper::FormHandles& formHandle )
 {
     profile.publishOwnProfile();
-    MainWindow* w = new MainWindow( app, filename, "", app->getParams()->defaultCustomisationName, formHandle, true );
+    MainWindow* w = new MainWindow( app, filename, "", app->getParams()->defaultCustomisationName,
+                                    formHandle, true, this, NULL );
     profile.releaseProfile();
     w->show();
     return w;
@@ -1063,7 +1078,8 @@ void MainWindow::tabContextMenuTrigger( QAction* )
 
     // Use extracted filename to open the new window - we assume the file still exists.
     profile.publishOwnProfile();
-    MainWindow* w = new MainWindow( app, fileName, title, customisationName, false, NULL);
+    MainWindow* w = new MainWindow( app, fileName, title, customisationName,
+                                    QEFormMapper::nullHandle(), false, this, NULL );
     profile.releaseProfile();
     w->show();
 }
@@ -1598,7 +1614,9 @@ QWidget* MainWindow::launchGui( QString guiName, QString title, QString customis
         // Open the specified gui in a new window
         case QEActionRequests::OptionNewWindow:
             {
-                MainWindow* w = new MainWindow( app, guiName, title, customisationName, formHandle, true ); // Note, profile should have been published by signal code
+                // Note, profile should have been published by signal code
+                MainWindow* w = new MainWindow( app, guiName, title, customisationName,
+                                                formHandle, true, this, NULL );
                 w->show();
                 return w;
             }
@@ -2232,7 +2250,8 @@ void MainWindow::buildRecentMenu()
     QList<recentFile*> files = app->getRecentFiles();
     for( int i = 0; i < files.count(); i++ )
     {
-        recentMenu->addAction( files.at( i ) );
+        recentFile* rf = files.at( i );
+        recentMenu->addAction( rf );
     }
 }
 

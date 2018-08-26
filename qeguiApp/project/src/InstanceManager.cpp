@@ -1,6 +1,9 @@
 /*  InstanceManager.cpp
  *
- *  This file is part of the EPICS QT Framework, initially developed at the Australian Synchrotron.
+ *  This file is part of the EPICS QT Framework, initially developed at the
+ *  Australian Synchrotron.
+ *
+ *  Copyright (c) 2009-2018 Australian Synchrotron
  *
  *  The EPICS QT Framework is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
@@ -14,8 +17,6 @@
  *
  *  You should have received a copy of the GNU Lesser General Public License
  *  along with the EPICS QT Framework.  If not, see <http://www.gnu.org/licenses/>.
- *
- *  Copyright (c) 2009, 2010 Australian Synchrotron
  *
  *  Author:
  *    Andrew Rhyder
@@ -215,7 +216,8 @@ void instanceManager::newWindow( const startupParams& params )
         // If no files specified, open a single window without a file name
         if( !params.filenameList.count() )
         {
-            MainWindow* mw = new MainWindow( app, "", "", params.defaultCustomisationName, QEFormMapper::nullHandle(),  true );
+            MainWindow* mw = new MainWindow( app, "", "", params.defaultCustomisationName,
+                                             QEFormMapper::nullHandle(),  true, NULL, NULL );
             mw->show();
         }
 
@@ -235,7 +237,9 @@ void instanceManager::newWindow( const startupParams& params )
                 // If there are currently no windows, create one
                 else
                 {
-                    MainWindow* mw = new MainWindow( app, params.filenameList[i], "", params.startupCustomisationName, QEFormMapper::nullHandle(), true );
+                    MainWindow* mw = new MainWindow( app, params.filenameList[i],
+                                                     "", params.startupCustomisationName,
+                                                     QEFormMapper::nullHandle(), true, NULL, NULL );
                     mw->show();
                 }
             }
@@ -246,3 +250,5 @@ void instanceManager::newWindow( const startupParams& params )
 
     // Release the profile
 }
+
+// end

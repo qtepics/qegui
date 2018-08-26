@@ -1,6 +1,9 @@
 /*  saveRestoreManager.cpp
  *
- *  This file is part of the EPICS QT Framework, initially developed at the Australian Synchrotron.
+ *  This file is part of the EPICS QT Framework, initially developed at the
+ *  Australian Synchrotron.
+ *
+ *  Copyright (c) 2009-2018 Australian Synchrotron
  *
  *  The EPICS QT Framework is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
@@ -15,13 +18,12 @@
  *  You should have received a copy of the GNU Lesser General Public License
  *  along with the EPICS QT Framework.  If not, see <http://www.gnu.org/licenses/>.
  *
- *  Copyright (c) 2009, 2010 Australian Synchrotron
- *
  *  Author:
  *    Andrew Rhyder
  *  Contact details:
  *    andrew.rhyder@synchrotron.org.au
  */
+
 /* This class is used to manage saving and restoring for QEGui.
    The main item saved is the number of main windows saved so the restore will know how many main windows to restore.
    Each main window will save it's own info.
@@ -105,7 +107,7 @@ void saveRestoreManager::saveRestore( SaveRestoreSignal::saveRestoreOptions opti
                 setupProfile( NULL, app->getParams()->pathList, "", app->getParams()->substitutions );
                 for( int i = 0; i < numMainWindows; i++ )
                 {
-                    MainWindow* mw = new MainWindow( app, "", "", "", QEFormMapper::nullHandle(), false );
+                    MainWindow* mw = new MainWindow( app, "", "", "", QEFormMapper::nullHandle(), false, NULL, NULL );
                     mw->show();
                 }
 
@@ -122,3 +124,4 @@ void saveRestoreManager::saveRestore( SaveRestoreSignal::saveRestoreOptions opti
 
 }
 
+// end

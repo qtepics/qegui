@@ -34,6 +34,7 @@
 #include <QEFrameworkVersion.h>
 #include <InstanceManager.h>
 #include <QDebug>
+#include <MainWindow.h>
 #include <saveRestoreManager.h>
 #include <QSettings>
 #include <QEScaling.h>
@@ -425,14 +426,20 @@ void QEGui::login( QWidget* fromForm )
 }
 
 // Launch a gui for the 'Recent...' menu
-void QEGui::launchRecentGui( QString path, QStringList pathList, QString macroSubstitutions, QString customisationName )
+void QEGui::launchRecentGui( QString path, QStringList pathList,
+                             QString macroSubstitutions,
+                             QString customisationName )
 {
+    MainWindow* sourceWindow = NULL;   // this is unknown for open recent activity.
+
     // Set up the profile for the new window
     ContainerProfile profile;
 
     profile.setupProfile( NULL, pathList, "", macroSubstitutions );
 
-    MainWindow* mw = new MainWindow( this, path, "", customisationName, QEFormMapper::nullHandle(), false );
+    MainWindow* mw = new MainWindow( this, path, "", customisationName,
+                                     QEFormMapper::nullHandle(), false,
+                                     sourceWindow, NULL );
     mw->show();
     profile.releaseProfile();
 }
