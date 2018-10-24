@@ -34,6 +34,7 @@
 #include <QEFrameworkVersion.h>
 #include <InstanceManager.h>
 #include <QDebug>
+#include <QLibraryInfo>
 #include <MainWindow.h>
 #include <saveRestoreManager.h>
 #include <QSettings>
@@ -211,6 +212,10 @@ void QEGui::printVersion ()
    //
    std::cout  << "Support packages:  " << QEFrameworkVersion::getEpicsVersionStr ().toLatin1().data()
               << " and "    << QEFrameworkVersion::getQwtVersionStr().toLatin1().data() << std::endl;
+
+   // Provide library/plugin path info
+   std::cout << "Library path: " << QLibraryInfo::location ( QLibraryInfo::LibrariesPath ).toLatin1().data() << std::endl;
+   std::cout << "Plugin path:  " << QLibraryInfo::location ( QLibraryInfo::PluginsPath ).toLatin1().data() << std::endl;
 }
 
 // Print file to stream
