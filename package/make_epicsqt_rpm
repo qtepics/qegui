@@ -1,0 +1,247 @@
+#!/bin/bash
+#
+
+# $File: //ASP/tec/gui/qegui/trunk/package/make_epicsqt_rpm $
+# $Revision: #5 $
+# $DateTime: 2018/10/11 21:01:42 $
+# Last checked in by: $Author: starritt $
+#
+
+iam=$( basename $0 )
+
+function terminate() {
+   local arg
+   for arg in "$@" ; do
+      echo 1>&2 "${arg}"
+   done
+   exit 1
+}
+
+function usage () {
+   terminate "${1}" \
+             "usage: ${iam} [-ls]  filenames..."  \
+             "       ${iam} [--help | -h]"
+}
+
+function help () {
+   cat << HELPINFO
+${iam} - creates an installable rpm for epicsQt. As well as
+qegui itself, the generated rpm includes the Qt libraries and plugins, 
+designer, the epicsQt framework  libraries and plugin, and the EPICS 
+and QWT support libraries.
+
+The rpm is created using fpm which is a ruby program.
+
+usage: ${iam}
+       ${iam} [--help | -h]
+
+Options
+--help, -h   show this help information and exit.
+
+Parameters
+
+Environment Variables
+
+HELPINFO
+}
+
+if [ "${1}" == "--help" ] || [ "${1}" == "-h" ] ; then
+   help
+   exit 0
+fi
+
+
+# ----------------------------------------------------------------------
+# copy (library) file, preserve if done as a symbolic link.
+#
+function copy_file() {
+   local file=${1}
+   local tgt=${2}
+   local actual
+   local sym_link
+   
+   if [ ! -e  ${file:?} ] ; then
+      echo "skipping ${file:?}"
+         
+   elif [ -L ${file:?} ] ; then
+       # e.g. libca.so -> libca.so.4.13.1
+       #
+       actual=$( readlink -f ${file:?} )
+       sym_link=$( basename ${file} )
+
+       echo "including ${actual} as ${sym_link}"
+       cp ${actual:?}  ${tgt:?}/
+       ln -s  $( basename ${actual:?} )  ${tgt:?}/${sym_link:?}
+       
+   else
+      # Just copy as is
+      #
+      echo "including ${file}"
+      cp  ${file:?}  ${tgt:?}/   
+   fi
+   
+}
+
+
+# ----------------------------------------------------------------------
+# Auto generate from qegui
+#
+echo "Extracting version information"
+
+qegui=$( type qegui | awk  '{ print $3 }' )
+test -n "${qegui}" || terminate "qegui not on PATH or does not exist"
+
+temp=/tmp/${USER}_${iam}_$$_version_info
+${qegui:?} -v  > ${temp:?}
+qtvern=$(    cat ${temp:?} | head -n 1  | sed -e 's/^.*using QT//g'     | sed -e 's/)//g'   | sed -e 's/ //g' )
+version=$(   cat ${temp:?} | head -n 1  | sed -s 's/QEGui version://g'  | awk '{ print $1}' | sed -e 's/ //g' )
+epicsvrn=$(  cat ${temp:?} | grep EPICS | awk '{ print $4 }'                                | sed -e 's/ //g' )
+qtlibs=$(    cat ${temp:?} | grep 'Library path' | awk '{ print $3 }'  )
+rm -f ${temp:?}
+
+qtstuff=$( dirname ${qtlibs:?} )
+
+echo "qegui   = ${qegui:?}"
+echo "version = ${version:?}"
+echo "qtstuff = ${qtstuff:?}"
+
+# Set up other source locations
+#
+qtlibdir=${qtstuff:?}/lib
+qtplugindir=${qtstuff:?}/plugins
+designer=${qtstuff:?}/bin/designer
+qeplugin=/gui/qeframework/lib/${EPICS_HOST_ARCH}/designer/libQEPlugin.so
+
+# Target install dir - where the files will be installed
+#
+package_location=opt/australian_synchrotron/epicsQt
+install_dir=/${package_location:?}
+
+workdir=/tmp/${iam}_${USER}_$$
+mkdir -p ${workdir:?} || terminate "cannot create ${workdir} directory"
+
+# Construction directories - where we assemble the files prior
+# to createing the rpm. 
+#
+source_dir=${workdir:?}/${package_location:?}
+usr_local_bin=${workdir:?}/usr/local/bin
+
+echo ""
+echo "Constructing ${package_location}"
+
+# Create sub-directories.
+# Keep Qt and epicsQt libraries separate, but use a common bin directory
+#
+mkdir -p ${source_dir:?}/qtlib
+mkdir -p ${source_dir:?}/qtplugins
+mkdir -p ${source_dir:?}/bin
+mkdir -p ${source_dir:?}/lib/designer
+mkdir -p ${usr_local_bin:?}
+
+# Copy files.
+#
+echo "including ${qtlibdir:?}/..."
+cp -r     ${qtlibdir:?}/*       ${source_dir:?}/qtlib/
+echo "including ${qtplugindir:?}/..."
+cp -r     ${qtplugindir:?}/*    ${source_dir:?}/qtplugins/
+
+copy_file  ${designer}           ${source_dir:?}/bin/
+copy_file  ${qegui:?}            ${source_dir:?}/bin/
+
+copy_file  ${qeplugin:?}         ${source_dir:?}/lib/designer/
+
+# Serach for Qt/QE/QWT/EPICS sepecific libraries.
+#
+for pattern in ${EPICS_BASE} libacai ${QE_FRAMEWORK} libprotobuf libqwt libav ; do
+   lib_path=$( ldd ${qegui:?} | grep "${pattern}" | awk '{print $3}' )
+   if [ -z "${lib_path}" ] ; then
+      echo "skipping ${pattern}"
+      continue
+   fi
+   for lib in ${lib_path} ; do
+      copy_file  ${lib:?}   ${source_dir:?}/lib/
+   done
+done
+
+
+# Create wrapper script for qegui
+#
+cat <<HERE >${usr_local_bin:?}/qegui
+#!/bin/bash
+#
+# This is a simple wrapper script to set up the required environment to run qegui
+# Note: this does not clear QT_PLUGIN_PATH, so other items on the plugin path that
+# are incompatible with the reference plugins can cause issues.
+# Consider unsetting QT_PLUGIN_PATH before calling this script.
+#
+
+export PATH=\${PATH}:${install_dir:?}/bin
+# Prefix library searches
+export LD_LIBRARY_PATH=${install_dir:?}/qtlib:${install_dir:?}/lib:\${LD_LIBRARY_PATH}
+export QT_PLUGIN_PATH=${install_dir:?}/qtplugins:${install_dir:?}/lib:\${QT_PLUGIN_PATH}
+
+${install_dir:?}/bin/qegui "\$@" &
+
+# end
+HERE
+
+chmod a+rx  ${usr_local_bin:?}/qegui
+
+# Create wrapper script for designer.
+#
+cat <<HERE >${usr_local_bin:?}/designer
+#!/bin/bash
+#
+# This is a simple wrapper script to set up the required environment to run designer
+# Note: this does not clear QT_PLUGIN_PATH, so other items on the plugin path that
+# are incompatible with the reference plugins can cause issues.
+# Consider unsetting QT_PLUGIN_PATH before calling this script.
+#
+
+export PATH=\${PATH}:${install_dir:?}/bin
+# Prefix library searches
+export LD_LIBRARY_PATH=${install_dir:?}/qtlib:${install_dir:?}/lib:\${LD_LIBRARY_PATH}
+export QT_PLUGIN_PATH=${install_dir:?}/qtplugins:${install_dir:?}/lib:\${QT_PLUGIN_PATH}
+
+${install_dir:?}/bin/designer "\$@" &
+
+# end
+HERE
+
+chmod a+rx ${usr_local_bin:?}/designer
+
+echo "construction complete"
+
+
+# Extract system info
+#
+sysvern=el$(  rpm -q centos-release | cut -d"-" -f3  | sed -e 's/ //g' )
+arch=$( uname -m )
+package=epicsQt
+target=${package}-${version}-${sysvern:?}.${arch:?}.rpm
+
+rm -f /tmp/${target:?}
+
+echo ""
+echo "Creating ${target:?}"
+
+# cd to the "root" directory.
+#
+cd ${workdir:?}
+
+echo ""
+fpm  --verbose -s dir -t rpm  --name=${package} --iteration ${sysvern:?}  \
+     --license="LGPL"  --vendor="Australian Synchrotron"     \
+     --provides="epicsQt"     --rpm-digest=sha1    --version=${version}  \
+     --description="epics Qt together with support libraries (qwt, ca, acai, protocol) and plugins"  \
+     --package="/tmp/${target:?}"    \
+     ${package_location:?}  usr/local/bin/designer  usr/local/bin/qegui
+
+echo ""
+ls --color -hl  /tmp/${target:?}
+echo "complete"
+
+echo ""
+echo "local cleanup  rm -rf ${workdir:?}"
+
+# end
