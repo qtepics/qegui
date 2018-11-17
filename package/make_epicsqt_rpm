@@ -2,8 +2,8 @@
 #
 
 # $File: //ASP/tec/gui/qegui/trunk/package/make_epicsqt_rpm $
-# $Revision: #5 $
-# $DateTime: 2018/10/11 21:01:42 $
+# $Revision: #6 $
+# $DateTime: 2018/11/02 18:04:47 $
 # Last checked in by: $Author: starritt $
 #
 
@@ -110,7 +110,6 @@ echo "qtstuff = ${qtstuff:?}"
 qtlibdir=${qtstuff:?}/lib
 qtplugindir=${qtstuff:?}/plugins
 designer=${qtstuff:?}/bin/designer
-qeplugin=/gui/qeframework/lib/${EPICS_HOST_ARCH}/designer/libQEPlugin.so
 
 # Target install dir - where the files will be installed
 #
@@ -142,16 +141,26 @@ mkdir -p ${usr_local_bin:?}
 #
 echo "including ${qtlibdir:?}/..."
 cp -r     ${qtlibdir:?}/*       ${source_dir:?}/qtlib/
+
 echo "including ${qtplugindir:?}/..."
 cp -r     ${qtplugindir:?}/*    ${source_dir:?}/qtplugins/
 
 copy_file  ${designer}           ${source_dir:?}/bin/
 copy_file  ${qegui:?}            ${source_dir:?}/bin/
+echo ""
 
-copy_file  ${qeplugin:?}         ${source_dir:?}/lib/designer/
+echo "including application plugins..."
+for pattern in qeframework qtfsm ; do
+   lib_path=$( echo $QT_PLUGIN_PATH | tr ':' '\n' | grep ${pattern} )
+   for lib in ${lib_path}/designer/lib*.so ; do
+      copy_file  ${lib:?}        ${source_dir:?}/lib/designer/
+   done
+done
+echo ""
 
-# Serach for Qt/QE/QWT/EPICS sepecific libraries.
+# Search for Qt/QE/QWT/EPICS sepecific libraries.
 #
+echo "including libraries..."
 for pattern in ${EPICS_BASE} libacai ${QE_FRAMEWORK} libprotobuf libqwt libav ; do
    lib_path=$( ldd ${qegui:?} | grep "${pattern}" | awk '{print $3}' )
    if [ -z "${lib_path}" ] ; then
@@ -162,6 +171,7 @@ for pattern in ${EPICS_BASE} libacai ${QE_FRAMEWORK} libprotobuf libqwt libav ; 
       copy_file  ${lib:?}   ${source_dir:?}/lib/
    done
 done
+echo ""
 
 
 # Create wrapper script for qegui
