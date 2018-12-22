@@ -14,8 +14,14 @@
    <string>Message Log</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="margin">
+    <number>2</number>
+   </property>
    <item>
     <widget class="QELog" name="qelog">
+     <property name="master">
+      <bool>true</bool>
+     </property>
      <property name="messageFormFilter">
       <enum>QELog::Any</enum>
      </property>
@@ -29,8 +35,14 @@
  <customwidgets>
   <customwidget>
    <class>QELog</class>
-   <extends>QWidget</extends>
-   <header>QELogManager.h</header>
+   <extends>QEFrame</extends>
+   <header>QELog.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QEFrame</class>
+   <extends>QFrame</extends>
+   <header>QEFrame.h</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <resources/>

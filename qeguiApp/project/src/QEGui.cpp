@@ -26,7 +26,8 @@
 
 /*
  This class is used to manage the overall QEGui application.
- Note, each main window is managed by the QEMainWindow class. This class manages anything not common to all main windows.
+ Note, each main window is managed by the QEMainWindow class.
+ This class manages anything not common to all main windows.
  */
 
 #include "QEGui.h"
@@ -52,32 +53,33 @@ Q_DECLARE_METATYPE( QEForm* )
 QEGui::QEGui(int& argc, char **argv ) : QApplication( argc, argv )
 {
     qRegisterMetaType<QEForm*>( "QEForm*" );   // must also register declared meta types.
-    loginForm = NULL;
+    this->loginForm = NULL;
 }
+
+// Destruction - place holder
+QEGui::~QEGui() { }
 
 // Run the application
 int QEGui::run()
 {
     // Get the startup parameters from the command line arguments
-    // Just print a message if required (bad parameters, or only or versionversion info required)
-    QStringList args = QCoreApplication::arguments();
-    bool argsAreOkay = params.getStartupParams( args );
+    bool argsAreOkay = this->params.getStartupParams();
 
     if (!argsAreOkay)
     {
-        printUsage (std::cerr);
+        QEGui::printUsage (std::cerr);
         return 1;
     }
 
-    if (params.printHelp)
+    if (this->params.printHelp)
     {
-       printHelp ();
+       QEGui::printHelp ();
        return 0;
     }
 
-    if (params.printVersion)
+    if (this->params.printVersion)
     {
-       printVersion ();
+       QEGui::printVersion ();
        return 0;
     }
 
@@ -107,7 +109,7 @@ int QEGui::run()
 
     // Set up the profile for finding customisation files, and for loading customisations
     ContainerProfile profile;
-    profile.setupProfile( NULL, params.pathList, "", params.substitutions );
+    profile.setupProfile( NULL, params.pathList, "", this->params.substitutions );
 
     // Load window customisations
     // First load the inbuilt default
@@ -158,20 +160,21 @@ int QEGui::run()
     // and if there is already another instance of QEGui
     // and it takes the parameters, do no more
     instanceManager instance( this );
-    if( params.singleApp && instance.handball( &params ) )
+    if( params.singleApp && instance.handball( &this->params ) )
         return 0;
 
     // Define application scaling / font scaling to be applied to all widgets.
     // Recall adjustScale and fontScale  is expressed as a percentage.
     //
-    QEScaling::setScaling( int( params.adjustScale ), 100 );
-    QEScaling::setFontScaling( int( params.fontScale ), 100 );
+    QEScaling::setScaling( int( this->params.adjustScale ), 100 );
+    QEScaling::setFontScaling( int( this->params.fontScale ), 100 );
 
     // Start automatic saving of current configuration
-    startAutoSaveConfig( params.configurationFile, params.disableAutoSaveConfiguration );
+    startAutoSaveConfig( this->params.configurationFile,
+                         this->params.disableAutoSaveConfiguration );
 
     // Start the main application window
-    instance.newWindow( params );
+    instance.newWindow( this->params );
     int ret = exec();
 
     // Save passwords
@@ -193,7 +196,7 @@ int QEGui::run()
     return ret;
 }
 
-// Print version info
+// Print version info [static]
 void QEGui::printVersion ()
 {
    std::cout  << "QEGui version:     " << QE_VERSION_STRING << "  "
@@ -218,7 +221,7 @@ void QEGui::printVersion ()
    std::cout << "Plugin path:  " << QLibraryInfo::location ( QLibraryInfo::PluginsPath ).toLatin1().data() << std::endl;
 }
 
-// Print file to stream
+// Print file to stream [static]
 void QEGui::printFile (const QString& filename,
                        std::ostream& stream)
 {
@@ -235,25 +238,25 @@ void QEGui::printFile (const QString& filename,
    stream << text.toLatin1().data();
 }
 
-// Print command line usage
+// Print command line usage [static]
 void QEGui::printUsage (std::ostream& stream)
 {
-   printFile (":/qe/gui/help/help_usage.txt", stream);
+   QEGui::printFile (":/qe/gui/help/help_usage.txt", stream);
 }
 
-// Prinf command line help
+// Prinf command line help [static]
 void QEGui::printHelp ()
 {
    printVersion();
    std::cout << "\n";
    printUsage( std::cout );
-   printFile( ":/qe/gui/help/help_general.txt", std::cout );
+   QEGui::printFile( ":/qe/gui/help/help_general.txt", std::cout );
 }
 
 // Get the application's startup parameters
 startupParams* QEGui::getParams()
 {
-    return &params;
+    return &this->params;
 }
 
 // Get the number of main windows

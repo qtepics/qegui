@@ -27,11 +27,26 @@
 #include <QtGlobal>
 #include <QApplication>
 #include <QEGui.h>
-  
+
 //------------------------------------------------------------------------------
 //
 int main(int argc, char *argv[])
 {
+    // Intercept help/verson arguments before QApplication created.
+    //
+    if (argc >= 2) {
+        const QString firstArg (argv[1]);
+
+        if ((firstArg == "-h") || (firstArg == "--help")) {
+            QEGui::printHelp();
+            return 0;
+        }
+
+        if ((firstArg == "-v") || (firstArg == "--version")) {
+            QEGui::printVersion();
+            return 0;
+        }
+    }
 
 #if (QT_VERSION >= QT_VERSION_CHECK(5, 4, 0))
     // Avoid Qt WebEngine seems to be initialized from a plugin warning.

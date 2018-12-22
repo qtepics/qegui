@@ -1,6 +1,9 @@
 /*  StartupParams.cpp
  *
- *  This file is part of the EPICS QT Framework, initially developed at the Australian Synchrotron.
+ *  This file is part of the EPICS QT Framework, initially developed at the
+ *  Australian Synchrotron.
+ *
+ *  Copyright (c) 2009-2018 Australian Synchrotron
  *
  *  The EPICS QT Framework is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
@@ -14,8 +17,6 @@
  *
  *  You should have received a copy of the GNU Lesser General Public License
  *  along with the EPICS QT Framework.  If not, see <http://www.gnu.org/licenses/>.
- *
- *  Copyright (c) 2009,2010,2017 Australian Synchrotron
  *
  *  Author:
  *    Andrew Rhyder
@@ -31,17 +32,22 @@
 #include <QString>
 #include <QStringList>
 #include <QVariant>
+#include <QDebug>
 #include <QDir>
 #include <ContainerProfile.h>
 #include <QEFrameworkVersion.h>
+#include <QEAdaptationParameters.h>
 #include <QECommon.h>
 
-#define LIMIT_SCALE(scale)  LIMIT( scale, 40.0, 400.0 )
+#define DEBUG qDebug() << "StartupParams" << __LINE__ << __FUNCTION__ << "  "
 
+#define LIMIT_SCALE(scale)  LIMIT( scale, 40.0, 400.0 )
 
 // Construction
 startupParams::startupParams()
 {
+    // Set default values.
+    //
     adjustScale = 100.0;
     fontScale = 100.0;
     enableEdit = false;
@@ -55,6 +61,9 @@ startupParams::startupParams()
     configurationName = PersistanceManager::defaultName;
     configurationFile = "QEGuiConfig.xml";
 }
+
+// Destruction
+startupParams::~startupParams() { }  // place holder
 
 // Unserialize application startup parameters
 // This must match startupParams::setSharedParams()
@@ -191,249 +200,72 @@ void startupParams::setSharedParams( QByteArray& out )
 
 
 // Extract required parameters from argv and argc
-bool startupParams::getStartupParams( QStringList args )
+// which are in QCoreApplication::arguments()
+// Also check for any environment variabeles and value form
+// adaptation parameter ini file (if available)
+//
+bool startupParams::getStartupParams()
 {
-    // Discard application name
-    // (At least one argument should always be present - the application name - but checking since only need to check
-    if( args.count() )
-    {
-        args.removeFirst();
+    QEAdaptationParameters ap ("QEGUI_");
+    QEOptions opts;
+
+    double td;
+    QString ts;
+
+    td = ap.getFloat ("adjust_scale", this->adjustScale);
+    this->adjustScale = opts.getFloat ('a', td);
+
+    td = ap.getFloat ("font_scale", this->fontScale);
+    this->fontScale = opts.getFloat ('f', td);
+
+    this->singleApp = ap.getBool ("single") || opts.getBool ('s');
+    this->enableEdit = ap.getBool ("edit") || opts.getBool ('e');
+    this->disableMenu = ap.getBool ("disable_menu") || opts.getBool ('b');
+    this->disableStatus = ap.getBool ("disable_status") || opts.getBool ('u');
+    this->disableAutoSaveConfiguration = ap.getBool ("disable_autosave") || opts.getBool ('o');
+
+    // syntax is -r [configuration_name]
+    //
+    ts = ap.getString ("restore", this->configurationName);
+    this->configurationName = opts.getString ('r', ts);
+    this->restore = ap.getBool ("restore") || opts.getBool ('r');
+
+    ts = ap.getString ("configuration", this->configurationFile);
+    this->configurationFile = opts.getString ('c', ts);
+
+    const QChar ps = ContainerProfile::platformSeperator();
+    ts = ap.getString ("path", this->pathList.join (ps));
+    ts = opts.getString ('p', ts);
+    this->pathList = ts.isEmpty() ? QStringList() : ts.split (ps);
+
+    ts = ap.getString ("macros", this->substitutions);
+    this->substitutions = opts.getString ('m', ts);
+
+    ts = ap.getString ("customisation_file", this->customisationFile);
+    this->customisationFile = opts.getString ('w', ts);
+
+    ts = ap.getString ("customisation_name", this->startupCustomisationName);
+    this->startupCustomisationName = opts.getString ('n', ts);
+
+    ts = ap.getString ("default_customisation_name", this->defaultCustomisationName);
+    this->defaultCustomisationName = opts.getString ('d', ts);
+
+    ts = ap.getString ("title", this->applicationTitle);
+    this->applicationTitle = opts.getString ('t', ts);
+
+    // Option only.
+    this->printHelp    = opts.getBool ("help", 'h');
+    this->printVersion = opts.getBool ("version", 'v');
+
+    // Extract any parameters
+    //
+    const int pc = opts.getParameterCount();
+    for (int j = 0; j < pc; j++) {
+        this->filenameList.append (opts.getParameter (j));
     }
 
-    // Get switches and filenames.
-    // Switches may be separate or grouped.
-    // Any parameters not associated with a switch are considered filenames.
-    // Switches that precede a parameter (-p, -m) may be grouped. Associated
-    // parameters are then expected in the order the switches were specified.
-    // Examples:
-    // -e -p /home
-    // -epm /home PUMP=02
-    while( args.size() )
-    {
-        // If next is a switch, get the switch and assocaited parameters
-        if( args[0].left(1) == QString( "-" ) )
-        {
-            // Get the next argument
-            QString arg = args[0];
-            args.removeFirst();
-
-            // Remove the leading '-' and process the argument if there is anything left of it
-            while( arg.remove(0,1).size() )
-            {
-                // Identify the argument by the next letter
-                switch( arg[0].toLatin1() )
-                {
-
-                   // 'Adjust Scale' flag
-                   // Take next non switch parameter as macro substitutions
-                   //
-                   // General scaling
-                   case 'a':
-                       // Get the scaling (next parameter, if present, and as long as it isn't a switch)
-                       if( args.count() >= 1 && args[0].left(1) != QString( "-" ) )
-                       {
-                          QVariant image( QVariant::String );
-                          double value;
-                          bool okay;
-
-                          image = args [0];
-                          args.removeFirst();
-                          value = image.toDouble( &okay );
-                          if( !okay ){
-                             return false;
-                          }
-                          adjustScale = LIMIT_SCALE( value );
-
-                       } else {
-                           return false;
-                       }
-                       break;
-
-                    // Additonal font scaling
-                    case 'f':
-                        // Get the scaling (next parameter, if present, and as long as it isn't a switch)
-                        if( args.count() >= 1 && args[0].left(1) != QString( "-" ) )
-                        {
-                           QVariant image( QVariant::String );
-                           double value;
-                           bool okay;
-
-                           image = args [0];
-                           args.removeFirst();
-                           value = image.toDouble( &okay );
-                           if( !okay ){
-                              return false;
-                           }
-                           fontScale = LIMIT_SCALE( value );
-                        } else {
-                            return false;
-                        }
-                        break;
-
-                    // 'Editable' flag
-                    case 'e':
-                        enableEdit = true;
-                        break;
-
-                    // 'Single App' flag
-                    case 's':
-                        singleApp = true;
-                        break;
-
-                    // Help flag
-                    //
-                    case 'h':
-                        printHelp = true;
-                        break;
-
-                    // Version flag
-                    //
-                    case 'v':
-                        printVersion = true;
-                        break;
-
-                    // 'menu bar disabled' flag
-                    case 'b':
-                        disableMenu = true;
-                        break;
-
-                    // 'status bar disabled' flag
-                    case 'u':
-                        disableStatus = true;
-                        break;
-
-                    // 'auto save configuration disabled' flag
-                    case 'o':
-                        disableAutoSaveConfiguration = true;
-                        break;
-
-                    // 'restore configuration' flag
-                    // Take next non switch parameter as the configuration name
-                    // If next parameter is a switch, use default configuration
-                    case 'r':
-                        restore = true;
-                        if( args.count() >= 1 && args[0].left(1) != QString( "-" ) )
-                        {
-                            configurationName = args[0];
-                            args.removeFirst();
-                        }
-                        break;
-
-                    // 'configuration file' flag
-                    // Take next non switch parameter as the configuration file
-                    case 'c':
-                        if( args.count() >= 1 && args[0].left(1) != QString( "-" ) )
-                        {
-                            configurationFile = args[0];
-                            args.removeFirst();
-                        }
-                        else
-                        {
-                            return false;
-                        }
-                        break;
-
-                    // 'window customisations file' flag
-                    // Take next non switch parameter as the window customisations file
-                    case 'w':
-                        if( args.count() >= 1 && args[0].left(1) != QString( "-" ) )
-                        {
-                            customisationFile = args[0];
-                            args.removeFirst();
-                        }
-                        else
-                        {
-                            return false;
-                        }
-                        break;
-
-                    // 'window startup customisations' name
-                    // Take next non switch parameter as the window customisation name for all windows startet on startup
-                    case 'n':
-                        if( args.count() >= 1 && args[0].left(1) != QString( "-" ) )
-                        {
-                            startupCustomisationName = args[0];
-                            args.removeFirst();
-                        }
-                        else
-                        {
-                            return false;
-                        }
-                        break;
-
-                    // 'window default customisations' name
-                    // Take next non switch parameter as the default window customisation name
-                    case 'd':
-                        if( args.count() >= 1 && args[0].left(1) != QString( "-" ) )
-                        {
-                            defaultCustomisationName = args[0];
-                            args.removeFirst();
-                        }
-                        else
-                        {
-                            return false;
-                        }
-                        break;
-
-                    // 'Title'
-                    // Take next non switch parameter as the QEGui default application title
-                    case 't':
-                        if( args.count() >= 1 && args[0].left(1) != QString( "-" ) )
-                        {
-                            applicationTitle = args[0];
-                            args.removeFirst();
-                        }
-                        else
-                        {
-                            return false;
-                        }
-                        break;
-
-                    // 'paths' flag
-                    // Take next non switch parameter as path list
-                    case 'p':
-                        // Get the path list (next parameter, if present, and as long as it isn't a switch)
-                        if( args.count() >= 1 && args[0].left(1) != QString( "-" ) )
-                        {
-                            // Split the paths
-                            QString pathParam = args[0];
-                            pathList = pathParam.split( ContainerProfile::platformSeperator() );
-                            args.removeFirst();
-                        }
-                        else
-                        {
-                            return false;
-                        }
-                        break;
-
-                    // 'macros' flag
-                    // Take next non switch parameter as macro substitutions
-                    case 'm':
-                        // Get the macros (next parameter, if present, and as long as it isn't a switch)
-                        if( args.count() >= 1 && args[0].left(1) != QString( "-" ) )
-                        {
-                            substitutions = args[0];
-                            args.removeFirst();
-                        } else {
-                            return false;
-                        }
-                        break;
-
-                    default:
-                        // Unrecognised switch
-                        return false;
-                }
-            }
-        }
-
-        // Next is not a switch, get a file name
-        else
-        {
-            filenameList.append( args[0] );
-            args.removeFirst();
-        }
-    }
-
+    // Any un-recognised options are ignored
+    //
     return true;
 }
 

@@ -1,6 +1,9 @@
 /*  QEGui.cpp
  *
- *  This file is part of the EPICS QT Framework, initially developed at the Australian Synchrotron.
+ *  This file is part of the EPICS QT Framework, initially developed at the
+ *  Australian Synchrotron.
+ *
+ *  Copyright (c) 2009-2018 Australian Synchrotron
  *
  *  The EPICS QT Framework is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
@@ -14,8 +17,6 @@
  *
  *  You should have received a copy of the GNU Lesser General Public License
  *  along with the EPICS QT Framework.  If not, see <http://www.gnu.org/licenses/>.
- *
- *  Copyright (c) 2009, 2010 Australian Synchrotron
  *
  *  Author:
  *    Andrew Rhyder
@@ -39,7 +40,8 @@
 class QEGui : public QApplication, ContainerProfile, public configAutoSave
 {
 public:
-    QEGui( int& argc, char **argv );            // Construction
+    explicit QEGui( int& argc, char **argv );   // Construction
+    ~QEGui();                                   // Destruction
 
     int run();                                  // Main application code including call to exec()
 
@@ -68,12 +70,12 @@ public:
 
     void saveConfiguration( PersistanceManager* pm, const QString configFile, const QString rootName, const QString configName, const bool warnUser);   // Save the current configuration
 
+    static void printVersion ();                    // Print the version info
+    static void printHelp ();                       // Print help info
 private:
-    void printFile (const QString&  filename,
-                    std::ostream & stream);         // Print file to stream
-    void printVersion ();                           // Print the version info
-    void printUsage (std::ostream & stream);        // Print brief usage statement
-    void printHelp ();                              // Print help info
+    static void printFile (const QString&  filename,
+                           std::ostream & stream);  // Print file to stream
+    static void printUsage (std::ostream & stream); // Print brief usage statement
 
     startupParams params;                           // Parsed startup prarameters
     QList<MainWindow*> mainWindowList;              // List of all main windows

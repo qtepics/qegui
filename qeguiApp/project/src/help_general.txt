@@ -2,50 +2,62 @@ Refer to QE_QEGuiAndUserInterfaceDesign.pdf for comprehensive documentation on t
 application.
 
 Options
+Mandatory arguments to long options are mandatory for short options too.
 
--a      Adjust the GUIs scaling. This option takes a single value which is the percentage
+-a, --adjust_scale
+        Adjust the GUIs scaling. This option takes a single value which is the percentage
         scaling to be applies to each GUI window. The value may be either an integer or a
         floating point number. If specified its value will be constrained to the range 40
         to 400.
 
--f      Additional font scaling above and beyond the general GUIs scaling specified by -a.
+-f, --font_scale
+        Additional font scaling above and beyond the general GUIs scaling specified by -a.
         This option takes a single value which is the percentage addtional font scaling.
         The value may be either an integer or a floating point number. If specified its
         value will be constrained to the range 40 to 400, although typically would be
         in the range 80 to 120.
 
--s      Single application.
+-s, --single
+        Single application.
         QEGui will attempt to pass all parameters to an existing instance of QEGui. When
         one instance of QEGui managing all QEGui windows, all windows will appear in the
         window menu. A typical use is when a QEGui window is started by a button in EDM.
 
--e      Enable edit menu option.
+-e, --edit
+        Enable edit menu option.
         When the edit menu is enabled Designer can be launched from QEGui, typically to
         edit the current GUI. Note QEGui will only reload modified ui files if/when this
         option is used.
 
--b      Disable menu bar.
+-b, --disable_menu
+        Disable menu bar.
 
--u      Disable status bar.
+-u, --disable_status
+        Disable status bar.
 
--o      Disable configuration auto-save.
+-o, --disable_autosave
+        Disable configuration auto-save.
 
--r      Restore from saved configuration.
+-r, --restore
+        Restore from saved configuration.
         If a configuration name is not provided with this option the saved default
         configuration is used if available.
         Note, a single configuration file may contain multiple named configurations as well
         as a default configuration.
 
--c      Configuration file.
+-c, --configuration
+        Configuration file.
         Named configurations will be saved to and read from this file. If this option is
         not provided the default is QEGuiConfig.xml in the current working directory.
 
--p      Search paths
+-p, --path
+        Search paths
         When opening a file, this list of space seperated paths may be used when searching
         for the file. Paths may end with ... to search all sub directories of the path.
         Refer to 'File location rules' for the rules QEGui uses when searching for a file.
 
--m      Macro substitutions applied to GUIs
+-m, --macros
+        Macro substitutions applied to GUIs
 
         macros format: keyword=substitution, keyword=substitution,...
         Enclose in quotes if this parameter contains any spaces.
@@ -54,19 +66,22 @@ Options
         generic template forms. Substitutions are not limited to template forms, and some
         QEWidgets use macro substitutions for purposes other than variable names.
 
--w      Window customisation file.
+-w, --customisation_file
+        Window customisation file.
         This file contains named sets of window menu bar and tool bar customisations.
         Named customisations will be read from this file. If this option is not provided
         an attempt will be made to use QEGuiCustomisation.xml in the current working
         directory. A customisation file is optional.
 
--n      Startup window customisation name.
+-n, --customisation_name
+        Startup window customisation name.
         The name of the window and menu bar customisation set to apply to windows created
         when the application starts (the .ui files specified on the command line). This
         name should be the name of one of the sets of window customisations read from the
         window customisation file.
 
--d      Default window customisation name.
+-d, --default_customisation_name
+        Default window customisation name.
         The name of the window and menubar customisation set to apply to all windows
         created when no customisation name has otherwise been provided. This name should
         be the name of one of the sets of window customisations read from the window
@@ -76,12 +91,15 @@ Options
         in the switch only applies to windows created at startup and specified on the
         command line.
 
--t      Application title.
+-t, --title
+        Application title.
         This title will be used instead of the default application title of 'QEGui'
 
--h      Display help text explaining these options and exit.
+-h, --help
+        Display help text explaining these options and exit.
 
--v      Display version info and exit.
+-v, --version
+        Display version info and exit.
 
 
 Parameters

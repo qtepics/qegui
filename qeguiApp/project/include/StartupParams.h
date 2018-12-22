@@ -1,6 +1,9 @@
 /*  StartupParams.h
  *
- *  This file is part of the EPICS QT Framework, initially developed at the Australian Synchrotron.
+ *  This file is part of the EPICS QT Framework, initially developed at the
+ *  Australian Synchrotron.
+ *
+ *  Copyright (c) 2009-2018 Australian Synchrotron
  *
  *  The EPICS QT Framework is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
@@ -14,8 +17,6 @@
  *
  *  You should have received a copy of the GNU Lesser General Public License
  *  along with the EPICS QT Framework.  If not, see <http://www.gnu.org/licenses/>.
- *
- *  Copyright (c) 2009,2010,2017 Australian Synchrotron
  *
  *  Author:
  *    Andrew Rhyder
@@ -36,14 +37,14 @@
 // Class to manage startup parameters, and in particular sharing them with an other instance of this application
 class startupParams
 {
+public:
+    explicit startupParams();                       // Construction
+    ~startupParams();                               // Destruction
 
-  public:
-    startupParams();                                // Construction
+    bool getStartupParams();                        // Extract startup parameters from command line arguments
 
     void setSharedParams( QByteArray& out );        // Serialise parameters as a serries of bytes
     bool getSharedParams( const QByteArray& in );   // Extract parameters from a series of bytes (return true if all OK)
-
-    bool getStartupParams( QStringList args );      // Extract startup parameters from command line arguments
 
     // Startup parameters
     double adjustScale;                             // GUI scaling parameter (-a)

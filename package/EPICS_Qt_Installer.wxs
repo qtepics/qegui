@@ -2,8 +2,8 @@
 
 <!-- 
 $File: //ASP/tec/gui/qegui/trunk/package/EPICS_Qt_Installer.wxs $
-$Revision: #1 $
-$DateTime: 2018/11/02 18:00:56 $
+$Revision: #2 $
+$DateTime: 2018/12/12 17:02:07 $
 Last checked in by: $Author: starritt $
 
 WiX configuration file used to create an msi installer for EPICS Qt. 
@@ -21,13 +21,13 @@ light.exe -ext WixUIExtension -out EPICS_Qt_Installer_<version> EPICS_Qt_Install
     <Product Name='EPICS Qt' Manufacturer='Australian Synchrotron'
         Id='61E07247-9AA2-41D5-9918-0970425D1B55' 
         UpgradeCode='49FDA92B-D16B-446B-BBE7-813ABCD45217'
-        Language='1033' Codepage='1252' Version='3.6.2'>
-    <Package Id='*' Keywords='Installer' Description="EPICS Qt 3.6.2 Installer"
+        Language='1033' Codepage='1252' Version='3.6.3'>
+    <Package Id='*' Keywords='Installer' Description="EPICS Qt 3.6.3 Installer"
         Comments='EPICS Qt is an open source software developed by the Australian Synchrotron.' Manufacturer='Australian Synchrotron'
         InstallerVersion='100' Languages='1033' Compressed='yes' SummaryCodepage='1252' />
 
      <Upgrade Id='49FDA92B-D16B-446B-BBE7-813ABCD45217'>
-      	<UpgradeVersion OnlyDetect='no' Property='PREVIOUSFOUND' Minimum='1.0.0'  IncludeMinimum='yes' Maximum='3.6.2'  IncludeMaximum='no' />
+      	<UpgradeVersion OnlyDetect='no' Property='PREVIOUSFOUND' Minimum='1.0.0'  IncludeMinimum='yes' Maximum='3.6.3'  IncludeMaximum='no' />
     </Upgrade>
 
     <InstallExecuteSequence>
@@ -148,7 +148,7 @@ light.exe -ext WixUIExtension -out EPICS_Qt_Installer_<version> EPICS_Qt_Install
 
 	<UIRef Id="WixUI_Minimal" />
 	<UIRef Id="WixUI_ErrorProgressText" />
-	<WixVariable Id="WixUILicenseRtf" Value="C:\Users\pozara\p4\tec\gui\qeWindowsBuild\trunk\LICENSE.rtf" />
+	<WixVariable Id="WixUILicenseRtf" Value="C:\Users\pozara\p4\tec\gui\qegui\trunk\package\LICENSE.rtf" />
 
 	<InstallExecuteSequence>
       	<Custom Action='NoDowngrade' After='FindRelatedProducts'>NEWERFOUND</Custom>
