@@ -1,6 +1,6 @@
 # $File: //ASP/tec/gui/qegui/trunk/qeguiApp/project/QEGuiApp.pro $
-# $Revision: #8 $
-# $DateTime: 2018/11/25 23:00:26 $
+# $Revision: #9 $
+# $DateTime: 2019/01/03 23:28:39 $
 # Last checked in by: $Author: starritt $
 #
 # Copyright (c) 2009-2018 Australian Synchrotron
@@ -124,24 +124,27 @@ isEmpty( _QE_CAQTDM ) {
 #===========================================================
 
 
-SOURCES += ./src/main.cpp \
-    ./src/MainWindow.cpp \
-    ./src/StartupParams.cpp \
-    ./src/InstanceManager.cpp \
-    ./src/saveRestoreManager.cpp \
-    ./src/saveDialog.cpp \
-    ./src/QEGui.cpp \
-    ./src/restoreDialog.cpp \
-    ./src/manageConfigDialog.cpp \
-    ./src/loginDialog.cpp \
-    ./src/recentFile.cpp \
-    ./src/aboutDialog.cpp \
-    ./src/configAutoSave.cpp
+SOURCES += \
+    src/main.cpp \
+    src/MainWindow.cpp \
+    src/StartupParams.cpp \
+    src/InstanceManager.cpp \
+    src/saveRestoreManager.cpp \
+    src/saveDialog.cpp \
+    src/QEGui.cpp \
+    src/restoreDialog.cpp \
+    src/manageConfigDialog.cpp \
+    src/loginDialog.cpp \
+    src/recentFile.cpp \
+    src/aboutDialog.cpp \
+    src/caQtDmInterface.cpp \
+    src/configAutoSave.cpp
 
 # Include the following gdbmacros line for debugging only
 #SOURCES += <YOUR-QTSDK-DIRECTORY>/share/qtcreator/gdbmacros/gdbmacros.cpp
 
-HEADERS += include/MainWindow.h \
+HEADERS += \
+    include/MainWindow.h \
     include/StartupParams.h \
     include/InstanceManager.h \
     include/saveRestoreManager.h \
@@ -152,6 +155,7 @@ HEADERS += include/MainWindow.h \
     include/loginDialog.h \
     include/recentFile.h \
     include/aboutDialog.h \
+    include/caQtDmInterface.h \
     include/configAutoSave.h
 
 INCLUDEPATH += . \
@@ -176,32 +180,32 @@ unix: QMAKE_LFLAGS += -Wl,-rpath,$$(EPICS_BASE)/lib/$$(EPICS_HOST_ARCH)
 LIBS += -L$$(QE_FRAMEWORK)/lib/$$(EPICS_HOST_ARCH) -lQEFramework
 unix: QMAKE_LFLAGS += -Wl,-rpath,$$(QE_FRAMEWORK)/lib/$$(EPICS_HOST_ARCH)
 
-FORMS += ./src/MainWindow.ui \
-         ./src/MessageLog.ui \
-         ./src/saveDialog.ui \
-         ./src/restoreDialog.ui \
-         ./src/manageConfigDialog.ui \
-         ./src/aboutDialog.ui
+FORMS += src/MainWindow.ui \
+         src/MessageLog.ui \
+         src/saveDialog.ui \
+         src/restoreDialog.ui \
+         src/manageConfigDialog.ui \
+         src/aboutDialog.ui
 
 OTHER_FILES += \
-         ./src/General_PV_Edit.ui \
-         ./src/Plotter.ui \
-         ./src/PVCorrelation.ui \
-         ./src/PVProperties.ui \
-         ./src/StripChart.ui \
-         ./src/ScratchPad.ui \
-         ./src/WaveformHistogram.ui \
-         ./src/ArchiveStatus.ui \
-         ./src/ArchiveNameSearch.ui \
-         ./src/QEGuiCustomisationDefault.xml \
-         ./src/help_usage.txt \
-         ./src/help_general.txt
+         src/General_PV_Edit.ui \
+         src/Plotter.ui \
+         src/PVCorrelation.ui \
+         src/PVProperties.ui \
+         src/StripChart.ui \
+         src/ScratchPad.ui \
+         src/WaveformHistogram.ui \
+         src/ArchiveStatus.ui \
+         src/ArchiveNameSearch.ui \
+         src/QEGuiCustomisationDefault.xml \
+         src/help_usage.txt \
+         src/help_general.txt
 
 
-RESOURCES += ./src/QEGui.qrc
+RESOURCES += src/QEGui.qrc
 # Qt 5+ configuration
 greaterThan( QT_MAJOR_VERSION, 4 ) {
-    win32:RC_ICONS += ./src/QEGuiIcon.ico
+    win32:RC_ICONS += src/QEGuiIcon.ico
 }
 
 #===========================================================

@@ -204,19 +204,15 @@ MainWindow::MainWindow( QEGui* appIn, QString fileName, QString title,
 
     windowScaling = 1.0;
 
-    // Only include PSI caQtDM integration if required.
-    // To include PSI caQtDM stuff, don't define QE_USE_CAQTDM directly, define environment variable
-    // QE_CAQTDM to be processed by QEGuiApp.pro
-    #ifdef QE_USE_CAQTDM
+    // Create PSI caQtDM integration interface object. It manages the interface
+    // if it is required or otherwise provides dummy functionality.
+    //
+    caQtDmInterface = new CaQtDmInterface( this );
 
-        // psi data acquisition
-        mutexKnobData = new MutexKnobData();
-        MutexKnobDataWrapperInit(mutexKnobData);
-
-    #endif // QE_USE_CAQTDM
-
-    // A published profile should always be available, but the various signal consumers will always be either NULL (if the
-    // profile was set up by the QEGui application) or objects in another main window (if the profile was published by a button in a gui)
+    // A published profile should always be available, but the various signal
+    // consumers will always be either NULL (if the profile was set up by the
+    // QEGui application) or objects in another main window (if the profile was
+    // published by a button in a gui).
     // Replace the signal consuming objects
     profile.updateConsumers( this );
 
@@ -633,18 +629,7 @@ void MainWindow::closeEvent(QCloseEvent *event)
     if( countWindows() <= 1 )
     {
         event->accept();
-
-        // Only include PSI caQtDM integration if required.
-        // To include PSI caQtDM stuff, don't define QE_USE_CAQTDM directly, define environment variable
-        // QE_CAQTDM to be processed by QEGuiApp.pro
-        #ifdef QE_USE_CAQTDM
-
-            QApplication::sendEvent(caQtDMLib, new QCloseEvent());
-            mutexKnobData->deleteLater();
-            caQtDMLib->deleteLater();
-
-        #endif // QE_USE_CAQTDM
-
+        caQtDmInterface->sendCloseEvent();
     }
 
     // If more than one GUI is open, check what the user wants to do
@@ -1389,14 +1374,8 @@ void MainWindow::loadGuiIntoCurrentWindow( QEForm* gui, bool resize )
     // Initialise customisation items.
     app->getMainWindowCustomisations()->initialise( &customisationInfo );
 
-    // Only include PSI caQtDM integration if required.
-    // To include PSI caQtDM stuff, don't define QE_USE_CAQTDM directly, define environment variable
-    // QE_CAQTDM to be processed by QEGuiApp.pro
-    #ifdef QE_USE_CAQTDM
-
-        caQtDMLib= new CaQtDM_Lib(this, "", profile.getMacroSubstitutions(), mutexKnobData, 0, false, gui);
-
-    #endif // QE_USE_CAQTDM
+    // Do PSI caQtDM stuff if needs be.
+    caQtDmInterface->createLibrary( profile.getMacroSubstitutions(), gui );
 }
 
 // Open a gui in a new dock

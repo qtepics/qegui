@@ -2,8 +2,8 @@
 
 <!-- 
 $File: //ASP/tec/gui/qegui/trunk/package/EPICS_Qt_Installer.wxs $
-$Revision: #2 $
-$DateTime: 2018/12/12 17:02:07 $
+$Revision: #5 $
+$DateTime: 2019/01/03 11:32:06 $
 Last checked in by: $Author: starritt $
 
 WiX configuration file used to create an msi installer for EPICS Qt. 
@@ -77,12 +77,13 @@ light.exe -ext WixUIExtension -out EPICS_Qt_Installer_<version> EPICS_Qt_Install
 						<Environment Id="EPICS_CA_MAX_ARRAY_BYTES" Name="EPICS_CA_MAX_ARRAY_BYTES" Value="50000000" Permanent="no" Action="create" System="yes" />
 					</Component>
 					<Component Id='QEFramework' Guid='BE40D6FB-1753-4291-92C2-76AC62C5FD4B'>
-						<File Id='QEFrameworkDLL' DiskId='1' Source='C:\jenkins_builds\qeframework\lib\win32-x86-mingw\QEFramework.dll' KeyPath='yes' />
+                        <File Id='QEFrameworkDLL' DiskId='1' Source='C:\jenkins_builds\qeframework\lib\win32-x86-mingw\QEFramework.dll' KeyPath='yes' />
 						<File Id='libprotobufDLL' DiskId='1' Source='C:\Qt\Tools\mingw530_32\bin\libprotobuf.dll' />
 						<File Id='archapplSupDLL' DiskId='1' Source='C:\jenkins_builds\qeframework\lib\win32-x86-mingw\archapplData.dll' />
+                        <File Id='acaiDLL'        DiskId='1' Source='C:\jenkins_builds\acai_pva\bin\win32-x86-mingw\acai.dll' />
 						<Environment Id="QE_FRAMEWORK" Name="QE_FRAMEWORK" Value="[INSTALLDIR]" Permanent="no" Action="create" System="yes" />
 						<Environment Id="QE_ARCHIVE_TYPE" Name="QE_ARCHIVE_TYPE" Value="CA" Permanent="no" Action="create" System="yes" />
-						<Environment Id="QE_ARCHIVE_LIST" Name="QE_ARCHIVE_LIST" Value="cr01arc01v:80/cgi-bin/ArchiveDataServer.cgi cr01arc02:80/cgi-bin/ArchiveDataServer.cgi" Permanent="no" Action="create" System="yes" />
+						<Environment Id="QE_ARCHIVE_LIST" Name="QE_ARCHIVE_LIST" Value="cr01arc01:80/cgi-bin/ArchiveDataServer.cgi cr01arc02:80/cgi-bin/ArchiveDataServer.cgi" Permanent="no" Action="create" System="yes" />
 					</Component>
 					<Component Id='QTDesigner' Guid='FC6850D3-7C97-414B-B7C3-39DAB23A8F73'>
 						<File Id='designerEXE' DiskId='1' Source='C:\Qt\5.10.0\mingw53_32\bin\designer.exe' KeyPath='yes' >
@@ -148,7 +149,7 @@ light.exe -ext WixUIExtension -out EPICS_Qt_Installer_<version> EPICS_Qt_Install
 
 	<UIRef Id="WixUI_Minimal" />
 	<UIRef Id="WixUI_ErrorProgressText" />
-	<WixVariable Id="WixUILicenseRtf" Value="C:\Users\pozara\p4\tec\gui\qegui\trunk\package\LICENSE.rtf" />
+	<WixVariable Id="WixUILicenseRtf" Value="C:\jenkins_builds\qegui\package\LICENSE.rtf" />
 
 	<InstallExecuteSequence>
       	<Custom Action='NoDowngrade' After='FindRelatedProducts'>NEWERFOUND</Custom>

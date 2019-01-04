@@ -43,17 +43,7 @@
 #include <windowCustomisation.h>
 #include <QCloseEvent>
 #include <QDockWidget>
-
-// Only include PSI caQtDM integration if required.
-// To include PSI caQtDM stuff, don't define QE_USE_CAQTDM directly, define environment variable
-// QE_CAQTDM to be processed by QEGuiApp.pro
-#ifdef QE_USE_CAQTDM
-
-    #include <mutexKnobData.h>
-    #include <mutexKnobDataWrapper.h>
-    #include <caqtdm_lib.h>
-
-#endif // QE_USE_CAQTDM
+#include <caQtDmInterface.h>
 
 class QEGui;
 class MainWindow;
@@ -156,14 +146,7 @@ protected:
     void keyPressEvent( QKeyEvent* event );
 
 private:
-    // Only include PSI caQtDM integration if required.
-    // To include PSI caQtDM stuff, don't define QE_USE_CAQTDM directly, define environment variable
-    // QE_CAQTDM to be processed by QEGuiApp.pro
-    #ifdef QE_USE_CAQTDM
-
-        MutexKnobData *mutexKnobData;
-
-    #endif // QE_USE_CAQTDM
+    CaQtDmInterface* caQtDmInterface;                       // PSI caQtDM interface
 
     Ui::MainWindowClass ui;                                 // Main window layout
     bool usingTabs;                                         // True if using tabs to display multiple GUIs, false if displaying a single GUI
@@ -234,15 +217,6 @@ private:
 
 
 private:
-    // Only include PSI caQtDM integration if required.
-    // To include PSI caQtDM stuff, don't define QE_USE_CAQTDM directly, define environment variable
-    // QE_CAQTDM to be processed by QEGuiApp.pro
-    #ifdef QE_USE_CAQTDM
-
-        CaQtDM_Lib *caQtDMLib;
-
-    #endif // QE_USE_CAQTDM
-
     QMenu* tabMenu;                                         // ???We want to keep a reference to certain widget objects. Declaring these directly in the
 
     void newMessage( QString msg, message_types type );     // Slot to receive a message to present to the user (typically from the QE framework)
