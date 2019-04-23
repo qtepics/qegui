@@ -2,8 +2,8 @@
 
 <!-- 
 $File: //ASP/tec/gui/qegui/trunk/package/EPICS_Qt_Installer.wxs $
-$Revision: #5 $
-$DateTime: 2019/01/03 11:32:06 $
+$Revision: #6 $
+$DateTime: 2019/04/11 15:44:56 $
 Last checked in by: $Author: starritt $
 
 WiX configuration file used to create an msi installer for EPICS Qt. 
@@ -80,7 +80,7 @@ light.exe -ext WixUIExtension -out EPICS_Qt_Installer_<version> EPICS_Qt_Install
                         <File Id='QEFrameworkDLL' DiskId='1' Source='C:\jenkins_builds\qeframework\lib\win32-x86-mingw\QEFramework.dll' KeyPath='yes' />
 						<File Id='libprotobufDLL' DiskId='1' Source='C:\Qt\Tools\mingw530_32\bin\libprotobuf.dll' />
 						<File Id='archapplSupDLL' DiskId='1' Source='C:\jenkins_builds\qeframework\lib\win32-x86-mingw\archapplData.dll' />
-                        <File Id='acaiDLL'        DiskId='1' Source='C:\jenkins_builds\acai_pva\bin\win32-x86-mingw\acai.dll' />
+						<File Id='acaiDLL'        DiskId='1' Source='C:\jenkins_builds\acai\bin\win32-x86-mingw\acai.dll' />
 						<Environment Id="QE_FRAMEWORK" Name="QE_FRAMEWORK" Value="[INSTALLDIR]" Permanent="no" Action="create" System="yes" />
 						<Environment Id="QE_ARCHIVE_TYPE" Name="QE_ARCHIVE_TYPE" Value="CA" Permanent="no" Action="create" System="yes" />
 						<Environment Id="QE_ARCHIVE_LIST" Name="QE_ARCHIVE_LIST" Value="cr01arc01:80/cgi-bin/ArchiveDataServer.cgi cr01arc02:80/cgi-bin/ArchiveDataServer.cgi" Permanent="no" Action="create" System="yes" />
