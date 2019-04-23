@@ -1,6 +1,6 @@
 # $File: //ASP/tec/gui/qegui/trunk/qeguiApp/project/QEGuiApp.pro $
-# $Revision: #9 $
-# $DateTime: 2019/01/03 23:28:39 $
+# $Revision: #10 $
+# $DateTime: 2019/04/14 16:30:21 $
 # Last checked in by: $Author: starritt $
 #
 # Copyright (c) 2009-2018 Australian Synchrotron
@@ -191,6 +191,7 @@ OTHER_FILES += \
          src/General_PV_Edit.ui \
          src/Plotter.ui \
          src/PVCorrelation.ui \
+         src/PVDistribution.ui \
          src/PVProperties.ui \
          src/StripChart.ui \
          src/ScratchPad.ui \

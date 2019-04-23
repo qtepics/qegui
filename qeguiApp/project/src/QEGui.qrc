@@ -3,6 +3,7 @@
         <file>General_PV_Edit.ui</file>
         <file>PVProperties.ui</file>
         <file>PVCorrelation.ui</file>
+        <file>PVDistribution.ui</file>
         <file>StripChart.ui</file>
         <file>MessageLog.ui</file>
         <file>Plotter.ui</file>

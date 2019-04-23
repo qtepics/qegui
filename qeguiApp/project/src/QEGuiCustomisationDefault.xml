@@ -74,6 +74,9 @@
                 <Item Name="PV Correlation...">
                     <BuiltIn Name="PV Correlation..." />
                 </Item>
+                <Item Name="PV Distribution...">
+                    <BuiltIn Name="PV Distribution..." />
+                </Item>
                 <Item Name="Archive Status...">
                     <BuiltIn Name="Archive Status..." />
                 </Item>

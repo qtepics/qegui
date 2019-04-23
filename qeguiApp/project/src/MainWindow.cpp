@@ -3,7 +3,7 @@
  *  This file is part of the EPICS QT Framework, initially developed at the
  *  Australian Synchrotron.
  *
- *  Copyright (c) 2009-2018 Australian Synchrotron
+ *  Copyright (c) 2009-2019 Australian Synchrotron
  *
  *  The EPICS QT Framework is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
@@ -1657,6 +1657,7 @@ void MainWindow::createActionMaps()
     inbuiltFormMap.insert( "Table...",                               ":/qe/gui/forms/Table.ui" );
     inbuiltFormMap.insert( "PV Load/Save...",                        ":/qe/gui/forms/PVLoadSave.ui" );
     inbuiltFormMap.insert( "PV Correlation...",                      ":/qe/gui/forms/PVCorrelation.ui" );
+    inbuiltFormMap.insert( "PV Distribution...",                     ":/qe/gui/forms/PVDistribution.ui" );
     inbuiltFormMap.insert( "Archive Status...",                      ":/qe/gui/forms/ArchiveStatus.ui" );
     inbuiltFormMap.insert( "Archive Name Search...",                 ":/qe/gui/forms/ArchiveNameSearch.ui" );
 
@@ -1673,6 +1674,8 @@ void MainWindow::createActionMaps()
     classNameMap.insert( "Plotter...",                               "QEPlotter" );
     classNameMap.insert( "Table...",                                 "QETable" );
     classNameMap.insert( "PV Load/Save...",                          "QEPvLoadSave" );
+    classNameMap.insert( "PV Correlation...",                        "QEPvCorrelation" );
+    classNameMap.insert( "PV Distribution...",                       "QEDistribution" );
     classNameMap.insert( "Archive Status...",                        "QEArchiveStatus" );
     classNameMap.insert( "Archive Name Search...",                   "QEArchiveNameSearch" );
 }
