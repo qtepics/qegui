@@ -2,8 +2,8 @@
 #
 
 # $File: //ASP/tec/gui/qegui/trunk/package/make_epicsqt_rpm $
-# $Revision: #6 $
-# $DateTime: 2018/11/02 18:04:47 $
+# $Revision: #7 $
+# $DateTime: 2019/05/06 13:42:11 $
 # Last checked in by: $Author: starritt $
 #
 
@@ -161,7 +161,9 @@ echo ""
 # Search for Qt/QE/QWT/EPICS sepecific libraries.
 #
 echo "including libraries..."
-for pattern in ${EPICS_BASE} libacai ${QE_FRAMEWORK} libprotobuf libqwt libav ; do
+for pattern in ${EPICS_BASE} libacai ${QE_FRAMEWORK} libprotobuf libqwt libav     \
+               libmp3lame  libopencore-amrnb  libopencore-amrwb libschroedinger   \
+               libsoxr libswresample libvo-amrwbenc libx264 libx265 libxvidcore ; do
    lib_path=$( ldd ${qegui:?} | grep "${pattern}" | awk '{print $3}' )
    if [ -z "${lib_path}" ] ; then
       echo "skipping ${pattern}"
