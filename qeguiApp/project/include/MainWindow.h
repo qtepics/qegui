@@ -3,7 +3,7 @@
  *  This file is part of the EPICS QT Framework, initially developed at the
  *  Australian Synchrotron.
  *
- *  Copyright (c) 2009-2018 Australian Synchrotron
+ *  Copyright (c) 2009-2019 Australian Synchrotron
  *
  *  The EPICS QT Framework is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
@@ -185,11 +185,9 @@ private:
     ContainerProfile profile;                               // Environment profile for new QE widgets
 
     QProcess process;                                       // Process used to start designer
-    QTimer processTimer;                                    // Timer used to attempt restarting designer from outside a QProcess error signal
     void startDesigner();                                   // Start designer (attempt with first command)
     void startDesignerCore( QString command );              // Start designer core called for both start attempts
 
-    bool processSecondAttempt;                              // Flag indicating this is the second attempt to start designer with an alternate command
     bool processOpenGui;                                    // Flag indicating designer should be opened with the current GUI
 
     QWidget* resizeableGui( QEForm* gui, QSize* preferedSize = 0 ); // Given a QEForm, return a widget that will manage being resized, and optinoally the prefered size
@@ -294,7 +292,6 @@ private slots:
     void tabContextMenuTrigger( QAction * action );     // Slot for custom tab menu actions
 
     void processError( QProcess::ProcessError error );  // An error occured starting designer process
-    void startDesignerAlternate();                      // Timer signal used to attempt restarting designer from outside a QProcess error signal
 
 
     void saveRestore( SaveRestoreSignal::saveRestoreOptions option );  // A save or restore has been requested (Probably by QEGui itself)

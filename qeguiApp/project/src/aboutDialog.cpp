@@ -1,6 +1,9 @@
 /*  aboutDialog.cpp
  *
- *  This file is part of the EPICS QT Framework, initially developed at the Australian Synchrotron.
+ *  This file is part of the EPICS QT Framework, initially developed at the
+ *  Australian Synchrotron.
+ *
+ *  Copyright (c) 2013-2019 Australian Synchrotron
  *
  *  The EPICS QT Framework is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
@@ -14,8 +17,6 @@
  *
  *  You should have received a copy of the GNU Lesser General Public License
  *  along with the EPICS QT Framework.  If not, see <http://www.gnu.org/licenses/>.
- *
- *  Copyright (c) 2013,2017 Australian Synchrotron
  *
  *  Author:
  *    Andrew Rhyder
@@ -40,6 +41,7 @@ aboutDialog::aboutDialog( QString QEGuiVersion,                // Version info a
                           QString QEFrameworkVersionQEGui,     // Version info and the build date/time at compile time of the copy of QEFramework library loaded by QEGui
                           QString QEFrameworkVersionUILoader,  // Version info and the build date/time at compile time of the copy of QEPlugin library loaded by QUiLoader while creating QE widgets
                           QString EPICSVersion,                // Version of EPICS base
+                          QString ACAIVersion,                 // Version of ACAI
                           QString QWTVersion,                  // Version of QWT
                           QString QEFrameworkAttributes,       // QEFramework compile time attributes
 
@@ -79,9 +81,10 @@ aboutDialog::aboutDialog( QString QEGuiVersion,                // Version info a
     ui->QEFrameworkVersionUILoaderLabel->setText( QEFrameworkVersionUILoader );
     ui->QEFrameworkAttributes->setText( QEFrameworkAttributes );
 
-    // Note: the EPICS version string is prefixed by the text "EPICS".
+    // Note: the version strings are prefixed by the text "EPICS", "ACAI" and "QWT".
     //
     ui->EPICSVersionLabel->setText( EPICSVersion );
+    ui->ACAIVersionLabel->setText( ACAIVersion );
     ui->QWTVersionLabel->setText( QWTVersion );
 
     // Environment

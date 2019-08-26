@@ -168,9 +168,11 @@
 
 // Before Qt 4.8, the command to start designer is 'designer'.
 // Qt 4.8 later uses the command 'designer-qt4'
-// Try both before giving up starting designer
-#define DESIGNER_COMMAND_1 "designer-qt4"
-#define DESIGNER_COMMAND_2 "designer"
+// Qt5 has reverted to designer again.
+// Simplify to single option.
+// User using 4.8.4 tec can fake it.
+//
+#define DESIGNER_COMMAND "designer"
 
 #define DEFAULT_QEGUI_CUSTOMISATION "QEGui_Default"
 
@@ -283,7 +285,6 @@ MainWindow::MainWindow( QEGui* appIn, QString fileName, QString title,
 
     // Set up signals for starting the 'designer' process
     QObject::connect( &process, SIGNAL(error(QProcess::ProcessError)), this, SLOT( processError(QProcess::ProcessError) ) );
-    QObject::connect( &processTimer, SIGNAL(timeout()), this, SLOT( startDesignerAlternate() ) );
 
     // Ensure this class destructor gets called.
     setAttribute ( Qt::WA_DeleteOnClose );
@@ -911,6 +912,7 @@ void MainWindow::on_actionAbout_triggered()
                     QEFrameworkVersionQEGui,                               // Version info and the build date/time at compile time of the copy of QEFramework library loaded by QEGui
                     UILoaderFrameworkVersion,                              // Version info and the build date/time at compile time of the copy of QEPlugin library loaded by QUiLoader while creating QE widgets
                     QEFrameworkVersion::getEpicsVersionStr(),              // Version of EPICS base
+                    QEFrameworkVersion::getAcaiVersionStr(),               // Version of ACAI
                     QEFrameworkVersion::getQwtVersionStr(),                // Version of QWT
                     QEFrameworkVersion::getAttributes(),                   // QEFramework compile time attributes
                     profile.getMacroSubstitutions(),                       // Macro substitutions (-m parameter)
@@ -1094,8 +1096,7 @@ void MainWindow::startDesigner()
     // If not already running, start designer
     if( process.state() == QProcess::NotRunning )
     {
-        processSecondAttempt = false;
-        startDesignerCore( DESIGNER_COMMAND_1 );
+        startDesignerCore( DESIGNER_COMMAND );
     }
 
     // If already running, tell the user
@@ -1141,28 +1142,8 @@ void MainWindow::processError( QProcess::ProcessError error )
 {
     if( error == QProcess::FailedToStart )
     {
-        // Do nothing if this was the second attempt using an alternate command
-        if( processSecondAttempt )
-        {
-            QMessageBox::about(this, "QEGui", "Sorry, an error occured starting designer.");
-            return;
-        }
-
-        // Signal startDesignerAlternate() immedietly to try starting designer again
-        // with an alternate command
-        processTimer.setSingleShot(true);
-        processTimer.setInterval(0);
-        processTimer.start();
+        QMessageBox::about(this, "QEGui", "Sorry, an error occured starting designer.");
     }
-}
-
-// Try starting designer again with an alternate command.
-// See description of processError() for more details.
-void MainWindow::startDesignerAlternate()
-{
-    // Try starting designer again with an alternate command.
-    processSecondAttempt = true;
-    startDesignerCore( DESIGNER_COMMAND_2 );
 }
 
 // Refresh the current window (reload the ui file)

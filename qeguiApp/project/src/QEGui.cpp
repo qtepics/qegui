@@ -3,7 +3,7 @@
  *  This file is part of the EPICS QT Framework, initially developed at the
  *  Australian Synchrotron.
  *
- *  Copyright (c) 2009-2018 Australian Synchrotron
+ *  Copyright (c) 2009-2019 Australian Synchrotron
  *
  *  The EPICS QT Framework is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
@@ -210,11 +210,12 @@ void QEGui::printVersion ()
    std::cout  << "Framework attributes: "
               << QEFrameworkVersion::getAttributes().toLatin1().data() << std::endl;
 
-   // Note: the EPICS version string is prefixed by the text "EPICS" and
-   // the QWT version string is prefixed by "QWT"
+   // Note: the EPICS, ACAI and QWT version strings are prefixed by the text
+   // "EPICS", "ACAI" and "QWT" respectively
    //
    std::cout  << "Support packages:  " << QEFrameworkVersion::getEpicsVersionStr ().toLatin1().data()
-              << " and "    << QEFrameworkVersion::getQwtVersionStr().toLatin1().data() << std::endl;
+              << ", " << QEFrameworkVersion::getAcaiVersionStr().toLatin1().data()
+              << " and " << QEFrameworkVersion::getQwtVersionStr().toLatin1().data() << std::endl;
 
    // Provide library/plugin path info
    std::cout << "Library path: " << QLibraryInfo::location ( QLibraryInfo::LibrariesPath ).toLatin1().data() << std::endl;
