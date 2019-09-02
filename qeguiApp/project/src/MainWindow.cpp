@@ -143,6 +143,7 @@
 
 #include <QtGui>
 #include <QDebug>
+#include <QDir>
 #include <QString>
 #include <QUiLoader>
 
@@ -177,6 +178,23 @@
 #define DEFAULT_QEGUI_CUSTOMISATION "QEGui_Default"
 
 Q_DECLARE_METATYPE( QEForm* )
+
+//==============================================================================
+//
+static QString getInitialDir()
+{
+    QDir current( QDir::currentPath() );
+    return current.absolutePath();
+}
+
+static const QString initialDir = getInitialDir();
+
+static void resetInitialDir()
+{
+    // Change directory back to where we started from.
+    //
+    QDir::setCurrent( initialDir );
+}
 
 // static - the default values are the current directory
 //
@@ -937,7 +955,7 @@ void MainWindow::on_actionAbout_triggered()
                     disconnectedCount,                                     // Disconnection count
                     connectedCount                                         // Connection count
                     );
-    ad.exec();
+    ad.exec( this );
 }
 
 // Change the current tab
@@ -2284,12 +2302,18 @@ void MainWindow::on_actionSave_Configuration_triggered()
     PersistanceManager* pm = profile.getPersistanceManager();
     startupParams* params = app->getParams();
 
+    // Ensure we are back where we started.
+    // Own widgets behave well in this respect, but 3rd party widgets and/or
+    // called functions could leave use anywhere.
+    //
+    resetInitialDir ();
+
     // Get the user selection
     saveDialog sd( pm->getConfigNames( params->configurationFile, QE_CONFIG_NAME ) );
 
     QEScaling::applyToWidget( &sd ); // Ensure scaling is consistent with the rest of the application's forms.
 
-    if ( sd.exec() == QDialog::Rejected )
+    if ( sd.exec( this ) == QDialog::Rejected )
     {
         return;
     }
@@ -2306,7 +2330,8 @@ void MainWindow::on_actionSave_Configuration_triggered()
     else
     {
         // The OK button should only be enabled if there is a configuration selected
-        sendMessage( "No configuration selected", "QEGui application. MainWindow::on_actionSave_Configuration_triggered()" );
+        sendMessage( "No configuration selected",
+                     "QEGui application. MainWindow::on_actionSave_Configuration_triggered()" );
         return;
     }
 
@@ -2320,18 +2345,23 @@ void MainWindow::on_actionRestore_Configuration_triggered()
     PersistanceManager* pm = profile.getPersistanceManager();
     startupParams* params = app->getParams();
 
+    // Ensure we are back where we started.
+    //
+    resetInitialDir ();
+
     // Get the list of restoration options
     bool hasDefault;
     QStringList configNames = pm->getConfigNames( params->configurationFile, QE_CONFIG_NAME, hasDefault );
     if( configNames.count() == 0 && !hasDefault )
     {
-        QMessageBox::warning( this, "Configuration Restore", "There are no configurations available to restore." );
+        QMessageBox::warning( this, "Configuration Restore",
+                              "There are no configurations available to restore." );
         return;
     }
 
     // Get the user selection
     restoreDialog rd( configNames, hasDefault );
-    if ( rd.exec() == QDialog::Rejected )
+    if ( rd.exec( this ) == QDialog::Rejected )
     {
         return;
     }
@@ -2348,7 +2378,8 @@ void MainWindow::on_actionRestore_Configuration_triggered()
     else
     {
         // The OK button should only be enabled if there is a configuration selected
-        sendMessage( "No configuration selected", "QEGui application. MainWindow::on_actionRestore_Configuration_triggered()" );
+        sendMessage( "No configuration selected",
+                     "QEGui application. MainWindow::on_actionRestore_Configuration_triggered()" );
         return;
     }
 
@@ -2426,19 +2457,25 @@ void MainWindow::on_actionManage_Configurations_triggered()
     PersistanceManager* pm = profile.getPersistanceManager();
     startupParams* params = app->getParams();
 
+    // Ensure we are back where we started.
+    //
+    resetInitialDir ();
+
     // Get the list of configuration options
     bool hasDefault;
     QStringList configNames = pm->getConfigNames( params->configurationFile, QE_CONFIG_NAME, hasDefault );
     if( configNames.count() == 0 && !hasDefault )
     {
-        QMessageBox::warning( this, "Configuration Management", "There are no configurations available to manage." );
+        QMessageBox::warning( this, "Configuration Management",
+                              "There are no configurations available to manage." );
         return;
     }
 
     // Present the dialog
     manageConfigDialog mcd( configNames, hasDefault );
-    QObject::connect( &mcd, SIGNAL( deleteConfigs ( manageConfigDialog*, const QStringList ) ), this, SLOT( deleteConfigs(  manageConfigDialog*, const QStringList ) ) );
-    mcd.exec();
+    QObject::connect( &mcd, SIGNAL( deleteConfigs ( manageConfigDialog*, const QStringList ) ),
+                      this, SLOT(   deleteConfigs(  manageConfigDialog*, const QStringList ) ) );
+    mcd.exec( this );
 }
 
 // A save or restore has been requested (Probably by QEGui itself)
@@ -3253,4 +3290,5 @@ void dockRef::setRequiredVis(  )
     // Set the visibility state to the required state
     dock->setVisible( requiredVis );
 }
-//++++++++++++++++++++++++++++++++++++++++++++++++
+
+// end

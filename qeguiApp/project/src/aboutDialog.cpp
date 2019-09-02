@@ -37,6 +37,8 @@
 #include <QProcessEnvironment>
 #include <QDir>
 
+//------------------------------------------------------------------------------
+//
 aboutDialog::aboutDialog( QString QEGuiVersion,                // Version info and the build date/time at compile time of QEGui
                           QString QEFrameworkVersionQEGui,     // Version info and the build date/time at compile time of the copy of QEFramework library loaded by QEGui
                           QString QEFrameworkVersionUILoader,  // Version info and the build date/time at compile time of the copy of QEPlugin library loaded by QUiLoader while creating QE widgets
@@ -68,10 +70,10 @@ aboutDialog::aboutDialog( QString QEGuiVersion,                // Version info a
                           int connectedCount,                   // Number of connected channels
 
                           QWidget *parent) :
-    QDialog(parent),
-    ui(new Ui::aboutDialog)
+    QEDialog( parent ),
+    ui( new Ui::aboutDialog )
 {
-    ui->setupUi(this);
+    ui->setupUi( this );
 
     // Versions
     ui->QEGuiVersionLabel->setText( QEGuiVersion );
@@ -159,6 +161,8 @@ aboutDialog::aboutDialog( QString QEGuiVersion,                // Version info a
     ui->connectedChannelsLabel->setText( QString( "%1" ).arg( connectedCount ));
 }
 
+//------------------------------------------------------------------------------
+//
 aboutDialog::~aboutDialog()
 {
     delete ui;

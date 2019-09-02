@@ -1,5 +1,9 @@
-/*
- *  This file is part of the EPICS QT Framework, initially developed at the Australian Synchrotron.
+/*  manageConfigDialog.cpp
+ * 
+ *  This file is part of the EPICS QT Framework, initially developed at the
+ *  Australian Synchrotron.
+ *
+ *  Copyright (c) 2013-2019 Australian Synchrotron
  *
  *  The EPICS QT Framework is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
@@ -13,8 +17,6 @@
  *
  *  You should have received a copy of the GNU Lesser General Public License
  *  along with the EPICS QT Framework.  If not, see <http://www.gnu.org/licenses/>.
- *
- *  Copyright (c) 2013 Australian Synchrotron
  *
  *  Author:
  *    Andrew Rhyder
@@ -30,10 +32,11 @@
 #include "ui_manageConfigDialog.h"
 #include "persistanceManager.h"
 
+//------------------------------------------------------------------------------
 // Present the dialog to the user
 manageConfigDialog::manageConfigDialog( QStringList names, bool hasDefault, QWidget *parent ) :
-    QDialog(parent),
-    ui(new Ui::manageConfigDialog)
+    QEDialog( parent ),
+    ui( new Ui::manageConfigDialog )
 {
     ui->setupUi(this);
     ui->namesListWidget->addItems( names );
@@ -41,18 +44,21 @@ manageConfigDialog::manageConfigDialog( QStringList names, bool hasDefault, QWid
     ui->deleteDefaultPushButton->setEnabled( hasDefault );
 }
 
+//------------------------------------------------------------------------------
 // Remove the dialog
 manageConfigDialog::~manageConfigDialog()
 {
     delete ui;
 }
 
+//------------------------------------------------------------------------------
 // The user has changed the configurations selected
 void manageConfigDialog::on_namesListWidget_itemSelectionChanged()
 {
     ui->deletePushButton->setEnabled( ui->namesListWidget->selectedItems().count() );
 }
 
+//------------------------------------------------------------------------------
 // The user pressed "Delete" named configurations
 void manageConfigDialog::on_deletePushButton_clicked()
 {
@@ -67,12 +73,14 @@ void manageConfigDialog::on_deletePushButton_clicked()
     ui->namesListWidget->addItems( currentNames );
 }
 
+//------------------------------------------------------------------------------
 // Update the list of current names (when initialising the dialog, or after deleting configurations)
 void manageConfigDialog::setCurrentNames( QStringList currentNamesIn )
 {
     currentNames = currentNamesIn;
 }
 
+//------------------------------------------------------------------------------
 // User is deleting the default configuration
 void manageConfigDialog::on_deleteDefaultPushButton_clicked()
 {
@@ -81,3 +89,5 @@ void manageConfigDialog::on_deleteDefaultPushButton_clicked()
     emit deleteConfigs( this, names );
     ui->deleteDefaultPushButton->setEnabled( false );
 }
+
+// end

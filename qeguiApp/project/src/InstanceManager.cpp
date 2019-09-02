@@ -23,6 +23,7 @@
  *  Contact details:
  *    andrew.rhyder@synchrotron.org.au
  */
+
 /* This class is used to manage maintaining only a single instance of QEGui when required.
 
     On creation it attempts to connect to a server on an already running QEGui.
@@ -43,9 +44,13 @@
 #include <ContainerProfile.h>
 #include <QEGui.h>
 #include <QMessageBox>
+#include <QDebug>
+
+#define DEBUG qDebug () << "InstanceManager" << __LINE__ << __FUNCTION__ << "  "
 
 #define QEGUISERVERNAME "QEGuiInstance"
 
+//------------------------------------------------------------------------------
 // Construction
 // Look for an instance server, and if can't find one, then start one
 instanceManager::instanceManager( QEGui* appIn ) : QObject( appIn )
@@ -97,6 +102,7 @@ instanceManager::instanceManager( QEGui* appIn ) : QObject( appIn )
     }
 }
 
+//------------------------------------------------------------------------------
 // Destruction
 instanceManager::~instanceManager()
 {
@@ -105,6 +111,7 @@ instanceManager::~instanceManager()
         delete server;
 }
 
+//------------------------------------------------------------------------------
 // Pass on the startup parameters to an already existing instance of the application
 bool instanceManager::handball( startupParams* params )
 {
@@ -128,6 +135,7 @@ bool instanceManager::handball( startupParams* params )
     return true;
 }
 
+//------------------------------------------------------------------------------
 // Slot called when the server starts
 void instanceManager::connected()
 {
@@ -135,6 +143,7 @@ void instanceManager::connected()
     connect( client, SIGNAL(readyRead ()), this, SLOT(readParams()));
 }
 
+//------------------------------------------------------------------------------
 // Read the startup parameters from a new instance of the application.
 // The new instance wants this old instance to do the work.
 // It has passed on the startup parameters and will now exit
@@ -148,6 +157,7 @@ void instanceManager::readParams()
     }
 }
 
+//------------------------------------------------------------------------------
 // Create new main windows
 void instanceManager::newWindow( const startupParams& params )
 {
@@ -192,6 +202,7 @@ void instanceManager::newWindow( const startupParams& params )
     // If restoring, restore saved configuration
     if( !configName.isEmpty() )
     {
+
         // Ask the persistance manager to restore a configuration.
         // The persistance manager will signal all interested objects (including this application) that
         // they should collect and apply restore data.

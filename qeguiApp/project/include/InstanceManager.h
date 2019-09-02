@@ -1,9 +1,9 @@
-/*  instanceManager.h
+/*  InstanceManager.h
  *
  *  This file is part of the EPICS QT Framework, initially developed at the
  *  Australian Synchrotron.
  *
- *  Copyright (c) 2011-2018 Australian Synchrotron
+ *  Copyright (c) 2011-2019 Australian Synchrotron
  *
  *  The EPICS QT Framework is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
@@ -30,7 +30,7 @@
 #include <QLocalSocket>
 #include <QLocalServer>
 #include <StartupParams.h>
-#include <QDialog>
+#include <QObject>
 
 class QEGui;
 

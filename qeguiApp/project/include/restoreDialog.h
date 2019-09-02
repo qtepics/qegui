@@ -1,5 +1,9 @@
-/*  This file is part of the EPICS QT Framework, initially developed at the
+/*  restoreDialog.h
+ *
+ *  This file is part of the EPICS QT Framework, initially developed at the
  *  Australian Synchrotron.
+ *
+ *  Copyright (c) 2013-2019 Australian Synchrotron
  *
  *  The EPICS QT Framework is free software: you can redistribute it and/or
  *  modify it under the terms of the GNU Lesser General Public License as published
@@ -14,25 +18,23 @@
  *  You should have received a copy of the GNU Lesser General Public License
  *  along with the EPICS QT Framework.  If not, see <http://www.gnu.org/licenses/>.
  *
- *  Copyright (c) 2013 Australian Synchrotron
- *
  *  Author:
  *    Andrew Rhyder
  *  Contact details:
  *    andrew.rhyder@synchrotron.org.au
  */
 
-#ifndef RESTOREDIALOG_H
-#define RESTOREDIALOG_H
+#ifndef RESTORE_DIALOG_H
+#define RESTORE_DIALOG_H
 
-#include <QDialog>
+#include <QEDialog.h>
 #include <QListWidget>
 
 namespace Ui {
     class restoreDialog;
 }
 
-class restoreDialog : public QDialog
+class restoreDialog : public QEDialog
 {
     Q_OBJECT
 
@@ -40,16 +42,14 @@ public:
     explicit restoreDialog( QStringList names, bool hasDefault, QWidget *parent = 0 );
     ~restoreDialog();
 
-    bool getUseDefault();
-    QString getName();
+    bool getUseDefault() const;
+    QString getName() const;
 
 private:
     Ui::restoreDialog *ui;
 
     void enableNamedItems( bool enable );
-
     void enableOpen();
-
 
 private slots:
     void on_namesListWidget_itemSelectionChanged();
@@ -58,4 +58,4 @@ private slots:
     void on_defaultRadioButton_clicked(bool checked);
 };
 
-#endif // RESTOREDIALOG_H
+#endif // RESTORE_DIALOG_H

@@ -1,5 +1,9 @@
-/*
- *  This file is part of the EPICS QT Framework, initially developed at the Australian Synchrotron.
+/*  saveDialog.cpp
+ *
+ *  This file is part of the EPICS QT Framework, initially developed at the
+ *  Australian Synchrotron.
+ *
+ *  Copyright (c) 2013-2019 Australian Synchrotron
  *
  *  The EPICS QT Framework is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
@@ -13,8 +17,6 @@
  *
  *  You should have received a copy of the GNU Lesser General Public License
  *  along with the EPICS QT Framework.  If not, see <http://www.gnu.org/licenses/>.
- *
- *  Copyright (c) 2013 Australian Synchrotron
  *
  *  Author:
  *    Andrew Rhyder
@@ -31,8 +33,10 @@
 #include <QDebug>
 #include <QPushButton>
 
+//------------------------------------------------------------------------------
+//
 saveDialog::saveDialog( QStringList names, QWidget *parent ) :
-    QDialog(parent),
+    QEDialog(parent),
     ui(new Ui::saveDialog)
 {
     ui->setupUi(this);
@@ -42,20 +46,27 @@ saveDialog::saveDialog( QStringList names, QWidget *parent ) :
     ui->namesListWidget->addItems( names );
 }
 
+//------------------------------------------------------------------------------
+//
 saveDialog::~saveDialog()
 {
     delete ui;
 }
 
+//------------------------------------------------------------------------------
+//
 void saveDialog::enableSave()
 {
     QPushButton* saveButton = ui->buttonBox->button(QDialogButtonBox::Save);
     if( saveButton )
     {
-        saveButton->setEnabled( ui->defaultRadioButton->isChecked() || !ui->nameLineEdit->text().isEmpty() );
+        saveButton->setEnabled( ui->defaultRadioButton->isChecked() ||
+                                !ui->nameLineEdit->text().isEmpty() );
     }
 }
 
+//------------------------------------------------------------------------------
+//
 void saveDialog::on_defaultRadioButton_clicked( bool )
 {
     enableNamedItems( false );
@@ -63,6 +74,8 @@ void saveDialog::on_defaultRadioButton_clicked( bool )
     enableSave();
 }
 
+//------------------------------------------------------------------------------
+//
 void saveDialog::on_namedRadioButton_clicked( bool )
 {
     enableNamedItems( true );
@@ -70,12 +83,16 @@ void saveDialog::on_namedRadioButton_clicked( bool )
     enableSave();
 }
 
+//------------------------------------------------------------------------------
+//
 void saveDialog::enableNamedItems( bool enable )
 {
     ui->namesListWidget->setEnabled( enable );
     ui->nameLineEdit->setEnabled( enable );
 }
 
+//------------------------------------------------------------------------------
+//
 void saveDialog::on_namesListWidget_clicked(QModelIndex)
 {
     if( ui->namesListWidget->currentItem() )
@@ -84,12 +101,16 @@ void saveDialog::on_namesListWidget_clicked(QModelIndex)
     }
 }
 
-bool saveDialog::getUseDefault()
+//------------------------------------------------------------------------------
+//
+bool saveDialog::getUseDefault() const
 {
     return ui->defaultRadioButton->isChecked();
 }
 
-QString saveDialog::getName()
+//------------------------------------------------------------------------------
+//
+QString saveDialog::getName() const
 {
     if( ui->namedRadioButton->isChecked() )
     {
@@ -98,12 +119,18 @@ QString saveDialog::getName()
     return "";
 }
 
+//------------------------------------------------------------------------------
+//
 void saveDialog::on_namesListWidget_doubleClicked( QModelIndex )
 {
     accept();
 }
 
+//------------------------------------------------------------------------------
+//
 void saveDialog::on_nameLineEdit_textChanged(QString )
 {
     enableSave();
 }
+
+// end

@@ -32,13 +32,13 @@
 #ifndef QEGUI_ABOUT_DIALOG_H
 #define QEGUI_ABOUT_DIALOG_H
 
-#include <QDialog>
+#include <QEDialog.h>
 
 namespace Ui {
     class aboutDialog;
 }
 
-class aboutDialog : public QDialog
+class aboutDialog : public QEDialog
 {
     Q_OBJECT
 

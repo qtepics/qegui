@@ -1,5 +1,9 @@
-/*
- *  This file is part of the EPICS QT Framework, initially developed at the Australian Synchrotron.
+/*  restoreDialog.cpp
+ *
+ *  This file is part of the EPICS QT Framework, initially developed at the
+ *  Australian Synchrotron.
+ *
+ *  Copyright (c) 2013-2019 Australian Synchrotron
  *
  *  The EPICS QT Framework is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
@@ -13,8 +17,6 @@
  *
  *  You should have received a copy of the GNU Lesser General Public License
  *  along with the EPICS QT Framework.  If not, see <http://www.gnu.org/licenses/>.
- *
- *  Copyright (c) 2013 Australian Synchrotron
  *
  *  Author:
  *    Andrew Rhyder
@@ -30,8 +32,11 @@
 #include "ui_restoreDialog.h"
 #include <QPushButton>
 
+
+//------------------------------------------------------------------------------
+//
 restoreDialog::restoreDialog( QStringList names, bool hasDefault, QWidget *parent ) :
-    QDialog(parent),
+    QEDialog(parent),
     ui(new Ui::restoreDialog)
 {
     ui->setupUi(this);
@@ -42,11 +47,15 @@ restoreDialog::restoreDialog( QStringList names, bool hasDefault, QWidget *paren
     ui->namedRadioButton->setEnabled( names.count() );
 }
 
+//------------------------------------------------------------------------------
+//
 restoreDialog::~restoreDialog()
 {
     delete ui;
 }
 
+//------------------------------------------------------------------------------
+//
 void restoreDialog::enableOpen()
 {
     QPushButton* openButton = ui->buttonBox->button(QDialogButtonBox::Open);
@@ -56,29 +65,39 @@ void restoreDialog::enableOpen()
     }
 }
 
+//------------------------------------------------------------------------------
+//
 void restoreDialog::on_defaultRadioButton_clicked( bool )
 {
     enableNamedItems( false );
     enableOpen();
 }
 
+//------------------------------------------------------------------------------
+//
 void restoreDialog::on_namedRadioButton_clicked( bool )
 {
     enableNamedItems( true );
     enableOpen();
 }
 
+//------------------------------------------------------------------------------
+//
 void restoreDialog::enableNamedItems( bool enable )
 {
     ui->namesListWidget->setEnabled( enable );
 }
 
-bool restoreDialog::getUseDefault()
+//------------------------------------------------------------------------------
+//
+bool restoreDialog::getUseDefault() const
 {
     return ui->defaultRadioButton->isChecked();
 }
 
-QString restoreDialog::getName()
+//------------------------------------------------------------------------------
+//
+QString restoreDialog::getName() const
 {
     if( ui->namesListWidget->currentItem() )
     {
@@ -90,12 +109,18 @@ QString restoreDialog::getName()
     }
 }
 
+//------------------------------------------------------------------------------
+//
 void restoreDialog::on_namesListWidget_doubleClicked( QModelIndex )
 {
     accept();
 }
 
+//------------------------------------------------------------------------------
+//
 void restoreDialog::on_namesListWidget_itemSelectionChanged()
 {
     enableOpen();
 }
+
+// end
