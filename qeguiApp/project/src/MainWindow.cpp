@@ -503,7 +503,9 @@ void MainWindow::onOpenRequested()
     QString filename = GuiFileNameDialog( "Open" );
     if( !filename.isEmpty() )
     {
-        gui = createGui( filename, "", app->getParams()->defaultCustomisationName, QEFormMapper::nullHandle(), false );
+        caQtDmInterface->sendCloseEvent();
+        gui = createGui( filename, "", app->getParams()->defaultCustomisationName,
+                         QEFormMapper::nullHandle(), false );
     }
     profile.releaseProfile();
     loadGuiIntoCurrentWindow( gui, true );
@@ -663,6 +665,7 @@ void MainWindow::closeEvent(QCloseEvent *event)
             case QMessageBox::Yes:
                 // Yes, close the window.
                 event->accept();
+                caQtDmInterface->sendCloseEvent();
                 break;
 
             case QMessageBox::Cancel:

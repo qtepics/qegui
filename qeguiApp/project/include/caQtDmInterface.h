@@ -31,10 +31,15 @@
 #include <QObject>
 #include <QEForm.h>
 
-// Differed
-//
+// PSI classes - differed
 class MutexKnobData;
 class CaQtDM_Lib;
+class loadPlugins;
+class ControlsInterface;
+
+// Other classes - differed
+class MainWindow;
+class ProxyWidget;
 
 /// This class provides the interface to the PSI caQtDM library, which allows
 /// caQtDM widgets to be fully functional within qegui.
@@ -45,9 +50,10 @@ class CaQtDM_Lib;
 //
 class CaQtDmInterface : public QObject
 {
+    Q_OBJECT
 public:
    // Construction
-   explicit CaQtDmInterface (QObject* parent);   // QMainWindow
+   explicit CaQtDmInterface (MainWindow* parent);   // QEGui MainWindow
 
    // Destruction
    ~CaQtDmInterface();
@@ -59,8 +65,26 @@ public:
    void createLibrary (const QString& macroSubstitutions, QEForm* gui);
 
 private:
-   MutexKnobData* mutexKnobData;
+   ProxyWidget* proxyWidget;  // We use ProxyWidget as a typical QE widget for context menu handling.
+
+   void showContextMenu (const QPoint& pos, QWidget *w);
+   void setupContextMenu (QEForm* gui);
+
+   // handle medm filename - converts .adl extension to .ui
+   static QString adl2caqtdmChecking (const QString& fileName);
+
+   MainWindow* mainWindow;       // parent
    CaQtDM_Lib* caQtDMLib;
+
+   static MutexKnobData* mutexKnobData;
+
+   typedef QMap<QString, ControlsInterface*> InterfacesMap;
+   static InterfacesMap interfaces;
+
+private slots:
+   void showStandardContextMenu (const QPoint& pos);
+   void openNewFile (const QString& inputFile, const QString& macroString,
+                     const QString& geometry, const QString& resizeString);
 };
 
 #endif  // CA_QT_DM_INTERFACE_H

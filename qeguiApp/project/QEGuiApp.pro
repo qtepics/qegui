@@ -1,9 +1,9 @@
 # $File: //ASP/tec/gui/qegui/trunk/qeguiApp/project/QEGuiApp.pro $
-# $Revision: #10 $
-# $DateTime: 2019/04/14 16:30:21 $
+# $Revision: #12 $
+# $DateTime: 2019/10/02 13:08:41 $
 # Last checked in by: $Author: starritt $
 #
-# Copyright (c) 2009-2018 Australian Synchrotron
+# Copyright (c) 2009-2019 Australian Synchrotron
 #
 # This file is part of the EPICS QT Framework, initially developed at the Australian Synchrotron.
 #
@@ -49,6 +49,7 @@ equals( QT_MAJOR_VERSION, 4 ) {
 # Qt 5 configuration
 equals( QT_MAJOR_VERSION, 5 ) {
     QT += core gui network uitools designer
+    QT += printsupport  # required by caQtDM
 }
 
 ## Added by Anton Mezger (check why and include if required)
@@ -116,6 +117,21 @@ isEmpty( _QE_CAQTDM ) {
     message( "Integration with PSI's caQtDM will NOT be included in QEGui. If you want caQtDM integrated, download and" )
     message( "... build it and define the environment variable QE_CAQTDM to point to the caQtDM_Project directory." )
 } else {
+
+#   check Version. 
+    _QE_CAQTDM_MAJOR_VERSION = $$(QE_CAQTDM_MAJOR_VERSION)
+    equals( _QE_CAQTDM_MAJOR_VERSION, 3 ){
+        DEFINES += QE_CAQTDM_VERSION_3
+        message( "!!! caQtDM major version must be 3, e.g. V3.x.x !!! - otherwise it might have an incompatable build error" )
+    } else {
+        equals( _QE_CAQTDM_MAJOR_VERSION, 4 ){
+            DEFINES += QE_CAQTDM_VERSION_4
+            message( "!!! caQtDM major version must be 4, e.g. V4.x.x !!! - otherwise it might have an incompatable build error" )
+        } else {
+            error ( "When using caQtDM, QE_CAQTDM_MAJOR_VERSION must be defined as 3 or 4. Is defined as " $$(QE_CAQTDM_MAJOR_VERSION) ) 
+        }
+    }
+
     message( "Integration with PSI's caQtDM will be included in QEGui. caQtDM libraries and include files will be expected" )
     message( "... and be located using the QE_CAQTDM environment variable (which will should point to the to point to the" )
     message( "... caQtDM_Project directory). Undefine environment variable QE_CAQTDM if you do not want caQtDM integration." )
@@ -263,9 +279,17 @@ isEmpty( _QE_CAQTDM ) {
     }
 
     # Add caQtDM source locations
-    INCLUDEPATH += $(QE_CAQTDM)/caQtDM_Lib/src \
-                   $(QE_CAQTDM)/caQtDM_QtControls/src \
-                   $(QWT_INCLUDE_PATH)
+    equals( _QE_CAQTDM_MAJOR_VERSION, 3 ){
+        INCLUDEPATH += $(QE_CAQTDM)/caQtDM_Lib/src \
+                       $(QE_CAQTDM)/caQtDM_QtControls/src \
+                       $(QWT_INCLUDE_PATH)
+    } else {
+        INCLUDEPATH += $(QE_CAQTDM)/caQtDM_Lib/src \
+                       $(QE_CAQTDM)/caQtDM_Lib/caQtDM_Plugins \
+                       $(QE_CAQTDM)/caQtDM_Viewer/parser \
+                       $(QE_CAQTDM)/caQtDM_QtControls/src \
+                       $(QWT_INCLUDE_PATH)
+    }
 
     # Include QtPrintSupport for Qt version 5
     equals( QT_MAJOR_VERSION, 5 ) {
@@ -276,11 +300,14 @@ isEmpty( _QE_CAQTDM ) {
     _QE_CAQTDM_LIB = $$(QE_CAQTDM_LIB)
     isEmpty( _QE_CAQTDM_LIB ) {
         message( "QE_CAQTDM_LIB is not defined so looking for caQtDM library in $QE_CAQTDM/caQtDM_Lib" )
-        LIBS += -L$(QE_CAQTDM)/caQtDM_Lib -lcaQtDM_Lib
+        equals( _QE_CAQTDM_MAJOR_VERSION, 3 ){
+           LIBS += -L$(QE_CAQTDM)/caQtDM_Lib -lcaQtDM_Lib
+        } else {
+           LIBS += -L$(QE_CAQTDM)/caQtDM_Binaries -lcaQtDM_Lib
+        }
     } else {
         LIBS += -L$(QE_CAQTDM_LIB) -lcaQtDM_Lib
     }
-
 }
 
 # end

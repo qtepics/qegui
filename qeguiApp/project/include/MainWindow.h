@@ -142,6 +142,12 @@ public:
     bool showGui( QString guiFileName, QString macroSubstitutions );
     void identifyWindowAndForms( int mwIndex );
 
+    QWidget* launchGui( QString guiName, QString title,
+                        QString customisationName,
+                        QEActionRequests::Options creationOption,
+                        bool hidden,
+                        QEFormMapper::FormHandles formHandle );  // Launch a new GUI given a .ui file name
+
 protected:
     void keyPressEvent( QKeyEvent* event );
 
@@ -218,11 +224,6 @@ private:
     QMenu* tabMenu;                                         // ???We want to keep a reference to certain widget objects. Declaring these directly in the
 
     void newMessage( QString msg, message_types type );     // Slot to receive a message to present to the user (typically from the QE framework)
-    QWidget* launchGui( QString guiName, QString title,
-                        QString customisationName,
-                        QEActionRequests::Options creationOption,
-                        bool hidden,
-                        QEFormMapper::FormHandles formHandle );  // Launch a new GUI given a .ui file name
     void createActionMaps ();
 
     QMenu* windowMenu;
@@ -306,6 +307,12 @@ private slots:
     void delayedRaiseGui();                             // Timer event to ensure the main form is visible and the active form.
 
     void guiDestroyed( QObject* );                      // A gui (in a dock) has been destroyed.
+
+    // These are dummy slot methods to avoid "QObject::connect: No such slot" errors
+    // when using caQtDM integration.
+    void Callback_IosExit() { }
+    void Callback_ReloadWindow(QWidget*) { }
+    void Callback_ReloadAllWindows() { }
 
 signals:
     void dockCreated( QDockWidget* );                   // Signal to customisation system that a dock has been created. The customisation
