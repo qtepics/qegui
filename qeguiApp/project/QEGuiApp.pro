@@ -1,6 +1,6 @@
 # $File: //ASP/tec/gui/qegui/trunk/qeguiApp/project/QEGuiApp.pro $
-# $Revision: #12 $
-# $DateTime: 2019/10/02 13:08:41 $
+# $Revision: #13 $
+# $DateTime: 2019/10/02 14:52:05 $
 # Last checked in by: $Author: starritt $
 #
 # Copyright (c) 2009-2019 Australian Synchrotron
@@ -139,48 +139,14 @@ isEmpty( _QE_CAQTDM ) {
 }
 #===========================================================
 
-
-SOURCES += \
-    src/main.cpp \
-    src/MainWindow.cpp \
-    src/StartupParams.cpp \
-    src/InstanceManager.cpp \
-    src/saveRestoreManager.cpp \
-    src/saveDialog.cpp \
-    src/QEGui.cpp \
-    src/restoreDialog.cpp \
-    src/manageConfigDialog.cpp \
-    src/loginDialog.cpp \
-    src/recentFile.cpp \
-    src/aboutDialog.cpp \
-    src/caQtDmInterface.cpp \
-    src/configAutoSave.cpp
+include (src/QEGui.pri)
 
 # Include the following gdbmacros line for debugging only
 #SOURCES += <YOUR-QTSDK-DIRECTORY>/share/qtcreator/gdbmacros/gdbmacros.cpp
 
-HEADERS += \
-    include/MainWindow.h \
-    include/StartupParams.h \
-    include/InstanceManager.h \
-    include/saveRestoreManager.h \
-    include/saveDialog.h \
-    include/QEGui.h \
-    include/restoreDialog.h \
-    include/manageConfigDialog.h \
-    include/loginDialog.h \
-    include/recentFile.h \
-    include/aboutDialog.h \
-    include/caQtDmInterface.h \
-    include/configAutoSave.h
-
-INCLUDEPATH += . \
-    ./include
-
 # Include header files from the QE framework
 #
 INCLUDEPATH += $$(QE_FRAMEWORK)/include
-
 
 # Explicity add framework, and hence QEFrameworkVersion.h, to the dependacy path
 # so that changes to the version/release numbers force relavent recompilations.
@@ -196,30 +162,6 @@ unix: QMAKE_LFLAGS += -Wl,-rpath,$$(EPICS_BASE)/lib/$$(EPICS_HOST_ARCH)
 LIBS += -L$$(QE_FRAMEWORK)/lib/$$(EPICS_HOST_ARCH) -lQEFramework
 unix: QMAKE_LFLAGS += -Wl,-rpath,$$(QE_FRAMEWORK)/lib/$$(EPICS_HOST_ARCH)
 
-FORMS += src/MainWindow.ui \
-         src/MessageLog.ui \
-         src/saveDialog.ui \
-         src/restoreDialog.ui \
-         src/manageConfigDialog.ui \
-         src/aboutDialog.ui
-
-OTHER_FILES += \
-         src/General_PV_Edit.ui \
-         src/Plotter.ui \
-         src/PVCorrelation.ui \
-         src/PVDistribution.ui \
-         src/PVProperties.ui \
-         src/StripChart.ui \
-         src/ScratchPad.ui \
-         src/WaveformHistogram.ui \
-         src/ArchiveStatus.ui \
-         src/ArchiveNameSearch.ui \
-         src/QEGuiCustomisationDefault.xml \
-         src/help_usage.txt \
-         src/help_general.txt
-
-
-RESOURCES += src/QEGui.qrc
 # Qt 5+ configuration
 greaterThan( QT_MAJOR_VERSION, 4 ) {
     win32:RC_ICONS += src/QEGuiIcon.ico
