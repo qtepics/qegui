@@ -1,6 +1,6 @@
 # $File: //ASP/tec/gui/qegui/trunk/qeguiApp/project/QEGuiApp.pro $
-# $Revision: #13 $
-# $DateTime: 2019/10/02 14:52:05 $
+# $Revision: #14 $
+# $DateTime: 2019/10/02 16:10:25 $
 # Last checked in by: $Author: starritt $
 #
 # Copyright (c) 2009-2019 Australian Synchrotron
@@ -221,6 +221,7 @@ isEmpty( _QE_CAQTDM ) {
     }
 
     # Add caQtDM source locations
+    #
     equals( _QE_CAQTDM_MAJOR_VERSION, 3 ){
         INCLUDEPATH += $(QE_CAQTDM)/caQtDM_Lib/src \
                        $(QE_CAQTDM)/caQtDM_QtControls/src \
@@ -234,22 +235,31 @@ isEmpty( _QE_CAQTDM ) {
     }
 
     # Include QtPrintSupport for Qt version 5
+    #
     equals( QT_MAJOR_VERSION, 5 ) {
        INCLUDEPATH += $$(QTINC)/QtPrintSupport
     }
 
     # Reference caQtDM library. Look in installed location if supplied, otherwise, caQtDM project area.
+    #
     _QE_CAQTDM_LIB = $$(QE_CAQTDM_LIB)
     isEmpty( _QE_CAQTDM_LIB ) {
-        message( "QE_CAQTDM_LIB is not defined so looking for caQtDM library in $QE_CAQTDM/caQtDM_Lib" )
         equals( _QE_CAQTDM_MAJOR_VERSION, 3 ){
-           LIBS += -L$(QE_CAQTDM)/caQtDM_Lib -lcaQtDM_Lib
+            message( "QE_CAQTDM_LIB is not defined so looking for caQtDM library in $QE_CAQTDM/caQtDM_Lib" )
+            _QE_CAQTDM_LIB = $(QE_CAQTDM)/caQtDM_Lib
         } else {
-           LIBS += -L$(QE_CAQTDM)/caQtDM_Binaries -lcaQtDM_Lib
+            message( "QE_CAQTDM_LIB is not defined so looking for caQtDM library in $QE_CAQTDM/caQtDM_Binaries" )
+            _QE_CAQTDM_LIB = $(QE_CAQTDM)/caQtDM_Binaries
         }
-    } else {
-        LIBS += -L$(QE_CAQTDM_LIB) -lcaQtDM_Lib
     }
+
+    equals( _QE_CAQTDM_MAJOR_VERSION, 3 ){
+        LIBS += -L$${_QE_CAQTDM_LIB} -lcaQtDM_Lib
+    } else {
+        LIBS += -L$${_QE_CAQTDM_LIB} -lcaQtDM_Lib -lqtcontrols
+    }
+    unix: QMAKE_LFLAGS += -Wl,-rpath,$${_QE_CAQTDM_LIB}
+
 }
 
 # end
