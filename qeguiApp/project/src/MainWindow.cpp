@@ -529,6 +529,7 @@ void MainWindow::on_actionClose_triggered()
     {
         // Close the GUI
         // (Create an empty central widget)
+        caQtDmInterface->sendCloseEvent();
         QEForm* gui = getCentralGui();
         if( gui )
         {
