@@ -1,6 +1,6 @@
 # $File: //ASP/tec/gui/qegui/trunk/qeguiApp/project/QEGuiApp.pro $
-# $Revision: #14 $
-# $DateTime: 2019/10/02 16:10:25 $
+# $Revision: #15 $
+# $DateTime: 2019/10/05 16:38:59 $
 # Last checked in by: $Author: starritt $
 #
 # Copyright (c) 2009-2019 Australian Synchrotron
@@ -117,24 +117,23 @@ isEmpty( _QE_CAQTDM ) {
     message( "Integration with PSI's caQtDM will NOT be included in QEGui. If you want caQtDM integrated, download and" )
     message( "... build it and define the environment variable QE_CAQTDM to point to the caQtDM_Project directory." )
 } else {
+    message( "Integration with PSI's caQtDM will be included in QEGui. caQtDM libraries and include files will be expected" )
+    message( "... and be located using the QE_CAQTDM environment variable (which will should point to the to point to the" )
+    message( "... caQtDM_Project directory). Undefine environment variable QE_CAQTDM if you do not want caQtDM integration." )
 
 #   check Version. 
     _QE_CAQTDM_MAJOR_VERSION = $$(QE_CAQTDM_MAJOR_VERSION)
     equals( _QE_CAQTDM_MAJOR_VERSION, 3 ){
         DEFINES += QE_CAQTDM_VERSION_3
-        message( "!!! caQtDM major version must be 3, e.g. V3.x.x !!! - otherwise it might have an incompatable build error" )
+        message( "!!! downloaded caQtDM major version must be 3, e.g. V3.1.1,  otherwise it might have an incompatable build error." )
     } else {
         equals( _QE_CAQTDM_MAJOR_VERSION, 4 ){
             DEFINES += QE_CAQTDM_VERSION_4
-            message( "!!! caQtDM major version must be 4, e.g. V4.x.x !!! - otherwise it might have an incompatable build error" )
+            message( "!!! downloaded caQtDM major version must be 4, e.g. V4.2.4, otherwise it might have an incompatable build error." )
         } else {
-            error ( "When using caQtDM, QE_CAQTDM_MAJOR_VERSION must be defined as 3 or 4. Is defined as " $$(QE_CAQTDM_MAJOR_VERSION) ) 
+            error ( "When using caQtDM, QE_CAQTDM_MAJOR_VERSION must be defined. Allowed values are 3 or 4. It is currently defined as '"$$(QE_CAQTDM_MAJOR_VERSION)"'.") 
         }
     }
-
-    message( "Integration with PSI's caQtDM will be included in QEGui. caQtDM libraries and include files will be expected" )
-    message( "... and be located using the QE_CAQTDM environment variable (which will should point to the to point to the" )
-    message( "... caQtDM_Project directory). Undefine environment variable QE_CAQTDM if you do not want caQtDM integration." )
     DEFINES += QE_USE_CAQTDM
 }
 #===========================================================
