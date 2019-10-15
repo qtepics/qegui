@@ -46,6 +46,7 @@
 #include <QMetaType>
 #include <QMessageBox>
 #include <QDateTime>
+#include <caQtDmInterface.h>
 
 Q_DECLARE_METATYPE( QEForm* )
 
@@ -207,8 +208,10 @@ void QEGui::printVersion ()
               << QEFrameworkVersion::getDateTime().toLatin1().data()     << " (using QT "
               << QEFrameworkVersion::getQtVersionStr().toLatin1().data() << ")" << std::endl;
 
-   std::cout  << "Framework attributes: "
-              << QEFrameworkVersion::getAttributes().toLatin1().data() << std::endl;
+   QString attributes = QEFrameworkVersion::getAttributes();
+   CaQtDmInterface::updateAttributes( attributes );
+
+   std::cout  << "Attributes: " << attributes.toLatin1().data() << std::endl;
 
    // Note: the EPICS, ACAI and QWT version strings are prefixed by the text
    // "EPICS", "ACAI" and "QWT" respectively

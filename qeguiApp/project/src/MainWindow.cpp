@@ -355,6 +355,9 @@ MainWindow::MainWindow( QEGui* appIn, QString fileName, QString title,
 // Destructor
 MainWindow::~MainWindow()
 {
+    if (caQtDmInterface){
+        delete caQtDmInterface;
+    }
     // Remove the GUIs shown in this main window from the GUIs listed in the 'Windows' menus of all other main windows
     removeAllGuisFromGuiList();
 
@@ -467,6 +470,7 @@ void MainWindow::on_actionNew_Tab_triggered()
             setTabMode();
 
         // Add the GUI in a new tab
+        caQtDmInterface->createLibrary (profile.getMacroSubstitutions(), gui);
         loadGuiIntoNewTab( gui );
     }
 }
@@ -484,6 +488,9 @@ void MainWindow::on_actionNew_Dock_triggered()
         gui = createGui( filename, "", app->getParams()->defaultCustomisationName, QEFormMapper::nullHandle(), true );
     }
     profile.releaseProfile();
+    if (gui){
+        caQtDmInterface->createLibrary (profile.getMacroSubstitutions(), gui);
+    }
     QDockWidget* dock = loadGuiIntoNewDock( gui );
 
     // Record that this dock has been added
@@ -503,7 +510,13 @@ void MainWindow::onOpenRequested()
     QString filename = GuiFileNameDialog( "Open" );
     if( !filename.isEmpty() )
     {
-        caQtDmInterface->sendCloseEvent();
+        if (usingTabs){
+            gui = extractGui( getCentralTabs()->currentWidget() );
+        }
+        else{
+            gui = extractGui( centralWidget() );
+        }
+        caQtDmInterface->sendCloseEvent(gui);
         gui = createGui( filename, "", app->getParams()->defaultCustomisationName,
                          QEFormMapper::nullHandle(), false );
     }
@@ -529,8 +542,8 @@ void MainWindow::on_actionClose_triggered()
     {
         // Close the GUI
         // (Create an empty central widget)
-        caQtDmInterface->sendCloseEvent();
         QEForm* gui = getCentralGui();
+        caQtDmInterface->sendCloseEvent(gui);
         if( gui )
         {
             removeGuiFromGuiList( gui );
@@ -929,6 +942,11 @@ void MainWindow::on_actionAbout_triggered()
         connectedCount = mw->guiList[0].getForm()->getConnectedCount();
     }
 
+    // Get and basic framework attributes and modify if needs be.
+    //
+    QString attributes = QEFrameworkVersion::getAttributes();
+    CaQtDmInterface::updateAttributes( attributes );
+
     // Present the dialog
     aboutDialog ad( QString( QE_VERSION_STRING " " QE_VERSION_DATE_TIME ), // Version info and the build date/time at compile time of QEGui
                     QEFrameworkVersionQEGui,                               // Version info and the build date/time at compile time of the copy of QEFramework library loaded by QEGui
@@ -936,7 +954,7 @@ void MainWindow::on_actionAbout_triggered()
                     QEFrameworkVersion::getEpicsVersionStr(),              // Version of EPICS base
                     QEFrameworkVersion::getAcaiVersionStr(),               // Version of ACAI
                     QEFrameworkVersion::getQwtVersionStr(),                // Version of QWT
-                    QEFrameworkVersion::getAttributes(),                   // QEFramework compile time attributes
+                    attributes,                                            // QEFramework &/or PSI compile time attributes
                     profile.getMacroSubstitutions(),                       // Macro substitutions (-m parameter)
                     profile.getPathList(),                                 // Path list (-p parameter)
                     profile.getEnvPathList(),                              // Path list (environment variable)
@@ -988,6 +1006,7 @@ void MainWindow::tabCloseRequest( int index )
     tabs->setCurrentIndex( index );
     QEForm* gui = extractGui( tabs->currentWidget() );
 
+    caQtDmInterface->sendCloseEvent (gui);
     // Remove the gui from the 'windows' menus
     removeGuiFromGuiList( gui );
 
@@ -1076,6 +1095,7 @@ void MainWindow::tabContextMenuTrigger( QAction* )
     }
 
     // Remove the gui from the 'windows' menus
+    caQtDmInterface->sendCloseEvent (gui);
     removeGuiFromGuiList( gui );
 
     // Remove the tab - note this does not delete the page widget.
@@ -1317,6 +1337,7 @@ void MainWindow::loadGuiIntoCurrentWindow( QEForm* gui, bool resize )
             QEForm* oldGui = extractGui( tabs->currentWidget() );
             if( oldGui )
             {
+                caQtDmInterface->sendCloseEvent (oldGui);
                 removeGuiFromGuiList( oldGui );
             }
 
@@ -1328,6 +1349,7 @@ void MainWindow::loadGuiIntoCurrentWindow( QEForm* gui, bool resize )
             tabs->removeTab( i );
 
             // Replace the tab
+            caQtDmInterface->createLibrary (profile.getMacroSubstitutions(), gui);
             tabs->insertTab( i, rGui, gui->getQEGuiTitle() );
             tabs->setCurrentWidget( rGui );
         }
@@ -1371,14 +1393,14 @@ void MainWindow::loadGuiIntoCurrentWindow( QEForm* gui, bool resize )
         }
     }
 
-    // Set the title
-    setTitle( gui->getQEGuiTitle() );
-
-    // Initialise customisation items.
-    app->getMainWindowCustomisations()->initialise( &customisationInfo );
-
-    // Do PSI caQtDM stuff if needs be.
-    caQtDmInterface->createLibrary( profile.getMacroSubstitutions(), gui );
+    if( !usingTabs ){
+        // Set the title
+        setTitle( gui->getQEGuiTitle() );
+        // Initialise customisation items.
+        app->getMainWindowCustomisations()->initialise( &customisationInfo );
+        // Do PSI caQtDM stuff if needs be.
+        caQtDmInterface->createLibrary( profile.getMacroSubstitutions(), gui );
+    }
 }
 
 // Open a gui in a new dock

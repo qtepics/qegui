@@ -1,6 +1,6 @@
 # $File: //ASP/tec/gui/qegui/trunk/qeguiApp/project/QEGuiApp.pro $
-# $Revision: #15 $
-# $DateTime: 2019/10/05 16:38:59 $
+# $Revision: #17 $
+# $DateTime: 2019/10/15 18:28:55 $
 # Last checked in by: $Author: starritt $
 #
 # Copyright (c) 2009-2019 Australian Synchrotron
@@ -123,19 +123,17 @@ isEmpty( _QE_CAQTDM ) {
 
 #   check Version. 
     _QE_CAQTDM_MAJOR_VERSION = $$(QE_CAQTDM_MAJOR_VERSION)
-    equals( _QE_CAQTDM_MAJOR_VERSION, 3 ){
-        DEFINES += QE_CAQTDM_VERSION_3
-        message( "!!! downloaded caQtDM major version must be 3, e.g. V3.1.1,  otherwise it might have an incompatable build error." )
+
+    equals( _QE_CAQTDM_MAJOR_VERSION, 4 ){
+        message( "!!! The downloaded caQtDM major version must be 4, e.g. V4.2.4, otherwise it might have an incompatable build error." )
     } else {
-        equals( _QE_CAQTDM_MAJOR_VERSION, 4 ){
-            DEFINES += QE_CAQTDM_VERSION_4
-            message( "!!! downloaded caQtDM major version must be 4, e.g. V4.2.4, otherwise it might have an incompatable build error." )
-        } else {
-            error ( "When using caQtDM, QE_CAQTDM_MAJOR_VERSION must be defined. Allowed values are 3 or 4. It is currently defined as '"$$(QE_CAQTDM_MAJOR_VERSION)"'.") 
-        }
+        error( "When using caQtDM, QE_CAQTDM_MAJOR_VERSION must be defined. Allowed value is 4. It is currently defined as '"$$(QE_CAQTDM_MAJOR_VERSION)"'.")
     }
+
     DEFINES += QE_USE_CAQTDM
+    DEFINES += QE_CAQTDM_MAJOR_VERSION="$$(QE_CAQTDM_MAJOR_VERSION)"
 }
+
 #===========================================================
 
 include (src/QEGui.pri)

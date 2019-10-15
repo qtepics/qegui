@@ -3,7 +3,7 @@
  *  This file is part of the EPICS QT Framework, initially developed at the
  *  Australian Synchrotron.
  *
- *  Copyright (c) 2018 Australian Synchrotron
+ *  Copyright (c) 2018-2019 Australian Synchrotron
  *
  *  The EPICS QT Framework is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
@@ -28,6 +28,7 @@
 #include <QApplication>
 #include <QCloseEvent>
 #include <QDebug>
+#include <QVariant>
 #include <MainWindow.h>
 #include <QELabel.h>
 #include <QEAdaptationParameters.h>
@@ -37,7 +38,13 @@
 // Only include PSI caQtDM integration if required.
 // To include PSI caQtDM stuff, don't define QE_USE_CAQTDM directly, define the
 // environment variable QE_CAQTDM to be processed by QEGuiApp.pro
+// Also define environment variable QE_CAQTDM_MAJOR_VERSION to appropriate version
 //
+#if QE_CAQTDM_MAJOR_VERSION != 4
+#undef QE_USE_CAQTDM
+#warning caQtDm integration disabled -  only caQtDm version 4 supported.
+#endif
+
 #ifdef QE_USE_CAQTDM
 
 #include <mutexKnobData.h>
@@ -79,51 +86,49 @@ ProxyWidget::ProxyWidget (MainWindow* parent) : QELabel (parent)
 
 
 //==============================================================================
-// CaQtDmInterface methods
+// CaQtDmFormInterface methods
 //==============================================================================
 //
-// Static class memebers
+// Static class members
 //
-MutexKnobData* CaQtDmInterface::mutexKnobData = NULL;
-CaQtDmInterface::InterfacesMap CaQtDmInterface::interfaces = CaQtDmInterface::InterfacesMap ();
+MutexKnobData* CaQtDmFormInterface::mutexKnobData = NULL;
+CaQtDmFormInterface::InterfacesMap CaQtDmFormInterface::interfaces = CaQtDmFormInterface::InterfacesMap ();
 
 
 //------------------------------------------------------------------------------
 //
-CaQtDmInterface::CaQtDmInterface (MainWindow* parent) : QObject (parent)
+CaQtDmFormInterface::CaQtDmFormInterface (MainWindow* mainWindowIn,
+                                          CaQtDmInterface* parent) : QObject (parent)
 {
-   this->mainWindow = parent;
+   this->mainWindow = mainWindowIn;
    this->caQtDMLib = NULL;
    this->proxyWidget = NULL;
 
 #ifdef QE_USE_CAQTDM
    // PSI data acquisition
-#ifdef QE_CAQTDM_VERSION_3
-   this->mutexKnobData = new MutexKnobData();
-   MutexKnobDataWrapperInit (this->mutexKnobData);
-#else
-   // CaQtDm Version 4 or later
-   if (!this->mutexKnobData) {
-      CaQtDmInterface::mutexKnobData = new MutexKnobData();
+   if (!CaQtDmFormInterface::mutexKnobData) {
+      CaQtDmFormInterface::mutexKnobData = new MutexKnobData();
       loadPlugins loadplugins;
-      loadplugins.loadAll (CaQtDmInterface::interfaces, CaQtDmInterface::mutexKnobData);
+      loadplugins.loadAll (CaQtDmFormInterface::interfaces, CaQtDmFormInterface::mutexKnobData);
    }
-#endif
-
 #endif // QE_USE_CAQTDM
 }
 
 //------------------------------------------------------------------------------
 //
-CaQtDmInterface::~CaQtDmInterface ()
+CaQtDmFormInterface::~CaQtDmFormInterface ()
 {
    if (this->proxyWidget) delete this->proxyWidget;
-   if (this->caQtDMLib) this->caQtDMLib->deleteLater();
+   if (this->caQtDMLib) {
+      this->sendCloseEvent ();
+      this->caQtDMLib->deleteLater();
+      this->caQtDMLib = NULL;
+   }
 }
 
 //------------------------------------------------------------------------------
 //
-void CaQtDmInterface::sendCloseEvent ()
+void CaQtDmFormInterface::sendCloseEvent ()
 {
 #ifdef QE_USE_CAQTDM
    if (this->caQtDMLib) {
@@ -134,7 +139,7 @@ void CaQtDmInterface::sendCloseEvent ()
 
 //------------------------------------------------------------------------------
 //
-void CaQtDmInterface::createLibrary (const QString& macroSubstitutions, QEForm* gui)
+void CaQtDmFormInterface::createLibrary (const QString& macroSubstitutions, QEForm* gui)
 {
 #ifdef QE_USE_CAQTDM
    // Destroy previous library if need be.
@@ -142,30 +147,27 @@ void CaQtDmInterface::createLibrary (const QString& macroSubstitutions, QEForm* 
    if (this->caQtDMLib){
       this->caQtDMLib->deleteLater ();
    }
-   this->caQtDMLib = NULL;
 
-#ifdef QE_CAQTDM_VERSION_3
-   this->caQtDMLib = new CaQtDM_Lib (caQtDMLib, "", macroSubstitutions,
-                                     this->mutexKnobData, 0, false, gui);
-#else
-   // CaQtDm Version 4 or later
+   MessageWindow* msgWindow = NULL;
    this->caQtDMLib = new CaQtDM_Lib (this->mainWindow, "", macroSubstitutions,
-                                     this->mutexKnobData, interfaces, 0, false, gui);
+                                     CaQtDmFormInterface::mutexKnobData, interfaces,
+                                     msgWindow, false, gui);
 
-   // PSI event->handller connection
+   this->caQtDMLib->allowResizing (true);  // This avoid resize event seg fault.
+
+   // PSI event->handler connection
    //
    QObject::connect (
       this->caQtDMLib, SIGNAL(Signal_OpenNewWFile (const QString&, const QString&, const QString&, const QString&)),
       this,            SLOT  (openNewFile         (const QString&, const QString&, const QString&, const QString&)));
 
-   // Has user specified standard context menu?
+   // Has user specified using standard context menu for PSI widgets?
+   // Note: this is a run time descision.
    //
    QEAdaptationParameters ap ("QEGUI_");
    if (ap.getBool ("caqtdm_context_menu")) {
       this->setupContextMenu (gui);
    }
-
-#endif
 
 #else
    // Avoid unused parameter warnings
@@ -177,30 +179,26 @@ void CaQtDmInterface::createLibrary (const QString& macroSubstitutions, QEForm* 
 
 //------------------------------------------------------------------------------
 //
-QString CaQtDmInterface::adl2caqtdmChecking (const QString& fileName)
+QString CaQtDmFormInterface::adl2caqtdmChecking (const QString& fileName)
 {
    QString result = fileName;
 
 #ifdef QE_USE_CAQTDM
-#ifndef QE_CAQTDM_VERSION_3
    const bool isMedmFile = fileName.endsWith (".adl");
    if (isMedmFile) {
       result.chop (3);
       result.append ("ui");
    }
-#endif
-#endif
+#endif // QE_USE_CAQTDM
 
    return result;
 }
 
 //------------------------------------------------------------------------------
 //
-void CaQtDmInterface::setupContextMenu (QEForm* gui)
+void CaQtDmFormInterface::setupContextMenu (QEForm* gui)
 {
 #ifdef QE_USE_CAQTDM
-#ifndef QE_CAQTDM_VERSION_3
-   // CaQtDm Version 4 or later
    if (!gui) return;   // sanity check
 
    if (this->proxyWidget) {
@@ -215,7 +213,7 @@ void CaQtDmInterface::setupContextMenu (QEForm* gui)
 
       QString className (widget->metaObject()->className());
 
-      // We assume all and only PSI classess start with ca (for now)
+      // We assume all and only PSI classess start with ca (for now).
       //
       if (className.startsWith ("ca") && !widget->toolTip().isEmpty()) {
          widget->setContextMenuPolicy (Qt::CustomContextMenu);
@@ -226,8 +224,6 @@ void CaQtDmInterface::setupContextMenu (QEForm* gui)
                   this,   SLOT  (showStandardContextMenu    (const QPoint&)));
       }
    }
-
-#endif
 #else
    // Avoid unused parameter warnings
    Q_UNUSED (gui)
@@ -236,21 +232,27 @@ void CaQtDmInterface::setupContextMenu (QEForm* gui)
 
 //------------------------------------------------------------------------------
 //
-void CaQtDmInterface::showContextMenu( const QPoint& pos, QWidget* widget)
+void CaQtDmFormInterface::showContextMenu (const QPoint& pos, QWidget* widget)
 {
 #ifdef QE_USE_CAQTDM
-#ifndef QE_CAQTDM_VERSION_3
+   if (widget && this->proxyWidget) {
+      // Extract the PV name from the PSI widget.
+      // Use channel property??
+      //
+      QVariant channel = widget->property ("channel");
+      if (channel.type() == QVariant::String) {
+         QString pvName = channel.toString ();
+         this->proxyWidget->setVariableName (pvName, 0);
 
-   if (!widget) return;
-   // Extract the PV name from the PSI widget.
-   QString pvName = widget->toolTip();
-   pvName = pvName.remove(0, 57);
-   pvName.chop(18);
-   if (this->proxyWidget) {
-      this->proxyWidget->setVariableName (pvName, 0);
-      this->proxyWidget->showContextMenu (pos);
+         // Convert pos (which is relative to the widget) to a position
+         // which is relative to the proxy widget.
+         //
+         QPoint globalPos = widget->mapToGlobal (pos);
+         QPoint proxyPos = this->proxyWidget->mapFromGlobal (globalPos);
+
+         this->proxyWidget->showContextMenu (proxyPos);
+      }
    }
-#endif
 #else
    // Avoid unused parameter warnings
    Q_UNUSED (pos)
@@ -260,15 +262,13 @@ void CaQtDmInterface::showContextMenu( const QPoint& pos, QWidget* widget)
 
 //------------------------------------------------------------------------------
 // slot
-void CaQtDmInterface::showStandardContextMenu (const QPoint& pos)
+void CaQtDmFormInterface::showStandardContextMenu (const QPoint& pos)
 {
 #ifdef QE_USE_CAQTDM
-#ifndef QE_CAQTDM_VERSION_3
    QWidget* widget = qobject_cast<QWidget *>(sender());
-   if (widget && this->proxyWidget){
+   if (widget && this->proxyWidget) {
       this->showContextMenu (pos, widget);
    }
-#endif
 #else
    // Avoid unused parameter warnings
    Q_UNUSED (pos)
@@ -276,34 +276,100 @@ void CaQtDmInterface::showStandardContextMenu (const QPoint& pos)
 }
 
 //------------------------------------------------------------------------------
-// slot
-void CaQtDmInterface::openNewFile (const QString& inputFile,
-                                   const QString& macroString,
-                                   const QString& geometry,
-                                   const QString& resizeString)
+// slot - call back form a PSI caQtDm widget
+//
+void CaQtDmFormInterface::openNewFile (const QString& inputFile,
+                                       const QString& macroString,
+                                       const QString&,
+                                       const QString&)
 {
 #ifdef QE_USE_CAQTDM
-#ifndef QE_CAQTDM_VERSION_3
-
    ProfilePublisher publisher (new QEWidget (this->mainWindow), macroString);
 
-   // Convert  .adl extension to .ui
+   // Convert .adl extension to .ui
    //
-   QString uiName = CaQtDmInterface::adl2caqtdmChecking (inputFile);
+   QString uiName = CaQtDmFormInterface::adl2caqtdmChecking (inputFile);
 
    this->mainWindow->launchGui (uiName, "", "", QEActionRequests::OptionNewWindow,
                                 false, QEFormMapper::nullHandle () );
-
-#endif
 #else
    // Avoid unused parameter warnings
-   Q_UNUSED (inputFile)
-   Q_UNUSED (macroString)
+   Q_UNUSED (inputFile);
+   Q_UNUSED (macroString);
 #endif // QE_USE_CAQTDM
+}
 
+//==============================================================================
+// CaQtDmInterface methods
+//==============================================================================
+//
+CaQtDmInterface::CaQtDmInterface (MainWindow* parent) : QObject (parent)
+{
+   this->mainWindow = parent;
+}
+
+//------------------------------------------------------------------------------
+//
+CaQtDmInterface::~CaQtDmInterface ()
+{
+#ifdef QE_USE_CAQTDM
+   // Note: the actual caQtDmFormInterface objects are own by this and therefore
+   // will be automatically deleted which in turn will invoke the sendCloseEvent.
+   //
+   this->formInterfaceMap.clear();
+#endif
+}
+
+//------------------------------------------------------------------------------
+//
+void CaQtDmInterface::sendCloseEvent (QEForm* gui)
+{
+   if (!gui) return;  //  sanity check
+
+#ifdef QE_USE_CAQTDM
+   CaQtDmFormInterface* caQtDmFormInterface = this->formInterfaceMap[gui];
+   if (caQtDmFormInterface) {
+       this->formInterfaceMap.remove (gui);
+       delete caQtDmFormInterface;
+   }
+#endif // QE_USE_CAQTDM
+}
+
+//------------------------------------------------------------------------------
+//
+void CaQtDmInterface::createLibrary (const QString& macroSubstitutions, QEForm* gui)
+{
+   if (!gui) return;  //  sanity check
+
+#ifdef QE_USE_CAQTDM
+   // Create form interface object and create the associated CaQtDM_Lib instance
+   // and insert into the interface map.
+   //
+   CaQtDmFormInterface* caQtDmFormInterface = new CaQtDmFormInterface (this->mainWindow, this);
+   caQtDmFormInterface->createLibrary (macroSubstitutions, gui);
+   this->formInterfaceMap.insert (gui, caQtDmFormInterface);
+#else
    // Avoid unused parameter warnings
-   Q_UNUSED (geometry);
-   Q_UNUSED (resizeString);
+   //
+   Q_UNUSED (macroSubstitutions)
+#endif // QE_USE_CAQTDM
+}
+
+//------------------------------------------------------------------------------
+// static
+void CaQtDmInterface::updateAttributes (QString& attributes)
+{
+#ifdef QE_USE_CAQTDM
+   if (!attributes.isEmpty() && (attributes != "None")) {
+      attributes.append (", caQtDm integration");
+   } else {
+      attributes = "caQtDm integration";
+   }
+#else
+   // Avoid unused parameter warnings
+   //
+   Q_UNUSED (attributes)
+#endif // QE_USE_CAQTDM
 }
 
 // end

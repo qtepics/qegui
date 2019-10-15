@@ -194,7 +194,7 @@
           </font>
          </property>
          <property name="text">
-          <string>QE Framework Attributes</string>
+          <string>Application Attributes</string>
          </property>
         </widget>
        </item>
@@ -725,7 +725,7 @@
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Sans Serif'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;QEGui is part of the EPICS Qt Framework. &lt;a href=&quot;http://sourceforge.net/projects/epicsqt/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0057ae;&quot;&gt;https://github.com/qtepics&lt;/span&gt;&lt;/a&gt;&lt;br /&gt;Contributors include: Andrew Rhyder, Andrew Starritt, Anthony Owen, Anton Maksimenko, Glenn Jackson, Ricardo Fernandes and Andraz Pozar.&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;QEGui is part of the EPICS Qt Framework. &lt;a href=&quot;http://sourceforge.net/projects/epicsqt/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0057ae;&quot;&gt;https://github.com/qtepics&lt;/span&gt;&lt;/a&gt;&lt;br /&gt;Contributors include: Andrew Rhyder, Andrew Starritt, Anthony Owen, Anton Maksimenko, Glenn Jackson, Ricardo Fernandes, Andraz Pozar and Zai Wang.&lt;/p&gt;
 &lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;The EPICS Qt Framework relies on QWT for plotting. &lt;a href=&quot;http://sourceforge.net/projects/qwt/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0057ae;&quot;&gt;http://sourceforge.net/projects/qwt/&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;The EPICS Qt Framework relies on ACAI library for low level channel access. &lt;a href=&quot;http://sourceforge.net/projects/qwt/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0057ae;&quot;&gt;https://github.com/andrewstarritt/acai/&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;To access the Channel Archive data, the EPICS Qt Framework relies on the maiaXmlRpcClient and support classes written by Frerich Raabe &amp;lt;raabe@kde.org&amp;gt;, Ian Reinhart Geiser &amp;lt;geiseri@kde.org&amp;gt;, Karl Glatz and Sebastian Wiedenroth &amp;lt;wiedi@frubar.net&amp;gt;.&lt;/p&gt;
