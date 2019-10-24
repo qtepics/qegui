@@ -40,12 +40,12 @@
 // environment variable QE_CAQTDM to be processed by QEGuiApp.pro
 // Also define environment variable QE_CAQTDM_MAJOR_VERSION to appropriate version
 //
+#ifdef QE_USE_CAQTDM
+
+// Check verasion
 #if QE_CAQTDM_MAJOR_VERSION != 4
-#undef QE_USE_CAQTDM
 #warning caQtDm integration disabled -  only caQtDm version 4 supported.
 #endif
-
-#ifdef QE_USE_CAQTDM
 
 #include <mutexKnobData.h>
 #include <mutexKnobDataWrapper.h>
