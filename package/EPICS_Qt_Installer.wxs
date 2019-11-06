@@ -2,9 +2,9 @@
 
 <!-- 
 $File: //ASP/tec/gui/qegui/trunk/package/EPICS_Qt_Installer.wxs $
-$Revision: #7 $
-$DateTime: 2019/05/02 10:47:22 $
-Last checked in by: $Author: starritt $
+$Revision: #10 $
+$DateTime: 2019/10/30 15:35:56 $
+Last checked in by: $Author: pozara $
 
 WiX configuration file used to create an msi installer for EPICS Qt. 
 This is set up to run on ASBLDW02. As you can see paths are hard coded
@@ -43,11 +43,14 @@ light.exe -ext WixUIExtension -out EPICS_Qt_Installer_<version> EPICS_Qt_Install
 		    <Directory Id='AS' Name='Australian Synchrotron'>
 		        <Directory Id='INSTALLDIR' Name='EPICS Qt'>
 		        	<Component Id='MainExecutable' Guid='7DBD3A7D-E23A-4CD1-A458-3510319A9172'>
-		        		<File Id='qeguiEXE' DiskId='1' Source='C:\jenkins_builds\qegui\bin\win32-x86-mingw\qegui.exe' KeyPath='yes'>
-		        			<Shortcut Id="startmenuQEGui" Directory="ProgramMenuDir" Arguments='-o' Name="QEGui" WorkingDirectory='QEGuiWorkingDir' Icon='qegui.exe' IconIndex="0" Advertise="yes" />
-		        			<Shortcut Id="desktopQEGui" Directory="DesktopFolder" Arguments='-o' Name="QEGui" WorkingDirectory='QEGuiWorkingDir' Icon='qegui.exe' IconIndex="0" Advertise="yes" />
-	        			</File>
+		        		<File Id='qeguiEXE' DiskId='1' Source='C:\jenkins_builds\qegui\bin\win32-x86-mingw\qegui.exe' KeyPath='yes' />
         			</Component>
+               <Component Id='QeGUIWrapperScript' Guid='B0B6AD48-BA9C-445B-B7FD-FD483953BBE6'>
+                  <File Id='runQeGuiBAT' DiskId='1' Source='C:\jenkins_builds\qegui\package\run_qegui.bat' KeyPath='yes'>
+                     <Shortcut Id="startmenuQEGui" Directory="ProgramMenuDir" Arguments='-o' Name="QEGui" WorkingDirectory='QEGuiWorkingDir' Icon='qegui.exe' IconIndex="0" Advertise="yes" />
+                     <Shortcut Id="desktopQEGui" Directory="DesktopFolder" Arguments='-o' Name="QEGui" WorkingDirectory='QEGuiWorkingDir' Icon='qegui.exe' IconIndex="0" Advertise="yes" />
+                  </File>
+               </Component>
         			<Component Id='QtLibs' Guid='47741AC7-6E31-44E9-869E-B34D2F1DA49A'>
         				<File Id='Qt5CoreDLL' DiskId='1' Source='C:\Qt\5.10.0\mingw53_32\bin\Qt5Core.dll' KeyPath='yes' />
         				<File Id='Qt5GuiDLL' DiskId='1' Source='C:\Qt\5.10.0\mingw53_32\bin\Qt5Gui.dll' />
@@ -86,19 +89,20 @@ light.exe -ext WixUIExtension -out EPICS_Qt_Installer_<version> EPICS_Qt_Install
 						<Environment Id="QE_ARCHIVE_LIST" Name="QE_ARCHIVE_LIST" Value="cr01arc01:80/cgi-bin/ArchiveDataServer.cgi cr01arc02:80/cgi-bin/ArchiveDataServer.cgi" Permanent="no" Action="create" System="yes" />
 					</Component>
 					<Component Id='QTDesigner' Guid='FC6850D3-7C97-414B-B7C3-39DAB23A8F73'>
-						<File Id='designerEXE' DiskId='1' Source='C:\Qt\5.10.0\mingw53_32\bin\designer.exe' KeyPath='yes' >
-	    					<Shortcut Id="startmenuDesigner" Directory="ProgramMenuDir" Name="QT Designer" WorkingDirectory='INSTALLDIR' Icon='designer.exe' IconIndex="0" Advertise="yes" />
-		        			<Shortcut Id="desktopDesigner" Directory="DesktopFolder" Name="QT Designer" WorkingDirectory='INSTALLDIR' Icon='designer.exe' IconIndex="0" Advertise="yes" />
-	        			</File>
+						<File Id='designerEXE' DiskId='1' Source='C:\Qt\5.10.0\mingw53_32\bin\designer.exe' KeyPath='yes' />
 						<File Id='Qt5DesignerDLL' DiskId='1' Source='C:\Qt\5.10.0\mingw53_32\bin\Qt5Designer.dll' />
 	    				<File Id='Qt5DesignerComponentsDLL' DiskId='1' Source='C:\Qt\5.10.0\mingw53_32\bin\Qt5DesignerComponents.dll' />
     				</Component>
-
+               <Component Id='QtDesignerWrapperScript' Guid='EB0E7195-C85A-454C-8AFF-668E0437D210'>
+                  <File Id='runQtDesignerBAT' DiskId='1' Source='C:\jenkins_builds\qegui\package\run_qt_designer.bat' KeyPath='yes'>
+                     <Shortcut Id="startmenuDesigner" Directory="ProgramMenuDir" Name="QT Designer" WorkingDirectory='INSTALLDIR' Icon='designer.exe' IconIndex="0" Advertise="yes" />
+                     <Shortcut Id="desktopDesigner" Directory="DesktopFolder" Name="QT Designer" WorkingDirectory='INSTALLDIR' Icon='designer.exe' IconIndex="0" Advertise="yes" />
+                  </File>
+               </Component>
 					<Directory Id='designerDir' Name='designer'>
 	    				<Component Id='QTPlugins' Guid='374DBC40-1B30-4E89-A04B-1D210994926A'>
 	    					<File Id='QEPluginDLL' DiskId='1' Source='C:\jenkins_builds\qeframework\lib\win32-x86-mingw\designer\QEPlugin.dll'  KeyPath='yes'/>
 	    					<File Id='qwtPluginDLL' DiskId='1' Source='C:\qwt-6.1.3\plugins\designer\qwt_designer_plugin.dll'/>	    					
-	    					<Environment Id="QT_PLUGIN_PATH" Name="QT_PLUGIN_PATH" Value="[INSTALLDIR]" Permanent="no" Action="create" System="yes" />
 						</Component>
 					</Directory>
 					<Directory Id='platforms' Name='platforms'>
@@ -132,12 +136,14 @@ light.exe -ext WixUIExtension -out EPICS_Qt_Installer_<version> EPICS_Qt_Install
 
     <Feature Id='Complete' Level='1'>
 	    <ComponentRef Id='MainExecutable' />
+       <ComponentRef Id='QeGUIWrapperScript' />
 	    <ComponentRef Id='QtLibs' />
 	    <ComponentRef Id='platformLibs' />
 	    <ComponentRef Id='qwtLibs' />
 	    <ComponentRef Id='EPICSLibs' />
 	    <ComponentRef Id='QEFramework' />
 	    <ComponentRef Id='QTDesigner' />
+       <ComponentRef Id='QtDesignerWrapperScript' />
 	    <ComponentRef Id='QTPlugins' />
 	    <ComponentRef Id='CopyDocumentation' />
 	    <ComponentRef Id='ProgramMenuDir' />
