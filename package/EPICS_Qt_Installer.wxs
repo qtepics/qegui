@@ -2,9 +2,9 @@
 
 <!-- 
 $File: //ASP/tec/gui/qegui/trunk/package/EPICS_Qt_Installer.wxs $
-$Revision: #10 $
-$DateTime: 2019/10/30 15:35:56 $
-Last checked in by: $Author: pozara $
+$Revision: #11 $
+$DateTime: 2019/11/12 10:43:38 $
+Last checked in by: $Author: starritt $
 
 WiX configuration file used to create an msi installer for EPICS Qt. 
 This is set up to run on ASBLDW02. As you can see paths are hard coded
@@ -21,13 +21,13 @@ light.exe -ext WixUIExtension -out EPICS_Qt_Installer_<version> EPICS_Qt_Install
     <Product Name='EPICS Qt' Manufacturer='Australian Synchrotron'
         Id='61E07247-9AA2-41D5-9918-0970425D1B55' 
         UpgradeCode='49FDA92B-D16B-446B-BBE7-813ABCD45217'
-        Language='1033' Codepage='1252' Version='3.7.1'>
-    <Package Id='*' Keywords='Installer' Description="EPICS Qt 3.7.1 Installer"
+        Language='1033' Codepage='1252' Version='3.7.2'>
+    <Package Id='*' Keywords='Installer' Description="EPICS Qt 3.7.2 Installer"
         Comments='EPICS Qt is an open source software developed by the Australian Synchrotron.' Manufacturer='Australian Synchrotron'
         InstallerVersion='100' Languages='1033' Compressed='yes' SummaryCodepage='1252' />
 
      <Upgrade Id='49FDA92B-D16B-446B-BBE7-813ABCD45217'>
-      	<UpgradeVersion OnlyDetect='no' Property='PREVIOUSFOUND' Minimum='1.0.0'  IncludeMinimum='yes' Maximum='3.7.1'  IncludeMaximum='no' />
+      	<UpgradeVersion OnlyDetect='no' Property='PREVIOUSFOUND' Minimum='1.0.0'  IncludeMinimum='yes' Maximum='3.7.2'  IncludeMaximum='no' />
     </Upgrade>
 
     <InstallExecuteSequence>
@@ -115,6 +115,7 @@ light.exe -ext WixUIExtension -out EPICS_Qt_Installer_<version> EPICS_Qt_Install
 	    					<File Id='OverviewPDF' DiskId='1' Source='C:\jenkins_builds\qeframework\documentation\QE_FrameworkOverview.pdf' KeyPath='yes' />
 	    					<File Id='GettingStartedPDF' DiskId='1' Source='C:\jenkins_builds\qeframework\documentation\QE_GettingStarted.pdf' />
 	    					<File Id='UIDPDF' DiskId='1' Source='C:\jenkins_builds\qeframework\documentation\QE_QEGuiAndUserInterfaceDesign.pdf' />
+	    					<File Id='WigetsPDF' DiskId='1' Source='C:\jenkins_builds\qeframework\documentation\QEWidgetSpecifications.pdf' />
 	    					<File Id='RefPDF' DiskId='1' Source='C:\jenkins_builds\qeframework\documentation\QE_ReferenceManual.pdf' />
 	    					<File Id='StripChartPDF' DiskId='1' Source='C:\jenkins_builds\qeframework\documentation\Strip_Chart_User_Guide.pdf' />
 	    					<File Id='RelnotesTXT' DiskId='1' Source='C:\jenkins_builds\qeframework\documentation\releasenotes.txt' />
