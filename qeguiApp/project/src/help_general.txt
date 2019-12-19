@@ -130,9 +130,9 @@ is specified as a hostname:port/endpoint triplet, e.g.:
 
    export QE_ARCHIVE_LIST="CR01ARC01:80/cgi-bin/ArchiveDataServer.cgi CR01ARC02:80/cgi-bin/ArchiveDataServer.cgi"
 
-Each Archive Appliance server is defined by a hostname:port/endpoint  e.g.:
+Each Archive Appliance server is defined by a hostname:port/endpoint(s)  e.g.:
 
-   export QE_ARCHIVE_LIST=CR01ARC04:80/mgmt/bpl/
+   export QE_ARCHIVE_LIST="CR01ARC04:80/mgmt/bpl/ SR10BM01ARC01/mgmt/bpl/"
 
 A leading http:// for each triplet is not required but is permitted.
 
@@ -165,7 +165,7 @@ and two iTech libera record types, i.e. the following record types:
    filter        genSub        histogram     longin        longout  
    lsi           lso           mbbiDirect    mbbi          mbboDirect  
    mbbo          mca           motor         permissive    printf  
-   sCalcout      scaler        scanparm      sel           seq  
+   scalcout      scaler        scanparm      sel           seq  
    sscan         sseq          state         status        stringin  
    stringout     subArray      sub           swait         table  
    timestamp     transform     vme           waveform      libera  
