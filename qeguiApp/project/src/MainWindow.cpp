@@ -3,7 +3,7 @@
  *  This file is part of the EPICS QT Framework, initially developed at the
  *  Australian Synchrotron.
  *
- *  Copyright (c) 2009-2019 Australian Synchrotron
+ *  Copyright (c) 2009-2020 Australian Synchrotron
  *
  *  The EPICS QT Framework is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
@@ -315,21 +315,24 @@ MainWindow::MainWindow( QEGui* appIn, QString fileName, QString title,
 
 #ifdef Q_OS_WIN
     // WINDOWS 7, WINDOW 8 WORKAROUND
-    // On windows 7 and Windows 8, (at least) since Qt 5 the initial position of the main window is set to top left
-    // then window decoration is added around the widget leaving the left and top decorations off the display.
-    // Since this includes the title bar the user can't even drag the window to be fully in view.
-    // A workaround is to resize the window a little bit from the right or bottom borders which are
-    // visible at which point the window manager moves the window to make it all visible.
-    // This code just forces the window manager to re-evaluate its position and ensures the window decoration,
-    // including the title bar, is visible.
+    // On windows 7 and Windows 8, (at least) since Qt 5 the initial position of the main
+    // window is set to top left then window decoration is added around the widget leaving
+    // the left and top decorations off the display. Since this includes the title bar the
+    // user can't even drag the window to be fully in view.
+    // A workaround is to resize the window a little bit from the right or bottom borders
+    // which are visible at which point the window manager moves the window to make it all
+    // visible. This code just forces the window manager to re-evaluate its position and
+    // ensures the window decoration, including the title bar, is visible.
 
-    // Move to 0,0.
-    // New windows should be created at 0,0, but just in case only move to 0,0 if already there
+    // Move to 10,40.
+    // New windows should be created at 0,0, but just in case only move to 0,0 if already
+    // there. However in case task bar has been relocated to top of screen relocate below
+    // this, and a little to the right for good measure.
     {
-        QPoint p = pos();
+        QPoint p = this->pos();
         if( p.x() == 0 && p.y() == 0 )
         {
-            move(0,0);
+            this->move( 10, 40 );
         }
     }
 #endif
