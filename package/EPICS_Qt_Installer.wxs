@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="windows-1252"?>
 <!--
 $File: //ASP/tec/gui/qegui/trunk/package/EPICS_Qt_Installer.wxs $
-$Revision: #15 $
-$DateTime: 2020/01/29 18:32:37 $
+$Revision: #16 $
+$DateTime: 2020/02/12 16:29:10 $
 Last checked in by: $Author: starritt $
 
 WiX configuration file used to create an msi installer for EPICS Qt,
@@ -59,10 +59,7 @@ light.exe -ext WixUIExtension -out EPICS_Qt_Installer_<version> EPICS_Qt_Install
                             <File Id="qeradEXE" DiskId="1" Source="C:\jenkins_builds\qeReadArchive\bin\win32-x86-mingw\qerad.exe" KeyPath="yes"/>
                         </Component>
                         <Component Id="QeRadWrapperScript" Guid="417A1F37-D21D-439C-B644-65C76401F8F5">
-                            <File Id="runQeRadBAT" DiskId="1" Source="C:\jenkins_builds\qegui\package\run_qerad.bat" KeyPath="yes">
-                                <Shortcut Id="startmenuQERad" Directory="ProgramMenuDir" Name="QERad" WorkingDirectory="QEGuiWorkingDir" Icon="qerad.exe" IconIndex="0" Advertise="yes"/>
-                                <Shortcut Id="desktopQERad" Directory="DesktopFolder" Name="QERad" WorkingDirectory="QEGuiWorkingDir" Icon="qerad.exe" IconIndex="0" Advertise="yes"/>
-                            </File>
+                            <File Id="runQeRadBAT" DiskId="1" Source="C:\jenkins_builds\qegui\package\run_qerad.bat" KeyPath="yes"/>
                         </Component>
 
                         <Component Id="QtLibs" Guid="47741AC7-6E31-44E9-869E-B34D2F1DA49A">
@@ -96,7 +93,7 @@ light.exe -ext WixUIExtension -out EPICS_Qt_Installer_<version> EPICS_Qt_Install
                         <Component Id="QEFramework" Guid="BE40D6FB-1753-4291-92C2-76AC62C5FD4B">
                             <File Id="QEFrameworkDLL" DiskId="1" Source="C:\jenkins_builds\qeframework\lib\win32-x86-mingw\QEFramework.dll" KeyPath="yes"/>
                             <File Id="libprotobufDLL" DiskId="1" Source="C:\Qt\Tools\mingw530_32\bin\libprotobuf.dll"/>
-                            <File Id="archapplSupDLL" DiskId="1" Source="C:\jenkins_builds\qeframework\lib\win32-x86-mingw\archapplData.dll"/>
+                            <File Id="archapplSupDLL" DiskId="1" Source="C:\jenkins_builds\qeframework\bin\win32-x86-mingw\archapplData.dll"/>
                             <File Id="acaiDLL" DiskId="1" Source="C:\jenkins_builds\acai\bin\win32-x86-mingw\acai.dll"/>
                             <Environment Id="QE_FRAMEWORK" Name="QE_FRAMEWORK" Value="[INSTALLDIR]" Permanent="no" Action="create" System="yes"/>
                             <Environment Id="QE_ARCHIVE_TYPE" Name="QE_ARCHIVE_TYPE" Value="ARCHAPPL" Permanent="no" Action="create" System="yes"/>
