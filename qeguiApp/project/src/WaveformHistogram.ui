@@ -34,14 +34,14 @@
        <height>100</height>
       </size>
      </property>
-     <property name="allowDrop">
-      <bool>true</bool>
-     </property>
      <property name="autoBarGapWidths">
       <bool>true</bool>
      </property>
      <property name="scaleMode">
       <enum>QEWaveformHistogram::Auto</enum>
+     </property>
+     <property name="allowDrop">
+      <bool>true</bool>
      </property>
     </widget>
    </item>
@@ -50,14 +50,13 @@
  <customwidgets>
   <customwidget>
    <class>QEWaveformHistogram</class>
-   <extends>QEFrame</extends>
+   <extends>QEHistogram</extends>
    <header>QEWaveformHistogram.h</header>
   </customwidget>
   <customwidget>
-   <class>QEFrame</class>
+   <class>QEHistogram</class>
    <extends>QFrame</extends>
-   <header>QEFrame.h</header>
-   <container>1</container>
+   <header>QEHistogram.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

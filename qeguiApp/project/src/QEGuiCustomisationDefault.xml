@@ -65,6 +65,9 @@
                 <Item Name="Plotter...">
                     <BuiltIn Name="Plotter..." />
                 </Item>
+                <Item Name="Histogram...">
+                    <BuiltIn Name="Histogram..." />
+                </Item>
                 <Item Name="Table...">
                     <BuiltIn Name="Table..." />
                 </Item>

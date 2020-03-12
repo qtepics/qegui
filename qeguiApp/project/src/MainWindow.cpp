@@ -1683,6 +1683,7 @@ void MainWindow::createActionMaps()
     inbuiltFormMap.insert( "Message Log...",                         ":/qe/gui/forms/MessageLog.ui" );
     inbuiltFormMap.insert( "Plotter...",                             ":/qe/gui/forms/Plotter.ui" );
     inbuiltFormMap.insert( "Table...",                               ":/qe/gui/forms/Table.ui" );
+    inbuiltFormMap.insert( "Histogram...",                           ":/qe/gui/forms/WaveformHistogram.ui" );
     inbuiltFormMap.insert( "PV Load/Save...",                        ":/qe/gui/forms/PVLoadSave.ui" );
     inbuiltFormMap.insert( "PV Correlation...",                      ":/qe/gui/forms/PVCorrelation.ui" );
     inbuiltFormMap.insert( "PV Distribution...",                     ":/qe/gui/forms/PVDistribution.ui" );
