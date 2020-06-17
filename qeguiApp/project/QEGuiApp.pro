@@ -1,6 +1,6 @@
 # $File: //ASP/tec/gui/qegui/trunk/qeguiApp/project/QEGuiApp.pro $
-# $Revision: #17 $
-# $DateTime: 2019/10/15 18:28:55 $
+# $Revision: #18 $
+# $DateTime: 2020/05/03 12:18:46 $
 # Last checked in by: $Author: starritt $
 #
 # Copyright (c) 2009-2019 Australian Synchrotron
@@ -117,6 +117,7 @@ isEmpty( _QE_CAQTDM ) {
     message( "Integration with PSI's caQtDM will NOT be included in QEGui. If you want caQtDM integrated, download and" )
     message( "... build it and define the environment variable QE_CAQTDM to point to the caQtDM_Project directory." )
 } else {
+    message( "QE_CAQTDM is defined: $$(QE_CAQTDM)")
     message( "Integration with PSI's caQtDM will be included in QEGui. caQtDM libraries and include files will be expected" )
     message( "... and be located using the QE_CAQTDM environment variable (which will should point to the to point to the" )
     message( "... caQtDM_Project directory). Undefine environment variable QE_CAQTDM if you do not want caQtDM integration." )

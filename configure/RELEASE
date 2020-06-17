@@ -1,6 +1,6 @@
 # $File: //ASP/tec/gui/qegui/trunk/configure/RELEASE $
-# $Revision: #1 $
-# $DateTime: 2016/10/21 21:01:47 $
+# $Revision: #2 $
+# $DateTime: 2020/05/03 12:18:46 $
 # Last checked in by: $Author: starritt $
 #
 # RELEASE - Location of external support modules
@@ -28,13 +28,30 @@ TEMPLATE_TOP=$(EPICS_BASE)/templates/makeBaseApp/top
 
 # Defines the prebuilt bundle location.
 # Filled in at bundle build time
+#
 BUNDLE=
 
-#
+# Modify this to reference to __your__ local QE Framework installation.
+# 
 QE_FRAMEWORK=$(BUNDLE)/gui/qeframework
 
+# Modify this to reference to __your__ local caQtDM installation.
+# Uncomment only if integration with PSI's caQtDM needed.
+# Note: CAQTDM intermediate is defined for Australian Synchrotron build system only.
+#
+# CAQTDM=$(BUNDLE)/gui/caqtdm
+# QE_CAQTDM=$(CAQTDM)/caqtdmApp/src
+
 # EPICS_BASE usually appears last so other apps can override stuff:
+# Modify this to reference to __your__ local EPICS base installation.
+#
 EPICS_BASE=$(BUNDLE)/epics/base
 
+# These lines allow developers to override these RELEASE settings
+# without having to modify this file directly.
+#
+-include $(TOP)/../RELEASE.local
+-include $(TOP)/../RELEASE.$(EPICS_HOST_ARCH).local
+-include $(TOP)/configure/RELEASE.local
 
 # end

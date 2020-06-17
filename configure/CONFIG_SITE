@@ -29,3 +29,11 @@ CHECK_RELEASE = YES
 #   to the install location. This may be needed to boot from
 #   a Microsoft FTP server say, or on some NFS configurations.
 #IOCS_APPL_TOP = </IOC's/absolute/path/to/install/top>
+
+# Define as environment variables or define here if needed.
+#
+QE_CAQTDM_MAJOR_VERSION=4
+
+-include $(TOP)/configure/CONFIG_SITE.local
+
+# end

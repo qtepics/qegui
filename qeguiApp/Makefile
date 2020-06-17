@@ -1,6 +1,6 @@
 # $File: //ASP/tec/gui/qegui/trunk/qeguiApp/Makefile $
-# $Revision: #7 $
-# $DateTime: 2017/05/03 18:48:46 $
+# $Revision: #9 $
+# $DateTime: 2020/06/17 14:36:12 $
 # Last checked in by: $Author: starritt $
 #
 # This make file is the bridge beween the EPICS build system and the Qt project qmake/make paradigm.
@@ -26,6 +26,17 @@ include $(TOP)/configure/CONFIG
 #
 export EPICS_BASE := $(EPICS_BASE)
 export QE_FRAMEWORK := $(QE_FRAMEWORK)
+
+# If QE_CAQTDM/QE_CAQTDM_MAJOR_VERSION are defined, then re-export
+# for qmake processing of the project file.
+#
+ifdef QE_CAQTDM
+export QE_CAQTDM := $(QE_CAQTDM)
+endif
+
+ifdef QE_CAQTDM_MAJOR_VERSION
+export QE_CAQTDM_MAJOR_VERSION := $(QE_CAQTDM_MAJOR_VERSION)
+endif
 
 # Commands
 # EPICS make system defines many OS independent commands, but not all
