@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="windows-1252"?>
 <!--
 $File: //ASP/tec/gui/qegui/trunk/package/EPICS_Qt_Installer.wxs $
-$Revision: #17 $
-$DateTime: 2020/04/26 15:11:10 $
+$Revision: #18 $
+$DateTime: 2020/06/17 14:44:57 $
 Last checked in by: $Author: starritt $
 
 WiX configuration file used to create an msi installer for EPICS Qt,
@@ -97,7 +97,7 @@ light.exe -ext WixUIExtension -out EPICS_Qt_Installer_<version> EPICS_Qt_Install
                             <File Id="acaiDLL" DiskId="1" Source="C:\jenkins_builds\acai\bin\win32-x86-mingw\acai.dll"/>
                             <Environment Id="QE_FRAMEWORK" Name="QE_FRAMEWORK" Value="[INSTALLDIR]" Permanent="no" Action="create" System="yes"/>
                             <Environment Id="QE_ARCHIVE_TYPE" Name="QE_ARCHIVE_TYPE" Value="ARCHAPPL" Permanent="no" Action="create" System="yes"/>
-                            <Environment Id="QE_ARCHIVE_LIST" Name="QE_ARCHIVE_LIST" Value="cr01arc04:17665/mgmt/bpl/ sr02ir01arc01:17665/mgmt/bpl/ sr03id01arc01:17665/mgmt/bpl/ sr03bm01arc01:17665/mgmt/bpl/ sr05id01arc01:17665/mgmt/bpl/ sr08id01arc01:17665/mgmt/bpl/ sr10bm01arc01:17665/mgmt/bpl/ sr12id01arc01:17665/mgmt/bpl/ sr13id01arc01:17665/mgmt/bpl/ sr14id01arc01:17665/mgmt/bpl/ " Permanent="no" Action="create" System="yes"/>
+                            <Environment Id="QE_ARCHIVE_LIST" Name="QE_ARCHIVE_LIST" Value="cr01arc04:17665/mgmt/bpl/ sr02ir01arc01:17665/mgmt/bpl/ bsxarc01:17665/mgmt/bpl/ sr03id01arc01:17665/mgmt/bpl/ sr03bm01arc01:17665/mgmt/bpl/ sr05id01arc01:17665/mgmt/bpl/ sr08id01arc01:17665/mgmt/bpl/ mctarc01:17665/mgmt/bpl/ sr10bm01arc01:17665/mgmt/bpl/ sr12id01arc01:17665/mgmt/bpl/ mex1arc01:17665/mgmt/bpl/ mex2arc01:17665/mgmt/bpl/ sr13id01arc01:17665/mgmt/bpl/ sr14id01arc01:17665/mgmt/bpl/ " Permanent="no" Action="create" System="yes"/>
                         </Component>
                         <Component Id="QTDesigner" Guid="FC6850D3-7C97-414B-B7C3-39DAB23A8F73">
                             <File Id="designerEXE" DiskId="1" Source="C:\Qt\5.10.0\mingw53_32\bin\designer.exe" KeyPath="yes"/>
