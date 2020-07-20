@@ -6,7 +6,7 @@ REM envirionment variable as this can break other applications. So we
 REM define locally here.
 
 REM the plugin libraries are in the designer sub directory
-set QT_PLUGIN_PATH=C:\Program Files(x86)\Australian Synchrotron\EPICS Qt
+set QT_PLUGIN_PATH=%QE_FRAMEWORK%
 
 REM run QeGui. Pass on any/all parameters.
 
