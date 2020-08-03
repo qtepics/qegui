@@ -2,8 +2,8 @@
 #
 
 # $File: //ASP/tec/gui/qegui/trunk/package/make_epicsqt_rpm $
-# $Revision: #7 $
-# $DateTime: 2019/05/06 13:42:11 $
+# $Revision: #8 $
+# $DateTime: 2020/08/02 19:47:08 $
 # Last checked in by: $Author: starritt $
 #
 
@@ -67,11 +67,14 @@ function copy_file() {
        # e.g. libca.so -> libca.so.4.13.1
        #
        actual=$( readlink -f ${file:?} )
-       sym_link=$( basename ${file} )
+       base_actual=$( basename ${actual:?} ) 
+       sym_link=$( basename ${file:?} )
 
-       echo "including ${actual} as ${sym_link}"
-       cp ${actual:?}  ${tgt:?}/
-       ln -s  $( basename ${actual:?} )  ${tgt:?}/${sym_link:?}
+       echo "including ${actual}  with symbolic link ${sym_link:?} -> ${base_actual:?}"
+       cp -f ${actual:?}  ${tgt:?}/
+       
+       # Sometimes duplicates, so hide errors.
+       ln -s  ${base_actual:?}  ${tgt:?}/${sym_link:?}  2>/dev/null
        
    else
       # Just copy as is
@@ -79,37 +82,49 @@ function copy_file() {
       echo "including ${file}"
       cp  ${file:?}  ${tgt:?}/   
    fi
-   
 }
 
 
 # ----------------------------------------------------------------------
 # Auto generate from qegui
 #
-echo "Extracting version information"
+echo "Extracting qegui version information"
 
 qegui=$( type qegui | awk  '{ print $3 }' )
 test -n "${qegui}" || terminate "qegui not on PATH or does not exist"
 
+carepeater=$( type caRepeater | awk  '{ print $3 }' )
+test -n "${carepeater}" || terminate "caRepeater not on PATH or does not exist"
+
 temp=/tmp/${USER}_${iam}_$$_version_info
 ${qegui:?} -v  > ${temp:?}
-qtvern=$(    cat ${temp:?} | head -n 1  | sed -e 's/^.*using QT//g'     | sed -e 's/)//g'   | sed -e 's/ //g' )
-version=$(   cat ${temp:?} | head -n 1  | sed -s 's/QEGui version://g'  | awk '{ print $1}' | sed -e 's/ //g' )
-epicsvrn=$(  cat ${temp:?} | grep EPICS | awk '{ print $4 }'                                | sed -e 's/ //g' )
-qtlibs=$(    cat ${temp:?} | grep 'Library path' | awk '{ print $3 }'  )
+qtvern=$(      cat ${temp:?} | head -n 1  | sed -e 's/^.*using QT//g'     | sed -e 's/)//g'   | sed -e 's/ //g' )
+version=$(     cat ${temp:?} | head -n 1  | sed -s 's/QEGui version://g'  | awk '{ print $1}' | sed -e 's/ //g' )
+epicsvrn=$(    cat ${temp:?} | grep EPICS | awk '{ print $4 }'                                | sed -e 's/ //g' )
+qtlibdir=$(    cat ${temp:?} | grep 'Library path' | awk '{ print $3 }'  )
+qtplugindir=$( cat ${temp:?} | grep 'Plugin path'  | awk '{ print $3 }'  )
 rm -f ${temp:?}
 
-qtstuff=$( dirname ${qtlibs:?} )
+qtstuff=$( dirname ${qtlibdir:?} )
 
-echo "qegui   = ${qegui:?}"
-echo "version = ${version:?}"
-echo "qtstuff = ${qtstuff:?}"
+echo "qegui      = ${qegui:?}"
+echo "version    = ${version:?}"
+echo "qtstuff    = ${qtstuff:?}"
+
+echo "caRepeater = ${carepeater:?}"
 
 # Set up other source locations
 #
-qtlibdir=${qtstuff:?}/lib
-qtplugindir=${qtstuff:?}/plugins
+libqxcb=${qtplugindir:?}/platforms/libqxcb.so
 designer=${qtstuff:?}/bin/designer
+qeplugin=$(   echo $QT_PLUGIN_PATH | tr ':' '\n' | grep qeframework )/designer/libQEPlugin.so
+fsm_plugin=$( echo $QT_PLUGIN_PATH | tr ':' '\n' | grep qtfsm       )/designer/libfsm_plugin.so
+
+echo "libqxcb    = ${libqxcb:?}"
+echo "designer   = ${designer:?}"
+echo "qeplugin   = ${qeplugin:?}"
+echo "fsm_plugin = ${fsm_plugin:?}"
+echo ""
 
 # Target install dir - where the files will be installed
 #
@@ -120,7 +135,9 @@ workdir=/tmp/${iam}_${USER}_$$
 mkdir -p ${workdir:?} || terminate "cannot create ${workdir} directory"
 
 # Construction directories - where we assemble the files prior
-# to createing the rpm. 
+# to creating the rpm. 
+# source dir is the source for rpm construction, but is the target
+# where we copy files to.
 #
 source_dir=${workdir:?}/${package_location:?}
 usr_local_bin=${workdir:?}/usr/local/bin
@@ -132,39 +149,52 @@ echo "Constructing ${package_location}"
 # Keep Qt and epicsQt libraries separate, but use a common bin directory
 #
 mkdir -p ${source_dir:?}/qtlib
-mkdir -p ${source_dir:?}/qtplugins
+mkdir -p ${source_dir:?}/qtplugins/platforms
 mkdir -p ${source_dir:?}/bin
 mkdir -p ${source_dir:?}/lib/designer
 mkdir -p ${usr_local_bin:?}
 
 # Copy files.
 #
-echo "including ${qtlibdir:?}/..."
-cp -r     ${qtlibdir:?}/*       ${source_dir:?}/qtlib/
+# Looks like this is the only Qt plugin we need.
+#
+copy_file  ${libqxcb:?}  ${source_dir:?}/qtplugins/platforms/
 
-echo "including ${qtplugindir:?}/..."
-cp -r     ${qtplugindir:?}/*    ${source_dir:?}/qtplugins/
-
-copy_file  ${designer}           ${source_dir:?}/bin/
-copy_file  ${qegui:?}            ${source_dir:?}/bin/
 echo ""
+echo "including ${qtlibdir:?}/..."
 
-echo "including application plugins..."
-for pattern in qeframework qtfsm ; do
-   lib_path=$( echo $QT_PLUGIN_PATH | tr ':' '\n' | grep ${pattern} )
-   for lib in ${lib_path}/designer/lib*.so ; do
-      copy_file  ${lib:?}        ${source_dir:?}/lib/designer/
-   done
+# Use ldd on libqxcb.so and qegui etc. to find required qt libraries.
+#
+ldd_item_list="${qegui:?} ${designer:?} ${libqxcb:?} ${qeplugin:?} ${fsm_plugin:?}"
+
+lib_list=$( ldd ${ldd_item_list:?} | grep "${qtstuff:?}" | awk '{print $3}' | sort -u )
+for the_lib in ${lib_list} ; do
+   copy_file ${the_lib:?}  ${source_dir:?}/qtlib/
 done
 echo ""
 
+# Include main programs
+#
+echo "including programs..."
+copy_file  ${designer}          ${source_dir:?}/bin/
+copy_file  ${qegui:?}           ${source_dir:?}/bin/
+copy_file  ${carepeater:?}      ${source_dir:?}/bin/
+echo ""
+
+echo "including application plugins..."
+copy_file ${qeplugin:?}     ${source_dir:?}/lib/designer/
+copy_file ${fsm_plugin:?}   ${source_dir:?}/lib/designer/
+echo ""
+
 # Search for Qt/QE/QWT/EPICS sepecific libraries.
+# We search only qegui for libraries, it seems to work.
 #
 echo "including libraries..."
 for pattern in ${EPICS_BASE} libacai ${QE_FRAMEWORK} libprotobuf libqwt libav     \
                libmp3lame  libopencore-amrnb  libopencore-amrwb libschroedinger   \
-               libsoxr libswresample libvo-amrwbenc libx264 libx265 libxvidcore ; do
-   lib_path=$( ldd ${qegui:?} | grep "${pattern}" | awk '{print $3}' )
+               libsoxr libswresample libvo-amrwbenc libx264 libx265 libxvidcore   \
+               libva  libopus  libfdk-aac  ADSupport ; do
+   lib_path=$( ldd ${qegui:?} | grep "${pattern}" | grep -v ${qtstuff:?} | awk '{print $3}' )
    if [ -z "${lib_path}" ] ; then
       echo "skipping ${pattern}"
       continue
@@ -174,7 +204,6 @@ for pattern in ${EPICS_BASE} libacai ${QE_FRAMEWORK} libprotobuf libqwt libav   
    done
 done
 echo ""
-
 
 # Create wrapper script for qegui
 #
@@ -250,6 +279,7 @@ fpm  --verbose -s dir -t rpm  --name=${package} --iteration ${sysvern:?}  \
      ${package_location:?}  usr/local/bin/designer  usr/local/bin/qegui
 
 echo ""
+chmod a-w       /tmp/${target:?}
 ls --color -hl  /tmp/${target:?}
 echo "complete"
 
