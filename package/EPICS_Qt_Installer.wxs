@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="windows-1252"?>
 <!--
 $File: //ASP/tec/gui/qegui/trunk/package/EPICS_Qt_Installer.wxs $
-$Revision: #19 $
-$DateTime: 2020/07/27 15:51:47 $
+$Revision: #20 $
+$DateTime: 2020/11/13 15:55:22 $
 Last checked in by: $Author: starritt $
 
 WiX configuration file used to create an msi installer for EPICS Qt,
@@ -23,13 +23,13 @@ light.exe -ext WixUIExtension -out EPICS_Qt_Installer_<version> EPICS_Qt_Install
     <Product Name="EPICS Qt" Manufacturer="Australian Synchrotron"
         Id="61E07247-9AA2-41D5-9918-0970425D1B55"
         UpgradeCode="49FDA92B-D16B-446B-BBE7-813ABCD45217"
-        Language="1033" Codepage="1252" Version="3.7.4">
-        <Package Id="*" Keywords="Installer" Description="EPICS Qt 3.7.4 Installer"
+        Language="1033" Codepage="1252" Version="3.7.5">
+        <Package Id="*" Keywords="Installer" Description="EPICS Qt 3.7.5 Installer"
             Comments="EPICS Qt is an open source software developed by the Australian Synchrotron." Manufacturer="Australian Synchrotron"
             InstallerVersion="100" Languages="1033" Compressed="yes" SummaryCodepage="1252"/>
 
         <Upgrade Id="49FDA92B-D16B-446B-BBE7-813ABCD45217">
-            <UpgradeVersion OnlyDetect="no" Property="PREVIOUSFOUND" Minimum="1.0.0" IncludeMinimum="yes" Maximum="3.7.4" IncludeMaximum="no"/>
+            <UpgradeVersion OnlyDetect="no" Property="PREVIOUSFOUND" Minimum="1.0.0" IncludeMinimum="yes" Maximum="3.7.5" IncludeMaximum="no"/>
         </Upgrade>
 
         <InstallExecuteSequence>
@@ -71,6 +71,7 @@ light.exe -ext WixUIExtension -out EPICS_Qt_Installer_<version> EPICS_Qt_Install
                             <File Id="Qt5OpenGLDLL" DiskId="1" Source="C:\Qt\5.10.0\mingw53_32\bin\Qt5OpenGL.dll"/>
                             <File Id="Qt5PrintSupportDLL" DiskId="1" Source="C:\Qt\5.10.0\mingw53_32\bin\Qt5PrintSupport.dll"/>
                             <File Id="Qt5SvgDLL" DiskId="1" Source="C:\Qt\5.10.0\mingw53_32\bin\Qt5Svg.dll"/>
+                            <File Id="Qt5DataVis" DiskId="1" Source="C:\Qt\5.10.0\mingw53_32\bin\Qt5DataVisualization.dll"/>
                             <File Id="libgccDLL" DiskId="1" Source="C:\Qt\5.10.0\mingw53_32\bin\libgcc_s_dw2-1.dll"/>
                             <File Id="libpthreadDLL" DiskId="1" Source="C:\Qt\5.10.0\mingw53_32\bin\libwinpthread-1.dll"/>
                             <File Id="libstdcDLL" DiskId="1" Source="C:\Qt\5.10.0\mingw53_32\bin\libstdc++-6.dll"/>
