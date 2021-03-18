@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="windows-1252"?>
 <!--
 $File: //ASP/tec/gui/qegui/trunk/package/EPICS_Qt_Installer.wxs $
-$Revision: #20 $
-$DateTime: 2020/11/13 15:55:22 $
+$Revision: #21 $
+$DateTime: 2021/03/03 17:24:21 $
 Last checked in by: $Author: starritt $
 
 WiX configuration file used to create an msi installer for EPICS Qt,
@@ -122,17 +122,6 @@ light.exe -ext WixUIExtension -out EPICS_Qt_Installer_<version> EPICS_Qt_Install
                                 <File Id="qwindowsDLL" DiskId="1" Source="C:\Qt\5.10.0\mingw53_32\plugins\platforms\qwindows.dll" KeyPath="yes"/>
                             </Component>
                         </Directory>
-                        <Directory Id="doco" Name="documentation">
-                            <Component Id="CopyDocumentation" Guid="2132C5B8-97F2-4175-A9F4-20FEC2424B49">
-                                <File Id="OverviewPDF" DiskId="1" Source="C:\jenkins_builds\qeframework\documentation\QE_FrameworkOverview.pdf" KeyPath="yes"/>
-                                <File Id="GettingStartedPDF" DiskId="1" Source="C:\jenkins_builds\qeframework\documentation\QE_GettingStarted.pdf"/>
-                                <File Id="UIDPDF" DiskId="1" Source="C:\jenkins_builds\qeframework\documentation\QE_QEGuiAndUserInterfaceDesign.pdf"/>
-                                <File Id="WigetsPDF" DiskId="1" Source="C:\jenkins_builds\qeframework\documentation\QEWidgetSpecifications.pdf"/>
-                                <File Id="RefPDF" DiskId="1" Source="C:\jenkins_builds\qeframework\documentation\QE_ReferenceManual.pdf"/>
-                                <File Id="StripChartPDF" DiskId="1" Source="C:\jenkins_builds\qeframework\documentation\QeStripChart.pdf"/>
-                                <File Id="RelnotesTXT" DiskId="1" Source="C:\jenkins_builds\qeframework\documentation\releasenotes.txt"/>
-                            </Component>
-                        </Directory>
                     </Directory>
                 </Directory>
             </Directory>
@@ -160,7 +149,6 @@ light.exe -ext WixUIExtension -out EPICS_Qt_Installer_<version> EPICS_Qt_Install
             <ComponentRef Id="QTDesigner"/>
             <ComponentRef Id="QtDesignerWrapperScript"/>
             <ComponentRef Id="QTPlugins"/>
-            <ComponentRef Id="CopyDocumentation"/>
             <ComponentRef Id="ProgramMenuDir"/>
         </Feature>
 
