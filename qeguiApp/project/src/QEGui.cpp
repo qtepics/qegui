@@ -3,7 +3,7 @@
  *  This file is part of the EPICS QT Framework, initially developed at the
  *  Australian Synchrotron.
  *
- *  Copyright (c) 2009-2019 Australian Synchrotron
+ *  Copyright (c) 2009-2021 Australian Synchrotron
  *
  *  The EPICS QT Framework is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
@@ -39,7 +39,9 @@
 #include <MainWindow.h>
 #include <saveRestoreManager.h>
 #include <QSettings>
+#include <QEPVNameSelectDialog.h>
 #include <QEScaling.h>
+#include <QCaAlarmInfo.h>
 #include <QEForm.h>
 #include <QMetaType>
 #include <QVariant>
@@ -169,6 +171,18 @@ int QEGui::run()
     //
     QEScaling::setScaling( int( this->params.adjustScale ), 100 );
     QEScaling::setFontScaling( int( this->params.fontScale ), 100 );
+
+    QStringList pvNameList;
+
+    // Extract and save the general PV name list.
+    //
+    pvNameList = startupParams::readNameList (this->params.knownPVListFile);
+    QEPVNameSelectDialog::setPvNameList (pvNameList);
+
+    // Extract and save the OOS PV name list.
+    //
+    pvNameList = startupParams::readNameList (this->params.oosPVListFile);
+    QCaAlarmInfoColorNamesManager::setOosPvNameList (pvNameList);
 
     // Start automatic saving of current configuration
     startAutoSaveConfig( this->params.configurationFile,

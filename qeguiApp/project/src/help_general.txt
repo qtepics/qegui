@@ -95,6 +95,14 @@ Mandatory arguments to long options are mandatory for short options too.
         Application title.
         This title will be used instead of the default application title of 'QEGui'
 
+-k, --known_pvs_list
+        Provides the name of a file that defines a list of known PVs for the StripChart (and 
+        others) PV name dialog. This supplements any PV names retrieved from the archivers.
+
+-z, --out_of_service
+        Provides the name of a file that defines the list of out of service PVs. This
+        modifies the displayed "alarm" colour. 
+ 
 -h, --help
         Display help text explaining these options and exit.
 
@@ -147,29 +155,30 @@ names associated with each record type, as used by the PV Propeties widget. If s
 the data will be merged with the internal resoure file built into the framework.
 The format of the file is a simple ASCII file consisting of:
 
-   # example             -- comment lines - ignored
-                         -- blank lines - ignored
-   <<recordtype>>        -- introduce record type, e.g. <<ai>>
-   field_name            -- field name, e.g. DESC
-   field_name            -- field name, e.g. SCAN
+   # example                     -- comment lines - ignored
+                                 -- blank lines - ignored
+   <<recordtype>>                -- introduce record type, e.g. <<ai>>
+   field_name                    -- field name, e.g. DESC
+   field_name, "description"     -- field name and description, e.g. SCAN, "Scan Mechanism"
 
-All field names are associated with the preceeding record type.
+All field names are associated with the preceeding record type. Field names with a '$'
+suffix are read as a long string if the host supports this.
 
-The internal resource file defines fields for all the records from base-3.15.5, most of
+The internal resource file defines fields for all the records from base-7.0.3, most of
 the records from the synApps distribution, together with the AS developed concat record,
 and two iTech libera record types, i.e. the following record types:
-   aSub          aai           aao           acalcout      ai  
-   ao            asyn          bi            bo            busy  
-   calc          calcout       camac         compress      concat  
-   dfanout       dxp           epid          event         fanout  
-   filter        genSub        histogram     longin        longout  
-   lsi           lso           mbbiDirect    mbbi          mbboDirect  
-   mbbo          mca           motor         permissive    printf  
-   scalcout      scaler        scanparm      sel           seq  
-   sscan         sseq          state         status        stringin  
-   stringout     subArray      sub           swait         table  
-   timestamp     transform     vme           waveform      libera  
-   liberaSignal  
+   aSub          aai           aao           acalcout      ai
+   ao            asyn          bi            bo            busy
+   calc          calcout       camac         compress      concat
+   dfanout       dxp           epid          event         fanout
+   filter        genSub        histogram     int64in       int64out
+   libera        liberaSignal  longin        longout       lsi
+   lso           mbbi          mbbiDirect    mbbo          mbboDirect
+   mca           motor         permissive    printf        scalcout
+   scaler        scanparm      sel           seq           sscan
+   sseq          state         status        stringin      stringout
+   sub           subArray      swait         table         timestamp
+   transform     vme           waveform
 
 The file specified by the QE_RECORD_FIELD_LIST variable can be used to define additional
 record types and/or completely replace the specification of a specified record type. It

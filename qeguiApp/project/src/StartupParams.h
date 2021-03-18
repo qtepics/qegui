@@ -3,7 +3,7 @@
  *  This file is part of the EPICS QT Framework, initially developed at the
  *  Australian Synchrotron.
  *
- *  Copyright (c) 2009-2018 Australian Synchrotron
+ *  Copyright (c) 2009-2021 Australian Synchrotron
  *
  *  The EPICS QT Framework is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
@@ -46,6 +46,9 @@ public:
     void setSharedParams( QByteArray& out );        // Serialise parameters as a serries of bytes
     bool getSharedParams( const QByteArray& in );   // Extract parameters from a series of bytes (return true if all OK)
 
+    // Converniance fuction to read a PV name list file.
+    static QStringList readNameList (const QString& filename);
+
     // Startup parameters
     double adjustScale;                             // GUI scaling parameter (-a)
     double fontScale;                               // Additional font scaling (-f) above and beyond adjustScale.
@@ -59,6 +62,8 @@ public:
     bool restore;                                   // Flag true if restoring from config file
     QString configurationName;                      // Configuation name (Multiple named configurations can be saved in the configuration file)
     QString configurationFile;                      // Configuration file
+    QString knownPVListFile;                        // File holding the list of know PVs - for selection dialog
+    QString oosPVListFile;                          // File holding the list of OOS PVs - for alarm colour manager
     QStringList filenameList;                       // Default gui file names
     QStringList pathList;                           // Default gui file path
     QString substitutions;                          // Substitutions. For example, "SECTOR=01,PUMP=03"

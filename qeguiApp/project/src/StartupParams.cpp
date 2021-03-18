@@ -3,7 +3,7 @@
  *  This file is part of the EPICS QT Framework, initially developed at the
  *  Australian Synchrotron.
  *
- *  Copyright (c) 2009-2018 Australian Synchrotron
+ *  Copyright (c) 2009-2021 Australian Synchrotron
  *
  *  The EPICS QT Framework is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
@@ -34,6 +34,8 @@
 #include <QVariant>
 #include <QDebug>
 #include <QDir>
+#include <QFile>
+#include <QTextStream>
 #include <ContainerProfile.h>
 #include <QEFrameworkVersion.h>
 #include <QEAdaptationParameters.h>
@@ -43,6 +45,7 @@
 
 #define LIMIT_SCALE(scale)  LIMIT( scale, 40.0, 400.0 )
 
+//------------------------------------------------------------------------------
 // Construction
 startupParams::startupParams()
 {
@@ -60,14 +63,19 @@ startupParams::startupParams()
     restore = false;
     configurationName = PersistanceManager::defaultName;
     configurationFile = "QEGuiConfig.xml";
+    knownPVListFile = "";
+    oosPVListFile = "";
 }
 
+//------------------------------------------------------------------------------
 // Destruction
 startupParams::~startupParams() { }  // place holder
 
+//------------------------------------------------------------------------------
 // Unserialize application startup parameters
 // This must match startupParams::setSharedParams()
 // Return true if paramaters are extracted correctly
+//
 bool startupParams::getSharedParams( const QByteArray& in )
 {
     double scaleValue;
@@ -80,6 +88,8 @@ bool startupParams::getSharedParams( const QByteArray& in )
     substitutions.clear();
     configurationName.clear();
     configurationFile.clear();
+    knownPVListFile.clear();
+    oosPVListFile.clear();
 
     // Extract parameters from a stream of bytes.
     int len = 0;
@@ -131,26 +141,34 @@ bool startupParams::getSharedParams( const QByteArray& in )
     singleApp                    = (bool)(d[len]);    len += 1;
     restore                      = (bool)(d[len]);    len += 1;
 
-    int fileCount = d[len];            len += 1;
+    int fileCount = d[len];                   len += 1;
     for( int i = 0; i < fileCount; i++ )
     {
-        filenameList.append( &(d[len]) );  len += filenameList[i].size()+1;
+        filenameList.append( &(d[len]) );     len += filenameList[i].size()+1;
     }
 
-    int pathCount = d[len];            len += 1;
+    int pathCount = d[len];                   len += 1;
     for( int i = 0; i < pathCount; i++ )
     {
-        pathList.append( &(d[len]) );  len += pathList[i].size()+1;
+        pathList.append( &(d[len]) );         len += pathList[i].size()+1;
     }
-    substitutions.append( &(d[len]) ); len += substitutions.size()+1;
+    substitutions.append( &(d[len]) );        len += substitutions.size()+1;
 
     configurationName = QString( &(d[len]) ); len += configurationName.size()+1;
+
+    configurationFile = QString( &(d[len]) ); len += configurationFile.size()+1;
+
+    knownPVListFile = QString( &(d[len]) );   len += knownPVListFile.size()+1;
+
+    oosPVListFile = QString( &(d[len]) );     len += oosPVListFile.size()+1;
 
     return true;
 }
 
+//------------------------------------------------------------------------------
 // Serialize application startup parameters
 // This must match startupParams::getSharedParams()
+//
 void startupParams::setSharedParams( QByteArray& out )
 {
     // Convert parameters into a stream of bytes.
@@ -195,65 +213,56 @@ void startupParams::setSharedParams( QByteArray& out )
 
     out.insert( len, configurationName.toLatin1() );   len += configurationName.size(); out[len++] = '\0';
     out.insert( len, configurationFile.toLatin1() );   len += configurationFile.size(); out[len++] = '\0';
-
+    out.insert( len, knownPVListFile.toLatin1() );     len += knownPVListFile.size();   out[len++] = '\0';
+    out.insert( len, oosPVListFile.toLatin1() );       len += oosPVListFile.size();     out[len++] = '\0';
 }
 
 
+//------------------------------------------------------------------------------
 // Extract required parameters from argv and argc
 // which are in QCoreApplication::arguments()
-// Also check for any environment variabeles and value form
-// adaptation parameter ini file (if available)
+// Also check for any environment variables and value form
+// adaptation parameter ini file (if available).
 //
 bool startupParams::getStartupParams()
 {
     QEAdaptationParameters ap ("QEGUI_");
     QEOptions opts;
 
-    double td;
     QString ts;
 
-    td = ap.getFloat ("adjust_scale", this->adjustScale);
-    this->adjustScale = opts.getFloat ('a', td);
+    this->adjustScale = ap.getFloat ("adjust_scale", 'a', this->adjustScale);
+    this->fontScale = ap.getFloat ("font_scale", 'f', this->fontScale);
 
-    td = ap.getFloat ("font_scale", this->fontScale);
-    this->fontScale = opts.getFloat ('f', td);
-
-    this->singleApp = ap.getBool ("single") || opts.getBool ('s');
-    this->enableEdit = ap.getBool ("edit") || opts.getBool ('e');
-    this->disableMenu = ap.getBool ("disable_menu") || opts.getBool ('b');
-    this->disableStatus = ap.getBool ("disable_status") || opts.getBool ('u');
-    this->disableAutoSaveConfiguration = ap.getBool ("disable_autosave") || opts.getBool ('o');
+    this->singleApp = ap.getBool ("single", 's');
+    this->enableEdit = ap.getBool ("edit", 'e');
+    this->disableMenu = ap.getBool ("disable_menu", 'b');
+    this->disableStatus = ap.getBool ("disable_status", 'u');
+    this->disableAutoSaveConfiguration = ap.getBool ("disable_autosave", 'o');
 
     // syntax is -r [configuration_name]
     //
-    ts = ap.getString ("restore", this->configurationName);
-    this->configurationName = opts.getString ('r', ts);
-    this->restore = ap.getBool ("restore") || opts.getBool ('r');
+    this->configurationName = ap.getString ("restore", 'r', this->configurationName);
+    this->restore = ap.getBool ("restore", 'r');
 
-    ts = ap.getString ("configuration", this->configurationFile);
-    this->configurationFile = opts.getString ('c', ts);
+    this->configurationFile = ap.getString ("configuration", 'c', this->configurationFile);
 
     const QChar ps = ContainerProfile::platformSeperator();
-    ts = ap.getString ("path", this->pathList.join (ps));
-    ts = opts.getString ('p', ts);
+    ts = ap.getString ("path", 'p', this->pathList.join (ps));
     this->pathList = ts.isEmpty() ? QStringList() : ts.split (ps);
 
-    ts = ap.getString ("macros", this->substitutions);
-    this->substitutions = opts.getString ('m', ts);
+    this->substitutions = ap.getString ("macros", 'm', this->substitutions);
+    this->customisationFile = ap.getString ("customisation_file", 'w', this->customisationFile);
+    this->startupCustomisationName = ap.getString ("customisation_name", 'n', this->startupCustomisationName);
+    this->defaultCustomisationName = ap.getString ("default_customisation_name", 'd', this->defaultCustomisationName);
 
-    ts = ap.getString ("customisation_file", this->customisationFile);
-    this->customisationFile = opts.getString ('w', ts);
+    this->knownPVListFile = ap.getString ("known_pvs_list", 'k', this->knownPVListFile);
+    this->oosPVListFile   = ap.getString ("out_of_service", 'z', this->oosPVListFile);
 
-    ts = ap.getString ("customisation_name", this->startupCustomisationName);
-    this->startupCustomisationName = opts.getString ('n', ts);
-
-    ts = ap.getString ("default_customisation_name", this->defaultCustomisationName);
-    this->defaultCustomisationName = opts.getString ('d', ts);
-
-    ts = ap.getString ("title", this->applicationTitle);
-    this->applicationTitle = opts.getString ('t', ts);
-
+    this->applicationTitle = ap.getString ("title", 't', this->applicationTitle);
+    
     // Option only.
+    //
     this->printHelp    = opts.getBool ("help", 'h');
     this->printVersion = opts.getBool ("version", 'v');
 
@@ -267,6 +276,47 @@ bool startupParams::getStartupParams()
     // Any un-recognised options are ignored
     //
     return true;
+}
+
+
+//------------------------------------------------------------------------------
+// Read a list of (PV) names from the specified file, by reading the content of
+// the file into the string list - skipping comments (# ...) and blank lines,
+// and trimming white space from ends.
+//
+// cribbed from kubili
+// static
+QStringList startupParams::readNameList (const QString& filename)
+{
+    QStringList result;
+    result.clear ();
+
+    QFile file (filename);
+    if (!file.open (QIODevice::ReadOnly | QIODevice::Text)) {
+        DEBUG << filename << " file open (read) failed";
+        return result;
+    }
+
+    QTextStream source (&file);
+    while (!source.atEnd()) {
+        QString item = source.readLine ().trimmed ();
+
+        // Skip empty line and comment lines.
+        //
+        if (item.length () == 0) continue;
+        if (item.left (1) == "#") continue;
+
+        int p = item.indexOf ('#', 0);
+        if (p >= 0) {
+            item.truncate (p);
+            item = item.trimmed ();
+        }
+
+        result.append (item);
+    }
+    file.close ();
+
+    return result;
 }
 
 // end

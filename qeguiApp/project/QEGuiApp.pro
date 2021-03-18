@@ -1,6 +1,6 @@
 # $File: //ASP/tec/gui/qegui/trunk/qeguiApp/project/QEGuiApp.pro $
-# $Revision: #18 $
-# $DateTime: 2020/05/03 12:18:46 $
+# $Revision: #19 $
+# $DateTime: 2021/03/18 20:40:16 $
 # Last checked in by: $Author: starritt $
 #
 # Copyright (c) 2009-2019 Australian Synchrotron
@@ -38,12 +38,13 @@
 #
 TOP=../..
 
-message ("QT_MAJOR_VERSION = " $$QT_MAJOR_VERSION )
+message ("QT_VERSION = "$$QT_MAJOR_VERSION"."$$QT_MINOR_VERSION"."$$QT_PATCH_VERSION )
 
 # Qt 4 configuration
 equals( QT_MAJOR_VERSION, 4 ) {
     CONFIG += uitools designer
     QT += core gui network
+    warning( "**** QT4 is getting old. Active QT4 support will cease June 2021. ****" )
 }
 
 # Qt 5 configuration
@@ -191,8 +192,8 @@ isEmpty( _QE_CAQTDM ) {
     # When installed as a Qt 'feature' all that is needed is CONFIG += qwt (above)
     INCLUDEPATH += $$(QWT_INCLUDE_PATH)
     #win32:LIBS += -LC:/qwt-6.0.1/lib
-    win32:LIBS += -LC:/qwt-6.1.0/lib
-    #win32:LIBS += -LC:/qwt-6.1.1/lib
+    win32:LIBS += -LC:/qwt-6.1.3/lib
+    #win32:LIBS += -LC:/qwt-6.1.3/lib
 
     # Depending on build, the qwt library below may need to be -lqwt or -lqwt6
     # The 'scope' labels Debug and Release need to have first letter capitalised for it to work in win32.
