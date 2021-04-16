@@ -291,6 +291,12 @@ QStringList startupParams::readNameList (const QString& filename)
     QStringList result;
     result.clear ();
 
+    // Don't try to read an empty/null filename.
+    //
+    if (filename.isEmpty()) {
+       return result;
+    }
+
     QFile file (filename);
     if (!file.open (QIODevice::ReadOnly | QIODevice::Text)) {
         DEBUG << filename << " file open (read) failed";
