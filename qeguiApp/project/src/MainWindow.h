@@ -3,7 +3,7 @@
  *  This file is part of the EPICS QT Framework, initially developed at the
  *  Australian Synchrotron.
  *
- *  Copyright (c) 2009-2019 Australian Synchrotron
+ *  Copyright (c) 2009-2021 Australian Synchrotron
  *
  *  The EPICS QT Framework is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
@@ -275,6 +275,7 @@ private:
     void on_actionNew_Tab_triggered();                          // Slot to perform 'New Tab' action
     void on_actionNew_Dock_triggered();                         // Slot to perform 'New Dock' action
     void on_actionClose_triggered();                            // Slot to perform 'Close' action
+    void on_actionReconnectAllPVs_triggered();                  // Disconnect and reconnects all PVs on form
     void on_actionListPVNames_triggered();                      // Perform 'List PV Names'
     void on_actionScreenCapture_triggered();                    // Perfrom 'Screen Capture'
     void on_actionAbout_triggered();                            // Slot to perform 'About' action

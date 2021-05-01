@@ -3,7 +3,7 @@
  *  This file is part of the EPICS QT Framework, initially developed at the
  *  Australian Synchrotron.
  *
- *  Copyright (c) 2009-2020 Australian Synchrotron
+ *  Copyright (c) 2009-2021 Australian Synchrotron
  *
  *  The EPICS QT Framework is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
@@ -560,6 +560,15 @@ void MainWindow::on_actionClose_triggered()
         setTitle( "" );
     }
  }
+
+// Refresh all PVs - disconnect and reconnect
+// Different to on_actionRefresh_Current_Form_triggered which reloads the form.
+//
+void MainWindow::on_actionReconnectAllPVs_triggered()
+{
+   QEUtilities::deactivate (this->centralWidget());
+   QEUtilities::activate (this->centralWidget());
+}
 
 // List PV Names
 void MainWindow::on_actionListPVNames_triggered()
@@ -1796,8 +1805,9 @@ void  MainWindow::requestAction( const QEActionRequests & request )
                      if (action == "New Window..."                     ) { on_actionNew_Window_triggered();                     }
                 else if (action == "New Tab..."                        ) { on_actionNew_Tab_triggered();                        }
                 else if (action == "New Dock..."                       ) { on_actionNew_Dock_triggered();                       }
-                else if (action == "Open..."                           ) { onOpenRequested();                           }
+                else if (action == "Open..."                           ) { onOpenRequested();                                   }
                 else if (action == "Close"                             ) { on_actionClose_triggered();                          }
+                else if (action == "Reconnect All PVs"                 ) { on_actionReconnectAllPVs_triggered();                }
                 else if (action == "List PV Names..."                  ) { on_actionListPVNames_triggered();                    }
                 else if (action == "Screen Capture..."                 ) { on_actionScreenCapture_triggered();                  }
                 else if (action == "Save Configuration..."             ) { on_actionSave_Configuration_triggered();             }

@@ -23,8 +23,11 @@
                 <Item Name="Screen Capture...">
                     <BuiltIn Name="Screen Capture..." />
                 </Item>
-                <PlaceHolder Name="Recent" >
+                <Item Name="Reconnect All PVs">
                     <Separator/>
+                    <BuiltIn Name="Reconnect All PVs" />
+                </Item>
+                <PlaceHolder Name="Recent" >
                 </PlaceHolder>
                 <Item Name="Exit">
                     <Separator/>
