@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="windows-1252"?>
 <!--
 $File: //ASP/tec/gui/qegui/trunk/package/EPICS_Qt_Installer.wxs $
-$Revision: #21 $
-$DateTime: 2021/03/03 17:24:21 $
+$Revision: #22 $
+$DateTime: 2021/09/02 11:28:57 $
 Last checked in by: $Author: starritt $
 
 WiX configuration file used to create an msi installer for EPICS Qt,
@@ -16,7 +16,11 @@ Add WiX's bin directory to path and run in the directory of this file:
 
 candle.exe EPICS_Qt_Installer.wxs
 light.exe -ext WixUIExtension -out EPICS_Qt_Installer_<version> EPICS_Qt_Installer.wixobj
-    
+
+Or like this using wrapper script that does both:
+
+candle_light.bat <version>
+
 -->
 
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
@@ -114,6 +118,8 @@ light.exe -ext WixUIExtension -out EPICS_Qt_Installer_<version> EPICS_Qt_Install
                         <Directory Id="designerDir" Name="designer">
                             <Component Id="QTPlugins" Guid="374DBC40-1B30-4E89-A04B-1D210994926A">
                                 <File Id="QEPluginDLL" DiskId="1" Source="C:\jenkins_builds\qeframework\lib\win32-x86-mingw\designer\QEPlugin.dll" KeyPath="yes"/>
+                                <File Id="fsmPluginDLL" DiskId="1" Source="C:\jenkins_builds\qtfsm\lib\win32-x86-mingw\designer\fsm_plugin.dll"/>
+                                <File Id="vclPluginDLL" DiskId="1" Source="C:\jenkins_builds\qevcl\lib\win32-x86-mingw\designer\vcl_plugin.dll"/>
                                 <File Id="qwtPluginDLL" DiskId="1" Source="C:\qwt-6.1.3\plugins\designer\qwt_designer_plugin.dll"/>
                             </Component>
                         </Directory>
