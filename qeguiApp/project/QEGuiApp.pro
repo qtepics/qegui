@@ -1,9 +1,9 @@
 # $File: //ASP/tec/gui/qegui/trunk/qeguiApp/project/QEGuiApp.pro $
-# $Revision: #19 $
-# $DateTime: 2021/03/18 20:40:16 $
+# $Revision: #20 $
+# $DateTime: 2021/09/29 16:41:26 $
 # Last checked in by: $Author: starritt $
 #
-# Copyright (c) 2009-2019 Australian Synchrotron
+# Copyright (c) 2009-2021 Australian Synchrotron
 #
 # This file is part of the EPICS QT Framework, initially developed at the Australian Synchrotron.
 #
@@ -44,11 +44,12 @@ message ("QT_VERSION = "$$QT_MAJOR_VERSION"."$$QT_MINOR_VERSION"."$$QT_PATCH_VER
 equals( QT_MAJOR_VERSION, 4 ) {
     CONFIG += uitools designer
     QT += core gui network
-    warning( "**** QT4 is getting old. Active QT4 support will cease June 2021. ****" )
+    warning( "**** QT4 is getting old. Active QT4 support will has ceased. ****" )
 }
 
 # Qt 5 configuration
 equals( QT_MAJOR_VERSION, 5 ) {
+    CONFIG += qwt
     QT += core gui network uitools designer
     QT += printsupport  # required by caQtDM
 }
@@ -187,17 +188,30 @@ isEmpty( _QE_CAQTDM ) {
         }
     }
 
+    #===========================================================
+    # Cribbed from framework.pro
+    # I expect we only need include file path here, as the qe framework
+    # library will oull in the qwt libraries for us.
+    # Keep consistant with framework.pro (approx lines 326 - 365)
+    #
     # The following QWT include path and library path are only required if
     # qwt was not installed fully, with qwt available as a Qt 'feature'.
     # When installed as a Qt 'feature' all that is needed is CONFIG += qwt (above)
+    #
     INCLUDEPATH += $$(QWT_INCLUDE_PATH)
-    #win32:LIBS += -LC:/qwt-6.0.1/lib
-    win32:LIBS += -LC:/qwt-6.1.3/lib
-    #win32:LIBS += -LC:/qwt-6.1.3/lib
 
     # Depending on build, the qwt library below may need to be -lqwt or -lqwt6
     # The 'scope' labels Debug and Release need to have first letter capitalised for it to work in win32.
+    #
     win32 {
+        _QWT_ROOT = $$(QWT_ROOT)
+        isEmpty( _QWT_ROOT ) {
+            error( "QWT_ROOT is not defined. It is required when building the QE framework on windows, e.g. C:/qwt-6.1.3/" )
+        }
+
+        message( "Using QWT_ROOT environment variable to locate QWT library: $$(QWT_ROOT)" )
+        LIBS += -L$$(QWT_ROOT)/lib
+
         Debug {
             message( "Using qwtd (not qwt) for this debug build" )
             LIBS += -lqwtd
@@ -214,11 +228,14 @@ isEmpty( _QE_CAQTDM ) {
             message( "QWT_ROOT is not defined, so using default location of QWT library" )
             LIBS += -lqwt
         } else {
-            message( "Using QWT_ROOT environment variable to locate QWT library" )
+            message( "Using QWT_ROOT environment variable to locate QWT library: $$(QWT_ROOT)" )
             LIBS += -L$$(QWT_ROOT)/lib -lqwt
+            QMAKE_LFLAGS += -Wl,-rpath,$$(QWT_ROOT)/lib
         }
     }
 
+
+    #===========================================================
     # Add caQtDM source locations
     #
     equals( _QE_CAQTDM_MAJOR_VERSION, 3 ){
