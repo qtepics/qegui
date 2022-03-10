@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="windows-1252"?>
 <!--
 $File: //ASP/tec/gui/qegui/trunk/package/EPICS_Qt_Installer.wxs $
-$Revision: #22 $
-$DateTime: 2021/09/02 11:28:57 $
-Last checked in by: $Author: starritt $
+$Revision: #24 $
+$DateTime: 2022/03/03 15:13:17 $
+Last checked in by: $Author: pozara $
 
 WiX configuration file used to create an msi installer for EPICS Qt,
 i.e. the qegui and qerad programs and associated framework libraries together
@@ -27,13 +27,13 @@ candle_light.bat <version>
     <Product Name="EPICS Qt" Manufacturer="Australian Synchrotron"
         Id="61E07247-9AA2-41D5-9918-0970425D1B55"
         UpgradeCode="49FDA92B-D16B-446B-BBE7-813ABCD45217"
-        Language="1033" Codepage="1252" Version="3.7.5">
-        <Package Id="*" Keywords="Installer" Description="EPICS Qt 3.7.5 Installer"
+        Language="1033" Codepage="1252" Version="3.8.1">
+        <Package Id="*" Keywords="Installer" Description="EPICS Qt 3.8.1 Installer"
             Comments="EPICS Qt is an open source software developed by the Australian Synchrotron." Manufacturer="Australian Synchrotron"
             InstallerVersion="100" Languages="1033" Compressed="yes" SummaryCodepage="1252"/>
 
         <Upgrade Id="49FDA92B-D16B-446B-BBE7-813ABCD45217">
-            <UpgradeVersion OnlyDetect="no" Property="PREVIOUSFOUND" Minimum="1.0.0" IncludeMinimum="yes" Maximum="3.7.5" IncludeMaximum="no"/>
+            <UpgradeVersion OnlyDetect="no" Property="PREVIOUSFOUND" Minimum="1.0.0" IncludeMinimum="yes" Maximum="3.8.1" IncludeMaximum="no"/>
         </Upgrade>
 
         <InstallExecuteSequence>
@@ -102,7 +102,7 @@ candle_light.bat <version>
                             <File Id="acaiDLL" DiskId="1" Source="C:\jenkins_builds\acai\bin\win32-x86-mingw\acai.dll"/>
                             <Environment Id="QE_FRAMEWORK" Name="QE_FRAMEWORK" Value="[INSTALLDIR]" Permanent="no" Action="create" System="yes"/>
                             <Environment Id="QE_ARCHIVE_TYPE" Name="QE_ARCHIVE_TYPE" Value="ARCHAPPL" Permanent="no" Action="create" System="yes"/>
-                            <Environment Id="QE_ARCHIVE_LIST" Name="QE_ARCHIVE_LIST" Value="cr01arc04:17665/mgmt/bpl/ sr02ir01arc01:17665/mgmt/bpl/ bsxarc01:17665/mgmt/bpl/ sr03id01arc01:17665/mgmt/bpl/ sr03bm01arc01:17665/mgmt/bpl/ sr05id01arc01:17665/mgmt/bpl/ sr08id01arc01:17665/mgmt/bpl/ mctarc01:17665/mgmt/bpl/ sr10bm01arc01:17665/mgmt/bpl/ sr12id01arc01:17665/mgmt/bpl/ mex1arc01:17665/mgmt/bpl/ mex2arc01:17665/mgmt/bpl/ sr13id01arc01:17665/mgmt/bpl/ sr14id01arc01:17665/mgmt/bpl/ " Permanent="no" Action="create" System="yes"/>
+                            <Environment Id="QE_ARCHIVE_LIST" Name="QE_ARCHIVE_LIST" Value="cr01arc04:17665/mgmt/bpl/ sr02ir01arc01:17665/mgmt/bpl/ bsxarc01:17665/mgmt/bpl/ sr03id01arc01:17665/mgmt/bpl/ sr03bm01arc01:17665/mgmt/bpl/ sr05id01arc01:17665/mgmt/bpl/ sr08id01arc01:17665/mgmt/bpl/ mctarc01:17665/mgmt/bpl/ sr10bm01arc01:17665/mgmt/bpl/ sr12id01arc01:17665/mgmt/bpl/ mex1arc01:17665/mgmt/bpl/ sr13id01arc01:17665/mgmt/bpl/ sr14id01arc01:17665/mgmt/bpl/ " Permanent="no" Action="create" System="yes"/>
                         </Component>
                         <Component Id="QTDesigner" Guid="FC6850D3-7C97-414B-B7C3-39DAB23A8F73">
                             <File Id="designerEXE" DiskId="1" Source="C:\Qt\5.10.0\mingw53_32\bin\designer.exe" KeyPath="yes"/>
@@ -128,6 +128,28 @@ candle_light.bat <version>
                                 <File Id="qwindowsDLL" DiskId="1" Source="C:\Qt\5.10.0\mingw53_32\plugins\platforms\qwindows.dll" KeyPath="yes"/>
                             </Component>
                         </Directory>
+                        <Directory Id="imageformats" Name="imageformats">
+                            <Component Id="imageformatLibs" Guid="E3AE342B-5272-435E-8131-AD061100E09B">
+                                <File Id="qgifDLL" DiskId="1" Source="C:\Qt\5.10.0\mingw53_32\plugins\imageformats\qgif.dll" KeyPath="yes"/>
+                                <File Id="qgifdDLL" DiskId="1" Source="C:\Qt\5.10.0\mingw53_32\plugins\imageformats\qgifd.dll"/>
+                                <File Id="qicnsDLL" DiskId="1" Source="C:\Qt\5.10.0\mingw53_32\plugins\imageformats\qicns.dll"/>
+                                <File Id="qicnsdDLL" DiskId="1" Source="C:\Qt\5.10.0\mingw53_32\plugins\imageformats\qicnsd.dll"/>
+                                <File Id="qicoDLL" DiskId="1" Source="C:\Qt\5.10.0\mingw53_32\plugins\imageformats\qico.dll"/>
+                                <File Id="qicodDLL" DiskId="1" Source="C:\Qt\5.10.0\mingw53_32\plugins\imageformats\qicod.dll"/>
+                                <File Id="qjpegDLL" DiskId="1" Source="C:\Qt\5.10.0\mingw53_32\plugins\imageformats\qjpeg.dll"/>
+                                <File Id="qjpegdDLL" DiskId="1" Source="C:\Qt\5.10.0\mingw53_32\plugins\imageformats\qjpegd.dll"/>
+                                <File Id="qsvgDLL" DiskId="1" Source="C:\Qt\5.10.0\mingw53_32\plugins\imageformats\qsvg.dll"/>
+                                <File Id="qsvgdDLL" DiskId="1" Source="C:\Qt\5.10.0\mingw53_32\plugins\imageformats\qsvgd.dll"/>
+                                <File Id="qtgaDLL" DiskId="1" Source="C:\Qt\5.10.0\mingw53_32\plugins\imageformats\qtga.dll"/>
+                                <File Id="qtgadDLL" DiskId="1" Source="C:\Qt\5.10.0\mingw53_32\plugins\imageformats\qtgad.dll"/>
+                                <File Id="qtiffDLL" DiskId="1" Source="C:\Qt\5.10.0\mingw53_32\plugins\imageformats\qtiff.dll"/>
+                                <File Id="qtiffdDLL" DiskId="1" Source="C:\Qt\5.10.0\mingw53_32\plugins\imageformats\qtiffd.dll"/>
+                                <File Id="qwbmpDLL" DiskId="1" Source="C:\Qt\5.10.0\mingw53_32\plugins\imageformats\qwbmp.dll"/>
+                                <File Id="qwbmpdDLL" DiskId="1" Source="C:\Qt\5.10.0\mingw53_32\plugins\imageformats\qwbmpd.dll"/>
+                                <File Id="qwebpDLL" DiskId="1" Source="C:\Qt\5.10.0\mingw53_32\plugins\imageformats\qwebp.dll"/>
+                                <File Id="qwebpdDLL" DiskId="1" Source="C:\Qt\5.10.0\mingw53_32\plugins\imageformats\qwebpd.dll"/>
+                            </Component>
+                        </Directory>
                     </Directory>
                 </Directory>
             </Directory>
@@ -149,6 +171,7 @@ candle_light.bat <version>
             <ComponentRef Id="QeRadWrapperScript"/>
             <ComponentRef Id="QtLibs"/>
             <ComponentRef Id="platformLibs"/>
+            <ComponentRef Id="imageformatLibs"/>
             <ComponentRef Id="qwtLibs"/>
             <ComponentRef Id="EPICSLibs"/>
             <ComponentRef Id="QEFramework"/>
