@@ -1,9 +1,9 @@
 # $File: //ASP/tec/gui/qegui/trunk/qeguiApp/project/QEGuiApp.pro $
-# $Revision: #20 $
-# $DateTime: 2021/09/29 16:41:26 $
+# $Revision: #21 $
+# $DateTime: 2022/04/02 15:11:56 $
 # Last checked in by: $Author: starritt $
 #
-# Copyright (c) 2009-2021 Australian Synchrotron
+# Copyright (c) 2009-2022 Australian Synchrotron
 #
 # This file is part of the EPICS QT Framework, initially developed at the Australian Synchrotron.
 #
@@ -52,6 +52,12 @@ equals( QT_MAJOR_VERSION, 5 ) {
     CONFIG += qwt
     QT += core gui network uitools designer
     QT += printsupport  # required by caQtDM
+}
+
+# Qt 6 configuration
+#
+equals( QT_MAJOR_VERSION, 6 ) {
+    error( "**** The framework project file has not been configured for Qt6 (yet) ****" )
 }
 
 ## Added by Anton Mezger (check why and include if required)
