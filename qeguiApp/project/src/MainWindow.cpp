@@ -3,7 +3,7 @@
  *  This file is part of the EPICS QT Framework, initially developed at the
  *  Australian Synchrotron.
  *
- *  Copyright (c) 2009-2021 Australian Synchrotron
+ *  Copyright (c) 2009-2022 Australian Synchrotron
  *
  *  The EPICS QT Framework is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
@@ -3147,8 +3147,10 @@ QString MainWindow::getCustomisationName( QEForm* gui )
     return QString();
 }
 
-// Check if a GUI already exists in this main window (with matching macro substitutions) and ensure is visible and has focus
+// Check if a GUI already exists in this main window (with matching macro substitutions)
+// and ensure is visible and has focus.
 // Return true if found
+//
 bool MainWindow::showGui( QString guiFileName, QString macroSubstitutions )
 {
     // Look for a form matching the gui name and with the same substitutions
@@ -3224,7 +3226,7 @@ bool MainWindow::showGui( QString guiFileName, QString macroSubstitutions )
                     w->raise();
                     w->activateWindow();
 
-                    return (MainWindow*)w;
+                    return true;  // (MainWindow*)w;
                 }
 
                 // Move up a generation
@@ -3232,12 +3234,12 @@ bool MainWindow::showGui( QString guiFileName, QString macroSubstitutions )
             }
 
             // GUI found, but could not locate the GUI in the widget hierarchy
-            return NULL;
+            return false;
         }
     }
 
     // Gui not found
-    return NULL;
+    return false;
 }
 
 // Ensure the main window and all its QEForms (top level forms only) have a unique identifier
