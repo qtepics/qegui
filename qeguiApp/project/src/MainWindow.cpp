@@ -3,7 +3,7 @@
  *  This file is part of the EPICS QT Framework, initially developed at the
  *  Australian Synchrotron.
  *
- *  Copyright (c) 2009-2022 Australian Synchrotron
+ *  Copyright (c) 2009-2023 Australian Synchrotron
  *
  *  The EPICS QT Framework is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
@@ -157,7 +157,6 @@
 #include <QVariant>
 #include <QScrollBar>
 #include <QFileDialog>
-#include <QDesktopWidget>
 #include <saveDialog.h>
 #include <restoreDialog.h>
 #include <PasswordDialog.h>
@@ -171,7 +170,7 @@
 // Qt 4.8 later uses the command 'designer-qt4'
 // Qt5 has reverted to designer again.
 // Simplify to single option.
-// User using 4.8.4 tec can fake it.
+// Users using 4.8.4 etc. can fake it.
 //
 #define DESIGNER_COMMAND "designer"
 
@@ -298,11 +297,13 @@ MainWindow::MainWindow( QEGui* appIn, QString fileName, QString title,
     // Setup to allow user to change focus to a window from the 'Windows' menu
     if( windowMenu )
     {
-        QObject::connect( windowMenu, SIGNAL( triggered( QAction* ) ), this, SLOT( onWindowMenuSelection( QAction* ) ) );
+        QObject::connect( windowMenu, SIGNAL( triggered( QAction* ) ),
+                          this, SLOT( onWindowMenuSelection( QAction* ) ) );
     }
 
     // Set up signals for starting the 'designer' process
-    QObject::connect( &process, SIGNAL(error(QProcess::ProcessError)), this, SLOT( processError(QProcess::ProcessError) ) );
+    QObject::connect( &process, SIGNAL(error(QProcess::ProcessError)),
+                      this, SLOT( processError(QProcess::ProcessError) ) );
 
     // Ensure this class destructor gets called.
     setAttribute ( Qt::WA_DeleteOnClose );
@@ -1671,7 +1672,8 @@ QWidget* MainWindow::launchGui( QString guiName, QString title, QString customis
             }
 
         default:
-            sendMessage( QString( "Unexpected gui creation option: " ).append( createOption ), "QEGui application. MainWindow::launchGui()" );
+            sendMessage( QString( "Unexpected gui creation option: %1" ).arg( int( createOption ) ),
+                         "QEGui application. MainWindow::launchGui()" );
             return NULL;
     }
 }
@@ -2140,11 +2142,14 @@ QEForm* MainWindow::createGui( QString fileName, QString title, QString customis
 
         // Create an action for the 'Window' menus
         QAction* windowMenuAction = new QAction( gui->getQEGuiTitle(), this );
-        windowMenuAction->setData( qVariantFromValue( gui ) );
+        QVariant vgui = QVariant::fromValue( gui );    // gui is a QEForm (QWidget)
+        windowMenuAction->setData( vgui );
 
-        // Add this gui to the application wide list of guis and ensure the dock will be removed from that list if it is destroyed
+        // Add this gui to the application wide list of guis and ensure the
+        // dock will be removed from that list if it is destroyed.
         guiList.append( guiListItem( gui, this, windowMenuAction, customisationName, isDock ) );
-        QObject::connect( gui, SIGNAL( destroyed( QObject* )), this, SLOT( guiDestroyed( QObject* )) );
+        QObject::connect( gui, SIGNAL( destroyed( QObject* )),
+                          this, SLOT( guiDestroyed( QObject* )) );
 
         // If not a dock, for each main window, add a new action to the window menu
         if( !isDock )
@@ -2842,7 +2847,7 @@ void MainWindow::saveRestore( SaveRestoreSignal::saveRestoreOptions option )
                                     PMElement docking = guiElement.getElement( "Docking" );
 
                                     int allowedAreas = Qt::AllDockWidgetAreas;
-                                    int features = QDockWidget::AllDockWidgetFeatures;
+                                    int features = QDockWidget::DockWidgetFeatureMask;
                                     bool floating = false;
 
                                     int x = 0;
@@ -3015,8 +3020,7 @@ void MainWindow::setGeom()
 
     // Set the geometry as noted during the restore
 
-    QDesktopWidget* desktop = QApplication::desktop();
-    const QRect desktopGeometry = desktop->geometry();
+    const QRect desktopGeometry = QEUtilities::desktopGeometry();
     const int leftLimit   = desktopGeometry.left()  + 100;
     const int rightLimit  = desktopGeometry.right() - 100;
     const int limitTop    = desktopGeometry.top()    + 50;

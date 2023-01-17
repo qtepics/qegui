@@ -1,6 +1,6 @@
 # $File: //ASP/tec/gui/qegui/trunk/qeguiApp/project/QEGuiApp.pro $
-# $Revision: #21 $
-# $DateTime: 2022/04/02 15:11:56 $
+# $Revision: #22 $
+# $DateTime: 2022/12/29 14:27:39 $
 # Last checked in by: $Author: starritt $
 #
 # Copyright (c) 2009-2022 Australian Synchrotron
@@ -44,7 +44,7 @@ message ("QT_VERSION = "$$QT_MAJOR_VERSION"."$$QT_MINOR_VERSION"."$$QT_PATCH_VER
 equals( QT_MAJOR_VERSION, 4 ) {
     CONFIG += uitools designer
     QT += core gui network
-    warning( "**** QT4 is getting old. Active QT4 support will has ceased. ****" )
+    error( "**** QT4 is getting old. Active QT4 support will has ceased. ****" )
 }
 
 # Qt 5 configuration
@@ -57,7 +57,9 @@ equals( QT_MAJOR_VERSION, 5 ) {
 # Qt 6 configuration
 #
 equals( QT_MAJOR_VERSION, 6 ) {
-    error( "**** The framework project file has not been configured for Qt6 (yet) ****" )
+    CONFIG += qwt
+    QT += core gui network uitools designer
+    QT += printsupport  # required by caQtDM
 }
 
 ## Added by Anton Mezger (check why and include if required)

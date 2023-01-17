@@ -167,7 +167,7 @@ private:
                                      bool hidden = false,
                                      QEActionRequests::Options createOption = QEActionRequests::OptionFloatingDockWindow,
                                      Qt::DockWidgetArea allowedAreas = Qt::AllDockWidgetAreas,
-                                     QDockWidget::DockWidgetFeature features = QDockWidget::AllDockWidgetFeatures,
+                                     QDockWidget::DockWidgetFeature features = QDockWidget::DockWidgetFeatureMask,
                                      QRect geom = QRect( 0, 0, 0, 0 ) ); // Load a new gui into a new dock
 
     MainWindow* launchLocalGui( const QString& filename, const QEFormMapper::FormHandles& formHandle );  // Launch a new gui from the 'File' menu and gui launch requests.
