@@ -140,9 +140,10 @@ is specified as a hostname:port/endpoint triplet, e.g.:
 
 Each Archive Appliance server is defined by a hostname:port/endpoint(s)  e.g.:
 
-   export QE_ARCHIVE_LIST="CR01ARC04:80/mgmt/bpl/ SR10BM01ARC01/mgmt/bpl/"
+   export QE_ARCHIVE_LIST="CR01ARC04:17665/mgmt/bpl/ MX3ARC01:17665/mgmt/bpl/ NANOARC01:17665/mgmt/bpl/"
 
-A leading http:// for each triplet is not required but is permitted.
+
+A leading http:// is not required but is permitted.
 
 
 QE_ARCHIVE_PATTERN - This variable specifies the pattern match applied when the framework
@@ -167,18 +168,20 @@ suffix are read as a long string if the host supports this.
 The internal resource file defines fields for all the records from base-7.0.3, most of
 the records from the synApps distribution, together with the AS developed concat record,
 and two iTech libera record types, i.e. the following record types:
-   aSub          aai           aao           acalcout      ai
-   ao            asyn          bi            bo            busy
-   calc          calcout       camac         compress      concat
-   dfanout       dxp           epid          event         fanout
-   filter        genSub        histogram     int64in       int64out
-   libera        liberaSignal  longin        longout       lsi
-   lso           mbbi          mbbiDirect    mbbo          mbboDirect
-   mca           motor         permissive    printf        scalcout
-   scaler        scanparm      sel           seq           sscan
-   sseq          state         status        stringin      stringout
-   sub           subArray      swait         table         timestamp
-   transform     vme           waveform
+
+   aSub           aai            aao            acalcout       ai            
+   ao             asyn           bi             bo             busy          
+   calc           calcout        camac          compress       concat        
+   dfanout        dxp            epid           event          fanout        
+   filter         genSub         histogram      int64in        int64out      
+   libera         liberaSignal   longin         longout        lsi           
+   lso            luascript      mbbi           mbbiDirect     mbbo          
+   mbboDirect     mca            motor          permissive     printf        
+   pycalc         scalcout       scaler         scanparm       sel           
+   seq            sscan          sseq           state          status        
+   stringin       stringout      sub            subArray       swait         
+   table          throttle       timestamp      transform      vme           
+   waveform
 
 The file specified by the QE_RECORD_FIELD_LIST variable can be used to define additional
 record types and/or completely replace the specification of a specified record type. It
@@ -195,7 +198,7 @@ QE_GLOBAL_STYLE_SHEET - Defines a global style that is applied to the QApplicati
 the first time a QEWidget is constructed, so applies qeally to both designer and qegui. The 
 variable may be the style string itself or if it starts with "file://" then it is intrpretted as
 a file reference which is read to get the global style. This examples shows how to make QGroupBox
-widgets in Qt5 look like a traditional group box:
+widgets in Qt5/Qt6 look like a traditional group box:
 
    export QE_GLOBAL_STYLE_SHEET="QGroupBox { border-radius:2px; border-width:1px; border-style:groove; border-color:rgb(128,128,128); margin-top: 6px; } QGroupBox::title { left:8px; top:-6px; }"
 
