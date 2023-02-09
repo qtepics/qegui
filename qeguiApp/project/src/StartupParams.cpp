@@ -294,7 +294,7 @@ QStringList startupParams::readNameList (const QString& filename)
     // Don't try to read an empty/null filename.
     //
     if (filename.isEmpty()) {
-       return result;
+        return result;
     }
 
     QFile file (filename);
