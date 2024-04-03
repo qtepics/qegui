@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="windows-1252"?>
 <!--
 $File: //ASP/tec/gui/qegui/trunk/package/EPICS_Qt_Installer.wxs $
-$Revision: #26 $
-$DateTime: 2023/02/22 15:10:21 $
+$Revision: #32 $
+$DateTime: 2024/03/14 11:54:55 $
 Last checked in by: $Author: starritt $
 
 WiX configuration file used to create an msi installer for EPICS Qt,
@@ -25,15 +25,15 @@ candle_light.bat <version>
 
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
     <Product Name="EPICS Qt" Manufacturer="Australian Synchrotron"
-        Id="61E07247-9AA2-41D5-9918-0970425D1B55"
-        UpgradeCode="49FDA92B-D16B-446B-BBE7-813ABCD45217"
-        Language="1033" Codepage="1252" Version="3.9.1">
-        <Package Id="*" Keywords="Installer" Description="EPICS Qt 3.9.1 Installer"
+        Id="2B17CD85-2A83-422E-AAAB-B33A654DFCE4"
+        UpgradeCode="F6D802DD-2885-415C-BA1D-8635023AD773"
+        Language="1033" Codepage="1252" Version="4.0.1">
+        <Package Id="*" Keywords="Installer" Description="EPICS Qt 4.0.1 Installer"
             Comments="EPICS Qt is an open source software developed by the Australian Synchrotron." Manufacturer="Australian Synchrotron"
             InstallerVersion="100" Languages="1033" Compressed="yes" SummaryCodepage="1252"/>
 
-        <Upgrade Id="49FDA92B-D16B-446B-BBE7-813ABCD45217">
-            <UpgradeVersion OnlyDetect="no" Property="PREVIOUSFOUND" Minimum="1.0.0" IncludeMinimum="yes" Maximum="3.9.1" IncludeMaximum="no"/>
+        <Upgrade Id="F6D802DD-2885-415C-BA1D-8635023AD773">
+            <UpgradeVersion OnlyDetect="no" Property="PREVIOUSFOUND" Minimum="1.0.0" IncludeMinimum="yes" Maximum="4.0.1" IncludeMaximum="no"/>
         </Upgrade>
 
         <InstallExecuteSequence>
@@ -49,105 +49,103 @@ candle_light.bat <version>
                 <Directory Id="AS" Name="Australian Synchrotron">
                     <Directory Id="INSTALLDIR" Name="EPICS Qt">
 
-                        <Component Id="MainExecutable" Guid="7DBD3A7D-E23A-4CD1-A458-3510319A9172">
-                            <File Id="qeguiEXE" DiskId="1" Source="C:\jenkins_builds\qegui\bin\win32-x86-mingw\qegui.exe" KeyPath="yes"/>
+                        <Component Id="MainExecutable" Guid="ECC3208E-71D2-4C73-AE84-A628A752D06F">
+                            <File Id="qeguiEXE" DiskId="1" Source="C:\jenkins_builds\qegui\bin\windows-x64-mingw\qegui.exe" KeyPath="yes"/>
                         </Component>
-                        <Component Id="QeGUIWrapperScript" Guid="B0B6AD48-BA9C-445B-B7FD-FD483953BBE6">
+                        <Component Id="QeGUIWrapperScript" Guid="2E4733E8-A2BD-4C0E-AA61-6D095EDA0797">
                             <File Id="runQeGuiBAT" DiskId="1" Source="C:\jenkins_builds\qegui\package\run_qegui.bat" KeyPath="yes">
                                 <Shortcut Id="startmenuQEGui" Directory="ProgramMenuDir" Arguments="-o" Name="QEGui" WorkingDirectory="QEGuiWorkingDir" Icon="qegui.exe" IconIndex="0" Advertise="yes"/>
                                 <Shortcut Id="desktopQEGui" Directory="DesktopFolder" Arguments="-o" Name="QEGui" WorkingDirectory="QEGuiWorkingDir" Icon="qegui.exe" IconIndex="0" Advertise="yes"/>
                             </File>
                         </Component>
 
-                        <Component Id="SecondExecutable" Guid="971AA8E1-7FCD-457C-B002-AFE96BE2D386">
-                            <File Id="qeradEXE" DiskId="1" Source="C:\jenkins_builds\qeReadArchive\bin\win32-x86-mingw\qerad.exe" KeyPath="yes"/>
+                        <Component Id="SecondExecutable" Guid="44F2C19D-4931-40E9-89FD-DCC3CBF4AB49">
+                            <File Id="qeradEXE" DiskId="1" Source="C:\jenkins_builds\qeReadArchive\bin\windows-x64-mingw\qerad.exe" KeyPath="yes"/>
                         </Component>
-                        <Component Id="QeRadWrapperScript" Guid="417A1F37-D21D-439C-B644-65C76401F8F5">
+                        <Component Id="QeRadWrapperScript" Guid="70429F29-D104-4245-B42B-3E0FDF09B9FA">
                             <File Id="runQeRadBAT" DiskId="1" Source="C:\jenkins_builds\qegui\package\run_qerad.bat" KeyPath="yes"/>
                         </Component>
 
-                        <Component Id="QtLibs" Guid="47741AC7-6E31-44E9-869E-B34D2F1DA49A">
-                            <File Id="Qt5CoreDLL" DiskId="1" Source="C:\Qt\5.10.0\mingw53_32\bin\Qt5Core.dll" KeyPath="yes"/>
-                            <File Id="Qt5GuiDLL" DiskId="1" Source="C:\Qt\5.10.0\mingw53_32\bin\Qt5Gui.dll"/>
-                            <File Id="Qt5NetworkDLL" DiskId="1" Source="C:\Qt\5.10.0\mingw53_32\bin\Qt5Network.dll"/>
-                            <File Id="Qt5WidgetsDLL" DiskId="1" Source="C:\Qt\5.10.0\mingw53_32\bin\Qt5Widgets.dll"/>
-                            <File Id="Qt5XmlDLL" DiskId="1" Source="C:\Qt\5.10.0\mingw53_32\bin\Qt5Xml.dll"/>
-                            <File Id="Qt5OpenGLDLL" DiskId="1" Source="C:\Qt\5.10.0\mingw53_32\bin\Qt5OpenGL.dll"/>
-                            <File Id="Qt5PrintSupportDLL" DiskId="1" Source="C:\Qt\5.10.0\mingw53_32\bin\Qt5PrintSupport.dll"/>
-                            <File Id="Qt5SvgDLL" DiskId="1" Source="C:\Qt\5.10.0\mingw53_32\bin\Qt5Svg.dll"/>
-                            <File Id="Qt5DataVis" DiskId="1" Source="C:\Qt\5.10.0\mingw53_32\bin\Qt5DataVisualization.dll"/>
-                            <File Id="libgccDLL" DiskId="1" Source="C:\Qt\5.10.0\mingw53_32\bin\libgcc_s_dw2-1.dll"/>
-                            <File Id="libpthreadDLL" DiskId="1" Source="C:\Qt\5.10.0\mingw53_32\bin\libwinpthread-1.dll"/>
-                            <File Id="libstdcDLL" DiskId="1" Source="C:\Qt\5.10.0\mingw53_32\bin\libstdc++-6.dll"/>
+                        <Component Id="QtLibs" Guid="FC4D4D2A-FBFF-4CF3-8439-063C552D8B3E">
+                            <File Id="Qt6CoreDLL" DiskId="1" Source="C:\Qt6\6.4.2\mingw_64\bin\Qt6Core.dll" KeyPath="yes"/>
+                            <File Id="Qt6GuiDLL" DiskId="1" Source="C:\Qt6\6.4.2\mingw_64\bin\Qt6Gui.dll"/>
+                            <File Id="Qt6NetworkDLL" DiskId="1" Source="C:\Qt6\6.4.2\mingw_64\bin\Qt6Network.dll"/>
+                            <File Id="Qt6WidgetsDLL" DiskId="1" Source="C:\Qt6\6.4.2\mingw_64\bin\Qt6Widgets.dll"/>
+                            <File Id="Qt6XmlDLL" DiskId="1" Source="C:\Qt6\6.4.2\mingw_64\bin\Qt6Xml.dll"/>
+                            <File Id="Qt6OpenGLDLL" DiskId="1" Source="C:\Qt6\6.4.2\mingw_64\bin\Qt6OpenGL.dll"/>
+                            <File Id="Qt6PrintSupportDLL" DiskId="1" Source="C:\Qt6\6.4.2\mingw_64\bin\Qt6PrintSupport.dll"/>
+                            <File Id="Qt6SvgDLL" DiskId="1" Source="C:\Qt6\6.4.2\mingw_64\bin\Qt6Svg.dll"/>
+                            <File Id="Qt6DataVis" DiskId="1" Source="C:\Qt6\6.4.2\mingw_64\bin\Qt6DataVisualization.dll"/>
+                            <File Id="Qt6UiToolsDLL" DiskId="1" Source="C:\Qt6\6.4.2\mingw_64\bin\Qt6UiTools.dll"/>
+                            <File Id="Qt6OpenGlWidgetsDLL" DiskId="1" Source="C:\Qt6\6.4.2\mingw_64\bin\Qt6OpenGlWidgets.dll"/>
+                            <File Id="libgccDLL" DiskId="1" Source="C:\Qt6\6.4.2\mingw_64\bin\libgcc_s_seh-1.dll"/>
+                            <File Id="libpthreadDLL" DiskId="1" Source="C:\Qt6\6.4.2\mingw_64\bin\libwinpthread-1.dll"/>
+                            <File Id="libstdcDLL" DiskId="1" Source="C:\Qt6\6.4.2\mingw_64\bin\libstdc++-6.dll"/>
                         </Component>
-                        <Component Id="qwtLibs" Guid="563E8AE9-3A10-4BD0-BEB6-097C68792A76">
-                            <File Id="qwtDLL" DiskId="1" Source="C:\qwt-6.1.3\lib\qwt.dll" KeyPath="yes"/>
+                        <Component Id="qwtLibs" Guid="829CD750-CE74-4D9C-89B4-583395791771">
+                            <File Id="qwtDLL" DiskId="1" Source="C:\Qwt-6.2.0-dev\lib\qwt.dll" KeyPath="yes"/>
                         </Component>
-                        <Component Id="EPICSLibs" Guid="FF9A7486-CE72-48C2-B291-FF281DAE692D">
-                            <File Id="ComDLL" DiskId="1" Source="C:\epics\base\bin\win32-x86-mingw\Com.dll" KeyPath="yes"/>
-                            <File Id="caDLL" DiskId="1" Source="C:\epics\base\bin\win32-x86-mingw\ca.dll"/>
-                            <File Id="caRepeaterEXE" DiskId="1" Source="C:\epics\base\bin\win32-x86-mingw\caRepeater.exe"/>
-                            <File Id="caGetEXE" DiskId="1" Source="C:\epics\base\bin\win32-x86-mingw\caGet.exe"/>
-                            <File Id="caPutEXE" DiskId="1" Source="C:\epics\base\bin\win32-x86-mingw\caPut.exe"/>
-                            <File Id="caMonitorEXE" DiskId="1" Source="C:\epics\base\bin\win32-x86-mingw\caMonitor.exe"/>
-                            <File Id="caInfoEXE" DiskId="1" Source="C:\epics\base\bin\win32-x86-mingw\caInfo.exe"/>
+                        <Component Id="EPICSLibs" Guid="072A208F-CF93-42B6-9F7B-8269ABD177DE">
+                            <File Id="ComDLL" DiskId="1" Source="C:\epics\base\bin\windows-x64-mingw\Com.dll" KeyPath="yes"/>
+                            <File Id="caDLL" DiskId="1" Source="C:\epics\base\bin\windows-x64-mingw\ca.dll"/>
+                            <!-- for PV Access -->
+                            <File Id="ntDLL" DiskId="1" Source="C:\epics\base\bin\windows-x64-mingw\nt.dll"/>
+                            <File Id="pvaDLL" DiskId="1" Source="C:\epics\base\bin\windows-x64-mingw\pvAccess.dll"/>
+                            <File Id="pvdDLL" DiskId="1" Source="C:\epics\base\bin\windows-x64-mingw\pvData.dll"/>
+
+                            <File Id="caRepeaterEXE" DiskId="1" Source="C:\epics\base\bin\windows-x64-mingw\caRepeater.exe"/>
+                            <File Id="caGetEXE" DiskId="1" Source="C:\epics\base\bin\windows-x64-mingw\caGet.exe"/>
+                            <File Id="caPutEXE" DiskId="1" Source="C:\epics\base\bin\windows-x64-mingw\caPut.exe"/>
+                            <File Id="caMonitorEXE" DiskId="1" Source="C:\epics\base\bin\windows-x64-mingw\caMonitor.exe"/>
+                            <File Id="caInfoEXE" DiskId="1" Source="C:\epics\base\bin\windows-x64-mingw\caInfo.exe"/>
                             <Environment Id="PATH" Name="PATH" Value="[INSTALLDIR]" Permanent="yes" Part="last" Action="set" System="yes"/>
                             <Environment Id="EPICS_CA_AUTO_ADDR_LIST" Name="EPICS_CA_AUTO_ADDR_LIST" Value="YES" Permanent="no" Action="create" System="yes"/>
                             <Environment Id="EPICS_CA_MAX_ARRAY_BYTES" Name="EPICS_CA_MAX_ARRAY_BYTES" Value="50000000" Permanent="no" Action="create" System="yes"/>
                         </Component>
-                        <Component Id="QEFramework" Guid="BE40D6FB-1753-4291-92C2-76AC62C5FD4B">
-                            <File Id="QEFrameworkDLL" DiskId="1" Source="C:\jenkins_builds\qeframework\lib\win32-x86-mingw\QEFramework.dll" KeyPath="yes"/>
-                            <File Id="libprotobufDLL" DiskId="1" Source="C:\Qt\Tools\mingw530_32\bin\libprotobuf.dll"/>
-                            <File Id="archapplSupDLL" DiskId="1" Source="C:\jenkins_builds\qeframework\bin\win32-x86-mingw\archapplData.dll"/>
-                            <File Id="acaiDLL" DiskId="1" Source="C:\jenkins_builds\acai\bin\win32-x86-mingw\acai.dll"/>
+                        <Component Id="QEFramework" Guid="8638480C-032C-439D-8D54-81104BAF3703">
+                            <File Id="QEFrameworkDLL" DiskId="1" Source="C:\jenkins_builds\qeframework\lib\windows-x64-mingw\QEFramework.dll" KeyPath="yes"/>
+                            <File Id="libprotobufDLL" DiskId="1" Source="C:\Qt6\Tools\mingw1120_64\bin\libprotobuf.dll"/>
+                            <File Id="archapplSupDLL" DiskId="1" Source="C:\jenkins_builds\qeframework\bin\windows-x64-mingw\archapplData.dll"/>
+                            <File Id="acaiDLL" DiskId="1" Source="C:\jenkins_builds\acai\bin\windows-x64-mingw\acai.dll"/>
                             <Environment Id="QE_FRAMEWORK" Name="QE_FRAMEWORK" Value="[INSTALLDIR]" Permanent="no" Action="create" System="yes"/>
                             <Environment Id="QE_ARCHIVE_TYPE" Name="QE_ARCHIVE_TYPE" Value="ARCHAPPL" Permanent="no" Action="create" System="yes"/>
-                            <Environment Id="QE_ARCHIVE_LIST" Name="QE_ARCHIVE_LIST" Value="cr01arc04:17665/mgmt/bpl/ sr02ir01arc01:17665/mgmt/bpl/ bsxarc01:17665/mgmt/bpl/ sr03id01arc01:17665/mgmt/bpl/ sr03bm01arc01:17665/mgmt/bpl/ sr05id01arc01:17665/mgmt/bpl/ sr08id01arc01:17665/mgmt/bpl/ mctarc01:17665/mgmt/bpl/ sr10bm01arc01:17665/mgmt/bpl/ sr12id01arc01:17665/mgmt/bpl/ mexarc01:17665/mgmt/bpl/ sr13id01arc01:17665/mgmt/bpl/ sr14id01arc01:17665/mgmt/bpl/ " Permanent="no" Action="create" System="yes"/>
+                            <!-- QE_ARCHIVE_LIST is defined in run_qegui.bat -->
                         </Component>
-                        <Component Id="QTDesigner" Guid="FC6850D3-7C97-414B-B7C3-39DAB23A8F73">
-                            <File Id="designerEXE" DiskId="1" Source="C:\Qt\5.10.0\mingw53_32\bin\designer.exe" KeyPath="yes"/>
-                            <File Id="Qt5DesignerDLL" DiskId="1" Source="C:\Qt\5.10.0\mingw53_32\bin\Qt5Designer.dll"/>
-                            <File Id="Qt5DesignerComponentsDLL" DiskId="1" Source="C:\Qt\5.10.0\mingw53_32\bin\Qt5DesignerComponents.dll"/>
+                        <Component Id="QTDesigner" Guid="03973AAE-451A-4807-8872-B05D2E8534A5">
+                            <File Id="designerEXE" DiskId="1" Source="C:\Qt6\6.4.2\mingw_64\bin\designer.exe" KeyPath="yes"/>
+                            <File Id="Qt6DesignerDLL" DiskId="1" Source="C:\Qt6\6.4.2\mingw_64\bin\Qt6Designer.dll"/>
+                            <File Id="Qt6DesignerComponentsDLL" DiskId="1" Source="C:\Qt6\6.4.2\mingw_64\bin\Qt6DesignerComponents.dll"/>
                         </Component>
-                        <Component Id="QtDesignerWrapperScript" Guid="EB0E7195-C85A-454C-8AFF-668E0437D210">
+                        <Component Id="QtDesignerWrapperScript" Guid="3CE8E7D0-29D3-4A2A-B802-06D596729D75">
                             <File Id="runQtDesignerBAT" DiskId="1" Source="C:\jenkins_builds\qegui\package\run_qt_designer.bat" KeyPath="yes">
                                 <Shortcut Id="startmenuDesigner" Directory="ProgramMenuDir" Name="QT Designer" WorkingDirectory="INSTALLDIR" Icon="designer.exe" IconIndex="0" Advertise="yes"/>
                                 <Shortcut Id="desktopDesigner" Directory="DesktopFolder" Name="QT Designer" WorkingDirectory="INSTALLDIR" Icon="designer.exe" IconIndex="0" Advertise="yes"/>
                             </File>
                         </Component>
                         <Directory Id="designerDir" Name="designer">
-                            <Component Id="QTPlugins" Guid="374DBC40-1B30-4E89-A04B-1D210994926A">
-                                <File Id="QEPluginDLL" DiskId="1" Source="C:\jenkins_builds\qeframework\lib\win32-x86-mingw\designer\QEPlugin.dll" KeyPath="yes"/>
-                                <File Id="fsmPluginDLL" DiskId="1" Source="C:\jenkins_builds\qtfsm\lib\win32-x86-mingw\designer\fsm_plugin.dll"/>
-                                <File Id="vclPluginDLL" DiskId="1" Source="C:\jenkins_builds\qevcl\lib\win32-x86-mingw\designer\vcl_plugin.dll"/>
-                                <File Id="qwtPluginDLL" DiskId="1" Source="C:\qwt-6.1.3\plugins\designer\qwt_designer_plugin.dll"/>
+                            <Component Id="QTPlugins" Guid="00BEE237-3046-45BF-9E11-6193C60EC20A">
+                                <File Id="QEPluginDLL" DiskId="1" Source="C:\jenkins_builds\qeframework\lib\windows-x64-mingw\designer\QEPlugin.dll" KeyPath="yes"/>
+                                <File Id="fsmPluginDLL" DiskId="1" Source="C:\jenkins_builds\qtfsm\lib\windows-x64-mingw\designer\fsm_plugin.dll"/>
+                                <File Id="vclPluginDLL" DiskId="1" Source="C:\jenkins_builds\qevcl\lib\windows-x64-mingw\designer\vcl_plugin.dll"/>
+                                <File Id="qwtPluginDLL" DiskId="1" Source="C:\Qwt-6.2.0-dev\plugins\designer\qwt_designer_plugin.dll"/>
                             </Component>
                         </Directory>
                         <Directory Id="platforms" Name="platforms">
-                            <Component Id="platformLibs" Guid="E3AE342B-5272-435E-8131-AD061100E06C">
-                                <File Id="qwindowsDLL" DiskId="1" Source="C:\Qt\5.10.0\mingw53_32\plugins\platforms\qwindows.dll" KeyPath="yes"/>
+                            <Component Id="platformLibs" Guid="754FDC8A-342A-44CC-A4CD-2ABC9DA714AD">
+                                <File Id="qwindowsDLL" DiskId="1" Source="C:\Qt6\6.4.2\mingw_64\plugins\platforms\qwindows.dll" KeyPath="yes"/>
                             </Component>
                         </Directory>
                         <Directory Id="imageformats" Name="imageformats">
-                            <Component Id="imageformatLibs" Guid="E3AE342B-5272-435E-8131-AD061100E09B">
-                                <File Id="qgifDLL" DiskId="1" Source="C:\Qt\5.10.0\mingw53_32\plugins\imageformats\qgif.dll" KeyPath="yes"/>
-                                <File Id="qgifdDLL" DiskId="1" Source="C:\Qt\5.10.0\mingw53_32\plugins\imageformats\qgifd.dll"/>
-                                <File Id="qicnsDLL" DiskId="1" Source="C:\Qt\5.10.0\mingw53_32\plugins\imageformats\qicns.dll"/>
-                                <File Id="qicnsdDLL" DiskId="1" Source="C:\Qt\5.10.0\mingw53_32\plugins\imageformats\qicnsd.dll"/>
-                                <File Id="qicoDLL" DiskId="1" Source="C:\Qt\5.10.0\mingw53_32\plugins\imageformats\qico.dll"/>
-                                <File Id="qicodDLL" DiskId="1" Source="C:\Qt\5.10.0\mingw53_32\plugins\imageformats\qicod.dll"/>
-                                <File Id="qjpegDLL" DiskId="1" Source="C:\Qt\5.10.0\mingw53_32\plugins\imageformats\qjpeg.dll"/>
-                                <File Id="qjpegdDLL" DiskId="1" Source="C:\Qt\5.10.0\mingw53_32\plugins\imageformats\qjpegd.dll"/>
-                                <File Id="qsvgDLL" DiskId="1" Source="C:\Qt\5.10.0\mingw53_32\plugins\imageformats\qsvg.dll"/>
-                                <File Id="qsvgdDLL" DiskId="1" Source="C:\Qt\5.10.0\mingw53_32\plugins\imageformats\qsvgd.dll"/>
-                                <File Id="qtgaDLL" DiskId="1" Source="C:\Qt\5.10.0\mingw53_32\plugins\imageformats\qtga.dll"/>
-                                <File Id="qtgadDLL" DiskId="1" Source="C:\Qt\5.10.0\mingw53_32\plugins\imageformats\qtgad.dll"/>
-                                <File Id="qtiffDLL" DiskId="1" Source="C:\Qt\5.10.0\mingw53_32\plugins\imageformats\qtiff.dll"/>
-                                <File Id="qtiffdDLL" DiskId="1" Source="C:\Qt\5.10.0\mingw53_32\plugins\imageformats\qtiffd.dll"/>
-                                <File Id="qwbmpDLL" DiskId="1" Source="C:\Qt\5.10.0\mingw53_32\plugins\imageformats\qwbmp.dll"/>
-                                <File Id="qwbmpdDLL" DiskId="1" Source="C:\Qt\5.10.0\mingw53_32\plugins\imageformats\qwbmpd.dll"/>
-                                <File Id="qwebpDLL" DiskId="1" Source="C:\Qt\5.10.0\mingw53_32\plugins\imageformats\qwebp.dll"/>
-                                <File Id="qwebpdDLL" DiskId="1" Source="C:\Qt\5.10.0\mingw53_32\plugins\imageformats\qwebpd.dll"/>
+                            <Component Id="imageformatLibs" Guid="FF210FB3-58C6-4296-8100-594433EEFDD8">
+                                <File Id="qgifDLL" DiskId="1" Source="C:\Qt6\6.4.2\mingw_64\plugins\imageformats\qgif.dll" KeyPath="yes"/>
+                                <File Id="qicnsDLL" DiskId="1" Source="C:\Qt6\6.4.2\mingw_64\plugins\imageformats\qicns.dll"/>
+                                <File Id="qicoDLL" DiskId="1" Source="C:\Qt6\6.4.2\mingw_64\plugins\imageformats\qico.dll"/>
+                                <File Id="qjpegDLL" DiskId="1" Source="C:\Qt6\6.4.2\mingw_64\plugins\imageformats\qjpeg.dll"/>
+                                <File Id="qsvgDLL" DiskId="1" Source="C:\Qt6\6.4.2\mingw_64\plugins\imageformats\qsvg.dll"/>
+                                <File Id="qtgaDLL" DiskId="1" Source="C:\Qt6\6.4.2\mingw_64\plugins\imageformats\qtga.dll"/>
+                                <File Id="qtiffDLL" DiskId="1" Source="C:\Qt6\6.4.2\mingw_64\plugins\imageformats\qtiff.dll"/>
+                                <File Id="qwbmpDLL" DiskId="1" Source="C:\Qt6\6.4.2\mingw_64\plugins\imageformats\qwbmp.dll"/>
+                                <File Id="qwebpDLL" DiskId="1" Source="C:\Qt6\6.4.2\mingw_64\plugins\imageformats\qwebp.dll"/>
                             </Component>
                         </Directory>
                     </Directory>
@@ -155,7 +153,7 @@ candle_light.bat <version>
             </Directory>
             <Directory Id="ProgramMenuFolder" Name="Programs">
                 <Directory Id="ProgramMenuDir" Name="QEGui">
-                    <Component Id="ProgramMenuDir" Guid="D2F105B4-6059-44A0-B883-7851C42BF1E6">
+                    <Component Id="ProgramMenuDir" Guid="7CF32848-E426-4716-8718-5B87B0B136D3">
                         <RemoveFolder Id="ProgramMenuDir" On="uninstall"/>
                         <RegistryValue Root="HKCU" Key="Software\[Manufacturer]\[ProductName]" Type="string" Value="" KeyPath="yes"/>
                     </Component>
@@ -181,9 +179,9 @@ candle_light.bat <version>
             <ComponentRef Id="ProgramMenuDir"/>
         </Feature>
 
-        <Icon Id="qegui.exe" SourceFile="C:\jenkins_builds\qegui\bin\win32-x86-mingw\qegui.exe"/>
-        <Icon Id="qerad.exe" SourceFile="C:\jenkins_builds\qeReadArchive\bin\win32-x86-mingw\qerad.exe"/>
-        <Icon Id="designer.exe" SourceFile="C:\Qt\5.10.0\mingw53_32\bin\designer.exe"/>
+        <Icon Id="qegui.exe" SourceFile="C:\jenkins_builds\qegui\bin\windows-x64-mingw\qegui.exe"/>
+        <Icon Id="qerad.exe" SourceFile="C:\jenkins_builds\qeReadArchive\bin\windows-x64-mingw\qerad.exe"/>
+        <Icon Id="designer.exe" SourceFile="C:\Qt6\6.4.2\mingw_64\bin\designer.exe"/>
         <Property Id="ARPPRODUCTICON" Value="qegui.exe"/>
         <UIRef Id="WixUI_Minimal"/>
 
