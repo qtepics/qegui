@@ -127,7 +127,7 @@ This list of space seperated paths used when searching for a ui file.
 
 
 QE_DEFAULT_PROVIDER - this variable may be used to specify the default provider/protocol
-used to connect to process variables when an explicit protocol is not specified as part of
+use to connect to process variables when an explicit protocol is not specified as part of
 the  PV name. This should be defined as one of "ca" or "pva".
 
 
