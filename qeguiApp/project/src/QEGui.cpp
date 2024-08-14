@@ -3,7 +3,7 @@
  *  This file is part of the EPICS QT Framework, initially developed at the
  *  Australian Synchrotron.
  *
- *  Copyright (c) 2009-2021 Australian Synchrotron
+ *  Copyright (c) 2009-2024 Australian Synchrotron
  *
  *  The EPICS QT Framework is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
@@ -39,6 +39,7 @@
 #include <MainWindow.h>
 #include <saveRestoreManager.h>
 #include <QSettings>
+#include <QEEnums.h>
 #include <QEPVNameSelectDialog.h>
 #include <QEScaling.h>
 #include <QCaAlarmInfo.h>
@@ -89,9 +90,9 @@ int QEGui::run()
 
     // Restore the user level passwords
     QSettings settings( "epicsqt", "QEGui");
-    setUserLevelPassword( userLevelTypes::USERLEVEL_USER, settings.value( "userPassword" ).toString() );
-    setUserLevelPassword( userLevelTypes::USERLEVEL_SCIENTIST, settings.value( "scientistPassword" ).toString() );
-    setUserLevelPassword( userLevelTypes::USERLEVEL_ENGINEER, settings.value( "engineerPassword" ).toString() );
+    setUserLevelPassword( QE::User, settings.value( "userPassword" ).toString() );
+    setUserLevelPassword( QE::Scientist, settings.value( "scientistPassword" ).toString() );
+    setUserLevelPassword( QE::Engineer, settings.value( "engineerPassword" ).toString() );
 
     // Restore recent files
     int i;
@@ -193,9 +194,9 @@ int QEGui::run()
     int ret = exec();
 
     // Save passwords
-    settings.setValue( "userPassword", getUserLevelPassword( userLevelTypes::USERLEVEL_USER ));
-    settings.setValue( "scientistPassword", getUserLevelPassword( userLevelTypes::USERLEVEL_SCIENTIST ));
-    settings.setValue( "engineerPassword", getUserLevelPassword( userLevelTypes::USERLEVEL_ENGINEER ));
+    settings.setValue( "userPassword", getUserLevelPassword( QE::User ));
+    settings.setValue( "scientistPassword", getUserLevelPassword( QE::Scientist ));
+    settings.setValue( "engineerPassword", getUserLevelPassword( QE::Engineer ));
 
     // Save recent files
     settings.setValue( "recentFileCount", recentFiles.count() );

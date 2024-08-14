@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <ui version="4.0">
  <class>Form</class>
  <widget class="QWidget" name="Form">
@@ -65,7 +65,7 @@ Why? I don't know. I just can</string>
          <string>OOE:ai</string>
         </property>
         <property name="altReadbackVariable" stdset="0">
-         <string/>
+         <string></string>
         </property>
         <property name="program">
          <string>firefox</string>
@@ -186,7 +186,7 @@ an alternate readback variable</string>
            <bool>true</bool>
           </property>
           <property name="updateOption" stdset="0">
-           <enum>QEPushButton::Icon</enum>
+           <enum>QE::Icon</enum>
           </property>
           <property name="pixmap0" stdset="0">
            <pixmap>pumpBad.PNG</pixmap>
@@ -217,10 +217,10 @@ an alternate readback variable</string>
            <string>0:1,1:0</string>
           </property>
           <property name="format" stdset="0">
-           <enum>QEPushButton::LocalEnumeration</enum>
+           <enum>QE::LocalEnumeration</enum>
           </property>
           <property name="updateOption" stdset="0">
-           <enum>QEPushButton::Icon</enum>
+           <enum>QE::Icon</enum>
           </property>
           <property name="pixmap0" stdset="0">
            <pixmap>pumpBad.PNG</pixmap>
@@ -363,6 +363,6 @@ an alternate readback variable</string>
    <header>QERadioButton.h</header>
   </customwidget>
  </customwidgets>
- <resources/>
- <connections/>
+ <resources></resources>
+ <connections></connections>
 </ui>

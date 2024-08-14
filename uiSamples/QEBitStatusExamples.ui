@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <ui version="4.0">
  <class>Form</class>
  <widget class="QWidget" name="Form">
@@ -244,11 +244,14 @@
          <height>16777215</height>
         </size>
        </property>
-       <property name="Orientation">
-        <enum>QBitStatus::LSB_On_Left</enum>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
        </property>
        <property name="variable" stdset="0">
         <string>TEST:longin1</string>
+       </property>
+       <property name="invertedAppearance">
+        <bool>true</bool>
        </property>
       </widget>
      </item>
@@ -814,8 +817,8 @@
          <height>130</height>
         </size>
        </property>
-       <property name="Orientation">
-        <enum>QBitStatus::LSB_On_Bottom</enum>
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
        </property>
        <property name="variable" stdset="0">
         <string>TEST:longin1</string>
@@ -842,8 +845,8 @@
          <height>130</height>
         </size>
        </property>
-       <property name="Orientation">
-        <enum>QBitStatus::LSB_On_Bottom</enum>
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
        </property>
        <property name="gap">
         <number>3</number>
@@ -873,8 +876,8 @@
          <height>130</height>
         </size>
        </property>
-       <property name="Orientation">
-        <enum>QBitStatus::LSB_On_Bottom</enum>
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
        </property>
        <property name="shape">
         <enum>QBitStatus::Circle</enum>
@@ -910,6 +913,6 @@
    <header>QBitStatus.h</header>
   </customwidget>
  </customwidgets>
- <resources/>
- <connections/>
+ <resources></resources>
+ <connections></connections>
 </ui>

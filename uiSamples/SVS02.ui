@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <ui version="4.0">
  <class>Dialog</class>
  <widget class="QDialog" name="Dialog">
@@ -63,7 +63,7 @@
     <string>SVS01.ui</string>
    </property>
    <property name="creationOption" stdset="0">
-    <enum>QEPushButton::Open</enum>
+    <enum>QE::Open</enum>
    </property>
   </widget>
   <widget class="QEPushButton" name="guipushbuttonplugin_2">
@@ -82,7 +82,7 @@
     <string>SVS03.ui</string>
    </property>
    <property name="creationOption" stdset="0">
-    <enum>QEPushButton::Open</enum>
+    <enum>QE::Open</enum>
    </property>
   </widget>
  </widget>
@@ -98,6 +98,6 @@
    <header>QEForm.h</header>
   </customwidget>
  </customwidgets>
- <resources/>
- <connections/>
+ <resources></resources>
+ <connections></connections>
 </ui>

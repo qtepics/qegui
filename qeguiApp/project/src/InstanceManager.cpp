@@ -3,7 +3,7 @@
  *  This file is part of the EPICS QT Framework, initially developed at the
  *  Australian Synchrotron.
  *
- *  Copyright (c) 2009-2018 Australian Synchrotron
+ *  Copyright (c) 2009-2024 Australian Synchrotron
  *
  *  The EPICS QT Framework is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
@@ -243,7 +243,8 @@ void instanceManager::newWindow( const startupParams& params )
                 if( app->getMainWindowCount() )
                 {
                    MainWindow* mw = app->getMainWindow( 0 );
-                   mw->requestAction( QEActionRequests( params.filenameList[i], params.startupCustomisationName, QEActionRequests::OptionNewWindow, QEFormMapper::nullHandle() ) );
+                   mw->requestAction( QEActionRequests( params.filenameList[i], params.startupCustomisationName,
+                                                        QE::NewWindow, QEFormMapper::nullHandle() ) );
                 }
                 // If there are currently no windows, create one
                 else

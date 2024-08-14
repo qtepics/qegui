@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <ui version="4.0">
  <class>Dialog</class>
  <widget class="QDialog" name="Dialog">
@@ -32,10 +32,10 @@
     <string>SR=01</string>
    </property>
    <property name="format" stdset="0">
-    <enum>QELabel::Default</enum>
+    <enum>QE::Default</enum>
    </property>
    <property name="notation" stdset="0">
-    <enum>QELabel::Scientific</enum>
+    <enum>QE::Scientific</enum>
    </property>
   </widget>
   <widget class="QEShape" name="qcashapeplugin_20">
@@ -119,10 +119,10 @@
     <string>SR=01</string>
    </property>
    <property name="format" stdset="0">
-    <enum>QELabel::Default</enum>
+    <enum>QE::Default</enum>
    </property>
    <property name="notation" stdset="0">
-    <enum>QELabel::Scientific</enum>
+    <enum>QE::Scientific</enum>
    </property>
   </widget>
   <widget class="QEShape" name="qcashapeplugin_3">
@@ -138,7 +138,7 @@
     <string>SR$(SR)SGV01:OPEN_CLOSE_STATUS</string>
    </property>
    <property name="variable2" stdset="0">
-    <string/>
+    <string></string>
    </property>
    <property name="animation1" stdset="0">
     <enum>QEShape::ColourIndex</enum>
@@ -287,10 +287,10 @@
     <string>SR=01</string>
    </property>
    <property name="format" stdset="0">
-    <enum>QELabel::Default</enum>
+    <enum>QE::Default</enum>
    </property>
    <property name="notation" stdset="0">
-    <enum>QELabel::Scientific</enum>
+    <enum>QE::Scientific</enum>
    </property>
   </widget>
   <widget class="QEShape" name="qcashapeplugin_2">
@@ -306,7 +306,7 @@
     <string>SR$(SRPREV)SGV01:OPEN_CLOSE_STATUS</string>
    </property>
    <property name="variable2" stdset="0">
-    <string/>
+    <string></string>
    </property>
    <property name="animation1" stdset="0">
     <enum>QEShape::ColourIndex</enum>
@@ -399,10 +399,10 @@
     <string>SR=01</string>
    </property>
    <property name="format" stdset="0">
-    <enum>QELabel::Default</enum>
+    <enum>QE::Default</enum>
    </property>
    <property name="notation" stdset="0">
-    <enum>QELabel::Scientific</enum>
+    <enum>QE::Scientific</enum>
    </property>
   </widget>
   <widget class="QELabel" name="qelabel_4">
@@ -424,10 +424,10 @@
     <string>SR=01</string>
    </property>
    <property name="format" stdset="0">
-    <enum>QELabel::Default</enum>
+    <enum>QE::Default</enum>
    </property>
    <property name="notation" stdset="0">
-    <enum>QELabel::Scientific</enum>
+    <enum>QE::Scientific</enum>
    </property>
   </widget>
   <widget class="QELabel" name="qelabel_6">
@@ -449,10 +449,10 @@
     <string>SR=01</string>
    </property>
    <property name="format" stdset="0">
-    <enum>QELabel::Default</enum>
+    <enum>QE::Default</enum>
    </property>
    <property name="notation" stdset="0">
-    <enum>QELabel::Scientific</enum>
+    <enum>QE::Scientific</enum>
    </property>
   </widget>
   <widget class="QEShape" name="qcashapeplugin_16">
@@ -530,10 +530,10 @@
     <string>SR=01</string>
    </property>
    <property name="format" stdset="0">
-    <enum>QELabel::Default</enum>
+    <enum>QE::Default</enum>
    </property>
    <property name="notation" stdset="0">
-    <enum>QELabel::Scientific</enum>
+    <enum>QE::Scientific</enum>
    </property>
   </widget>
   <widget class="QEShape" name="qcashapeplugin">
@@ -659,7 +659,7 @@
     <string>SR$(SR)SGV01:OPEN_CLOSE_STATUS</string>
    </property>
    <property name="variable2" stdset="0">
-    <string/>
+    <string></string>
    </property>
    <property name="animation1" stdset="0">
     <enum>QEShape::ColourIndex</enum>
@@ -1069,10 +1069,10 @@
     <string>SR=01</string>
    </property>
    <property name="format" stdset="0">
-    <enum>QELabel::Default</enum>
+    <enum>QE::Default</enum>
    </property>
    <property name="notation" stdset="0">
-    <enum>QELabel::Scientific</enum>
+    <enum>QE::Scientific</enum>
    </property>
   </widget>
   <widget class="QEShape" name="qcashapeplugin_18">
@@ -1234,6 +1234,6 @@
    <header>QEShape.h</header>
   </customwidget>
  </customwidgets>
- <resources/>
- <connections/>
+ <resources></resources>
+ <connections></connections>
 </ui>

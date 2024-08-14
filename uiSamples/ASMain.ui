@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <ui version="4.0">
  <class>Dialog</class>
  <widget class="QDialog" name="Dialog">
@@ -23,7 +23,7 @@
     </rect>
    </property>
    <property name="text">
-    <string/>
+    <string></string>
    </property>
    <property name="pixmap">
     <pixmap>AS.gif</pixmap>
@@ -278,7 +278,7 @@
       </rect>
      </property>
      <property name="text">
-      <string/>
+      <string></string>
      </property>
      <property name="pixmap">
       <pixmap>HarryP.gif</pixmap>
@@ -483,7 +483,7 @@
        <string>CurrentHistory.ui</string>
       </property>
       <property name="creationOption" stdset="0">
-       <enum>QEPushButton::NewWindow</enum>
+       <enum>QE::NewWindow</enum>
       </property>
      </widget>
     </item>
@@ -529,7 +529,7 @@
     <string>SVS12.ui</string>
    </property>
    <property name="creationOption" stdset="0">
-    <enum>QEPushButton::NewWindow</enum>
+    <enum>QE::NewWindow</enum>
    </property>
   </widget>
   <widget class="QEPushButton" name="guipushbuttonplugin_13">
@@ -548,7 +548,7 @@
     <string>SVS13.ui</string>
    </property>
    <property name="creationOption" stdset="0">
-    <enum>QEPushButton::NewWindow</enum>
+    <enum>QE::NewWindow</enum>
    </property>
   </widget>
   <widget class="QEPushButton" name="guipushbuttonplugin_9">
@@ -567,7 +567,7 @@
     <string>SVS03.ui</string>
    </property>
    <property name="creationOption" stdset="0">
-    <enum>QEPushButton::NewWindow</enum>
+    <enum>QE::NewWindow</enum>
    </property>
   </widget>
   <widget class="QEPushButton" name="guipushbuttonplugin_14">
@@ -586,7 +586,7 @@
     <string>SVS14.ui</string>
    </property>
    <property name="creationOption" stdset="0">
-    <enum>QEPushButton::NewWindow</enum>
+    <enum>QE::NewWindow</enum>
    </property>
   </widget>
   <widget class="QEPushButton" name="guipushbuttonplugin">
@@ -605,7 +605,7 @@
     <string>SVS01.ui</string>
    </property>
    <property name="creationOption" stdset="0">
-    <enum>QEPushButton::NewWindow</enum>
+    <enum>QE::NewWindow</enum>
    </property>
   </widget>
   <widget class="QEPushButton" name="guipushbuttonplugin_10">
@@ -624,7 +624,7 @@
     <string>SVS10.ui</string>
    </property>
    <property name="creationOption" stdset="0">
-    <enum>QEPushButton::NewWindow</enum>
+    <enum>QE::NewWindow</enum>
    </property>
   </widget>
   <widget class="QEPushButton" name="guipushbuttonplugin_7">
@@ -643,7 +643,7 @@
     <string>SVS06.ui</string>
    </property>
    <property name="creationOption" stdset="0">
-    <enum>QEPushButton::NewWindow</enum>
+    <enum>QE::NewWindow</enum>
    </property>
   </widget>
   <widget class="QEPushButton" name="guipushbuttonplugin_2">
@@ -662,7 +662,7 @@
     <string>SVS08.ui</string>
    </property>
    <property name="creationOption" stdset="0">
-    <enum>QEPushButton::NewWindow</enum>
+    <enum>QE::NewWindow</enum>
    </property>
   </widget>
   <widget class="QEPushButton" name="guipushbuttonplugin_3">
@@ -681,7 +681,7 @@
     <string>SVS09.ui</string>
    </property>
    <property name="creationOption" stdset="0">
-    <enum>QEPushButton::NewWindow</enum>
+    <enum>QE::NewWindow</enum>
    </property>
   </widget>
   <widget class="QEPushButton" name="guipushbuttonplugin_6">
@@ -700,7 +700,7 @@
     <string>SVS05.ui</string>
    </property>
    <property name="creationOption" stdset="0">
-    <enum>QEPushButton::NewWindow</enum>
+    <enum>QE::NewWindow</enum>
    </property>
   </widget>
   <widget class="QEPushButton" name="guipushbuttonplugin_8">
@@ -719,7 +719,7 @@
     <string>SVS07.ui</string>
    </property>
    <property name="creationOption" stdset="0">
-    <enum>QEPushButton::NewWindow</enum>
+    <enum>QE::NewWindow</enum>
    </property>
   </widget>
   <widget class="QEPushButton" name="guipushbuttonplugin_11">
@@ -738,7 +738,7 @@
     <string>SVS11.ui</string>
    </property>
    <property name="creationOption" stdset="0">
-    <enum>QEPushButton::NewWindow</enum>
+    <enum>QE::NewWindow</enum>
    </property>
   </widget>
   <widget class="QEPushButton" name="guipushbuttonplugin_5">
@@ -757,7 +757,7 @@
     <string>SVS04.ui</string>
    </property>
    <property name="creationOption" stdset="0">
-    <enum>QEPushButton::NewWindow</enum>
+    <enum>QE::NewWindow</enum>
    </property>
   </widget>
   <widget class="QEPushButton" name="guipushbuttonplugin_4">
@@ -776,7 +776,7 @@
     <string>SVS02.ui</string>
    </property>
    <property name="creationOption" stdset="0">
-    <enum>QEPushButton::NewWindow</enum>
+    <enum>QE::NewWindow</enum>
    </property>
   </widget>
   <widget class="QWidget" name="verticalLayoutWidget_2">
@@ -798,7 +798,7 @@
        <string>bpm.ui</string>
       </property>
       <property name="creationOption" stdset="0">
-       <enum>QEPushButton::NewWindow</enum>
+       <enum>QE::NewWindow</enum>
       </property>
      </widget>
     </item>
@@ -836,7 +836,7 @@
        <string>sr14_appleii_epu_gui.ui</string>
       </property>
       <property name="creationOption" stdset="0">
-       <enum>QEPushButton::NewTab</enum>
+       <enum>QE::NewTab</enum>
       </property>
      </widget>
     </item>
@@ -865,6 +865,6 @@
    <header>QEForm.h</header>
   </customwidget>
  </customwidgets>
- <resources/>
- <connections/>
+ <resources></resources>
+ <connections></connections>
 </ui>

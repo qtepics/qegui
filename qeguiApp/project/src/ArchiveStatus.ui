@@ -65,7 +65,7 @@
          <number>0</number>
         </property>
         <property name="messageSourceFilter">
-         <enum>QELog::Match</enum>
+         <enum>QE::Match</enum>
         </property>
        </widget>
       </item>

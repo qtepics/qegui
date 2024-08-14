@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <ui version="4.0">
  <class>Form</class>
  <widget class="QWidget" name="Form">
@@ -402,7 +402,7 @@
        <property name="title">
         <string>Image</string>
        </property>
-       <layout class="QGridLayout" name="gridLayout_4"/>
+       <layout class="QGridLayout" name="gridLayout_4"></layout>
       </widget>
      </item>
      <item>
@@ -458,7 +458,7 @@
            <string>SR10BM02IMG01:HEIGHT_MONITOR</string>
           </property>
           <property name="formatOption" stdset="0">
-           <enum>QEImage::Mono</enum>
+           <enum>QE::Mono</enum>
           </property>
           <property name="enableProfileSelection">
            <bool>true</bool>
@@ -508,6 +508,6 @@
    <header>QEShape.h</header>
   </customwidget>
  </customwidgets>
- <resources/>
- <connections/>
+ <resources></resources>
+ <connections></connections>
 </ui>

@@ -3,7 +3,7 @@
  *  This file is part of the EPICS QT Framework, initially developed at the
  *  Australian Synchrotron.
  *
- *  Copyright (c) 2009-2021 Australian Synchrotron
+ *  Copyright (c) 2009-2024 Australian Synchrotron
  *
  *  The EPICS QT Framework is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
@@ -30,6 +30,7 @@
 #include <QMainWindow>
 #include <ui_MainWindow.h>
 #include <QEFormMapper.h>
+#include <QEEnums.h>
 #include <QEActionRequests.h>
 #include <QEForm.h>
 #include <UserMessage.h>
@@ -144,7 +145,7 @@ public:
 
     QWidget* launchGui( QString guiName, QString title,
                         QString customisationName,
-                        QEActionRequests::Options creationOption,
+                        QE::CreationOptions creationOption,
                         bool hidden,
                         QEFormMapper::FormHandles formHandle );  // Launch a new GUI given a .ui file name
 
@@ -165,7 +166,7 @@ private:
     void loadGuiIntoNewTab( QEForm* gui );                  // Load a new gui into a new tab
     QDockWidget* loadGuiIntoNewDock( QEForm* gui,
                                      bool hidden = false,
-                                     QEActionRequests::Options createOption = QEActionRequests::OptionFloatingDockWindow,
+                                     QE::CreationOptions createOption = QE::DockFloating,
                                      Qt::DockWidgetArea allowedAreas = Qt::AllDockWidgetAreas,
                                      QDockWidget::DockWidgetFeature features = QDockWidget::DockWidgetFeatureMask,
                                      QRect geom = QRect( 0, 0, 0, 0 ) ); // Load a new gui into a new dock
@@ -244,8 +245,8 @@ private:
     int countWindows();             // Return count of all GUIs (excluding docks)
 
 
-    Qt::DockWidgetArea creationOptionToDockLocation( QEActionRequests::Options createOption ); // Translate a creation option to a dock location.
-    QEActionRequests::Options dockLocationToCreationOption( Qt::DockWidgetArea dockLocation, bool tabbed ); // Translate a dock location to a creation option.
+    Qt::DockWidgetArea creationOptionToDockLocation( QE::CreationOptions createOption ); // Translate a creation option to a dock location.
+    QE::CreationOptions dockLocationToCreationOption( Qt::DockWidgetArea dockLocation, bool tabbed ); // Translate a dock location to a creation option.
 
     typedef QMap<QString, QString> NameMap; // Type fo map a string to another string
 

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <ui version="4.0">
  <class>Form</class>
  <widget class="QWidget" name="Form">
@@ -119,10 +119,13 @@
              <bool>false</bool>
             </property>
             <property name="orientation">
-             <enum>QEAnalogIndicator::Right_To_Left</enum>
+             <enum>Qt::Horizontal</enum>
             </property>
             <property name="variable" stdset="0">
              <string>TEST:ai1</string>
+            </property>
+            <property name="invertedAppearance">
+             <bool>true</bool>
             </property>
            </widget>
           </item>
@@ -260,7 +263,7 @@
            </size>
           </property>
           <property name="orientation">
-           <enum>QEAnalogIndicator::Bottom_To_Top</enum>
+           <enum>Qt::Vertical</enum>
           </property>
           <property name="variable" stdset="0">
            <string>TEST:ai1</string>
@@ -291,13 +294,16 @@
            </size>
           </property>
           <property name="orientation">
-           <enum>QEAnalogIndicator::Top_To_Bottom</enum>
+           <enum>Qt::Vertical</enum>
           </property>
           <property name="variable" stdset="0">
            <string>TEST:ai1</string>
           </property>
           <property name="addUnits">
            <bool>false</bool>
+          </property>
+          <property name="invertedAppearance">
+           <bool>true</bool>
           </property>
          </widget>
         </item>
@@ -700,6 +706,6 @@
    <header>QEAnalogIndicator.h</header>
   </customwidget>
  </customwidgets>
- <resources/>
- <connections/>
+ <resources></resources>
+ <connections></connections>
 </ui>

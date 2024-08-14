@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <ui version="4.0">
  <class>Form</class>
  <widget class="QWidget" name="Form">
@@ -82,10 +82,10 @@
     <string>TS02FPC01:FILL_CMD</string>
    </property>
    <property name="localEnumeration">
-    <string>): None, 1: Halt, 2: Always, 3: One-off, 4: Filling, 5: &quot;More filling&quot;, 6:&quot;Next Hit&quot;, 7: &quot;Steady current&quot;, 8: Help, 9: Regular, 10:&quot;Unexpected&quot;</string>
+    <string>): None, 1: Halt, 2: Always, 3: One-off, 4: Filling, 5: "More filling", 6:"Next Hit", 7: "Steady current", 8: Help, 9: Regular, 10:"Unexpected"</string>
    </property>
    <property name="format" stdset="0">
-    <enum>QELabel::LocalEnumeration</enum>
+    <enum>QE::LocalEnumeration</enum>
    </property>
   </widget>
   <widget class="QEComboBox" name="qecombobox">
@@ -129,7 +129,7 @@
     <bool>false</bool>
    </property>
    <property name="localEnumeration" stdset="0">
-    <string>): None, 1: Halt, 2: Always, 3: One-off, 4: Filling, 5: &quot;More filling&quot;, 6:&quot;Next Hit&quot;, 7: &quot;Steady current&quot;, 8: Help, 9: Regular, 10:&quot;Unexpected&quot;</string>
+    <string>): None, 1: Halt, 2: Always, 3: One-off, 4: Filling, 5: "More filling", 6:"Next Hit", 7: "Steady current", 8: Help, 9: Regular, 10:"Unexpected"</string>
    </property>
   </widget>
   <widget class="QERadioGroup" name="qeradiogroup_2">
@@ -148,7 +148,7 @@
     <bool>false</bool>
    </property>
    <property name="localEnumeration" stdset="0">
-    <string>): None, 1: Halt, 2: Always, 3: One-off, 4: Filling, 5: &quot;More filling&quot;, 6:&quot;Next Hit&quot;, 7: &quot;Steady current&quot;, 8: Help, 9: Regular, 10:&quot;Unexpected&quot;</string>
+    <string>): None, 1: Halt, 2: Always, 3: One-off, 4: Filling, 5: "More filling", 6:"Next Hit", 7: "Steady current", 8: Help, 9: Regular, 10:"Unexpected"</string>
    </property>
   </widget>
  </widget>
@@ -169,6 +169,6 @@
    <header>QERadioGroup.h</header>
   </customwidget>
  </customwidgets>
- <resources/>
- <connections/>
+ <resources></resources>
+ <connections></connections>
 </ui>

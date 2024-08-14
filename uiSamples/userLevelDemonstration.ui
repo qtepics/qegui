@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <ui version="4.0">
  <class>Form</class>
  <widget class="QWidget" name="Form">
@@ -82,7 +82,7 @@
       <string>Maintenance</string>
      </property>
      <property name="userLevelVisibility" stdset="0">
-      <enum>QEGroupBox::Scientist</enum>
+      <enum>QE::Scientist</enum>
      </property>
      <layout class="QGridLayout" name="gridLayout">
       <item row="0" column="0">
@@ -108,7 +108,7 @@
          <string>Reset</string>
         </property>
         <property name="userLevelEnabled" stdset="0">
-         <enum>QEPushButton::Engineer</enum>
+         <enum>QE::Engineer</enum>
         </property>
        </widget>
       </item>
@@ -162,6 +162,6 @@
    <container>1</container>
   </customwidget>
  </customwidgets>
- <resources/>
- <connections/>
+ <resources></resources>
+ <connections></connections>
 </ui>

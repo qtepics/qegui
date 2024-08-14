@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <ui version="4.0">
  <class>Form</class>
  <widget class="QWidget" name="Form">
@@ -29,14 +29,14 @@
         <string>loggingSubOwnLogging.ui</string>
        </property>
        <property name="messageFormFilter">
-        <enum>QEForm::None</enum>
+        <enum>QE::None</enum>
        </property>
       </widget>
      </item>
     </layout>
    </item>
    <item>
-    <widget class="QELog" name="qelog"/>
+    <widget class="QELog" name="qelog"></widget>
    </item>
   </layout>
  </widget>
@@ -52,6 +52,6 @@
    <header>QEForm.h</header>
   </customwidget>
  </customwidgets>
- <resources/>
- <connections/>
+ <resources></resources>
+ <connections></connections>
 </ui>

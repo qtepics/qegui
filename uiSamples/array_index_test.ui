@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <ui version="4.0">
  <class>Form</class>
  <widget class="QWidget" name="Form">
@@ -57,7 +57,7 @@ QWidget { background-color: #e0eee0; }</string>
      <string>QELabel { background-color: rgb(240, 240, 240); }</string>
     </property>
     <property name="arrayAction" stdset="0">
-     <enum>QELabel::Index</enum>
+     <enum>QE::Index</enum>
     </property>
    </widget>
    <widget class="QERadioGroup" name="qeradiogroup">
@@ -341,7 +341,7 @@ QWidget { background-color: #e0eee0; }</string>
      <number>0</number>
     </property>
     <property name="displayAlarmStateOption" stdset="0">
-     <enum>QESimpleShape::Never</enum>
+     <enum>QE::Never</enum>
     </property>
    </widget>
    <widget class="QEAnalogProgressBar" name="qeanalogprogressbar">
@@ -397,10 +397,10 @@ QWidget { background-color: #e0eee0; }</string>
      <bool>false</bool>
     </property>
     <property name="format" stdset="0">
-     <enum>QECheckBox::Integer</enum>
+     <enum>QE::Integer</enum>
     </property>
     <property name="arrayAction" stdset="0">
-     <enum>QECheckBox::Index</enum>
+     <enum>QE::Index</enum>
     </property>
     <property name="clickText">
      <string>4</string>
@@ -431,13 +431,13 @@ QWidget { background-color: #e0eee0; }</string>
      <bool>false</bool>
     </property>
     <property name="format" stdset="0">
-     <enum>QERadioButton::Integer</enum>
+     <enum>QE::Integer</enum>
     </property>
     <property name="notation" stdset="0">
-     <enum>QERadioButton::Fixed</enum>
+     <enum>QE::Fixed</enum>
     </property>
     <property name="arrayAction" stdset="0">
-     <enum>QERadioButton::Index</enum>
+     <enum>QE::Index</enum>
     </property>
     <property name="clickText">
      <string>8</string>
@@ -456,7 +456,7 @@ QWidget { background-color: #e0eee0; }</string>
      </rect>
     </property>
     <property name="text">
-     <string/>
+     <string></string>
     </property>
     <property name="variable" stdset="0">
      <string>TEST3:A</string>
@@ -471,10 +471,10 @@ QWidget { background-color: #e0eee0; }</string>
      <bool>true</bool>
     </property>
     <property name="format" stdset="0">
-     <enum>QEPushButton::Floating</enum>
+     <enum>QE::Floating</enum>
     </property>
     <property name="arrayAction" stdset="0">
-     <enum>QEPushButton::Index</enum>
+     <enum>QE::Index</enum>
     </property>
     <property name="clickText">
      <string>2</string>
@@ -531,7 +531,7 @@ QWidget { background-color: #e0eee0; }</string>
      <string>TEST3:A</string>
     </property>
     <property name="variableSubstitutions" stdset="0">
-     <string/>
+     <string></string>
     </property>
     <property name="arrayIndex">
      <number>0</number>
@@ -540,10 +540,10 @@ QWidget { background-color: #e0eee0; }</string>
      <bool>true</bool>
     </property>
     <property name="format" stdset="0">
-     <enum>QELineEdit::Floating</enum>
+     <enum>QE::Floating</enum>
     </property>
     <property name="arrayAction" stdset="0">
-     <enum>QELineEdit::Index</enum>
+     <enum>QE::Index</enum>
     </property>
    </widget>
   </widget>
@@ -590,7 +590,7 @@ QWidget { background-color: #e0eee0; }</string>
      <string>QELabel { background-color: rgb(240, 240, 240); }</string>
     </property>
     <property name="arrayAction" stdset="0">
-     <enum>QELabel::Index</enum>
+     <enum>QE::Index</enum>
     </property>
    </widget>
    <widget class="QERadioGroup" name="qeradiogroup_3">
@@ -886,7 +886,7 @@ QWidget { background-color: #e0eee0; }</string>
      <number>2</number>
     </property>
     <property name="displayAlarmStateOption" stdset="0">
-     <enum>QESimpleShape::Never</enum>
+     <enum>QE::Never</enum>
     </property>
    </widget>
    <widget class="QEAnalogProgressBar" name="qeanalogprogressbar_2">
@@ -942,10 +942,10 @@ QWidget { background-color: #e0eee0; }</string>
      <bool>false</bool>
     </property>
     <property name="format" stdset="0">
-     <enum>QECheckBox::Integer</enum>
+     <enum>QE::Integer</enum>
     </property>
     <property name="arrayAction" stdset="0">
-     <enum>QECheckBox::Index</enum>
+     <enum>QE::Index</enum>
     </property>
     <property name="clickCheckedText">
      <string>3</string>
@@ -961,7 +961,7 @@ QWidget { background-color: #e0eee0; }</string>
      </rect>
     </property>
     <property name="text">
-     <string/>
+     <string></string>
     </property>
     <property name="variable" stdset="0">
      <string>TEST3:A</string>
@@ -976,10 +976,10 @@ QWidget { background-color: #e0eee0; }</string>
      <bool>true</bool>
     </property>
     <property name="format" stdset="0">
-     <enum>QEPushButton::Floating</enum>
+     <enum>QE::Floating</enum>
     </property>
     <property name="arrayAction" stdset="0">
-     <enum>QEPushButton::Index</enum>
+     <enum>QE::Index</enum>
     </property>
     <property name="clickText">
      <string>5</string>
@@ -1007,13 +1007,13 @@ QWidget { background-color: #e0eee0; }</string>
      <bool>false</bool>
     </property>
     <property name="format" stdset="0">
-     <enum>QERadioButton::Integer</enum>
+     <enum>QE::Integer</enum>
     </property>
     <property name="notation" stdset="0">
-     <enum>QERadioButton::Fixed</enum>
+     <enum>QE::Fixed</enum>
     </property>
     <property name="arrayAction" stdset="0">
-     <enum>QERadioButton::Index</enum>
+     <enum>QE::Index</enum>
     </property>
     <property name="pressText">
      <string>4</string>
@@ -1079,7 +1079,7 @@ QWidget { background-color: #e0eee0; }</string>
      <string>TEST3:A</string>
     </property>
     <property name="variableSubstitutions" stdset="0">
-     <string/>
+     <string></string>
     </property>
     <property name="arrayIndex">
      <number>2</number>
@@ -1088,10 +1088,10 @@ QWidget { background-color: #e0eee0; }</string>
      <bool>true</bool>
     </property>
     <property name="format" stdset="0">
-     <enum>QELineEdit::Floating</enum>
+     <enum>QE::Floating</enum>
     </property>
     <property name="arrayAction" stdset="0">
-     <enum>QELineEdit::Index</enum>
+     <enum>QE::Index</enum>
     </property>
    </widget>
   </widget>
@@ -1138,7 +1138,7 @@ QWidget { background-color: #e0eee0; }</string>
      <string>QELabel { background-color: rgb(240, 240, 240); }</string>
     </property>
     <property name="arrayAction" stdset="0">
-     <enum>QELabel::Index</enum>
+     <enum>QE::Index</enum>
     </property>
    </widget>
    <widget class="QERadioGroup" name="qeradiogroup_4">
@@ -1434,7 +1434,7 @@ QWidget { background-color: #e0eee0; }</string>
      <number>3</number>
     </property>
     <property name="displayAlarmStateOption" stdset="0">
-     <enum>QESimpleShape::Never</enum>
+     <enum>QE::Never</enum>
     </property>
    </widget>
    <widget class="QEAnalogProgressBar" name="qeanalogprogressbar_3">
@@ -1490,10 +1490,10 @@ QWidget { background-color: #e0eee0; }</string>
      <bool>false</bool>
     </property>
     <property name="format" stdset="0">
-     <enum>QECheckBox::Integer</enum>
+     <enum>QE::Integer</enum>
     </property>
     <property name="arrayAction" stdset="0">
-     <enum>QECheckBox::Index</enum>
+     <enum>QE::Index</enum>
     </property>
     <property name="clickCheckedText">
      <string>6</string>
@@ -1509,7 +1509,7 @@ QWidget { background-color: #e0eee0; }</string>
      </rect>
     </property>
     <property name="text">
-     <string/>
+     <string></string>
     </property>
     <property name="variable" stdset="0">
      <string>TEST3:A</string>
@@ -1524,10 +1524,10 @@ QWidget { background-color: #e0eee0; }</string>
      <bool>true</bool>
     </property>
     <property name="format" stdset="0">
-     <enum>QEPushButton::Floating</enum>
+     <enum>QE::Floating</enum>
     </property>
     <property name="arrayAction" stdset="0">
-     <enum>QEPushButton::Index</enum>
+     <enum>QE::Index</enum>
     </property>
     <property name="clickText">
      <string>8</string>
@@ -1555,13 +1555,13 @@ QWidget { background-color: #e0eee0; }</string>
      <bool>false</bool>
     </property>
     <property name="format" stdset="0">
-     <enum>QERadioButton::Integer</enum>
+     <enum>QE::Integer</enum>
     </property>
     <property name="notation" stdset="0">
-     <enum>QERadioButton::Fixed</enum>
+     <enum>QE::Fixed</enum>
     </property>
     <property name="arrayAction" stdset="0">
-     <enum>QERadioButton::Index</enum>
+     <enum>QE::Index</enum>
     </property>
     <property name="pressText">
      <string>7</string>
@@ -1627,7 +1627,7 @@ QWidget { background-color: #e0eee0; }</string>
      <string>TEST3:A</string>
     </property>
     <property name="variableSubstitutions" stdset="0">
-     <string/>
+     <string></string>
     </property>
     <property name="arrayIndex">
      <number>3</number>
@@ -1636,10 +1636,10 @@ QWidget { background-color: #e0eee0; }</string>
      <bool>true</bool>
     </property>
     <property name="format" stdset="0">
-     <enum>QELineEdit::Floating</enum>
+     <enum>QE::Floating</enum>
     </property>
     <property name="arrayAction" stdset="0">
-     <enum>QELineEdit::Index</enum>
+     <enum>QE::Index</enum>
     </property>
    </widget>
   </widget>
@@ -1772,7 +1772,7 @@ QWidget { background-color: #e0eee0; }</string>
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="../../../../home/andrew/qe/framework/widgets/QEStripChart/QEStripChart.qrc"/>
+  <include location="../../../../home/andrew/qe/framework/widgets/QEStripChart/QEStripChart.qrc"></include>
  </resources>
- <connections/>
+ <connections></connections>
 </ui>
