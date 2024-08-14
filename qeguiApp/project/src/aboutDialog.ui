@@ -379,6 +379,9 @@
       <layout class="QVBoxLayout" name="verticalLayout_2">
        <item>
         <widget class="QTableWidget" name="windowsTable">
+         <property name="sortingEnabled">
+          <bool>true</bool>
+         </property>
          <property name="columnCount">
           <number>3</number>
          </property>

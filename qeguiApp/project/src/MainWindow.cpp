@@ -18,10 +18,12 @@
  *  You should have received a copy of the GNU Lesser General Public License
  *  along with the EPICS QT Framework.  If not, see <http://www.gnu.org/licenses/>.
  *
- *  Author:
- *    Andrew Rhyder
+ *  Original author: Andrew Rhyder
+ *  Maintained by:   Andrew Starritt
+ *
  *  Contact details:
- *    andrew.rhyder@synchrotron.org.au
+ *  as-open-source@ansto.gov.au
+ *  800 Blackburn Road, Clayton, Victoria 3168, Australia.
  */
 
 /*
@@ -302,7 +304,7 @@ MainWindow::MainWindow( QEGui* appIn, QString fileName, QString title,
     }
 
     // Set up signals for starting the 'designer' process
-    QObject::connect( &process, SIGNAL(error(QProcess::ProcessError)),
+    QObject::connect( &process, SIGNAL(errorOccurred(QProcess::ProcessError)),
                       this, SLOT( processError(QProcess::ProcessError) ) );
 
     // Ensure this class destructor gets called.
@@ -444,11 +446,17 @@ void MainWindow::setupPlaceholderMenus()
 // and a new window should be empty. Generally, when customisations are used, they are used within custom menu items.
 void MainWindow::on_actionNew_Window_triggered()
 {
-    profile.publishOwnProfile();
-    MainWindow* w = new MainWindow( app, "", "", DEFAULT_QEGUI_CUSTOMISATION,
-                                    QEFormMapper::nullHandle(), true, this, NULL );
-    profile.releaseProfile();
-    w->show();
+    // Don't create an "empty" window
+    //
+    QString filename = GuiFileNameDialog( "Open" );
+    if( !filename.isEmpty() )
+    {
+        profile.publishOwnProfile();
+        MainWindow* w = new MainWindow( app, filename, filename, DEFAULT_QEGUI_CUSTOMISATION,
+                                        QEFormMapper::nullHandle(), true, this, NULL );
+        profile.releaseProfile();
+        w->show();
+    }
 }
 
 // Open a gui in a new tab.
@@ -465,7 +473,7 @@ void MainWindow::on_actionNew_Tab_triggered()
     }
     profile.releaseProfile();
 
-    // If a GUI was created, ensure tab mode is in effect and loadf the GUI into a new tab
+    // If a GUI was created, ensure tab mode is in effect and load the GUI into a new tab
     if( gui )
     {
 
@@ -2170,7 +2178,7 @@ QEForm* MainWindow::createGui( QString fileName, QString title, QString customis
 
     // Return the created gui if any
     return gui;
- }
+}
 
 // A gui (in a dock) has been destroyed.
 // Ensure we won't reference it in the GUI list
@@ -2202,7 +2210,7 @@ void MainWindow::setTitle( QString title )
         // Can't get a title from anywhere, use a default
         else
         {
-            setWindowTitle( "QEGui" );
+            setWindowTitle( QString( "QEGui %1" ).arg( QE_VERSION_STRING ) );
         }
     }
 }

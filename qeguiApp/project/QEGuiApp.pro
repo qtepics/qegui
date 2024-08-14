@@ -1,6 +1,6 @@
 # $File: //ASP/tec/gui/qegui/trunk/qeguiApp/project/QEGuiApp.pro $
-# $Revision: #22 $
-# $DateTime: 2022/12/29 14:27:39 $
+# $Revision: #23 $
+# $DateTime: 2024/03/06 16:38:04 $
 # Last checked in by: $Author: starritt $
 #
 # Copyright (c) 2009-2022 Australian Synchrotron
@@ -57,7 +57,7 @@ equals( QT_MAJOR_VERSION, 5 ) {
 # Qt 6 configuration
 #
 equals( QT_MAJOR_VERSION, 6 ) {
-    CONFIG += qwt
+    CONFIG += qwt console
     QT += core gui network uitools designer
     QT += printsupport  # required by caQtDM
 }
