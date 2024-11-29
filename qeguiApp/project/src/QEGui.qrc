@@ -13,6 +13,7 @@
         <file>WaveformHistogram.ui</file>
         <file>ArchiveStatus.ui</file>
         <file>ArchiveNameSearch.ui</file>
+        <file>AlarmColourSelection.ui</file>
     </qresource>
     <qresource prefix="/qe/gui/icons">
         <file>QEGuiIcon.png</file>

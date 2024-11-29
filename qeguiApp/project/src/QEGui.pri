@@ -56,6 +56,7 @@ SOURCES += src/saveRestoreManager.cpp
 
 # These ui files are loaded at runtime as ui files, uic is not invoked.
 #
+OTHER_FILES += src/AlarmColourSelection.ui
 OTHER_FILES += src/ArchiveNameSearch.ui
 OTHER_FILES += src/ArchiveStatus.ui
 OTHER_FILES += src/General_PV_Edit.ui

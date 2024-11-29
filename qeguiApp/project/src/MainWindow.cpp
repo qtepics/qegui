@@ -1708,6 +1708,7 @@ void MainWindow::createActionMaps()
     inbuiltFormMap.insert( "PV Distribution...",                     ":/qe/gui/forms/PVDistribution.ui" );
     inbuiltFormMap.insert( "Archive Status...",                      ":/qe/gui/forms/ArchiveStatus.ui" );
     inbuiltFormMap.insert( "Archive Name Search...",                 ":/qe/gui/forms/ArchiveNameSearch.ui" );
+    inbuiltFormMap.insert( "Alarm Colour Selection...",              ":/qe/gui/forms/AlarmColourSelection.ui" );
 
     // Build a map of the target widget to receive a PV in each of the inbuilt forms
     classNameMap.clear();
@@ -1726,6 +1727,7 @@ void MainWindow::createActionMaps()
     classNameMap.insert( "PV Distribution...",                       "QEDistribution" );
     classNameMap.insert( "Archive Status...",                        "QEArchiveStatus" );
     classNameMap.insert( "Archive Name Search...",                   "QEArchiveNameSearch" );
+    classNameMap.insert( "Alarm Colour Selection...",                "QEAlarmColourSelection" );
 }
 
 // Slot for launching a new gui from a contained object.

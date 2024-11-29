@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>scratchPadForm</class>
+ <widget class="QWidget" name="scratchPadForm">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>474</width>
+    <height>156</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Alarm Colour Selection</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="margin" stdset="0">
+    <number>4</number>
+   </property>
+   <item>
+    <widget class="QEAlarmColourSelection" name="qecolourselection"/>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QEAlarmColourSelection</class>
+   <extends>QFrame</extends>
+   <header>QEAlarmColourSelection.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

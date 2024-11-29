@@ -89,6 +89,9 @@
                 <Item Name="Archive Name Search...">
                     <BuiltIn Name="Archive Name Search..." />
                 </Item>
+                <Item Name="Alarm Colour Selection...">
+                    <BuiltIn Name="Alarm Colour Selection..." />
+                </Item>
             </Menu>
         </Customisation>
 
