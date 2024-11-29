@@ -16,5 +16,7 @@ include/
 *.local
 *.creator.user
 *.pro.user
+.qmake.stash
+.qtc_clangd
 Makefile.*
 object_script.*

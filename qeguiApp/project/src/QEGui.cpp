@@ -32,6 +32,7 @@
 
 #include "QEGui.h"
 #include <iostream>
+#include <QtGlobal>
 #include <QEFrameworkVersion.h>
 #include <InstanceManager.h>
 #include <QDebug>
@@ -236,8 +237,14 @@ void QEGui::printVersion ()
               << " and " << QEFrameworkVersion::getQwtVersionStr().toLatin1().data() << std::endl;
 
    // Provide library/plugin path info
+   //
+#if QT_VERSION < 0x060000
    std::cout << "Library path: " << QLibraryInfo::location ( QLibraryInfo::LibrariesPath ).toLatin1().data() << std::endl;
    std::cout << "Plugin path:  " << QLibraryInfo::location ( QLibraryInfo::PluginsPath ).toLatin1().data() << std::endl;
+#else
+   std::cout << "Library path: " << QLibraryInfo::path ( QLibraryInfo::LibrariesPath ).toLatin1().data() << std::endl;
+   std::cout << "Plugin path:  " << QLibraryInfo::path ( QLibraryInfo::PluginsPath ).toLatin1().data() << std::endl;
+#endif
 }
 
 // Print file to stream [static]
@@ -397,10 +404,16 @@ void QEGui::addGui( QEForm* gui, QString customisationName )
             recentMenuAction = recentFiles[i];
 
             // Promote the action to the top of all the menus it is in
-            QList<QWidget*> assocWidgets = recentMenuAction->associatedWidgets();
-            for( int j = 0; j < assocWidgets.count(); j++ )
+            //
+#if QT_VERSION < 0x060000
+            QList<QWidget*> assocObjects = recentMenuAction->associatedWidgets();
+#else
+            QList<QObject*> assocObjects = recentMenuAction->associatedObjects();
+#endif
+            for( int j = 0; j < assocObjects.count(); j++ )
             {
-                QWidget* menu = assocWidgets[j];
+                QWidget* menu = qobject_cast<QWidget*>( assocObjects.value( j ) );
+                if( !menu ) continue;
                 menu->removeAction( recentMenuAction );
                 QAction* beforeAction = 0;
                 if( menu->actions().count() )

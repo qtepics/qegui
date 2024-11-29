@@ -3,7 +3,7 @@
  *  This file is part of the EPICS QT Framework, initially developed at the
  *  Australian Synchrotron.
  *
- *  Copyright (c) 2013-2014 Australian Synchrotron
+ *  Copyright (c) 2013-2024 Australian Synchrotron
  *
  *  The EPICS QT Framework is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
@@ -34,6 +34,7 @@
 
 #include "aboutDialog.h"
 #include "ui_aboutDialog.h"
+#include <QtGlobal>
 #include <QAction>
 #include <QApplication>
 #include <QClipboard>
@@ -43,9 +44,11 @@
 #include <QLabel>
 #include <QLibraryInfo>
 #include <QMenu>
+#include <QMetaType>
 #include <QProcessEnvironment>
 #include <QString>
 #include <QVariantList>
+#include <QEPlatform.h>
 
 #define DEBUG qDebug() << "aboutDialog" << __LINE__ << __FUNCTION__ << "  "
 
@@ -91,7 +94,11 @@ aboutDialog::aboutDialog (
    // Versions
    ui->QEGuiVersionLabel->setText (QEGuiVersion);
 
+#if QT_VERSION < 0x060000
    ui->QtInstalledPluginsLabel->setText (QLibraryInfo::location (QLibraryInfo::PluginsPath));
+#else
+   ui->QtInstalledPluginsLabel->setText (QLibraryInfo::path (QLibraryInfo::PluginsPath));
+#endif
    ui->QEFrameworkVersionQEGuiLabel->setText (QEFrameworkVersionQEGui);
    ui->QEFrameworkVersionUILoaderLabel->setText (QEFrameworkVersionUILoader);
    ui->QEFrameworkAttributes->setText (QEFrameworkAttributes);
@@ -207,9 +214,9 @@ bool aboutDialog::decode (const QVariant data, CopyMode & mode, int &row)
 {
    QTableWidget* table = ui->windowsTable;      // alias
 
-   const QVariant::Type vtype = data.type ();
+   const QMetaType::Type vtype = QEPlatform::metaType( data );
 
-   if (vtype != QVariant::List) return false;
+   if (vtype != QMetaType::QVariantList) return false;
 
    const QVariantList dataArray = data.toList ();
 
