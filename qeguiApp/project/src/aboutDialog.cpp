@@ -3,7 +3,7 @@
  *  This file is part of the EPICS QT Framework, initially developed at the
  *  Australian Synchrotron.
  *
- *  Copyright (c) 2013-2024 Australian Synchrotron
+ *  Copyright (c) 2013-2025 Australian Synchrotron
  *
  *  The EPICS QT Framework is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
@@ -49,47 +49,50 @@
 #include <QString>
 #include <QVariantList>
 #include <QEPlatform.h>
+#include <QEFrameworkVersion.h>
+#include <caQtDmInterface.h>
 
 #define DEBUG qDebug() << "aboutDialog" << __LINE__ << __FUNCTION__ << "  "
 
 //------------------------------------------------------------------------------
 //
 aboutDialog::aboutDialog (
-      QString QEGuiVersion,                     // Version info and the build date/time at compile time of QEGui
-      QString QEFrameworkVersionQEGui,          // Version info and the build date/time at compile time of the copy of QEFramework library loaded by QEGui
-      QString QEFrameworkVersionUILoader,       // Version info and the build date/time at compile time of the copy of QEPlugin library loaded by QUiLoader while creating QE widgets
-      QString EPICSVersion,                     // Version of EPICS base
-      QString ACAIVersion,                      // Version of ACAI
-      QString QWTVersion,                       // Version of QWT
-      QString QEFrameworkAttributes,            // QEFramework compile time attributes
+    QString QEFrameworkVersionUILoader,       // Version info and the build date/time at compile time of the copy of QEPlugin library loaded by QUiLoader while creating QE widgets
 
-      QString macroSubstitutions,               // Macro substitutions (-m parameter)
-      QStringList pathList,                     // Path list (-p parameter)
-      QStringList envPathList,                  // Path list (environment variable)
-      QString userLevel,                        // Current user level
+    QString macroSubstitutions,               // Macro substitutions (-m parameter)
+    QStringList pathList,                     // Path list (-p parameter)
+    QStringList envPathList,                  // Path list (environment variable)
+    QString userLevel,                        // Current user level
 
-      QStringList windowTitles,                 // Window titles (windowTitles, windowFiles, windowMacroSubstitutions must be same length)
-      QStringList windowFiles,                  // Window file name (windowTitles, windowFiles, windowMacroSubstitutions must be same length)
-      QStringList windowMacroSubstitutions,     // Window macro substitutions (windowTitles, windowFiles, windowMacroSubstitutions must be same length)
+    QStringList windowTitles,                 // Window titles (windowTitles, windowFiles, windowMacroSubstitutions must be same length)
+    QStringList windowFiles,                  // Window file name (windowTitles, windowFiles, windowMacroSubstitutions must be same length)
+    QStringList windowMacroSubstitutions,     // Window macro substitutions (windowTitles, windowFiles, windowMacroSubstitutions must be same length)
 
-      QString configurationFile,                // Configuration file
-      QString configurationName,                // Configuration name
-      QString autoSaveConfigStatus,             // Current state of Configuration Auto Save
+    QString configurationFile,                // Configuration file
+    QString configurationName,                // Configuration name
+    QString autoSaveConfigStatus,             // Current state of Configuration Auto Save
 
-      QString defaultWindowCustomisationFile,   // Default window customisation file
-      QString defaultWindowCustomisationName,   // Default window customisation name
-      QString startupWindowCustomisationName,   // Startup window customisation name (for windows created at startup)
-      QString internalDefaultCustomisationName, // Internal Default window customisation set name
-      QString windowCustomisationLoadLog,       // Log of window customisations
+    QString defaultWindowCustomisationFile,   // Default window customisation file
+    QString defaultWindowCustomisationName,   // Default window customisation name
+    QString startupWindowCustomisationName,   // Startup window customisation name (for windows created at startup)
+    QString internalDefaultCustomisationName, // Internal Default window customisation set name
+    QString windowCustomisationLoadLog,       // Log of window customisations
 
-      int disconnectedCount,                    // Number of disconnected channels
-      int connectedCount,                       // Number of connected channels
+    int disconnectedCount,                    // Number of disconnected channels
+    int connectedCount,                       // Number of connected channels
 
-      QWidget* parent) :
-   QEDialog (parent),
-   ui (new Ui::aboutDialog)
+    QWidget* parent) :
+    QEDialog (parent),
+    ui (new Ui::aboutDialog)
 {
    ui->setupUi (this);
+
+   // Versions and build times of QEGui itself and the QE framework library.
+   //
+   const QString QEGuiVersion = QString (QE_VERSION_STRING " " QE_VERSION_DATE_TIME);
+   const QString QEFrameworkVersionQEGui = QString ("%1 %2")
+                                               .arg (QEFrameworkVersion::getString())
+                                               .arg (QEFrameworkVersion::getDateTime());
 
    // Versions
    ui->QEGuiVersionLabel->setText (QEGuiVersion);
@@ -101,15 +104,23 @@ aboutDialog::aboutDialog (
 #endif
    ui->QEFrameworkVersionQEGuiLabel->setText (QEFrameworkVersionQEGui);
    ui->QEFrameworkVersionUILoaderLabel->setText (QEFrameworkVersionUILoader);
-   ui->QEFrameworkAttributes->setText (QEFrameworkAttributes);
 
-   // Note: the version strings are prefixed by the text "EPICS", "ACAI" and "QWT".
+   // Get and basic framework attributes and modify if needs be.
    //
-   ui->EPICSVersionLabel->setText (EPICSVersion);
-   ui->ACAIVersionLabel->setText (ACAIVersion);
-   ui->QWTVersionLabel->setText (QWTVersion);
+   QString attributes = QEFrameworkVersion::getAttributes();
+   CaQtDmInterface::updateAttributes (attributes);
+
+   ui->QEFrameworkAttributes->setText (attributes);
+
+   // Note: all but the QT version strings are prefixed by the text "EPICS", "ACAI" and "QWT".
+   //
+   ui->QTVersionLabel->setText ("QT " + QEFrameworkVersion::getQtVersionStr());
+   ui->EPICSVersionLabel->setText (QEFrameworkVersion::getEpicsVersionStr());
+   ui->ACAIVersionLabel->setText (QEFrameworkVersion::getAcaiVersionStr());
+   ui->QWTVersionLabel->setText (QEFrameworkVersion::getQwtVersionStr());
 
    // Environment
+   //
    ui->userLevelLabel->setText (userLevel);
    ui->macroSubstitutionsTextEdit->setPlainText (macroSubstitutions);
 
@@ -139,7 +150,7 @@ aboutDialog::aboutDialog (
 
    // Windows
    int rowCount = std::min (std::min (windowTitles.count (), windowFiles.count ()),
-                            windowMacroSubstitutions.count ());
+                           windowMacroSubstitutions.count ());
    ui->windowsTable->setRowCount (rowCount);
 
    for (int i = 0; i < rowCount; i++) {
@@ -186,7 +197,7 @@ aboutDialog::aboutDialog (
 
    table->setContextMenuPolicy (Qt::CustomContextMenu);
    QObject::connect (table, SIGNAL (customContextMenuRequested (const QPoint &)),
-                     this,  SLOT   (contextMenuRequested       (const QPoint &)));
+                    this,  SLOT   (contextMenuRequested       (const QPoint &)));
 }
 
 //------------------------------------------------------------------------------
@@ -269,7 +280,7 @@ void aboutDialog::contextMenuRequested (const QPoint & pos)
    menu->addAction (action);
 
    QObject::connect (menu, SIGNAL (triggered            (QAction*)),
-                     this, SLOT   (contextMenuTriggered (QAction*)));
+                    this, SLOT   (contextMenuTriggered (QAction*)));
 
    menu->exec (globalPos);
 

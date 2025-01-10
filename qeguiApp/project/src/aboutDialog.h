@@ -3,7 +3,7 @@
  *  This file is part of the EPICS QT Framework, initially developed at the
  *  Australian Synchrotron.
  *
- *  Copyright (c) 2013-2024 Australian Synchrotron
+ *  Copyright (c) 2013-2025 Australian Synchrotron
  *
  *  The EPICS QT Framework is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
@@ -50,37 +50,32 @@ class aboutDialog : public QEDialog
 
 public:
    explicit aboutDialog (
-         QString QEGuiVersion,                   // Version info and the build date/time at compile time of QEGui
-         QString QEFrameworkVersionQEGui,        // Version info and the build date/time at compile time of the copy of QEFramework library loaded by QEGui
-         QString QEFrameworkVersionUILoader,     // Version info and the build date/time at compile time of the copy of QEPlugin library loaded by QUiLoader while creating QE widgets
-         QString EPICSVersion,                   // Version of EPICS base
-         QString ACAIVersion,                    // Version of ACAI
-         QString QWTVersion,                     // Version of QWT
-         QString QEFrameworkAttributes,          // QEFramework compile time attributes
+       QString QEFrameworkVersionUILoader,     // Version info and the build date/time at compile time of the copy of QEPlugin library loaded by QUiLoader while creating QE widgets
 
-         QString macroSubstitutions,             // Macro substitutions (-m parameter)
-         QStringList pathList,                   // Path list (-p parameter)
-         QStringList envPathList,                // Path list (environment variable)
-         QString userLevel,                      // Current user level
+       QString macroSubstitutions,             // Macro substitutions (-m parameter)
+       QStringList pathList,                   // Path list (-p parameter)
+       QStringList envPathList,                // Path list (environment variable)
+       QString userLevel,                      // Current user level
 
-         QStringList windowTitles,               // Window titles (windowTitles, windowFiles, windowMacroSubstitutions must be same length)
-         QStringList windowFiles,                // Window file name (windowTitles, windowFiles, windowMacroSubstitutions must be same length)
-         QStringList windowMacroSubstitutions,   // Window macro substitutions (windowTitles, windowFiles, windowMacroSubstitutions must be same length)
+       QStringList windowTitles,               // Window titles (windowTitles, windowFiles, windowMacroSubstitutions must be same length)
+       QStringList windowFiles,                // Window file name (windowTitles, windowFiles, windowMacroSubstitutions must be same length)
+       QStringList windowMacroSubstitutions,   // Window macro substitutions (windowTitles, windowFiles, windowMacroSubstitutions must be same length)
 
-         QString configurationFile,              // Configuration file
-         QString configurationName,              // Configuration name
-         QString autoSaveConfigStatus,           // Current state of Configuration Auto Save
+       QString configurationFile,              // Configuration file
+       QString configurationName,              // Configuration name
+       QString autoSaveConfigStatus,           // Current state of Configuration Auto Save
 
-         QString defaultWindowCustomisationFile, // Default window customisation file
-         QString defaultWindowCustomisationName, // Default window customisation name
-         QString startupWindowCustomisationName, // Window customisation name for windows created at startup
-         QString currentCustomisation,           // Internal default window customisation name (the default default!)
-         QString windowCustomisationLoadLog,     // Log of window customisations
+       QString defaultWindowCustomisationFile, // Default window customisation file
+       QString defaultWindowCustomisationName, // Default window customisation name
+       QString startupWindowCustomisationName, // Window customisation name for windows created at startup
+       QString currentCustomisation,           // Internal default window customisation name (the default default!)
+       QString windowCustomisationLoadLog,     // Log of window customisations
 
-         int disconnectedCount,                  // Number of disconnected channels
-         int connectedCount,                     // Number of connected channels
+       int disconnectedCount,                  // Number of disconnected channels
+       int connectedCount,                     // Number of connected channels
 
-         QWidget *parent = 0);
+       QWidget *parent = 0);
+
    ~aboutDialog();
 
 private:
