@@ -101,7 +101,10 @@ Mandatory arguments to long options are mandatory for short options too.
 
 -z, --out_of_service
         Provides the name of a file that defines the list of out of service PVs. This
-        modifies the displayed "alarm" colour. 
+        modifies the displayed "alarm" colour.
+
+--read_only
+        Runs qegui in read only mode, i.e. PV variables can be read, but not written to.
  
 -h, --help
         Display help text explaining these options and exit.
@@ -153,7 +156,7 @@ A leading http:// is not required but is permitted.
 
 QE_ARCHIVE_PATTERN - This variable specifies the pattern match applied when the framework
 retrieves sets of channel names from the archiver. The pattern is a regular expression.
-If undefined/empty then all names are retrived.
+If undefined/empty then all names are retrived. Applies to Channel Access arhiver only.
 
 
 QE_RECORD_FIELD_LIST - This variable specifies a file that defines the set of field

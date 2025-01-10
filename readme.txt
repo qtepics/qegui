@@ -6,24 +6,22 @@ number of auxilary components. Currently, all the documentation is located
 within theframework component.
 
 Key documentation:
-  Release notes:                               qeframework/documentation/releasenotes.txt
-  Framework overview:                          qeframework/documentation/QE_FrameworkOverview.pdf
-  Setting up for development:                  qeframework/documentation/QE_GettingStarted.pdf
-  Developing user interfaces and applications: qeframework/documentation/QE_QEGuiAndUserInterfaceDesign.pdf
+  Release notes:                               qtepics.github.io/release_notes.md
+  Framework overview:                          qtepics.github.io/documentation/QE_FrameworkOverview.pdf
+  Setting up for development:                  qtepics.github.io/documentation/QE_GettingStarted.pdf
+  Developing user interfaces and applications: qtepics.github.io/documentation/QE_QEGuiAndUserInterfaceDesign.pdf
 
 
 Key Qt project files:
   QE Framework:                                qeframework/qeframeworkSup/project/framework.pro
-  QEGui (control GUI application)              ./qeguiApp/project/QEGuiApp.pro
+  QEGui (control GUI application)              qegui/qeguiApp/project/QEGuiApp.pro
 
 
 Download from:
-  http://sourceforge.net/projects/epicsqt/     pre component splitsplit
-  http://github.com/qtepics/                   post component splitsplit
+  http://github.com/qtepics/
 
 
 Contact:
-  andrew.rhyder@synchrotron.org.au
-  andrew.starritt@synchrotron.org.au
+  andrews@ansto.gov.au
 
 
