@@ -1,7 +1,6 @@
-# $File: //ASP/tec/gui/qegui/trunk/Makefile $
-# $Revision: #1 $
-# $DateTime: 2016/10/21 21:01:47 $
-# Last checked in by: $Author: starritt $
+# File: Makefile
+# DateTime: Mon May 26 17:15:52 2025
+# Last checked in by: starritt
 #
 # Makefile at top of application tree
 

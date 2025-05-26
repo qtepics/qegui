@@ -1,7 +1,6 @@
-# $File: //ASP/tec/gui/qegui/trunk/qeguiApp/Makefile $
-# $Revision: #9 $
-# $DateTime: 2020/06/17 14:36:12 $
-# Last checked in by: $Author: starritt $
+# File: qeguiApp/Makefile
+# DateTime: Mon May 26 17:15:52 2025
+# Last checked in by: starritt
 #
 # This make file is the bridge beween the EPICS build system and the Qt project qmake/make paradigm.
 #

@@ -1,10 +1,9 @@
 #!/bin/bash
 #
 
-# $File: //ASP/tec/gui/qegui/trunk/package/make_epicsqt_rpm $
-# $Revision: #8 $
-# $DateTime: 2020/08/02 19:47:08 $
-# Last checked in by: $Author: starritt $
+# File: package/make_epicsqt_rpm
+# DateTime: Mon May 26 17:15:52 2025
+# Last checked in by: starritt
 #
 
 iam=$( basename $0 )

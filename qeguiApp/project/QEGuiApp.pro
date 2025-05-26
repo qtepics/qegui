@@ -1,7 +1,6 @@
-# $File: //ASP/tec/gui/qegui/trunk/qeguiApp/project/QEGuiApp.pro $
-# $Revision: #23 $
-# $DateTime: 2024/03/06 16:38:04 $
-# Last checked in by: $Author: starritt $
+# File: qeguiApp/project/QEGuiApp.pro
+# DateTime: Mon May 26 17:15:52 2025
+# Last checked in by: starritt
 #
 # Copyright (c) 2009-2022 Australian Synchrotron
 #

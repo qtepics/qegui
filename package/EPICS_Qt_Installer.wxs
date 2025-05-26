@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="windows-1252"?>
 <!--
-$File: //ASP/tec/gui/qegui/trunk/package/EPICS_Qt_Installer.wxs $
-$Revision: #33 $
-$DateTime: 2024/12/18 11:52:01 $
-Last checked in by: $Author: starritt $
+File: package/EPICS_Qt_Installer.wxs
+DateTime: Mon May 26 17:15:52 2025
+Last checked in by: starritt
 
 WiX configuration file used to create an msi installer for EPICS Qt,
 i.e. the qegui and qerad programs and associated framework libraries together
