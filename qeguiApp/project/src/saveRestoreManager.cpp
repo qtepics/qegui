@@ -3,7 +3,7 @@
  *  This file is part of the EPICS QT Framework, initially developed at the
  *  Australian Synchrotron.
  *
- *  Copyright (c) 2009-2024 Australian Synchrotron
+ *  Copyright (c) 2009-2025 Australian Synchrotron
  *
  *  The EPICS QT Framework is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
@@ -70,8 +70,8 @@ void saveRestoreManager::saveRestore( SaveRestoreSignal::saveRestoreOptions opti
                 appElement.addValue( "MainWindows", app->getMainWindowCount() );
 
                 // Note the current user level
-                QE meta;   // declare an object instance for enumToString
-                appElement.addValue ("UserLevel", QEUtilities::enumToString( meta, "userLevels", getUserLevel() ));
+                const QE::UserLevels userLevel = getUserLevel();
+                appElement.addValue( "UserLevel", QE::UserLevelsImage (userLevel));
             }
             break;
 
@@ -91,10 +91,8 @@ void saveRestoreManager::saveRestore( SaveRestoreSignal::saveRestoreOptions opti
                 // Note the current user level
                 QString levelString;
                 QEGuiData.getValue( "UserLevel", levelString );
-                QE meta;   // declare an object instance for stringToEnum
-                QE::UserLevels levelInt;
                 bool ok;
-                levelInt = (QE::UserLevels) QEUtilities::stringToEnum( meta, "userLevels", levelString, &ok );
+                QE::UserLevels levelInt = QE::UserLevelsValue( levelString, ok );
                 if( ok )
                 {
                     setUserLevel( levelInt );
