@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="windows-1252"?>
 <!--
 File: package/EPICS_Qt_Installer.wxs
-DateTime: Tue May 27 13:01:45 2025
+DateTime: Fri Dec  5 14:55:09 2025
 Last checked in by: starritt
 
 WiX configuration file used to create an msi installer for EPICS Qt,
@@ -26,15 +26,15 @@ candle_light.bat <version>
     <Product Name="EPICS Qt" Manufacturer="Australian Synchrotron"
         Id="2B17CD85-2A83-422E-AAAB-B33A654DFCE4"
         UpgradeCode="F6D802DD-2885-415C-BA1D-8635023AD773"
-        Language="1033" Codepage="1252" Version="4.1.3">
+        Language="1033" Codepage="1252" Version="4.1.4">
         
         <Package Id="*" Keywords="Installer" 
-            Description="EPICS Qt 4.1.3 Installer"
+            Description="EPICS Qt 4.1.4 Installer"
             Comments="EPICS Qt is an open source software developed by the Australian Synchrotron." Manufacturer="Australian Synchrotron"
             InstallerVersion="100" Languages="1033" Compressed="yes" SummaryCodepage="1252"/>
 
         <Upgrade Id="F6D802DD-2885-415C-BA1D-8635023AD773">
-            <UpgradeVersion OnlyDetect="no" Property="PREVIOUSFOUND" Minimum="1.0.0" IncludeMinimum="yes" Maximum="4.1.3" IncludeMaximum="no"/>
+            <UpgradeVersion OnlyDetect="no" Property="PREVIOUSFOUND" Minimum="1.0.0" IncludeMinimum="yes" Maximum="4.1.4" IncludeMaximum="no"/>
         </Upgrade>
 
         <InstallExecuteSequence>
