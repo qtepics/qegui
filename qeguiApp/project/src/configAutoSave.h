@@ -1,39 +1,14 @@
 /*  configAutoSave.h
  *
- *  This file is part of the EPICS QT Framework, initially developed at the Australian Synchrotron.
+ *  This file is part of the EPICS QT Framework, initially developed at the
+ *  Australian Synchrotron.
  *
- *  The EPICS QT Framework is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU Lesser General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
+ *  SPDX-FileCopyrightText: 2016-2025 Australian Synchrotron
+ *  SPDX-License-Identifier: LGPL-3.0-only
  *
- *  The EPICS QT Framework is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU Lesser General Public License for more details.
- *
- *  You should have received a copy of the GNU Lesser General Public License
- *  along with the EPICS QT Framework.  If not, see <http://www.gnu.org/licenses/>.
- *
- *  Copyright (c) 2016 Australian Synchrotron
- *
- *  Author:
- *    Andrew Rhyder
- *  Contact details:
- *    andrew.rhyder@synchrotron.org.au
- *
- * DESCRIPTION:
- *
- * This class saves the current configuration at regular intervals.
- * This configuration is deleted on a clean exit.
- *
- * When starting the application can check for a saved configuration.
- * If present, this implies the application did not exit cleanly.
- * The user can be given the opportunity to restore to the saved configuraiton.
- * This may also be useful when debugging a crash.
- *
- * The standard configuration save/restore mechanism available to the user is used to implement this auto save function.
- *
+ *  Author:     Andrew Rhyder
+ *  Maintainer: Andrew Starritt
+ *  Contact:    andrews@ansto.gov.au
  */
 
 #ifndef CONFIGAUTOSAVE_H
