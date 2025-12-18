@@ -11,6 +11,21 @@
  *  Contact:    andrews@ansto.gov.au
  */
 
+/*
+ * DESCRIPTION:
+ *
+ * This class saves the current configuration at regular intervals.
+ * This configuration is deleted on a clean exit.
+ *
+ * When starting the application can check for a saved configuration.
+ * If present, this implies the application did not exit cleanly.
+ * The user can be given the opportunity to restore to the saved configuraiton.
+ * This may also be useful when debugging a crash.
+ *
+ * The standard configuration save/restore mechanism available to the user
+ * is used to implement this auto save function.
+ */
+
 #ifndef CONFIGAUTOSAVE_H
 #define CONFIGAUTOSAVE_H
 
