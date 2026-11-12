@@ -1,8 +1,9 @@
 #!/bin/bash
 #
 
+# Repo: tec_gui/qegui
 # File: package/make_epicsqt_rpm
-# DateTime: Mon May 26 17:15:52 2025
+# DateTime: Thu Oct 29 13:56:38 2026
 # Last checked in by: starritt
 #
 
@@ -58,10 +59,10 @@ function copy_file() {
    local tgt=${2}
    local actual
    local sym_link
-   
+
    if [ ! -e  ${file:?} ] ; then
-      echo "skipping ${file:?}"
-         
+      echo "skipping ${file:?} - does not exists"
+
    elif [ -L ${file:?} ] ; then
        # e.g. libca.so -> libca.so.4.13.1
        #
@@ -71,18 +72,20 @@ function copy_file() {
 
        echo "including ${actual}  with symbolic link ${sym_link:?} -> ${base_actual:?}"
        cp -f ${actual:?}  ${tgt:?}/
-       
+
        # Sometimes duplicates, so hide errors.
        ln -s  ${base_actual:?}  ${tgt:?}/${sym_link:?}  2>/dev/null
-       
+
    else
       # Just copy as is
       #
-      echo "including ${file}"
+      echo "including ${file} at"
       cp  ${file:?}  ${tgt:?}/   
    fi
 }
 
+
+type fpm  || terminate "fpm ruby script has not been installed."
 
 # ----------------------------------------------------------------------
 # Auto generate from qegui
@@ -118,11 +121,13 @@ libqxcb=${qtplugindir:?}/platforms/libqxcb.so
 designer=${qtstuff:?}/bin/designer
 qeplugin=$(   echo $QT_PLUGIN_PATH | tr ':' '\n' | grep qeframework )/designer/libQEPlugin.so
 fsm_plugin=$( echo $QT_PLUGIN_PATH | tr ':' '\n' | grep qtfsm       )/designer/libfsm_plugin.so
+vcl_plugin=$( echo $QT_PLUGIN_PATH | tr ':' '\n' | grep qevcl       )/designer/libvcl_plugin.so
 
 echo "libqxcb    = ${libqxcb:?}"
 echo "designer   = ${designer:?}"
 echo "qeplugin   = ${qeplugin:?}"
 echo "fsm_plugin = ${fsm_plugin:?}"
+echo "vcl_plugin = ${vcl_plugin:?}"
 echo ""
 
 # Target install dir - where the files will be installed
@@ -163,12 +168,21 @@ echo ""
 echo "including ${qtlibdir:?}/..."
 
 # Use ldd on libqxcb.so and qegui etc. to find required qt libraries.
+# First create list of executables and shared libraries for ldd.
 #
-ldd_item_list="${qegui:?} ${designer:?} ${libqxcb:?} ${qeplugin:?} ${fsm_plugin:?}"
+ldd_item_list="${qegui:?} ${designer:?} ${libqxcb:?} ${qeplugin:?} ${fsm_plugin:?} ${vcl_plugin:?}"
 
+#echo ${ldd_item_list:?} ; echo ""
+# ldd ${ldd_item_list:?} | awk '{print $3}' | sort -u  > /tmp/the_lot
+
+# Form the qt library list
+#
+echo "qtstuff  ${qtstuff}"
 lib_list=$( ldd ${ldd_item_list:?} | grep "${qtstuff:?}" | awk '{print $3}' | sort -u )
+
 for the_lib in ${lib_list} ; do
    copy_file ${the_lib:?}  ${source_dir:?}/qtlib/
+   sleep 0.1
 done
 echo ""
 
@@ -183,27 +197,24 @@ echo ""
 echo "including application plugins..."
 copy_file ${qeplugin:?}     ${source_dir:?}/lib/designer/
 copy_file ${fsm_plugin:?}   ${source_dir:?}/lib/designer/
+copy_file ${vcl_plugin:?}   ${source_dir:?}/lib/designer/
 echo ""
 
 # Search for Qt/QE/QWT/EPICS sepecific libraries.
 # We search only qegui for libraries, it seems to work.
 #
+# Find all other libraries - exclude qtstuff and system libs
+#
+lib_list=$( ldd ${ldd_item_list:?} | grep -v "${qtstuff:?}" | grep -v '=> /lib64/' | grep -v '=> /usr/lib64/' | awk '{print $3}' | sort -u )
+
 echo "including libraries..."
-for pattern in ${EPICS_BASE} libacai ${QE_FRAMEWORK} libprotobuf libqwt libav     \
-               libmp3lame  libopencore-amrnb  libopencore-amrwb libschroedinger   \
-               libsoxr libswresample libvo-amrwbenc libx264 libx265 libxvidcore   \
-               libva  libopus  libfdk-aac  ADSupport ; do
-   lib_path=$( ldd ${qegui:?} | grep "${pattern}" | grep -v ${qtstuff:?} | awk '{print $3}' )
-   if [ -z "${lib_path}" ] ; then
-      echo "skipping ${pattern}"
-      continue
-   fi
-   for lib in ${lib_path} ; do
-      copy_file  ${lib:?}   ${source_dir:?}/lib/
-   done
+for the_lib in ${lib_list} ; do
+   copy_file ${the_lib:?}  ${source_dir:?}/lib/
+   sleep 0.1
 done
 echo ""
 
+echo "creating scripts..."
 # Create wrapper script for qegui
 #
 cat <<HERE >${usr_local_bin:?}/qegui
@@ -252,7 +263,6 @@ chmod a+rx ${usr_local_bin:?}/designer
 
 echo "construction complete"
 
-
 # Extract system info
 #
 sysvern=el$(  rpm -q centos-release | cut -d"-" -f3  | sed -e 's/ //g' )
@@ -269,7 +279,8 @@ echo "Creating ${target:?}"
 #
 cd ${workdir:?}
 
-echo ""
+echo "running fpm..."
+
 fpm  --verbose -s dir -t rpm  --name=${package} --iteration ${sysvern:?}  \
      --license="LGPL"  --vendor="Australian Synchrotron"     \
      --provides="epicsQt"     --rpm-digest=sha1    --version=${version}  \

@@ -231,8 +231,8 @@ MainWindow::MainWindow( QEGui* appIn, QString fileName, QString title,
    // Give the main window's UserMessage class a unique form ID so only messages from
    // the form in each main window are displayed that main window's status bar
    setFormId( getNextMessageFormId() );
-   setFormFilter( QE::Match );
-   setSourceFilter( QE::None );
+   setFormFilter( QE::MessageFilterOptions::Match );
+   setSourceFilter( QE::MessageFilterOptions::None );
 
    // Present the main form's ui
    ui.setupUi( this );
@@ -1466,7 +1466,7 @@ QDockWidget* MainWindow::loadGuiIntoNewDock( QEForm* gui,
    dock->setWindowTitle( gui->getQEGuiTitle() );
 
    // Set floating if requested
-   dock->setFloating( createOption == QE::DockFloating);
+   dock->setFloating( createOption == QE::CreationOptions::DockFloating);
 
    // Set hidden if required
    dock->setVisible( !hidden );
@@ -1489,18 +1489,18 @@ Qt::DockWidgetArea MainWindow::creationOptionToDockLocation( QE::CreationOptions
    switch( createOption )
    {
       default:
-      case QE::DockFloating:
-      case QE::DockLeft:
-      case QE::DockLeftTabbed:     return Qt::LeftDockWidgetArea;
+      case QE::CreationOptions::DockFloating:
+      case QE::CreationOptions::DockLeft:
+      case QE::CreationOptions::DockLeftTabbed:     return Qt::LeftDockWidgetArea;
 
-      case QE::DockRight:
-      case QE::DockRightTabbed:    return Qt::RightDockWidgetArea;
+      case QE::CreationOptions::DockRight:
+      case QE::CreationOptions::DockRightTabbed:    return Qt::RightDockWidgetArea;
 
-      case QE::DockTop:
-      case QE::DockTopTabbed:      return Qt::TopDockWidgetArea;
+      case QE::CreationOptions::DockTop:
+      case QE::CreationOptions::DockTopTabbed:      return Qt::TopDockWidgetArea;
 
-      case QE::DockBottom:
-      case QE::DockBottomTabbed:   return Qt::BottomDockWidgetArea;
+      case QE::CreationOptions::DockBottom:
+      case QE::CreationOptions::DockBottomTabbed:   return Qt::BottomDockWidgetArea;
    }
 
 }
@@ -1513,10 +1513,10 @@ QE::CreationOptions MainWindow::dockLocationToCreationOption( Qt::DockWidgetArea
       switch( dockLocation )
       {
          default:
-         case Qt::BottomDockWidgetArea: return QE::DockBottomTabbed;
-         case Qt::TopDockWidgetArea:    return QE::DockTopTabbed;
-         case Qt::LeftDockWidgetArea:   return QE::DockLeftTabbed;
-         case Qt::RightDockWidgetArea:  return QE::DockRightTabbed;
+         case Qt::BottomDockWidgetArea: return QE::CreationOptions::DockBottomTabbed;
+         case Qt::TopDockWidgetArea:    return QE::CreationOptions::DockTopTabbed;
+         case Qt::LeftDockWidgetArea:   return QE::CreationOptions::DockLeftTabbed;
+         case Qt::RightDockWidgetArea:  return QE::CreationOptions::DockRightTabbed;
       }
    }
    else
@@ -1524,10 +1524,10 @@ QE::CreationOptions MainWindow::dockLocationToCreationOption( Qt::DockWidgetArea
       switch( dockLocation )
       {
          default:
-         case Qt::BottomDockWidgetArea: return QE::DockBottom;
-         case Qt::TopDockWidgetArea:    return QE::DockTop;
-         case Qt::LeftDockWidgetArea:   return QE::DockLeft;
-         case Qt::RightDockWidgetArea:  return QE::DockRight;
+         case Qt::BottomDockWidgetArea: return QE::CreationOptions::DockBottom;
+         case Qt::TopDockWidgetArea:    return QE::CreationOptions::DockTop;
+         case Qt::LeftDockWidgetArea:   return QE::CreationOptions::DockLeft;
+         case Qt::RightDockWidgetArea:  return QE::CreationOptions::DockRight;
       }
    }
 }
@@ -1583,7 +1583,7 @@ QWidget* MainWindow::launchGui( QString guiName, QString title, QString customis
    switch( createOption )
    {
       // Open the specified gui in the current window
-      case QE::Open:
+      case QE::CreationOptions::Open:
          {
             QEForm* gui = createGui( guiName, title, customisationName, formHandle, false );  // Note, profile should have been published by signal code
             loadGuiIntoCurrentWindow( gui, true );
@@ -1591,7 +1591,7 @@ QWidget* MainWindow::launchGui( QString guiName, QString title, QString customis
          }
 
          // Open the specified gui in a new tab
-      case QE::NewTab:
+      case QE::CreationOptions::NewTab:
          {
             // Create the gui and if created, load it into a new tab
             QEForm* gui = createGui( guiName, title, customisationName, formHandle );  // Note, profile should have been published by signal code
@@ -1608,7 +1608,7 @@ QWidget* MainWindow::launchGui( QString guiName, QString title, QString customis
          }
 
          // Open the specified gui in a new window
-      case QE::NewWindow:
+      case QE::CreationOptions::NewWindow:
          {
             // Note, profile should have been published by signal code
             MainWindow* w = new MainWindow( app, guiName, title, customisationName,
@@ -1618,15 +1618,15 @@ QWidget* MainWindow::launchGui( QString guiName, QString title, QString customis
          }
 
          // Create the specified gui in a new dock
-      case QE::DockLeft:
-      case QE::DockRight:
-      case QE::DockTop:
-      case QE::DockBottom:
-      case QE::DockLeftTabbed:
-      case QE::DockRightTabbed:
-      case QE::DockTopTabbed:
-      case QE::DockBottomTabbed:
-      case QE::DockFloating:
+      case QE::CreationOptions::DockLeft:
+      case QE::CreationOptions::DockRight:
+      case QE::CreationOptions::DockTop:
+      case QE::CreationOptions::DockBottom:
+      case QE::CreationOptions::DockLeftTabbed:
+      case QE::CreationOptions::DockRightTabbed:
+      case QE::CreationOptions::DockTopTabbed:
+      case QE::CreationOptions::DockBottomTabbed:
+      case QE::CreationOptions::DockFloating:
          {
             // Only create the dock if another by the same name does not exist.
             // This avoids the following problem scenario:
@@ -1856,7 +1856,7 @@ void  MainWindow::requestAction( const QEActionRequests& request )
                dock->adjustSize();
 
                // Set floating if requested
-               dock->setFloating( component->creationOption == QE::DockFloating );
+               dock->setFloating( component->creationOption == QE::CreationOptions::DockFloating );
 
 
                // Set the state of the dock visibility check box. The dock will be hidden later if required to match this
@@ -2866,7 +2866,7 @@ void MainWindow::saveRestore( SaveRestoreSignal::saveRestoreOptions option )
                            QE::CreationOptions createOption;
                            if( floating )
                            {
-                              createOption = QE::DockFloating;
+                              createOption = QE::CreationOptions::DockFloating;
                            }
                            else
                            {

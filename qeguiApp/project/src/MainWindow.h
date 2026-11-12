@@ -3,7 +3,7 @@
  *  This file is part of the EPICS QT Framework, initially developed at the
  *  Australian Synchrotron.
  *
- *  SPDX-FileCopyrightText: 2009-2025 Australian Synchrotron
+ *  SPDX-FileCopyrightText: 2009-2026 Australian Synchrotron
  *  SPDX-License-Identifier: LGPL-3.0-only
  *
  *  Author:     Andrew Rhyder
@@ -153,7 +153,7 @@ private:
     void loadGuiIntoNewTab( QEForm* gui );                  // Load a new gui into a new tab
     QDockWidget* loadGuiIntoNewDock( QEForm* gui,
                                      bool hidden = false,
-                                     QE::CreationOptions createOption = QE::DockFloating,
+                                     QE::CreationOptions createOption = QE::CreationOptions::DockFloating,
                                      Qt::DockWidgetArea allowedAreas = Qt::AllDockWidgetAreas,
                                      QDockWidget::DockWidgetFeature features = QDockWidget::DockWidgetFeatureMask,
                                      QRect geom = QRect( 0, 0, 0, 0 ) ); // Load a new gui into a new dock

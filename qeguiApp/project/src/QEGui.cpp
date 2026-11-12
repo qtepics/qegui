@@ -3,7 +3,7 @@
  *  This file is part of the EPICS QT Framework, initially developed at the
  *  Australian Synchrotron.
  *
- *  SPDX-FileCopyrightText: 2009-2025 Australian Synchrotron
+ *  SPDX-FileCopyrightText: 2009-2026 Australian Synchrotron
  *  SPDX-License-Identifier: LGPL-3.0-only
  *
  *  Author:     Andrew Rhyder
@@ -78,9 +78,9 @@ int QEGui::run()
 
     // Restore the user level passwords
     QSettings settings( "epicsqt", "QEGui");
-    setUserLevelPassword( QE::User, settings.value( "userPassword" ).toString() );
-    setUserLevelPassword( QE::Scientist, settings.value( "scientistPassword" ).toString() );
-    setUserLevelPassword( QE::Engineer, settings.value( "engineerPassword" ).toString() );
+    setUserLevelPassword( QE::UserLevels::User, settings.value( "userPassword" ).toString() );
+    setUserLevelPassword( QE::UserLevels::Scientist, settings.value( "scientistPassword" ).toString() );
+    setUserLevelPassword( QE::UserLevels::Engineer, settings.value( "engineerPassword" ).toString() );
 
     // Restore recent files
     int i;
@@ -182,9 +182,9 @@ int QEGui::run()
     int ret = exec();
 
     // Save passwords
-    settings.setValue( "userPassword", getUserLevelPassword( QE::User ));
-    settings.setValue( "scientistPassword", getUserLevelPassword( QE::Scientist ));
-    settings.setValue( "engineerPassword", getUserLevelPassword( QE::Engineer ));
+    settings.setValue( "userPassword", getUserLevelPassword( QE::UserLevels::User ));
+    settings.setValue( "scientistPassword", getUserLevelPassword( QE::UserLevels::Scientist ));
+    settings.setValue( "engineerPassword", getUserLevelPassword( QE::UserLevels::Engineer ));
 
     // Save recent files
     settings.setValue( "recentFileCount", recentFiles.count() );
@@ -207,30 +207,33 @@ void QEGui::printVersion ()
               << QE_VERSION_DATE_TIME <<  " (using QT " << QT_VERSION_STR << ")" << std::endl;
 
    std::cout  << "Framework version: "
-              << QEFrameworkVersion::getString().toLatin1().data()       << "  "
-              << QEFrameworkVersion::getDateTime().toLatin1().data()     << " (using QT "
-              << QEFrameworkVersion::getQtVersionStr().toLatin1().data() << ")" << std::endl;
+              << QEFrameworkVersion::getString().toStdString()       << "  "
+              << QEFrameworkVersion::getDateTime().toStdString()     << " (using QT "
+              << QEFrameworkVersion::getQtVersionStr().toStdString() << ")" << std::endl;
 
    QString attributes = QEFrameworkVersion::getAttributes();
    CaQtDmInterface::updateAttributes( attributes );
 
-   std::cout  << "Attributes: " << attributes.toLatin1().data() << std::endl;
+   std::cout  << "Attributes: " << attributes.toStdString() << std::endl;
 
-   // Note: the EPICS, ACAI and QWT version strings are prefixed by the text
-   // "EPICS", "ACAI" and "QWT" respectively
+   // Note: the EPICS, ACAI, PVXS and QWT version strings are prefixed by the text
+   // "EPICS", "ACAI", "PVXS" and "QWT" respectively.
    //
-   std::cout  << "Support packages:  " << QEFrameworkVersion::getEpicsVersionStr ().toLatin1().data()
-              << ", " << QEFrameworkVersion::getAcaiVersionStr().toLatin1().data()
-              << " and " << QEFrameworkVersion::getQwtVersionStr().toLatin1().data() << std::endl;
+   std::cout  << "Support packages:  " << QEFrameworkVersion::getEpicsVersionStr ().toStdString()
+              << ", " << QEFrameworkVersion::getAcaiVersionStr().toStdString();
+   if (QEFrameworkVersion::getPvxsInuse()) {
+      std::cout << ", " << QEFrameworkVersion::getPvxsVersionStr().toStdString();
+   }
+   std::cout << " and " << QEFrameworkVersion::getQwtVersionStr().toStdString() << std::endl;
 
    // Provide library/plugin path info
    //
 #if QT_VERSION < 0x060000
-   std::cout << "Library path: " << QLibraryInfo::location ( QLibraryInfo::LibrariesPath ).toLatin1().data() << std::endl;
-   std::cout << "Plugin path:  " << QLibraryInfo::location ( QLibraryInfo::PluginsPath ).toLatin1().data() << std::endl;
+   std::cout << "Library path: " << QLibraryInfo::location ( QLibraryInfo::LibrariesPath ).toStdString() << std::endl;
+   std::cout << "Plugin path:  " << QLibraryInfo::location ( QLibraryInfo::PluginsPath ).toStdString() << std::endl;
 #else
-   std::cout << "Library path: " << QLibraryInfo::path ( QLibraryInfo::LibrariesPath ).toLatin1().data() << std::endl;
-   std::cout << "Plugin path:  " << QLibraryInfo::path ( QLibraryInfo::PluginsPath ).toLatin1().data() << std::endl;
+   std::cout << "Library path: " << QLibraryInfo::path ( QLibraryInfo::LibrariesPath ).toStdString() << std::endl;
+   std::cout << "Plugin path:  " << QLibraryInfo::path ( QLibraryInfo::PluginsPath ).toStdString() << std::endl;
 #endif
 }
 
@@ -248,7 +251,7 @@ void QEGui::printFile (const QString& filename,
    QString text = textStream.readAll();
    textFile.close();
 
-   stream << text.toLatin1().data();
+   stream << text.toStdString();
 }
 
 // Print command line usage [static]

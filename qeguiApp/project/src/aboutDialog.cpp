@@ -3,7 +3,7 @@
  *  This file is part of the EPICS QT Framework, initially developed at the
  *  Australian Synchrotron.
  *
- *  SPDX-FileCopyrightText: 2013-2025 Australian Synchrotron
+ *  SPDX-FileCopyrightText: 2013-2026 Australian Synchrotron
  *  SPDX-License-Identifier: LGPL-3.0-only
  *
  *  Author:     author: Andrew Rhyder
@@ -102,6 +102,7 @@ aboutDialog::aboutDialog (
    ui->QTVersionLabel->setText ("QT " + QEFrameworkVersion::getQtVersionStr());
    ui->EPICSVersionLabel->setText (QEFrameworkVersion::getEpicsVersionStr());
    ui->ACAIVersionLabel->setText (QEFrameworkVersion::getAcaiVersionStr());
+   ui->PVXSVersionLabel->setText (QEFrameworkVersion::getPvxsVersionStr());
    ui->QWTVersionLabel->setText (QEFrameworkVersion::getQwtVersionStr());
 
    // Environment
